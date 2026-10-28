@@ -30,6 +30,7 @@
     --amber-soft:rgba(245,158,11,0.16);
     --blue:#3b82f6;
     --blue-soft:rgba(59,130,246,0.16);
+    --serif:'Times New Roman', 'Georgia', 'Cambria', serif;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{height:100%}
@@ -54,7 +55,7 @@
   }
   @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-  /* ============ HEADER ============ */
+  /* HEADER */
   .hero{display:flex;flex-direction:column;align-items:center;gap:10px;
     text-align:center;padding:8px 0 4px}
   .flag{
@@ -66,30 +67,23 @@
   .flag span:nth-child(1){background:#111}
   .flag span:nth-child(2){background:#dd0000}
   .flag span:nth-child(3){background:#ffce00}
-  .hero h1{
-    margin:0;font-size:clamp(22px,5.5vw,30px);font-weight:800;
-    letter-spacing:-.6px;line-height:1.15;
-  }
+  .hero h1{margin:0;font-size:clamp(22px,5.5vw,30px);font-weight:800;
+    letter-spacing:-.6px;line-height:1.15}
   .hero h1 em{
     font-style:normal;
     background:linear-gradient(100deg,#fff 0%,var(--gold) 60%,var(--gold-2) 100%);
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
-  .hero p{
-    margin:0;color:var(--muted);font-size:13.5px;font-weight:600;
-    letter-spacing:.2px;line-height:1.5;
-  }
+  .hero p{margin:0;color:var(--muted);font-size:13.5px;font-weight:600;
+    letter-spacing:.2px;line-height:1.5}
 
-  /* ============ SECTION HEADER ============ */
   .sec-head{display:flex;align-items:baseline;justify-content:space-between;
     padding:0 4px;margin-bottom:-6px}
-  .sec-title{
-    font-size:12px;letter-spacing:2.2px;text-transform:uppercase;
-    color:var(--muted);font-weight:800;
-  }
+  .sec-title{font-size:12px;letter-spacing:2.2px;text-transform:uppercase;
+    color:var(--muted);font-weight:800}
   .sec-note{font-size:11.5px;color:var(--muted);font-weight:600}
 
-  /* ============ MODE GRID ============ */
+  /* MODES */
   .modes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
   .mode{
     position:relative;
@@ -108,10 +102,8 @@
     opacity:.12;pointer-events:none;transition:opacity .3s;
   }
   .mode:hover{
-    background:var(--surface-hover);
-    border-color:var(--border-hover);
-    transform:translateY(-2px);
-    box-shadow:0 12px 28px -12px rgba(0,0,0,.6);
+    background:var(--surface-hover);border-color:var(--border-hover);
+    transform:translateY(-2px);box-shadow:0 12px 28px -12px rgba(0,0,0,.6);
   }
   .mode:hover::after{opacity:.25}
   .mode:active{transform:translateY(0) scale(.985)}
@@ -128,25 +120,21 @@
   .mode[data-mode="alphabet"]{--c:var(--purple);--bg-soft:var(--purple-soft)}
   .mode[data-mode="grammar"]{--c:var(--green);--bg-soft:var(--green-soft)}
 
-  /* ============ EXAM SECTION ============ */
+  /* EXAM SECTION */
   .exam-section{
     padding:18px 16px;
     background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.01));
     border:1px solid var(--border);border-radius:20px;
     -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
   }
-  .exam-title{
-    display:flex;align-items:center;gap:8px;margin:0 0 4px;
-    font-size:15px;font-weight:800;letter-spacing:-.2px;
-  }
+  .exam-title{display:flex;align-items:center;gap:8px;margin:0 0 4px;
+    font-size:15px;font-weight:800;letter-spacing:-.2px}
   .exam-title span{
     font-size:10.5px;font-weight:800;padding:3px 8px;border-radius:6px;
     background:rgba(255,206,0,.15);color:var(--gold);letter-spacing:.5px;
     text-transform:uppercase;
   }
-  .exam-sub{
-    font-size:12.5px;color:var(--muted);font-weight:600;margin:0 0 14px;line-height:1.5;
-  }
+  .exam-sub{font-size:12.5px;color:var(--muted);font-weight:600;margin:0 0 14px;line-height:1.5}
   .levels{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
   .level{
     display:flex;flex-direction:column;align-items:center;gap:3px;
@@ -155,20 +143,13 @@
     color:var(--text);font-family:inherit;cursor:pointer;
     transition:all .2s cubic-bezier(.2,.8,.2,1);
   }
-  .level:hover{
-    transform:translateY(-2px);
-    border-color:var(--border-hover);
-    box-shadow:0 8px 20px -8px rgba(0,0,0,.5);
-  }
+  .level:hover{transform:translateY(-2px);border-color:var(--border-hover);
+    box-shadow:0 8px 20px -8px rgba(0,0,0,.5)}
   .level:active{transform:translateY(0) scale(.97)}
-  .level-code{
-    font-size:17px;font-weight:900;letter-spacing:-.4px;
-    font-family:inherit;line-height:1;
-  }
-  .level-sub{
-    font-size:9.5px;font-weight:700;letter-spacing:.5px;
-    text-transform:uppercase;color:var(--muted);
-  }
+  .level-code{font-size:17px;font-weight:900;letter-spacing:-.4px;
+    font-family:inherit;line-height:1}
+  .level-sub{font-size:9.5px;font-weight:700;letter-spacing:.5px;
+    text-transform:uppercase;color:var(--muted)}
   .level[data-level="A1"] .level-code{color:#10b981}
   .level[data-level="A2"] .level-code{color:#3b82f6}
   .level[data-level="B1"] .level-code{color:#f59e0b}
@@ -178,7 +159,7 @@
   .level[data-level="B1"]:hover{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.4)}
   .level[data-level="B2"]:hover{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.4)}
 
-  /* ============ PRACTICE VIEW ============ */
+  /* PRACTICE */
   .practice{display:flex;flex-direction:column;gap:14px;
     animation:fadeUp .4s cubic-bezier(.2,.8,.2,1)}
   .practice-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -195,7 +176,7 @@
     display:flex;align-items:center;gap:6px;
     padding:6px 12px;border-radius:99px;
     font-size:11px;font-weight:800;letter-spacing:.4px;
-    text-transform:uppercase;
+    text-transform:uppercase;white-space:nowrap;
   }
   .practice-tag.vocab{background:var(--indigo-soft);color:#a5b4fc}
   .practice-tag.numbers{background:rgba(255,206,0,.15);color:var(--gold)}
@@ -213,7 +194,6 @@
     background:linear-gradient(90deg,var(--gold),var(--gold-2));
     transition:width .4s cubic-bezier(.2,.8,.2,1)}
 
-  /* Question card */
   .q-card{
     background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
     border:1px solid var(--border);border-radius:22px;padding:22px 20px;
@@ -227,17 +207,17 @@
     -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
     -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
   }
-  .q-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-  .q-level{
-    padding:3px 9px;border-radius:6px;font-size:10px;font-weight:900;
-    letter-spacing:.5px;background:rgba(255,255,255,.06);color:var(--text-dim);
-  }
+  .q-head{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+  .q-level{padding:3px 9px;border-radius:6px;font-size:10px;font-weight:900;
+    letter-spacing:.5px;background:rgba(255,255,255,.06);color:var(--text-dim)}
   .q-level.A1{background:rgba(16,185,129,.15);color:#6ee7b7}
   .q-level.A2{background:rgba(59,130,246,.15);color:#93c5fd}
   .q-level.B1{background:rgba(245,158,11,.15);color:#fcd34d}
   .q-level.B2{background:rgba(239,68,68,.15);color:#fca5a5}
-  .speak-btn{
-    margin-left:auto;width:38px;height:38px;border-radius:50%;padding:0;
+  .q-actions{margin-left:auto;display:flex;gap:6px}
+
+  .speak-btn,.hint-btn{
+    width:38px;height:38px;border-radius:50%;padding:0;
     border:1px solid var(--border);background:var(--surface);
     color:var(--text);font-size:16px;cursor:pointer;
     display:flex;align-items:center;justify-content:center;
@@ -250,6 +230,18 @@
     background:linear-gradient(135deg,var(--gold),var(--gold-2));
     color:#1a1200;border-color:transparent;
     animation:pulse 1s infinite;
+  }
+  .hint-btn{
+    font-family:Georgia,serif;font-weight:900;font-size:16px;
+    color:var(--muted);
+  }
+  .hint-btn:hover{
+    background:var(--amber-soft);border-color:var(--amber);
+    color:var(--amber);transform:scale(1.08);
+  }
+  .hint-btn.active{
+    background:var(--amber-soft);border-color:var(--amber);
+    color:var(--amber);
   }
   @keyframes pulse{
     0%{box-shadow:0 0 0 0 rgba(255,206,0,.4)}
@@ -267,7 +259,21 @@
     color:var(--gold);
   }
 
-  /* Options */
+  /* Hint box */
+  .hint-box{
+    margin:0 0 16px;padding:12px 14px;
+    background:var(--amber-soft);border:1px solid rgba(245,158,11,.3);
+    border-radius:12px;font-size:12.5px;font-weight:600;
+    line-height:1.55;color:#fcd34d;
+    animation:fbIn .3s cubic-bezier(.2,.8,.2,1);
+  }
+  .hint-box .label{
+    display:block;font-size:10px;letter-spacing:1.5px;
+    text-transform:uppercase;color:var(--amber);
+    font-weight:800;margin-bottom:5px;
+  }
+
+  /* OPTIONS */
   .options{display:flex;flex-direction:column;gap:9px}
   .opt{
     display:flex;align-items:center;gap:13px;
@@ -295,10 +301,8 @@
     font-weight:800;font-size:13.5px;
   }
   .opt-text{flex:1;word-break:break-word;line-height:1.35}
-  .opt.correct{
-    background:var(--green-soft);border-color:var(--green);
-    animation:pop .35s cubic-bezier(.2,.8,.2,1);
-  }
+  .opt.correct{background:var(--green-soft);border-color:var(--green);
+    animation:pop .35s cubic-bezier(.2,.8,.2,1)}
   @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
   .opt.correct .opt-letter{background:rgba(16,185,129,.32);color:#6ee7b7}
   .opt.correct .opt-text{color:#6ee7b7}
@@ -307,7 +311,7 @@
   .opt.wrong .opt-text{color:#fca5a5}
   .opt.dimmed{opacity:.4}
 
-  /* Feedback */
+  /* FEEDBACK */
   .fb{
     margin-top:14px;padding:12px 16px;border-radius:12px;
     font-size:13.5px;font-weight:600;line-height:1.5;
@@ -322,7 +326,6 @@
   }
   .fb small b{color:#fff;font-weight:700}
 
-  /* Next button */
   .next-btn{
     width:100%;margin-top:14px;padding:15px;
     border-radius:14px;border:0;
@@ -335,7 +338,72 @@
   .next-btn:hover{transform:translateY(-1px);box-shadow:0 8px 26px rgba(255,206,0,.4)}
   .next-btn:active{transform:translateY(0) scale(.99)}
 
-  /* Summary */
+  /* EXAM SPECIFIC */
+  .exam-banner{
+    padding:14px 16px;
+    background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+    border:1px solid var(--border);border-radius:14px;
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  }
+  .exam-banner-title{
+    font-family:var(--serif);font-size:16px;font-weight:700;
+    color:var(--text);letter-spacing:.2px;line-height:1.2;
+    margin-bottom:3px;
+  }
+  .exam-banner-sub{
+    font-size:11.5px;color:var(--muted);font-weight:600;
+    letter-spacing:.2px;
+  }
+
+  .exam-instr{
+    padding:11px 14px;
+    background:rgba(255,255,255,.03);
+    border-left:3px solid var(--gold);
+    border-radius:8px;
+    font-size:12.5px;font-weight:500;color:var(--text-dim);
+    line-height:1.55;margin-bottom:14px;
+    font-family:var(--serif);font-style:italic;
+  }
+
+  .exam-passage{
+    padding:16px 18px;
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border);border-radius:12px;
+    font-family:var(--serif);font-size:14.5px;line-height:1.7;
+    color:var(--text);white-space:pre-wrap;
+    margin-bottom:16px;
+    max-height:260px;overflow-y:auto;
+  }
+  .exam-passage::-webkit-scrollbar{width:6px}
+  .exam-passage::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:99px}
+  .exam-passage .blank-num{
+    display:inline-block;padding:0 6px;
+    background:rgba(255,206,0,.25);color:var(--gold);
+    border-radius:4px;font-weight:800;font-size:12.5px;
+    font-family:'Inter',sans-serif;
+    margin:0 2px;line-height:1.4;
+  }
+  .exam-passage .blank-num.hl{
+    background:var(--gold);color:#1a1200;
+    box-shadow:0 0 0 2px rgba(255,206,0,.3);
+    animation:blankPulse 1.5s infinite;
+  }
+  @keyframes blankPulse{
+    0%,100%{box-shadow:0 0 0 2px rgba(255,206,0,.3)}
+    50%{box-shadow:0 0 0 5px rgba(255,206,0,.05)}
+  }
+
+  .exam-q-num{
+    font-size:10.5px;font-weight:800;color:var(--gold);
+    letter-spacing:1.5px;text-transform:uppercase;
+    margin-bottom:7px;
+  }
+  .exam-q-text{
+    font-family:var(--serif);font-size:15.5px;font-weight:700;
+    line-height:1.5;margin-bottom:14px;color:var(--text);
+  }
+
+  /* SUMMARY */
   .summary{
     text-align:center;padding:34px 22px;
     background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
@@ -361,7 +429,6 @@
   .sum-stat .val{font-size:21px;font-weight:800;color:var(--text)}
   .sum-stat.gold .val{color:var(--gold)}
   .sum-stat.green .val{color:var(--green)}
-  .sum-stat.blue .val{color:#93c5fd}
   .sum-actions{display:flex;gap:8px}
   .sum-actions button{
     flex:1;padding:13px;border-radius:12px;border:1px solid var(--border);
@@ -377,7 +444,7 @@
   }
   .sum-actions .again-btn:hover{transform:translateY(-1px)}
 
-  /* Footer */
+  /* FOOTER */
   .foot{
     text-align:center;font-size:11px;color:#4d5d80;font-weight:600;
     padding-top:8px;line-height:1.7;
@@ -388,7 +455,6 @@
     color:var(--text-dim);font-weight:700;
   }
 
-  /* Responsive */
   @media (max-width:440px){
     .app{padding:22px 14px 44px;gap:18px}
     .mode{padding:15px 13px;gap:8px}
@@ -402,6 +468,8 @@
     .level-code{font-size:15px}
     .level-sub{font-size:8.5px}
     .exam-section{padding:16px 13px}
+    .exam-passage{font-size:13.5px;padding:13px 14px;max-height:220px}
+    .exam-q-text{font-size:14.5px}
   }
 </style>
 </head>
@@ -419,7 +487,6 @@ const shuffle = a => {
   for (let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
   return a;
 };
-const pick = a => a[Math.floor(Math.random()*a.length)];
 const esc = s => String(s).replace(/[&<>"']/g,
   c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
@@ -499,7 +566,6 @@ const ALPHABET = [
    VOCABULARY
 ══════════════════════════════════════════════════════════ */
 const VOCAB = [
-  // A1
   {de:'der Apfel', art:'der', vi:'quả táo', lv:'A1'},
   {de:'die Frau', art:'die', vi:'người phụ nữ', lv:'A1'},
   {de:'das Haus', art:'das', vi:'ngôi nhà', lv:'A1'},
@@ -525,7 +591,6 @@ const VOCAB = [
   {de:'die Milch', art:'die', vi:'sữa', lv:'A1'},
   {de:'der Kaffee', art:'der', vi:'cà phê', lv:'A1'},
   {de:'das Zimmer', art:'das', vi:'căn phòng', lv:'A1'},
-  // A2
   {de:'die Wohnung', art:'die', vi:'căn hộ', lv:'A2'},
   {de:'der Bahnhof', art:'der', vi:'nhà ga', lv:'A2'},
   {de:'der Flughafen', art:'der', vi:'sân bay', lv:'A2'},
@@ -540,7 +605,6 @@ const VOCAB = [
   {de:'die Rechnung', art:'die', vi:'hóa đơn', lv:'A2'},
   {de:'der Supermarkt', art:'der', vi:'siêu thị', lv:'A2'},
   {de:'die Apotheke', art:'die', vi:'hiệu thuốc', lv:'A2'},
-  // B1
   {de:'die Erfahrung', art:'die', vi:'kinh nghiệm', lv:'B1'},
   {de:'die Entscheidung', art:'die', vi:'quyết định', lv:'B1'},
   {de:'die Möglichkeit', art:'die', vi:'khả năng, cơ hội', lv:'B1'},
@@ -554,45 +618,318 @@ const VOCAB = [
 ];
 
 /* ══════════════════════════════════════════════════════════
-   GRAMMAR QUESTIONS
+   GRAMMAR (with hint + explanation)
 ══════════════════════════════════════════════════════════ */
 const GRAMMAR = [
   // A1 — Artikel & Präsens
-  {q:'___ Mann ist groß.', opts:['Der','Die','Das','Den'], a:0, lv:'A1', ex:'Mann là giống đực, Nominativ → der'},
-  {q:'___ Frau ist nett.', opts:['Der','Die','Das','Dem'], a:1, lv:'A1', ex:'Frau là giống cái, Nominativ → die'},
-  {q:'___ Kind spielt.', opts:['Der','Die','Das','Den'], a:2, lv:'A1', ex:'Kind là giống trung, Nominativ → das'},
-  {q:'Ich ___ Student.', opts:['bin','bist','ist','sind'], a:0, lv:'A1', ex:'sein: ich bin'},
-  {q:'Du ___ Lehrer.', opts:['bin','bist','ist','sind'], a:1, lv:'A1', ex:'sein: du bist'},
-  {q:'Er ___ aus Vietnam.', opts:['komme','kommst','kommt','kommen'], a:2, lv:'A1', ex:'kommen: er/sie/es kommt'},
-  {q:'Wir ___ Deutsch.', opts:['lerne','lernst','lernt','lernen'], a:3, lv:'A1', ex:'lernen: wir lernen'},
-  {q:'Ich ___ einen Apfel.', opts:['habe','hast','hat','haben'], a:0, lv:'A1', ex:'haben: ich habe'},
-  {q:'Wie ___ du?', opts:['heiße','heißt','heißen','heißest'], a:1, lv:'A1', ex:'heißen: du heißt'},
-  {q:'Sie ___ eine Katze.', opts:['habe','hast','hat','haben'], a:2, lv:'A1', ex:'haben: sie hat'},
+  {q:'___ Mann ist groß.', opts:['Der','Die','Das','Den'], a:0, lv:'A1',
+   hint:'Câu hỏi về mạo từ xác định (bestimmter Artikel) ở cách Nominativ. Xác định giới tính của danh từ "Mann": giống đực → der, giống cái → die, giống trung → das.',
+   ex:'Mann là giống đực, Nominativ → der.'},
+  {q:'___ Frau ist nett.', opts:['Der','Die','Das','Dem'], a:1, lv:'A1',
+   hint:'Mạo từ xác định ở Nominativ. Danh từ "Frau" chỉ phụ nữ — nhóm giống cái (feminin).',
+   ex:'Frau giống cái, Nominativ → die.'},
+  {q:'___ Kind spielt.', opts:['Der','Die','Das','Den'], a:2, lv:'A1',
+   hint:'Mạo từ xác định ở Nominativ. Danh từ "Kind" (đứa trẻ) thuộc nhóm giống trung (neutrum).',
+   ex:'Kind giống trung, Nominativ → das.'},
+  {q:'Ich ___ Student.', opts:['bin','bist','ist','sind'], a:0, lv:'A1',
+   hint:'Câu hỏi chia động từ "sein" (thì hiện tại). Xác định chủ ngữ là "ich" (tôi) → dùng dạng nào? Bảng: ich bin, du bist, er/sie/es ist, wir sind, ihr seid, sie sind.',
+   ex:'sein với ich → bin.'},
+  {q:'Du ___ Lehrer.', opts:['bin','bist','ist','sind'], a:1, lv:'A1',
+   hint:'Chia "sein" với chủ ngữ "du" (bạn). Xem bảng chia: du + bist.',
+   ex:'sein với du → bist.'},
+  {q:'Er ___ aus Vietnam.', opts:['komme','kommst','kommt','kommen'], a:2, lv:'A1',
+   hint:'Chia động từ "kommen" (đến) ở hiện tại. Với chủ ngữ ngôi 3 số ít (er/sie/es), động từ thêm đuôi -t.',
+   ex:'kommen với er → kommt.'},
+  {q:'Wir ___ Deutsch.', opts:['lerne','lernst','lernt','lernen'], a:3, lv:'A1',
+   hint:'Chia "lernen" (học) với chủ ngữ "wir" (chúng tôi). Ở ngôi 1 số nhiều, động từ giữ nguyên dạng nguyên thể (không thêm đuôi).',
+   ex:'lernen với wir → lernen.'},
+  {q:'Ich ___ einen Apfel.', opts:['habe','hast','hat','haben'], a:0, lv:'A1',
+   hint:'Chia "haben" (có) với "ich". Bảng chia: ich habe, du hast, er hat, wir haben, ihr habt, sie haben.',
+   ex:'haben với ich → habe.'},
+  {q:'Wie ___ du?', opts:['heiße','heißt','heißen','heißest'], a:1, lv:'A1',
+   hint:'Chia "heißen" (tên là) với "du". Động từ có gốc kết thúc bằng -ß/-s/-z thì với "du" chỉ thêm -t (không thêm -st).',
+   ex:'heißen với du → heißt.'},
+  {q:'Sie ___ eine Katze.', opts:['habe','hast','hat','haben'], a:2, lv:'A1',
+   hint:'"Sie" ở đây nghĩa là "cô ấy" (ngôi 3 số ít nữ). Chia "haben": er/sie/es + hat.',
+   ex:'haben với sie (cô ấy) → hat.'},
+
   // A2 — Perfekt, Modalverben, Komparativ
-  {q:'Ich ___ gestern ins Kino gegangen.', opts:['bin','habe','werde','hatte'], a:0, lv:'A2', ex:'gehen dùng trợ động từ sein → bin gegangen'},
-  {q:'Er ___ das Buch gelesen.', opts:['bin','bist','hat','sind'], a:2, lv:'A2', ex:'lesen dùng haben → hat gelesen'},
-  {q:'Wir ___ nach Hause gehen.', opts:['muss','musst','müssen','müsst'], a:2, lv:'A2', ex:'müssen: wir müssen'},
-  {q:'Du ___ besser lernen.', opts:['soll','sollst','sollen','sollt'], a:1, lv:'A2', ex:'sollen: du sollst'},
-  {q:'Das Auto ist ___ als das Fahrrad.', opts:['schnell','schneller','am schnellsten','schnellste'], a:1, lv:'A2', ex:'So sánh hơn: schneller als'},
-  {q:'Ich wohne ___ Berlin.', opts:['in','im','am','an'], a:0, lv:'A2', ex:'in + thành phố (Dativ): in Berlin'},
-  {q:'Wir fahren ___ die Schweiz.', opts:['nach','in','zu','an'], a:1, lv:'A2', ex:'in + quốc gia có mạo từ: in die Schweiz'},
-  {q:'___ wohnst du? — In Hanoi.', opts:['Wo','Wohin','Woher','Was'], a:0, lv:'A2', ex:'wo = ở đâu (vị trí)'},
+  {q:'Ich ___ gestern ins Kino gegangen.', opts:['bin','habe','werde','hatte'], a:0, lv:'A2',
+   hint:'Câu hỏi về thì Perfekt. Trợ động từ là "sein" hay "haben"? Quy tắc: động từ chỉ sự di chuyển/trạng thái (gehen, fahren, kommen...) dùng "sein".',
+   ex:'gehen dùng trợ động từ sein → bin gegangen.'},
+  {q:'Er ___ das Buch gelesen.', opts:['bin','bist','hat','sind'], a:2, lv:'A2',
+   hint:'Perfekt với động từ "lesen" (đọc) — động từ thường, không chỉ di chuyển. Vậy trợ động từ là "haben". Chủ ngữ "er" → hat.',
+   ex:'lesen dùng haben → hat gelesen.'},
+  {q:'Wir ___ nach Hause gehen.', opts:['muss','musst','müssen','müsst'], a:2, lv:'A2',
+   hint:'Câu hỏi về động từ khuyết thiếu "müssen" (phải). Chủ ngữ "wir" (chúng tôi) → dạng "müssen".',
+   ex:'müssen với wir → müssen.'},
+  {q:'Du ___ besser lernen.', opts:['soll','sollst','sollen','sollt'], a:1, lv:'A2',
+   hint:'Động từ khuyết thiếu "sollen" (nên). Chủ ngữ "du" → dạng "sollst".',
+   ex:'sollen với du → sollst.'},
+  {q:'Das Auto ist ___ als das Fahrrad.', opts:['schnell','schneller','am schnellsten','schnellste'], a:1, lv:'A2',
+   hint:'Câu hỏi về so sánh hơn (Komparativ). Cấu trúc: adj + -er + als. Đây là so sánh giữa 2 vật → dùng dạng so sánh hơn, không phải nguyên hay so sánh nhất.',
+   ex:'So sánh hơn: schneller als.'},
+  {q:'Ich wohne ___ Berlin.', opts:['in','im','am','an'], a:0, lv:'A2',
+   hint:'Câu hỏi về giới từ chỉ vị trí. Với thành phố/quốc gia không có mạo từ, dùng "in" + tên thành phố (không cần mạo từ).',
+   ex:'in + thành phố: in Berlin.'},
+  {q:'Wir fahren ___ die Schweiz.', opts:['nach','in','zu','an'], a:1, lv:'A2',
+   hint:'Quốc gia có mạo từ (die Schweiz, die Türkei, die USA...) không dùng "nach" mà dùng "in + Akkusativ" khi chỉ hướng đi.',
+   ex:'in + quốc gia có mạo từ: in die Schweiz.'},
+  {q:'___ wohnst du? — In Hanoi.', opts:['Wo','Wohin','Woher','Was'], a:0, lv:'A2',
+   hint:'W-Frage hỏi về địa điểm. "Wo" = ở đâu (vị trí), "Wohin" = đi đâu (hướng), "Woher" = từ đâu (nguồn gốc). Câu trả lời "In Hanoi" chỉ vị trí.',
+   ex:'wo = ở đâu (vị trí).'},
+
   // B1 — Passiv, Relativsatz, Konnektoren
-  {q:'Das Buch ___ von Goethe geschrieben.', opts:['wurde','wurden','ward','werden'], a:0, lv:'B1', ex:'Passiv Präteritum: wurde geschrieben'},
-  {q:'Der Mann, ___ dort steht, ist mein Vater.', opts:['der','die','das','den'], a:0, lv:'B1', ex:'Relativsatz, Mann là maskulin → der'},
-  {q:'Die Frau, ___ ich sehe, ist nett.', opts:['die','der','das','dem'], a:0, lv:'B1', ex:'Frau, Akkusativ, feminin → die'},
-  {q:'Ich bleibe zu Hause, ___ ich krank bin.', opts:['weil','dass','ob','wenn'], a:0, lv:'B1', ex:'weil = bởi vì (nguyên nhân)'},
-  {q:'___ es regnet, gehe ich spazieren.', opts:['Obwohl','Weil','Dass','Wenn'], a:0, lv:'B1', ex:'obwohl = mặc dù'},
-  {q:'Ich lerne Deutsch, ___ in Deutschland zu studieren.', opts:['um','damit','weil','dass'], a:0, lv:'B1', ex:'um ... zu + Infinitiv: mục đích'},
-  {q:'Er kommt zu spät, ___ er den Bus verpasst hat.', opts:['weil','obwohl','damit','um'], a:0, lv:'B1', ex:'weil = bởi vì'},
+  {q:'Das Buch ___ von Goethe geschrieben.', opts:['wurde','wurden','ward','werden'], a:0, lv:'B1',
+   hint:'Câu hỏi về thể bị động (Passiv) ở thì Präteritum. Cấu trúc: werden + Partizip II. Chủ ngữ "das Buch" (số ít) → wurde.',
+   ex:'Passiv Präteritum: wurde geschrieben.'},
+  {q:'Der Mann, ___ dort steht, ist mein Vater.', opts:['der','die','das','den'], a:0, lv:'B1',
+   hint:'Mệnh đề quan hệ (Relativsatz). Đại từ quan hệ phụ thuộc giới tính + cách của danh từ được thay thế. "Mann" giống đực, đóng vai chủ ngữ trong mệnh đề quan hệ → Nominativ.',
+   ex:'Relativsatz, Mann maskulin → der.'},
+  {q:'Die Frau, ___ ich sehe, ist nett.', opts:['die','der','das','dem'], a:0, lv:'B1',
+   hint:'Relativsatz. "Frau" giống cái, trong mệnh đề quan hệ đóng vai tân ngữ trực tiếp (Akkusativ). Giống cái + Akkusativ → die.',
+   ex:'Frau, Akkusativ, feminin → die.'},
+  {q:'Ich bleibe zu Hause, ___ ich krank bin.', opts:['weil','dass','ob','wenn'], a:0, lv:'B1',
+   hint:'Câu hỏi về liên từ nối 2 mệnh đề. Xác định mối quan hệ: mệnh đề sau giải thích lý do → dùng "weil" (bởi vì).',
+   ex:'weil = bởi vì (nguyên nhân).'},
+  {q:'___ es regnet, gehe ich spazieren.', opts:['Obwohl','Weil','Dass','Wenn'], a:0, lv:'B1',
+   hint:'Hai mệnh đề có ý nghĩa tương phản/nhượng bộ: trời mưa NHƯNG vẫn đi dạo → dùng "obwohl" (mặc dù).',
+   ex:'obwohl = mặc dù.'},
+  {q:'Ich lerne Deutsch, ___ in Deutschland zu studieren.', opts:['um','damit','weil','dass'], a:0, lv:'B1',
+   hint:'Cấu trúc mục đích "um ... zu + Infinitiv". Dùng khi chủ ngữ 2 mệnh đề GIỐNG NHAU (ich học — ich du học).',
+   ex:'um ... zu + Infinitiv: mục đích.'},
+  {q:'Er kommt zu spät, ___ er den Bus verpasst hat.', opts:['weil','obwohl','damit','um'], a:0, lv:'B1',
+   hint:'Mệnh đề sau giải thích nguyên nhân của việc đến muộn → dùng "weil" (bởi vì).',
+   ex:'weil = bởi vì.'},
+
   // B2 — Konjunktiv II, Passiv mit Modal
-  {q:'Wenn ich reich ___, würde ich um die Welt reisen.', opts:['wäre','bin','sein würde','werde'], a:0, lv:'B2', ex:'Konjunktiv II của sein: wäre'},
-  {q:'Ich ___ das gemacht haben.', opts:['hätte','habe','würde','werde'], a:0, lv:'B2', ex:'Konjunktiv II Perfekt: hätte gemacht'},
-  {q:'Wenn er Zeit ___, würde er mitkommen.', opts:['hätte','hat','haben würde','hatte'], a:0, lv:'B2', ex:'Konjunktiv II của haben: hätte'},
-  {q:'Das Problem ___ gelöst werden müssen.', opts:['hätte','würde','wäre','habe'], a:0, lv:'B2', ex:'Passiv Konjunktiv II: hätte gelöst werden müssen'},
-  {q:'Der Mann, ___ ich gestern begegnet bin, war freundlich.', opts:['dem','den','der','denen'], a:0, lv:'B2', ex:'begegnen + Dativ → dem'},
-  {q:'___ ich das gewusst hätte, wäre ich gekommen.', opts:['Wenn','Ob','Dass','Weil'], a:0, lv:'B2', ex:'Irrealer Bedingungssatz: Wenn ... hätte'},
+  {q:'Wenn ich reich ___, würde ich um die Welt reisen.', opts:['wäre','bin','sein würde','werde'], a:0, lv:'B2',
+   hint:'Câu giả định không có thật ở hiện tại (Irrealer Bedingungssatz) → dùng Konjunktiv II. "sein" ở Konjunktiv II là "wäre".',
+   ex:'Konjunktiv II của sein: wäre.'},
+  {q:'Ich ___ das gemacht haben.', opts:['hätte','habe','würde','werde'], a:0, lv:'B2',
+   hint:'Konjunktiv II Perfekt: hätte/wäre + Partizip II + haben/sein. Diễn tả điều lẽ ra đã xảy ra nhưng không xảy ra.',
+   ex:'Konjunktiv II Perfekt: hätte gemacht.'},
+  {q:'Wenn er Zeit ___, würde er mitkommen.', opts:['hätte','hat','haben würde','hatte'], a:0, lv:'B2',
+   hint:'Câu giả định không có thật → Konjunktiv II của "haben" là "hätte".',
+   ex:'Konjunktiv II của haben: hätte.'},
+  {q:'Das Problem ___ gelöst werden müssen.', opts:['hätte','würde','wäre','habe'], a:0, lv:'B2',
+   hint:'Passiv với Modalverb ở Konjunktiv II: hätte + Partizip II + werden + Modalverb (müssen). Diễn tả điều lẽ ra phải được làm.',
+   ex:'Passiv Konjunktiv II: hätte gelöst werden müssen.'},
+  {q:'Der Mann, ___ ich gestern begegnet bin, war freundlich.', opts:['dem','den','der','denen'], a:0, lv:'B2',
+   hint:'Relativsatz, động từ "begegnen" (gặp gỡ) đi với Dativ. Danh từ "Mann" giống đực, Dativ → dem.',
+   ex:'begegnen + Dativ → dem.'},
+  {q:'___ ich das gewusst hätte, wäre ich gekommen.', opts:['Wenn','Ob','Dass','Weil'], a:0, lv:'B2',
+   hint:'Câu điều kiện không có thật (Irrealer Bedingungssatz) với Konjunktiv II → mở đầu bằng "wenn". Mệnh đề chính dùng "wäre gekommen".',
+   ex:'Irrealer Bedingungssatz: Wenn ... hätte.'},
 ];
+
+/* ══════════════════════════════════════════════════════════
+   EXAMS (chính thức theo format Goethe-Institut)
+══════════════════════════════════════════════════════════ */
+const EXAMS = {
+  A1: {
+    name:'Goethe-Zertifikat A1',
+    subtitle:'Start Deutsch 1 · Lesen',
+    section:'Lesen',
+    duration:'25 Minuten',
+    instructions:'Lesen Sie die Texte und Aufgaben. Wählen Sie die richtige Antwort (a, b oder c).',
+    questions: [
+      {passage:'SUPERMARKT SONNE\nÖffnungszeiten:\nMontag – Freitag: 8 – 20 Uhr\nSamstag: 8 – 16 Uhr\nSonntag: geschlossen',
+       q:'Wann ist der Supermarkt geschlossen?',
+       opts:['Am Sonntag','Am Samstag','Am Freitag'], a:0,
+       explain:'Sonntag: geschlossen → Chủ nhật đóng cửa.'},
+      {passage:'Hallo Peter,\nich fahre morgen nach Hamburg. Ich besuche meine Schwester. Wir sehen uns nächste Woche.\nViele Grüße\nAnna',
+       q:'Wohin fährt Anna?',
+       opts:['Zu Peter','Nach Hamburg','Zur Arbeit'], a:1,
+       explain:'"Ich fahre morgen nach Hamburg" → Anna đi Hamburg.'},
+      {passage:'Deutschkurs A1\nBeginn: 15. Oktober\nDauer: 6 Wochen\nKosten: 150 Euro\nAnmeldung im Büro',
+       q:'Wann beginnt der Kurs?',
+       opts:['Am 15. September','Am 15. Oktober','Am 15. November'], a:1,
+       explain:'"Beginn: 15. Oktober" → khóa học bắt đầu ngày 15/10.'},
+      {passage:'Liebe Frau Meier,\nich kann am Montag nicht kommen. Ich bin krank. Am Dienstag bin ich wieder da.\nMit freundlichen Grüßen\nTom Weber',
+       q:'Warum kann Tom am Montag nicht kommen?',
+       opts:['Er ist krank.','Er hat Urlaub.','Er ist im Ausland.'], a:0,
+       explain:'"Ich bin krank" → Tom bị ốm.'},
+      {passage:'Praxis Dr. Klein\nSprechzeiten:\nMo, Di, Do: 8 – 12 Uhr\nMi, Fr: 15 – 18 Uhr\nTermine nur mit Anmeldung!',
+       q:'Wann kann man am Mittwoch zum Arzt gehen?',
+       opts:['Um 16 Uhr','Um 9 Uhr','Um 11 Uhr'], a:0,
+       explain:'Mittwoch (Mi): 15 – 18 Uhr → 16 giờ nằm trong khung này.'},
+      {passage:'Familie Schmidt wohnt in Berlin.\nHerr Schmidt ist Lehrer.\nFrau Schmidt arbeitet in einem Krankenhaus.\nSie haben zwei Kinder.',
+       q:'Wo arbeitet Frau Schmidt?',
+       opts:['Zu Hause','Im Krankenhaus','In der Schule'], a:1,
+       explain:'"Frau Schmidt arbeitet in einem Krankenhaus" → làm ở bệnh viện.'},
+      {passage:'Bäckerei Krause\nFrisches Brot und Kuchen\nJeden Tag ab 6 Uhr geöffnet\nAuch sonntags!',
+       q:'Wann kann man hier Brot kaufen?',
+       opts:['Nur montags','Nur am Wochenende','Jeden Tag'], a:2,
+       explain:'"Jeden Tag ab 6 Uhr geöffnet" → mở cửa hằng ngày.'},
+      {passage:'Einladung!\nAm Samstag feiern wir meinen Geburtstag. Die Party beginnt um 19 Uhr bei mir zu Hause.\nKommst du?\nLisa',
+       q:'Wann beginnt die Party?',
+       opts:['Um 12 Uhr','Um 19 Uhr','Um 7 Uhr'], a:1,
+       explain:'"Die Party beginnt um 19 Uhr" → tiệc bắt đầu 19h.'},
+      {passage:'Person: Maria Lopez\nAlter: 25 Jahre\nLand: Spanien\nBeruf: Studentin',
+       q:'Was macht Maria?',
+       opts:['Sie studiert.','Sie arbeitet.','Sie ist Lehrerin.'], a:0,
+       explain:'Beruf: Studentin → Maria là sinh viên, đang học.'},
+      {passage:'Mein Tag:\n7 Uhr: aufstehen\n8 Uhr: frühstücken\n9 Uhr: zur Arbeit gehen\n18 Uhr: nach Hause kommen',
+       q:'Wann steht die Person auf?',
+       opts:['Um 8 Uhr','Um 6 Uhr','Um 7 Uhr'], a:2,
+       explain:'"7 Uhr: aufstehen" → thức dậy lúc 7 giờ.'},
+    ],
+  },
+  A2: {
+    name:'Goethe-Zertifikat A2',
+    subtitle:'Fit in Deutsch 2 · Lesen',
+    section:'Lesen',
+    duration:'30 Minuten',
+    instructions:'Lesen Sie die Texte und Aufgaben. Wählen Sie die richtige Antwort (a, b oder c).',
+    questions: [
+      {passage:'Wohnung zu vermieten!\n2 Zimmer, Küche, Bad\n55 m², 3. Stock\nMiete: 650 Euro + Nebenkosten\nTel: 030-987654',
+       q:'Was wird hier angeboten?',
+       opts:['Eine Wohnung','Ein Haus','Ein Zimmer im Hotel'], a:0,
+       explain:'"Wohnung zu vermieten" → cho thuê căn hộ.'},
+      {passage:'Liebe Frau Weber,\nleider muss ich unseren Termin am Donnerstag absagen. Ich muss dringend verreisen. Können wir uns nächste Woche treffen?\nMit freundlichen Grüßen\nH. Müller',
+       q:'Warum sagt Herr Müller den Termin ab?',
+       opts:['Er hat keine Zeit.','Er muss verreisen.','Er ist krank.'], a:1,
+       explain:'"Ich muss dringend verreisen" → phải đi công tác gấp.'},
+      {passage:'Stadtbibliothek\nÖffnungszeiten:\nMo – Fr 10 – 19 Uhr\nSa 10 – 14 Uhr\nSonntag geschlossen\nAm 3. Oktober geschlossen (Feiertag)',
+       q:'Wann ist die Bibliothek am 3. Oktober geöffnet?',
+       opts:['Sie ist geschlossen.','Von 10 – 14 Uhr','Von 10 – 19 Uhr'], a:0,
+       explain:'"Am 3. Oktober geschlossen" → ngày 3/10 đóng cửa (ngày lễ).'},
+      {passage:'Restaurant Zur Post\nSpezialitäten: Schnitzel, Bratwurst, Sauerkraut\nMittagstisch: Mo – Fr 12 – 14 Uhr\nAbendessen: 18 – 22 Uhr\nSamstag und Sonntag: geschlossen',
+       q:'Wann kann man hier abends essen?',
+       opts:['Nur mittags','Täglich 18 – 22 Uhr','Montag bis Freitag 18 – 22 Uhr'], a:2,
+       explain:'Cuối tuần đóng cửa → chỉ ăn tối được từ thứ 2 đến thứ 6.'},
+      {passage:'Fitnessstudio Fit & Gesund\nNeue Mitglieder willkommen!\nProbetraining kostenlos!\nKurse: Yoga, Pilates, Zumba\nÖffnungszeiten: Mo – So 6 – 23 Uhr',
+       q:'Was ist kostenlos?',
+       opts:['Ein Yogakurs','Die Mitgliedschaft','Ein Probetraining'], a:2,
+       explain:'"Probetraining kostenlos" → buổi tập thử miễn phí.'},
+      {passage:'Museum für Geschichte\nEintritt: 8 Euro\nKinder bis 12 Jahre: frei\nStudenten: 4 Euro\nFührungen: jeden Samstag um 14 Uhr',
+       q:'Wann gibt es Führungen?',
+       opts:['Jeden Tag','Nur sonntags','Jeden Samstag'], a:2,
+       explain:'"Führungen: jeden Samstag um 14 Uhr" → tour vào thứ 7 hằng tuần.'},
+      {passage:'Betreff: Bestellung Nr. 12345\nSehr geehrte Damen und Herren,\nleider habe ich die bestellte Ware noch nicht erhalten. Bitte prüfen Sie den Status.\nMit freundlichen Grüßen\nK. Schmidt',
+       q:'Warum schreibt Frau Schmidt?',
+       opts:['Sie hat die Ware nicht bekommen.','Sie möchte etwas bestellen.','Sie möchte stornieren.'], a:0,
+       explain:'"noch nicht erhalten" → chưa nhận được hàng đã đặt.'},
+      {passage:'Deutsche Bahn · Information\nDer Zug nach München um 10:15 Uhr hat 20 Minuten Verspätung. Der Zug fährt jetzt um 10:35 Uhr von Gleis 7 ab.',
+       q:'Wann fährt der Zug nach München?',
+       opts:['Um 10:15 Uhr','Um 7:00 Uhr','Um 10:35 Uhr'], a:2,
+       explain:'"fährt jetzt um 10:35 Uhr" → chuyến tàu khởi hành lúc 10:35.'},
+      {passage:'Apotheke am Markt\nWir sind für Sie da!\nMo – Fr: 8:30 – 18:30 Uhr\nSa: 9 – 13 Uhr\nNotdienst: siehe Aushang',
+       q:'Wann ist die Apotheke am Samstag geöffnet?',
+       opts:['Von 9 – 13 Uhr','Von 8:30 – 18:30 Uhr','Sie ist geschlossen.'], a:0,
+       explain:'"Sa: 9 – 13 Uhr" → thứ 7 mở từ 9h đến 13h.'},
+      {passage:'Einladung zum Sommerfest\nLiebe Nachbarn,\nam 15. Juli feiern wir ein Sommerfest im Garten. Beginn: 15 Uhr. Bringt gerne Kuchen mit!\nFamilie Berger',
+       q:'Was soll man mitbringen?',
+       opts:['Getränke','Nichts','Kuchen'], a:2,
+       explain:'"Bringt gerne Kuchen mit" → hãy mang bánh đến.'},
+    ],
+  },
+  B1: {
+    name:'Goethe-Zertifikat B1',
+    subtitle:'Zertifikat Deutsch · Sprachbausteine',
+    section:'Sprachbausteine Teil 1',
+    duration:'15 Minuten',
+    instructions:'Lesen Sie den folgenden Brief. Wählen Sie für jede Lücke (1–10) die richtige Antwort (a, b oder c).',
+    sharedText:
+`Liebe Julia,
+
+vielen Dank für deine E-Mail. Ich habe mich sehr über deine Nachricht (1) ___. Es tut mir leid, dass ich mich so lange nicht gemeldet (2) ___. Ich hatte in den letzten Wochen viel Stress bei der Arbeit.
+
+Wie du weißt, (3) ___ ich seit drei Monaten in einer neuen Firma. Die Arbeit macht mir Spaß, aber ich (4) ___ oft bis spät abends. Am Wochenende versuche ich dann, mich zu (5) ___.
+
+Ich würde dich sehr gerne wiedersehen. (6) ___ wir uns nächste Woche Samstag treffen? Wir (7) ___ zusammen einen Kaffee trinken gehen und uns in Ruhe (8) ___.
+
+Sag mir bitte bald Bescheid, ob du Zeit (9) ___. Ich würde mich sehr (10) ___.
+
+Liebe Grüße
+Sophie`,
+    questions: [
+      {blankNum:1, q:'Was passt in Lücke (1)?',
+       opts:['freuen','gefreut','freut'], a:1,
+       explain:'Perfekt: "Ich habe mich gefreut" — Partizip II của "freuen" là "gefreut".'},
+      {blankNum:2, q:'Was passt in Lücke (2)?',
+       opts:['bin','habe','hatte'], a:1,
+       explain:'Perfekt với "sich melden": "Ich habe mich gemeldet" — dùng trợ động từ "haben".'},
+      {blankNum:3, q:'Was passt in Lücke (3)?',
+       opts:['arbeiten','arbeitet','arbeite'], a:2,
+       explain:'Präsens, chủ ngữ "ich" → "ich arbeite" (động từ bỏ -en, thêm -e).'},
+      {blankNum:4, q:'Was passt in Lücke (4)?',
+       opts:['bleibe','bleibt','bleiben'], a:0,
+       explain:'Präsens với "ich" → "ich bleibe" (đuôi -e).'},
+      {blankNum:5, q:'Was passt in Lücke (5)?',
+       opts:['erholt','erholen','erhole'], a:1,
+       explain:'Sau "zu" dùng Infinitiv: "sich erholen" → "mich zu erholen".'},
+      {blankNum:6, q:'Was passt in Lücke (6)?',
+       opts:['Kann','Können','Könnt'], a:1,
+       explain:'Chủ ngữ "wir" → "Können wir uns treffen?" (động từ khuyết thiếu "können" với wir).'},
+      {blankNum:7, q:'Was passt in Lücke (7)?',
+       opts:['können','konnte','könnten'], a:2,
+       explain:'Konjunktiv II "könnten" dùng để đưa ra đề nghị lịch sự.'},
+      {blankNum:8, q:'Was passt in Lücke (8)?',
+       opts:['unterhalte','unterhalten','unterhält'], a:1,
+       explain:'Sau "zu" dùng Infinitiv: "sich unterhalten" → "uns zu unterhalten".'},
+      {blankNum:9, q:'Was passt in Lücke (9)?',
+       opts:['hat','hast','habt'], a:1,
+       explain:'Chủ ngữ "du" → "ob du Zeit hast" (haben với du là "hast").'},
+      {blankNum:10, q:'Was passt in Lücke (10)?',
+       opts:['freut','freue','freuen'], a:2,
+       explain:'"Ich würde mich sehr freuen" — sau "würde" dùng Infinitiv "freuen".'},
+    ],
+  },
+  B2: {
+    name:'Goethe-Zertifikat B2',
+    subtitle:'Goethe-Zertifikat B2 · Sprachbausteine',
+    section:'Sprachbausteine Teil 1',
+    duration:'15 Minuten',
+    instructions:'Lesen Sie den folgenden Brief. Wählen Sie für jede Lücke (1–10) die richtige Antwort (a, b oder c).',
+    sharedText:
+`Sehr geehrte Frau Dr. Berger,
+
+mit großem Interesse habe ich Ihre Anzeige in der Süddeutschen Zeitung (1) ___ und möchte mich hiermit um die Stelle als Projektleiter (2) ___.
+
+Zu meiner Person: Ich bin 34 Jahre alt und (3) ___ seit sechs Jahren in der IT-Branche tätig. In meiner aktuellen Position (4) ___ ich ein Team von acht Mitarbeitern und (5) ___ für die erfolgreiche Umsetzung verschiedener Projekte verantwortlich.
+
+Besonders wichtig ist mir die (6) ___ mit internationalen Partnern. In den vergangenen Jahren (7) ___ ich mehrere Projekte im Ausland geleitet und dabei wertvolle Erfahrungen (8) ___.
+
+Ich würde mich sehr freuen, wenn Sie mir die Möglichkeit (9) ___, mich persönlich vorzustellen. (10) ___ Sie mir bitte mitteilen, wann ein Gespräch möglich wäre?
+
+Mit freundlichen Grüßen
+Thomas Weber`,
+    questions: [
+      {blankNum:1, q:'Was passt in Lücke (1)?',
+       opts:['gelesen','lese','las'], a:0,
+       explain:'Perfekt: "habe ... gelesen" — Partizip II của "lesen" là "gelesen".'},
+      {blankNum:2, q:'Was passt in Lücke (2)?',
+       opts:['bewerbe','bewerben','beworben'], a:1,
+       explain:'"sich bewerben um" — sau "möchte" dùng Infinitiv "bewerben".'},
+      {blankNum:3, q:'Was passt in Lücke (3)?',
+       opts:['habe','bin','werde'], a:1,
+       explain:'"tätig sein" — "Ich bin ... tätig" (sein + tätig).'},
+      {blankNum:4, q:'Was passt in Lücke (4)?',
+       opts:['leiten','leite','leitet'], a:1,
+       explain:'Präsens với "ich" → "ich leite" (đuôi -e).'},
+      {blankNum:5, q:'Was passt in Lücke (5)?',
+       opts:['habe','werde','bin'], a:2,
+       explain:'"verantwortlich sein für" — "ich bin ... verantwortlich".'},
+      {blankNum:6, q:'Was passt in Lücke (6)?',
+       opts:['zusammenarbeiten','Zusammenarbeit','zusammengearbeitet'], a:1,
+       explain:'Sau mạo từ "die" cần danh từ: "die Zusammenarbeit" (sự hợp tác).'},
+      {blankNum:7, q:'Was passt in Lücke (7)?',
+       opts:['bin','habe','hatte'], a:1,
+       explain:'Perfekt: "In den vergangenen Jahren habe ich ... geleitet" — trợ động từ haben.'},
+      {blankNum:8, q:'Was passt in Lücke (8)?',
+       opts:['sammeln','gesammelt','sammelte'], a:1,
+       explain:'Perfekt: "habe ... gesammelt" — Partizip II của "sammeln" là "gesammelt".'},
+      {blankNum:9, q:'Was passt in Lücke (9)?',
+       opts:['geben','gibt','gäben'], a:0,
+       explain:'"die Möglichkeit geben" — sau "wenn Sie mir ... " dùng Infinitiv "geben".'},
+      {blankNum:10, q:'Was passt in Lücke (10)?',
+       opts:['Konnten','Könnten','Können'], a:1,
+       explain:'Konjunktiv II "Könnten" — dùng để yêu cầu lịch sự trong thư từ.'},
+    ],
+  },
+};
 
 /* ══════════════════════════════════════════════════════════
    TTS
@@ -612,7 +949,7 @@ if ('speechSynthesis' in window) {
 function speak(text, btn){
   if (!text) return;
   if (!('speechSynthesis' in window)) {
-    alert('Trình duyệt không hỗ trợ phát âm. Hãy dùng Chrome / Edge / Safari.');
+    alert('Trình duyệt không hỗ trợ phát âm.');
     return;
   }
   speechSynthesis.cancel();
@@ -627,14 +964,13 @@ function speak(text, btn){
 }
 
 /* ══════════════════════════════════════════════════════════
-   QUESTION BUILDERS
+   QUESTION BUILDERS (practice modes)
 ══════════════════════════════════════════════════════════ */
 function makeOpts(correct, pool, n=4){
   const set = new Set();
   const cs = String(correct);
   set.add(cs);
-  const ps = shuffle([...pool]);
-  for (const p of ps) {
+  for (const p of shuffle([...pool])) {
     if (set.size >= n) break;
     const s = String(p);
     if (s === cs) continue;
@@ -643,42 +979,30 @@ function makeOpts(correct, pool, n=4){
   return shuffle([...set]);
 }
 
-function buildVocabQ(v, forceDir){
-  const dir = forceDir || (Math.random() < 0.5 ? 'de-vi' : 'vi-de');
+function buildVocabQ(v){
+  const dir = Math.random() < 0.5 ? 'de-vi' : 'vi-de';
   if (dir === 'de-vi') {
     const pool = VOCAB.filter(x=>x.de!==v.de).map(x=>x.vi);
     const opts = makeOpts(v.vi, pool);
-    return {
-      type:'vocab', level:v.lv,
+    return {type:'vocab', level:v.lv,
       prompt:`Từ <b>"${esc(v.de)}"</b> có nghĩa là gì?`,
-      options:opts,
-      correct: opts.indexOf(v.vi),
-      speak: v.de,
-      explain: `${v.de} = ${v.vi}`,
-    };
-  } else {
-    const pool = VOCAB.filter(x=>x.de!==v.de).map(x=>x.de);
-    const opts = makeOpts(v.de, pool);
-    return {
-      type:'vocab', level:v.lv,
-      prompt:`<b>"${esc(v.vi)}"</b> trong tiếng Đức là?`,
-      options:opts,
-      correct: opts.indexOf(v.de),
-      speak: v.de,
-      explain: `${v.vi} = ${v.de}`,
-    };
+      options:opts, correct:opts.indexOf(v.vi),
+      speak:v.de, explain:`${v.de} = ${v.vi}`};
   }
+  const pool = VOCAB.filter(x=>x.de!==v.de).map(x=>x.de);
+  const opts = makeOpts(v.de, pool);
+  return {type:'vocab', level:v.lv,
+    prompt:`<b>"${esc(v.vi)}"</b> trong tiếng Đức là?`,
+    options:opts, correct:opts.indexOf(v.de),
+    speak:v.de, explain:`${v.vi} = ${v.de}`};
 }
 
 function buildGrammarQ(g){
-  return {
-    type:'grammar', level:g.lv,
+  return {type:'grammar', level:g.lv,
     prompt: g.q.replace('___', '<span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;</span>'),
-    options: [...g.opts],
-    correct: g.a,
+    options:[...g.opts], correct:g.a,
     speak: g.q.replace('___', g.opts[g.a]).replace(/[.,!?]/g,''),
-    explain: g.ex,
-  };
+    explain:g.ex, hint:g.hint};
 }
 
 function numDistractors(n){
@@ -686,20 +1010,15 @@ function numDistractors(n){
   const correct = numToGerman(n);
   set.add(correct);
   const cands = [];
-  const offs = [-1,1,-2,2,-10,10,-20,20,-100,100];
-  for (const o of offs) {
-    const c = n + o;
-    if (c >= 0 && c <= 1000) cands.push(c);
+  for (const o of [-1,1,-2,2,-10,10,-20,20,-100,100]) {
+    const c = n + o; if (c>=0 && c<=1000) cands.push(c);
   }
-  if (n >= 10 && n <= 99) {
-    const t = Math.floor(n/10), u = n%10;
-    if (u !== 0) cands.push(u*10 + t);
-  }
-  for (let i = 0; i < 30; i++) cands.push(rand(0,1000));
+  if (n>=10 && n<=99) { const t=Math.floor(n/10),u=n%10; if (u!==0) cands.push(u*10+t); }
+  for (let i=0;i<30;i++) cands.push(rand(0,1000));
   shuffle(cands);
   for (const c of cands) {
-    if (set.size >= 4) break;
-    if (c === n) continue;
+    if (set.size>=4) break;
+    if (c===n) continue;
     const s = numToGerman(c);
     if (set.has(s)) continue;
     set.add(s);
@@ -708,97 +1027,56 @@ function numDistractors(n){
 }
 
 function buildNumberQ(){
-  const n = rand(0, 1000);
+  const n = rand(0,1000);
   if (Math.random() < 0.5) {
     const correct = numToGerman(n);
     const opts = shuffle(numDistractors(n));
-    return {
-      type:'numbers', level:null,
+    return {type:'numbers', level:null,
       prompt:`Số <b>${n}</b> trong tiếng Đức viết là?`,
-      options:opts,
-      correct: opts.indexOf(correct),
-      speak: correct,
-      explain: `${n} = ${correct}`,
-    };
-  } else {
-    const german = numToGerman(n);
-    const pool = new Set();
-    const cands = [];
-    const offs = [-1,1,-2,2,-10,10,-20,20,-100,100];
-    for (const o of offs) { const c = n+o; if (c>=0 && c<=1000) cands.push(c); }
-    for (let i = 0; i < 30; i++) cands.push(rand(0,1000));
-    shuffle(cands);
-    pool.add(String(n));
-    for (const c of cands) {
-      if (pool.size >= 4) break;
-      if (c === n) continue;
-      pool.add(String(c));
-    }
-    const opts = shuffle([...pool]);
-    return {
-      type:'numbers', level:null,
-      prompt:`Từ <b>"${german}"</b> là số nào?`,
-      options:opts,
-      correct: opts.indexOf(String(n)),
-      speak: german,
-      explain: `${german} = ${n}`,
-    };
+      options:opts, correct:opts.indexOf(correct),
+      speak:correct, explain:`${n} = ${correct}`};
   }
+  const german = numToGerman(n);
+  const set = new Set([String(n)]);
+  const cands = [];
+  for (const o of [-1,1,-2,2,-10,10,-20,20]) { const c=n+o; if (c>=0&&c<=1000) cands.push(c); }
+  for (let i=0;i<30;i++) cands.push(rand(0,1000));
+  shuffle(cands);
+  for (const c of cands) {
+    if (set.size>=4) break;
+    if (c===n) continue;
+    set.add(String(c));
+  }
+  const opts = shuffle([...set]);
+  return {type:'numbers', level:null,
+    prompt:`Từ <b>"${german}"</b> là số nào?`,
+    options:opts, correct:opts.indexOf(String(n)),
+    speak:german, explain:`${german} = ${n}`};
 }
 
 function buildAlphabetQ(a){
   const others = ALPHABET.filter(x=>x.l!==a.l);
   if (Math.random() < 0.5) {
     const opts = makeOpts(a.p, others.map(x=>x.p));
-    return {
-      type:'alphabet', level:null,
+    return {type:'alphabet', level:null,
       prompt:`Chữ <b style="font-size:1.3em">${esc(a.l)}</b> đọc là gì?`,
-      options:opts,
-      correct: opts.indexOf(a.p),
-      speak: a.l,
-      explain: `${a.l} = "${a.p}" · Ví dụ: ${a.ex}`,
-    };
-  } else {
-    const opts = makeOpts(a.l, others.map(x=>x.l));
-    return {
-      type:'alphabet', level:null,
-      prompt:`Cách đọc <b>"${esc(a.p)}"</b> là chữ cái nào?`,
-      options:opts,
-      correct: opts.indexOf(a.l),
-      speak: a.l,
-      explain: `${a.p} = ${a.l} · Ví dụ: ${a.ex}`,
-    };
+      options:opts, correct:opts.indexOf(a.p),
+      speak:a.l, explain:`${a.l} = "${a.p}" · Ví dụ: ${a.ex}`};
   }
+  const opts = makeOpts(a.l, others.map(x=>x.l));
+  return {type:'alphabet', level:null,
+    prompt:`Cách đọc <b>"${esc(a.p)}"</b> là chữ cái nào?`,
+    options:opts, correct:opts.indexOf(a.l),
+    speak:a.l, explain:`${a.p} = ${a.l} · Ví dụ: ${a.ex}`};
 }
 
-/* ══════════════════════════════════════════════════════════
-   SESSION BUILDERS
-══════════════════════════════════════════════════════════ */
-function buildSession(mode, level, count=10){
-  if (mode === 'vocab') {
-    return shuffle([...VOCAB]).slice(0,count).map(v => buildVocabQ(v));
-  }
-  if (mode === 'grammar') {
-    return shuffle([...GRAMMAR]).slice(0,count).map(g => buildGrammarQ(g));
-  }
+function buildSession(mode, count=10){
+  if (mode === 'vocab') return shuffle([...VOCAB]).slice(0,count).map(buildVocabQ);
+  if (mode === 'grammar') return shuffle([...GRAMMAR]).slice(0,count).map(buildGrammarQ);
   if (mode === 'numbers') {
-    const out = [];
-    for (let i = 0; i < count; i++) out.push(buildNumberQ());
-    return out;
+    const out=[]; for (let i=0;i<count;i++) out.push(buildNumberQ()); return out;
   }
-  if (mode === 'alphabet') {
-    return shuffle([...ALPHABET]).slice(0,count).map(a => buildAlphabetQ(a));
-  }
-  if (mode === 'exam') {
-    const vpool = VOCAB.filter(v => v.lv === level);
-    const gpool = GRAMMAR.filter(g => g.lv === level);
-    const all = [
-      ...vpool.map(v => buildVocabQ(v)),
-      ...gpool.map(g => buildGrammarQ(g)),
-    ];
-    shuffle(all);
-    return all.slice(0, Math.min(count, all.length));
-  }
+  if (mode === 'alphabet') return shuffle([...ALPHABET]).slice(0,count).map(buildAlphabetQ);
   return [];
 }
 
@@ -808,17 +1086,13 @@ function buildSession(mode, level, count=10){
 const state = {
   view: 'home',
   session: {
-    mode: null,
-    level: null,
-    questions: [],
-    index: 0,
-    correct: 0,
-    answered: false,
+    mode: null, level: null, questions: [], index: 0,
+    correct: 0, answered: false,
   },
 };
 
 /* ══════════════════════════════════════════════════════════
-   RENDER — HOME
+   HOME
 ══════════════════════════════════════════════════════════ */
 const app = $('#app');
 
@@ -856,40 +1130,49 @@ function renderHome(){
     </div>
 
     <section class="exam-section">
-      <h2 class="exam-title">Prüfung <span>Đề minh họa</span></h2>
-      <p class="exam-sub">Chọn trình độ — mỗi lần làm sẽ có bộ câu hỏi ngẫu nhiên</p>
+      <h2 class="exam-title">Prüfung <span>Đề minh họa chính thức</span></h2>
+      <p class="exam-sub">Theo format Goethe-Institut · mỗi lần làm là bộ câu hỏi ngẫu nhiên</p>
       <div class="levels">
-        <button class="level" data-level="A1"><span class="level-code">A1</span><span class="level-sub">Sơ cấp</span></button>
-        <button class="level" data-level="A2"><span class="level-code">A2</span><span class="level-sub">Cơ bản</span></button>
-        <button class="level" data-level="B1"><span class="level-code">B1</span><span class="level-sub">Trung cấp</span></button>
-        <button class="level" data-level="B2"><span class="level-code">B2</span><span class="level-sub">Nâng cao</span></button>
+        <button class="level" data-level="A1"><span class="level-code">A1</span><span class="level-sub">Start 1</span></button>
+        <button class="level" data-level="A2"><span class="level-code">A2</span><span class="level-sub">Fit 2</span></button>
+        <button class="level" data-level="B1"><span class="level-code">B1</span><span class="level-sub">Zertifikat</span></button>
+        <button class="level" data-level="B2"><span class="level-code">B2</span><span class="level-sub">Zertifikat</span></button>
       </div>
     </section>
 
     <div class="foot">
-      Nhấn <kbd>1</kbd>–<kbd>4</kbd> để chọn đáp án · <kbd>Enter</kbd> câu tiếp · <kbd>🔊</kbd> nghe phát âm
+      Nhấn <kbd>1</kbd>–<kbd>4</kbd> chọn đáp án · <kbd>Enter</kbd> câu tiếp · <kbd>🔊</kbd> nghe tiếng Đức · <kbd>?</kbd> xem gợi ý ngữ pháp
     </div>
   `;
   $$('.mode').forEach(b => b.addEventListener('click', () => startPractice(b.dataset.mode)));
-  $$('.level').forEach(b => b.addEventListener('click', () => startPractice('exam', b.dataset.level)));
+  $$('.level').forEach(b => b.addEventListener('click', () => startExam(b.dataset.level)));
 }
 
 /* ══════════════════════════════════════════════════════════
-   RENDER — PRACTICE
+   START
 ══════════════════════════════════════════════════════════ */
-function startPractice(mode, level){
-  const count = 10;
-  const questions = buildSession(mode, level, count);
-  state.session = {
-    mode, level, questions, index:0, correct:0, answered:false,
-  };
+function startPractice(mode){
+  const questions = buildSession(mode, 10);
+  state.session = {mode, level:null, questions, index:0, correct:0, answered:false};
   state.view = 'practice';
   renderQuestion();
 }
 
-const MODE_LABEL = {
-  vocab:'Vokabeln', numbers:'Zahlen', alphabet:'Alphabet', grammar:'Grammatik', exam:'Prüfung',
-};
+function startExam(level){
+  const exam = EXAMS[level];
+  const shuffled = shuffle([...exam.questions]);
+  state.session = {
+    mode:'exam', level, questions:shuffled,
+    index:0, correct:0, answered:false, examData:exam,
+  };
+  state.view = 'practice';
+  renderExamQuestion();
+}
+
+/* ══════════════════════════════════════════════════════════
+   RENDER PRACTICE (vocab / numbers / alphabet / grammar)
+══════════════════════════════════════════════════════════ */
+const MODE_LABEL = {vocab:'Vokabeln', numbers:'Zahlen', alphabet:'Alphabet', grammar:'Grammatik', exam:'Prüfung'};
 
 function renderQuestion(){
   const s = state.session;
@@ -899,19 +1182,17 @@ function renderQuestion(){
   s.answered = false;
 
   const LETTERS = ['A','B','C','D'];
-  const tagClass = s.mode;
-  const tagText = s.mode === 'exam' ? `Prüfung ${s.level}` : MODE_LABEL[s.mode];
-  const levelBadge = s.mode === 'exam'
-    ? `<span class="q-level ${s.level}">${s.level}</span>`
-    : (q.level ? `<span class="q-level ${q.level}">${q.level}</span>` : '');
+  const levelBadge = q.level ? `<span class="q-level ${q.level}">${q.level}</span>` : '';
+  const hintBtn = (q.type === 'grammar' && q.hint)
+    ? `<button class="hint-btn" id="hintBtn" title="Hướng dẫn cách làm">?</button>` : '';
 
-  document.title = `${tagText} · ${s.index+1}/${s.questions.length}`;
+  document.title = `${MODE_LABEL[s.mode]} · ${s.index+1}/${s.questions.length}`;
 
   app.innerHTML = `
     <div class="practice">
       <div class="practice-top">
         <button class="back" id="backBtn">← Thoát</button>
-        <span class="practice-tag ${tagClass}">${tagText}</span>
+        <span class="practice-tag ${s.mode}">${MODE_LABEL[s.mode]}</span>
       </div>
 
       <div class="progress-wrap">
@@ -925,9 +1206,13 @@ function renderQuestion(){
       <div class="q-card">
         <div class="q-head">
           ${levelBadge}
-          <button class="speak-btn" id="speakBtn" title="Nghe tiếng Đức">🔊</button>
+          <div class="q-actions">
+            ${hintBtn}
+            <button class="speak-btn" id="speakBtn" title="Nghe tiếng Đức">🔊</button>
+          </div>
         </div>
         <div class="q-text">${q.prompt}</div>
+        <div id="hintArea"></div>
         <div class="options" id="opts"></div>
         <div id="fbArea"></div>
       </div>
@@ -953,10 +1238,104 @@ function renderQuestion(){
     speak(q.speak, e.currentTarget);
   });
 
-  // Auto-focus first option for keyboard users
+  // Hint button
+  const hintBtnEl = $('#hintBtn');
+  if (hintBtnEl) {
+    hintBtnEl.addEventListener('click', e => {
+      e.stopPropagation();
+      const hintArea = $('#hintArea');
+      if (hintArea.innerHTML.trim()) {
+        hintArea.innerHTML = '';
+        hintBtnEl.classList.remove('active');
+      } else {
+        hintArea.innerHTML = `<div class="hint-box"><span class="label">💡 Cách làm</span>${esc(q.hint)}</div>`;
+        hintBtnEl.classList.add('active');
+      }
+    });
+  }
+
   setTimeout(() => $('#opts .opt')?.focus(), 60);
 }
 
+/* ══════════════════════════════════════════════════════════
+   RENDER EXAM
+══════════════════════════════════════════════════════════ */
+function renderExamQuestion(){
+  const s = state.session;
+  if (s.index >= s.questions.length) return renderSummary();
+
+  const q = s.questions[s.index];
+  const exam = s.examData;
+  s.answered = false;
+
+  const LETTERS = ['a','b','c'];
+
+  // Build passage (with blank highlight for B1/B2)
+  let passageHtml = '';
+  if (exam.sharedText) {
+    let text = exam.sharedText;
+    const curBlank = q.blankNum;
+    text = text.replace(/\((\d+)\)/g, (m, num) => {
+      const isHL = parseInt(num) === curBlank;
+      return `<span class="blank-num${isHL ? ' hl' : ''}">(${num})</span>`;
+    });
+    passageHtml = `<div class="exam-passage">${text}</div>`;
+  } else if (q.passage) {
+    passageHtml = `<div class="exam-passage">${esc(q.passage)}</div>`;
+  }
+
+  document.title = `${exam.name} · ${s.index+1}/${s.questions.length}`;
+
+  app.innerHTML = `
+    <div class="practice">
+      <div class="practice-top">
+        <button class="back" id="backBtn">← Thoát</button>
+        <span class="practice-tag exam">${exam.name}</span>
+      </div>
+
+      <div class="exam-banner">
+        <div class="exam-banner-title">${exam.subtitle}</div>
+        <div class="exam-banner-sub">📖 ${exam.section} · ⏱ ${exam.duration} · ${s.questions.length} Aufgaben</div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-meta">
+          <span class="q-count">Aufgabe ${s.index+1} / ${s.questions.length}</span>
+          <span class="score">✓ ${s.correct} richtig</span>
+        </div>
+        <div class="progress-bar"><i style="width:${(s.index/s.questions.length)*100}%"></i></div>
+      </div>
+
+      <div class="q-card">
+        <div class="exam-instr">${esc(exam.instructions)}</div>
+        ${passageHtml}
+        <div class="exam-q-num">Aufgabe ${s.index+1}</div>
+        <div class="exam-q-text">${esc(q.q)}</div>
+        <div class="options" id="opts"></div>
+        <div id="fbArea"></div>
+      </div>
+    </div>
+  `;
+
+  const optsEl = $('#opts');
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.innerHTML = `<span class="opt-letter">${LETTERS[i]}</span>` +
+                    `<span class="opt-text">${esc(opt)}</span>`;
+    btn.addEventListener('click', () => answerExam(i));
+    optsEl.appendChild(btn);
+  });
+
+  $('#backBtn').addEventListener('click', () => {
+    if ('speechSynthesis' in window) speechSynthesis.cancel();
+    renderHome();
+  });
+}
+
+/* ══════════════════════════════════════════════════════════
+   ANSWER HANDLERS
+══════════════════════════════════════════════════════════ */
 function answer(idx){
   const s = state.session;
   if (s.answered) return;
@@ -966,6 +1345,7 @@ function answer(idx){
   const isCorrect = idx === q.correct;
   if (isCorrect) s.correct++;
 
+  const LETTERS = ['A','B','C','D'];
   const opts = $$('#opts .opt');
   opts.forEach((b, i) => {
     b.disabled = true;
@@ -974,7 +1354,6 @@ function answer(idx){
     else                 b.classList.add('dimmed');
   });
 
-  const LETTERS = ['A','B','C','D'];
   const fb = $('#fbArea');
   if (isCorrect) {
     fb.innerHTML = `<div class="fb correct">✅ Chính xác!<small>${esc(q.explain || '')}</small></div>`;
@@ -991,36 +1370,75 @@ function answer(idx){
   });
   fb.appendChild(nextBtn);
 
-  // Update score display live
   $('.progress-meta .score').textContent = `✓ ${s.correct} đúng`;
 }
 
+function answerExam(idx){
+  const s = state.session;
+  if (s.answered) return;
+  s.answered = true;
+
+  const q = s.questions[s.index];
+  const isCorrect = idx === q.a;
+  if (isCorrect) s.correct++;
+
+  const LETTERS = ['a','b','c'];
+  const opts = $$('#opts .opt');
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.a)    b.classList.add('correct');
+    else if (i === idx) b.classList.add('wrong');
+    else              b.classList.add('dimmed');
+  });
+
+  const fb = $('#fbArea');
+  if (isCorrect) {
+    fb.innerHTML = `<div class="fb correct">✅ Richtig!<small>${esc(q.explain || '')}</small></div>`;
+  } else {
+    fb.innerHTML = `<div class="fb wrong">❌ Falsch! Richtige Antwort: <b>${LETTERS[q.a]})</b> <b>${esc(q.opts[q.a])}</b><small>${esc(q.explain || '')}</small></div>`;
+  }
+
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'next-btn';
+  nextBtn.textContent = s.index === s.questions.length - 1 ? 'Ergebnis ansehen →' : 'Weiter →';
+  nextBtn.addEventListener('click', () => {
+    s.index++;
+    renderExamQuestion();
+  });
+  fb.appendChild(nextBtn);
+
+  $('.progress-meta .score').textContent = `✓ ${s.correct} richtig`;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SUMMARY
+══════════════════════════════════════════════════════════ */
 function renderSummary(){
   const s = state.session;
   const total = s.questions.length;
   const pct = total > 0 ? Math.round(s.correct/total*100) : 0;
+  const isExam = s.mode === 'exam';
 
-  let emoji = '🎉', title = 'Hoàn thành!', sub = 'Bạn đã hoàn thành phiên học';
-  if (pct === 100)      { emoji = '🏆'; title = 'Tuyệt vời!'; sub = 'Bạn trả lời đúng tất cả!'; }
-  else if (pct >= 80)   { emoji = '🌟'; title = 'Rất tốt!';   sub = 'Bạn nắm bài rất chắc'; }
-  else if (pct >= 50)   { emoji = '👍'; title = 'Khá tốt!';   sub = 'Tiếp tục luyện tập nhé'; }
-  else                  { emoji = '💪'; title = 'Cố gắng lên!'; sub = 'Ôn lại và thử lần nữa'; }
+  let emoji='🎉', title='Hoàn thành!', sub='Bạn đã hoàn thành phiên học';
+  if (pct === 100)    {emoji='🏆'; title='Tuyệt vời!'; sub='Bạn trả lời đúng tất cả!';}
+  else if (pct >= 80) {emoji='🌟'; title='Rất tốt!'; sub='Bạn nắm bài rất chắc';}
+  else if (pct >= 50) {emoji='👍'; title='Khá tốt!'; sub='Tiếp tục luyện tập nhé';}
+  else                {emoji='💪'; title='Cố gắng lên!'; sub='Ôn lại và thử lần nữa';}
 
-  const tagText = s.mode === 'exam' ? `Prüfung ${s.level}` : MODE_LABEL[s.mode];
-
+  const tagText = isExam ? `Prüfung ${s.level}` : MODE_LABEL[s.mode];
   document.title = `Kết quả · ${tagText}`;
 
   app.innerHTML = `
     <div class="practice">
       <div class="practice-top">
         <button class="back" id="backBtn">← Trang chủ</button>
-        <span class="practice-tag ${s.mode === 'exam' ? 'exam' : s.mode}">${tagText}</span>
+        <span class="practice-tag ${isExam ? 'exam' : s.mode}">${tagText}</span>
       </div>
 
       <div class="summary">
         <div class="sum-emoji">${emoji}</div>
         <h2 class="sum-title">${title}</h2>
-        <p class="sum-sub">${sub}</p>
+        <p class="sum-sub">${isExam ? EXAMS[s.level].name + ' · ' : ''}${sub}</p>
 
         <div class="sum-stats">
           <div class="sum-stat green">
@@ -1043,7 +1461,10 @@ function renderSummary(){
 
   $('#homeBtn').addEventListener('click', renderHome);
   $('#backBtn').addEventListener('click', renderHome);
-  $('#againBtn').addEventListener('click', () => startPractice(s.mode, s.level));
+  $('#againBtn').addEventListener('click', () => {
+    if (isExam) startExam(s.level);
+    else startPractice(s.mode);
+  });
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -1058,11 +1479,12 @@ document.addEventListener('keydown', e => {
   if (s.index >= s.questions.length) return;
 
   if (!s.answered) {
-    const idx = { 'Digit1':0, 'Digit2':1, 'Digit3':2, 'Digit4':3,
-                  'Numpad1':0, 'Numpad2':1, 'Numpad3':2, 'Numpad4':3 }[e.code];
+    const idx = {'Digit1':0,'Digit2':1,'Digit3':2,'Digit4':3,
+                 'Numpad1':0,'Numpad2':1,'Numpad3':2,'Numpad4':3}[e.code];
     if (idx !== undefined) {
       e.preventDefault();
-      $$('#opts .opt')[idx]?.click();
+      const opts = $$('#opts .opt');
+      if (opts[idx]) opts[idx].click();
     }
   } else {
     if (e.code === 'Enter' || e.code === 'Space') {
