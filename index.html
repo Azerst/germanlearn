@@ -3,461 +3,429 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Học tiếng Đức – Số &amp; Bảng chữ cái</title>
+<title>Deutsch lernen — Lernportal</title>
 <style>
   :root{
-    --bg-0:#070a12; --bg-1:#0d1220;
-    --surface:rgba(255,255,255,0.045); --surface-2:rgba(255,255,255,0.075);
-    --border:rgba(255,255,255,0.08); --border-2:rgba(255,255,255,0.18);
-    --text:#eef2fb; --dim:#c3cce0; --muted:#7888ad;
-    --gold:#fbbf24; --gold-2:#f59e0b; --gold-glow:rgba(251,191,36,0.35);
-    --green:#10b981; --green-2:#059669; --green-soft:rgba(16,185,129,0.15);
-    --red:#ef4444; --red-soft:rgba(239,68,68,0.15);
-    --indigo:#6366f1; --indigo-2:#4f46e5; --indigo-soft:rgba(99,102,241,0.2);
-    --amber:#f59e0b; --amber-soft:rgba(245,158,11,0.15);
+    --bg:#080b14;
+    --surface:rgba(255,255,255,0.045);
+    --surface-hover:rgba(255,255,255,0.08);
+    --border:rgba(255,255,255,0.08);
+    --border-hover:rgba(255,255,255,0.18);
+    --text:#eef2fb;
+    --text-dim:#b8c4dd;
+    --muted:#6b7ba3;
+    --gold:#ffce00;
+    --gold-2:#f4b400;
+    --red:#dd0000;
+    --green:#10b981;
+    --green-2:#059669;
+    --green-soft:rgba(16,185,129,0.14);
+    --red-soft:rgba(239,68,68,0.14);
+    --indigo:#6366f1;
+    --indigo-2:#4f46e5;
+    --indigo-soft:rgba(99,102,241,0.2);
+    --purple:#a855f7;
+    --purple-soft:rgba(168,85,247,0.18);
+    --amber:#f59e0b;
+    --amber-soft:rgba(245,158,11,0.16);
+    --blue:#3b82f6;
+    --blue-soft:rgba(59,130,246,0.16);
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{height:100%}
   body{
-    margin:0;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;
-    padding:24px 14px 40px;
+    margin:0;min-height:100vh;
     font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
-    color:var(--text);background:var(--bg-0);
+    color:var(--text);
+    background:var(--bg);
     background-image:
-      radial-gradient(900px 500px at 15% -10%,rgba(99,102,241,0.20),transparent 60%),
-      radial-gradient(800px 500px at 90% 10%,rgba(251,191,36,0.10),transparent 55%),
-      radial-gradient(900px 600px at 50% 110%,rgba(16,185,129,0.10),transparent 60%),
-      linear-gradient(180deg,var(--bg-0),var(--bg-1));
-    background-attachment:fixed;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+      radial-gradient(900px 500px at 10% -10%, rgba(99,102,241,0.16), transparent 60%),
+      radial-gradient(800px 500px at 90% 5%, rgba(255,206,0,0.08), transparent 55%),
+      radial-gradient(900px 600px at 50% 115%, rgba(16,185,129,0.08), transparent 60%),
+      linear-gradient(180deg,#080b14,#0d1220);
+    background-attachment:fixed;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
-  .app{width:100%;max-width:620px;display:flex;flex-direction:column;gap:11px;
-    animation:appIn .5s cubic-bezier(.2,.8,.2,1)}
-  @keyframes appIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .app{
+    max-width:640px;margin:0 auto;padding:28px 16px 60px;
+    display:flex;flex-direction:column;gap:22px;
+    animation:fadeUp .5s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-  h1{font-size:clamp(17px,4.5vw,22px);text-align:center;margin:0;font-weight:800;
-    letter-spacing:-.3px;line-height:1.3}
-  h1 em{font-style:normal;background:linear-gradient(100deg,#fff,var(--gold) 60%,var(--gold-2));
-    -webkit-background-clip:text;background-clip:text;color:transparent}
+  /* ============ HEADER ============ */
+  .hero{display:flex;flex-direction:column;align-items:center;gap:10px;
+    text-align:center;padding:8px 0 4px}
+  .flag{
+    width:44px;height:30px;border-radius:7px;overflow:hidden;
+    box-shadow:0 6px 20px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.08);
+    display:flex;flex-direction:column;margin-bottom:2px;
+  }
+  .flag span{flex:1}
+  .flag span:nth-child(1){background:#111}
+  .flag span:nth-child(2){background:#dd0000}
+  .flag span:nth-child(3){background:#ffce00}
+  .hero h1{
+    margin:0;font-size:clamp(22px,5.5vw,30px);font-weight:800;
+    letter-spacing:-.6px;line-height:1.15;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(100deg,#fff 0%,var(--gold) 60%,var(--gold-2) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p{
+    margin:0;color:var(--muted);font-size:13.5px;font-weight:600;
+    letter-spacing:.2px;line-height:1.5;
+  }
 
-  /* ========== SHARED CARD ========== */
-  .glass{background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
-    border:1px solid var(--border);border-radius:22px;padding:22px 20px;
-    box-shadow:0 24px 60px -20px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.06);
-    -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);position:relative}
-  .glass::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
-    background:linear-gradient(135deg,rgba(251,191,36,.20),transparent 40%,transparent 60%,rgba(99,102,241,.16));
-    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-    -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-  .animate{animation:cardIn .4s cubic-bezier(.2,.8,.2,1)}
-  @keyframes cardIn{from{opacity:0;transform:translateY(8px) scale(.99)}
-    to{opacity:1;transform:translateY(0) scale(1)}}
+  /* ============ SECTION HEADER ============ */
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;
+    padding:0 4px;margin-bottom:-6px}
+  .sec-title{
+    font-size:12px;letter-spacing:2.2px;text-transform:uppercase;
+    color:var(--muted);font-weight:800;
+  }
+  .sec-note{font-size:11.5px;color:var(--muted);font-weight:600}
 
-  /* ========== SETUP SCREEN ========== */
-  .setup-title{font-size:20px;font-weight:800;text-align:center;margin:0 0 4px;
-    letter-spacing:-.3px}
-  .setup-sub{font-size:13px;color:var(--muted);text-align:center;margin:0 0 22px;
-    font-weight:600;line-height:1.5}
+  /* ============ MODE GRID ============ */
+  .modes{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .mode{
+    position:relative;
+    display:flex;flex-direction:column;gap:10px;
+    padding:18px 16px;
+    background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+    border:1px solid var(--border);border-radius:18px;
+    color:var(--text);font-family:inherit;text-align:left;
+    cursor:pointer;overflow:hidden;
+    transition:all .25s cubic-bezier(.2,.8,.2,1);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  }
+  .mode::after{
+    content:"";position:absolute;inset:0;border-radius:inherit;
+    background:radial-gradient(300px 200px at 100% 0%, var(--c,transparent), transparent 70%);
+    opacity:.12;pointer-events:none;transition:opacity .3s;
+  }
+  .mode:hover{
+    background:var(--surface-hover);
+    border-color:var(--border-hover);
+    transform:translateY(-2px);
+    box-shadow:0 12px 28px -12px rgba(0,0,0,.6);
+  }
+  .mode:hover::after{opacity:.25}
+  .mode:active{transform:translateY(0) scale(.985)}
+  .mode-emoji{
+    width:44px;height:44px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;background:var(--bg-soft,var(--surface));
+    border:1px solid var(--border);
+  }
+  .mode-name{font-size:15.5px;font-weight:800;letter-spacing:-.2px;line-height:1.2}
+  .mode-desc{font-size:12px;color:var(--muted);font-weight:600;line-height:1.4;margin-top:-2px}
+  .mode[data-mode="vocab"]{--c:var(--indigo);--bg-soft:var(--indigo-soft)}
+  .mode[data-mode="numbers"]{--c:var(--gold);--bg-soft:rgba(255,206,0,.15)}
+  .mode[data-mode="alphabet"]{--c:var(--purple);--bg-soft:var(--purple-soft)}
+  .mode[data-mode="grammar"]{--c:var(--green);--bg-soft:var(--green-soft)}
 
-  .setup-label{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;
-    color:var(--muted);font-weight:800;margin:18px 0 8px;padding-left:2px;
-    display:flex;align-items:center;gap:8px}
-  .setup-label:first-of-type{margin-top:0}
-  .setup-label .count{
-    font-size:9.5px;letter-spacing:.5px;padding:2px 7px;border-radius:99px;
-    background:rgba(255,255,255,.06);color:var(--dim);text-transform:none;font-weight:700}
+  /* ============ EXAM SECTION ============ */
+  .exam-section{
+    padding:18px 16px;
+    background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.01));
+    border:1px solid var(--border);border-radius:20px;
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  }
+  .exam-title{
+    display:flex;align-items:center;gap:8px;margin:0 0 4px;
+    font-size:15px;font-weight:800;letter-spacing:-.2px;
+  }
+  .exam-title span{
+    font-size:10.5px;font-weight:800;padding:3px 8px;border-radius:6px;
+    background:rgba(255,206,0,.15);color:var(--gold);letter-spacing:.5px;
+    text-transform:uppercase;
+  }
+  .exam-sub{
+    font-size:12.5px;color:var(--muted);font-weight:600;margin:0 0 14px;line-height:1.5;
+  }
+  .levels{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .level{
+    display:flex;flex-direction:column;align-items:center;gap:3px;
+    padding:14px 6px;background:var(--surface);
+    border:1.5px solid var(--border);border-radius:13px;
+    color:var(--text);font-family:inherit;cursor:pointer;
+    transition:all .2s cubic-bezier(.2,.8,.2,1);
+  }
+  .level:hover{
+    transform:translateY(-2px);
+    border-color:var(--border-hover);
+    box-shadow:0 8px 20px -8px rgba(0,0,0,.5);
+  }
+  .level:active{transform:translateY(0) scale(.97)}
+  .level-code{
+    font-size:17px;font-weight:900;letter-spacing:-.4px;
+    font-family:inherit;line-height:1;
+  }
+  .level-sub{
+    font-size:9.5px;font-weight:700;letter-spacing:.5px;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .level[data-level="A1"] .level-code{color:#10b981}
+  .level[data-level="A2"] .level-code{color:#3b82f6}
+  .level[data-level="B1"] .level-code{color:#f59e0b}
+  .level[data-level="B2"] .level-code{color:#ef4444}
+  .level[data-level="A1"]:hover{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.4)}
+  .level[data-level="A2"]:hover{background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.4)}
+  .level[data-level="B1"]:hover{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.4)}
+  .level[data-level="B2"]:hover{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.4)}
 
-  .section-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-  .pick-card{display:flex;flex-direction:column;align-items:center;gap:5px;
-    padding:14px 6px;background:var(--surface);border:1.5px solid var(--border);
-    border-radius:14px;color:var(--text);font-family:inherit;cursor:pointer;
-    transition:all .2s cubic-bezier(.2,.8,.2,1)}
-  .pick-card:hover{background:var(--surface-2);border-color:var(--border-2);
-    transform:translateY(-1px)}
-  .pick-card:active{transform:translateY(0) scale(.98)}
-  .pick-card .icon{font-size:22px;line-height:1}
-  .pick-card .label{font-size:12px;font-weight:800;letter-spacing:.1px}
-  .pick-card .sub{font-size:9.5px;color:var(--muted);font-weight:600;margin-top:1px}
-  .pick-card.active[data-section="quiz"]{
-    background:linear-gradient(135deg,rgba(99,102,241,.22),rgba(99,102,241,.08));
-    border-color:var(--indigo);box-shadow:0 0 0 3px rgba(99,102,241,.15)}
-  .pick-card.active[data-section="essay"]{
-    background:linear-gradient(135deg,rgba(16,185,129,.22),rgba(16,185,129,.08));
-    border-color:var(--green);box-shadow:0 0 0 3px rgba(16,185,129,.15)}
-  .pick-card.active[data-section="flash"]{
-    background:linear-gradient(135deg,rgba(251,191,36,.22),rgba(251,191,36,.08));
-    border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-glow)}
+  /* ============ PRACTICE VIEW ============ */
+  .practice{display:flex;flex-direction:column;gap:14px;
+    animation:fadeUp .4s cubic-bezier(.2,.8,.2,1)}
+  .practice-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .back{
+    padding:9px 14px;border-radius:10px;border:1px solid var(--border);
+    background:var(--surface);color:var(--text-dim);
+    font-family:inherit;font-size:12.5px;font-weight:700;
+    cursor:pointer;transition:all .18s;
+    display:flex;align-items:center;gap:5px;
+  }
+  .back:hover{background:var(--surface-hover);color:var(--text);border-color:var(--border-hover)}
+  .back:active{transform:scale(.97)}
+  .practice-tag{
+    display:flex;align-items:center;gap:6px;
+    padding:6px 12px;border-radius:99px;
+    font-size:11px;font-weight:800;letter-spacing:.4px;
+    text-transform:uppercase;
+  }
+  .practice-tag.vocab{background:var(--indigo-soft);color:#a5b4fc}
+  .practice-tag.numbers{background:rgba(255,206,0,.15);color:var(--gold)}
+  .practice-tag.alphabet{background:var(--purple-soft);color:#d8b4fe}
+  .practice-tag.grammar{background:var(--green-soft);color:#6ee7b7}
+  .practice-tag.exam{background:rgba(255,206,0,.15);color:var(--gold)}
 
-  .category-picker{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-  .cat-card{display:flex;flex-direction:column;gap:5px;padding:12px 14px;
-    background:var(--surface);border:1.5px solid var(--border);border-radius:14px;
-    color:var(--text);font-family:inherit;text-align:left;cursor:pointer;
-    transition:all .2s cubic-bezier(.2,.8,.2,1)}
-  .cat-card:hover{background:var(--surface-2);border-color:var(--border-2);
-    transform:translateY(-1px)}
-  .cat-card:active{transform:translateY(0) scale(.99)}
-  .cat-card.active{
-    background:linear-gradient(135deg,rgba(251,191,36,.18),rgba(251,191,36,.05));
-    border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-glow)}
-  .cat-card-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
-  .cat-card-name{font-size:13px;font-weight:800;color:var(--text)}
-  .cat-card.active .cat-card-name{color:var(--gold)}
-  .cat-card-badge{font-size:9.5px;font-weight:800;padding:2px 7px;border-radius:99px;
-    background:rgba(255,255,255,.06);color:var(--muted);font-variant-numeric:tabular-nums}
-  .cat-card.active .cat-card-badge{background:rgba(251,191,36,.15);color:var(--gold)}
-  .cat-card-bar{height:3px;background:rgba(255,255,255,.06);border-radius:99px;
-    overflow:hidden;margin-top:2px}
-  .cat-card-bar > i{display:block;height:100%;width:0;
-    background:linear-gradient(90deg,var(--green),var(--green-2));
-    border-radius:99px;transition:width .35s}
-
-  .seg-picker{display:flex;gap:5px;background:var(--surface);padding:5px;
-    border-radius:12px;border:1px solid var(--border)}
-  .seg-picker button{flex:1;padding:10px 8px;border:0;border-radius:8px;
-    background:transparent;color:var(--muted);font-family:inherit;font-size:12.5px;
-    font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
-  .seg-picker button:hover:not(.active){color:var(--dim);background:var(--surface-2)}
-  .seg-picker button.active{
-    background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#1a1200;
-    box-shadow:0 3px 12px var(--gold-glow)}
-
-  .start-btn{width:100%;margin-top:22px;padding:17px;border-radius:15px;border:0;
-    background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#1a1200;
-    font-family:inherit;font-size:16px;font-weight:800;cursor:pointer;
-    box-shadow:0 8px 28px var(--gold-glow);transition:all .2s;
-    letter-spacing:.3px;display:flex;align-items:center;justify-content:center;gap:8px}
-  .start-btn:hover{transform:translateY(-1px);box-shadow:0 10px 36px var(--gold-glow)}
-  .start-btn:active{transform:translateY(0) scale(.99)}
-
-  /* ========== STUDY SCREEN ========== */
-  .study-topbar{display:flex;align-items:center;gap:10px;padding:0 2px}
-  .back-btn{padding:9px 14px;border-radius:10px;border:1px solid var(--border);
-    background:var(--surface);color:var(--text);font-family:inherit;font-size:12.5px;
-    font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:5px}
-  .back-btn:hover{background:var(--surface-2);border-color:var(--border-2)}
-  .back-btn:active{transform:scale(.97)}
-  .study-info{display:flex;gap:6px;flex:1;justify-content:flex-end;align-items:center;
-    flex-wrap:wrap}
-  .study-tag{font-size:10.5px;font-weight:800;padding:5px 10px;border-radius:8px;
-    letter-spacing:.5px;text-transform:uppercase}
-  .study-tag.quiz{background:var(--indigo-soft);color:#a5b4fc}
-  .study-tag.essay{background:rgba(16,185,129,.2);color:#6ee7b7}
-  .study-tag.flash{background:rgba(251,191,36,.2);color:var(--gold)}
-  .study-cat{font-size:12px;font-weight:700;color:var(--muted)}
-
-  /* Stats */
-  .stats{display:flex;gap:6px}
-  .stat{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;
-    background:var(--surface);border:1px solid var(--border);border-radius:11px;
-    padding:9px 6px;font-size:11.5px;font-weight:600;color:var(--muted);
-    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
-  .stat b{color:var(--text);font-size:14px;font-weight:800;font-variant-numeric:tabular-nums}
-  .stat.correct b{color:var(--green)}
-  .stat.streak b{color:var(--gold)}
-  .stat.learned b{color:#8b9dff}
-
-  /* Session progress */
-  .session-bar{display:flex;flex-direction:column;gap:5px}
-  .session-bar-meta{display:flex;justify-content:space-between;font-size:11.5px;
-    font-weight:700;color:var(--muted);padding:0 2px}
-  .session-bar-meta .lbl{letter-spacing:1px;text-transform:uppercase}
-  .bar{height:7px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden}
-  .bar>i{display:block;height:100%;width:0;border-radius:99px;
+  .progress-wrap{display:flex;flex-direction:column;gap:5px}
+  .progress-meta{display:flex;justify-content:space-between;align-items:center;
+    font-size:11.5px;font-weight:700;color:var(--muted)}
+  .progress-meta .q-count{font-variant-numeric:tabular-nums}
+  .progress-meta .score{color:var(--green)}
+  .progress-bar{height:6px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden}
+  .progress-bar>i{display:block;height:100%;width:0;border-radius:99px;
     background:linear-gradient(90deg,var(--gold),var(--gold-2));
     transition:width .4s cubic-bezier(.2,.8,.2,1)}
 
-  /* Q header */
-  .q-header{display:flex;justify-content:space-between;align-items:center;
-    margin-bottom:15px;gap:10px}
-  .q-label{font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;
-    color:var(--muted);font-weight:800}
-  .q-number{font-size:11px;font-weight:800;color:var(--gold);
-    background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.25);
-    padding:4px 11px;border-radius:99px;margin-left:auto;font-variant-numeric:tabular-nums}
+  /* Question card */
+  .q-card{
+    background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+    border:1px solid var(--border);border-radius:22px;padding:22px 20px;
+    box-shadow:0 20px 50px -20px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06);
+    -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+    position:relative;overflow:hidden;
+  }
+  .q-card::before{
+    content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+    background:linear-gradient(135deg,rgba(255,206,0,.16),transparent 45%,transparent 55%,rgba(99,102,241,.12));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
+  }
+  .q-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .q-level{
+    padding:3px 9px;border-radius:6px;font-size:10px;font-weight:900;
+    letter-spacing:.5px;background:rgba(255,255,255,.06);color:var(--text-dim);
+  }
+  .q-level.A1{background:rgba(16,185,129,.15);color:#6ee7b7}
+  .q-level.A2{background:rgba(59,130,246,.15);color:#93c5fd}
+  .q-level.B1{background:rgba(245,158,11,.15);color:#fcd34d}
+  .q-level.B2{background:rgba(239,68,68,.15);color:#fca5a5}
+  .speak-btn{
+    margin-left:auto;width:38px;height:38px;border-radius:50%;padding:0;
+    border:1px solid var(--border);background:var(--surface);
+    color:var(--text);font-size:16px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:all .2s;
+  }
+  .speak-btn:hover{background:var(--surface-hover);border-color:var(--border-hover);
+    transform:scale(1.08)}
+  .speak-btn:active{transform:scale(.92)}
+  .speak-btn.speaking{
+    background:linear-gradient(135deg,var(--gold),var(--gold-2));
+    color:#1a1200;border-color:transparent;
+    animation:pulse 1s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(255,206,0,.4)}
+    70%{box-shadow:0 0 0 14px rgba(255,206,0,0)}
+    100%{box-shadow:0 0 0 0 rgba(255,206,0,0)}
+  }
 
-  .speak-btn{width:40px;height:40px;border-radius:50%;padding:0;flex-shrink:0;
-    border:1px solid var(--border);background:var(--surface);color:var(--text);
-    font-size:17px;line-height:1;cursor:pointer;display:flex;align-items:center;
-    justify-content:center;transition:.2s}
-  .speak-btn:hover{background:var(--surface-2);border-color:var(--border-2);transform:scale(1.08)}
-  .speak-btn:active{transform:scale(.94)}
-  .speak-btn.speaking{background:linear-gradient(135deg,var(--gold),var(--gold-2));
-    color:#1a1200;border-color:transparent;animation:pulse 1s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 var(--gold-glow)}
-    70%{box-shadow:0 0 0 14px rgba(251,191,36,0)}100%{box-shadow:0 0 0 0 rgba(251,191,36,0)}}
-
-  .q-text{font-size:clamp(17px,4.6vw,21px);font-weight:700;line-height:1.5;
-    margin-bottom:18px;min-height:2.6em;letter-spacing:-.2px}
+  .q-text{
+    font-size:clamp(17px,4.6vw,21px);font-weight:700;line-height:1.5;
+    margin:0 0 18px;letter-spacing:-.2px;
+  }
   .q-text b{color:var(--gold);font-weight:800}
+  .q-text .blank{
+    display:inline-block;min-width:52px;border-bottom:2px dashed var(--gold);
+    color:var(--gold);
+  }
 
   /* Options */
   .options{display:flex;flex-direction:column;gap:9px}
-  .option{display:flex;align-items:center;gap:13px;padding:14px 16px;background:var(--surface);
-    border:1.5px solid var(--border);border-radius:14px;color:var(--text);font-family:inherit;
-    font-size:15px;font-weight:600;cursor:pointer;text-align:left;
+  .opt{
+    display:flex;align-items:center;gap:13px;
+    padding:14px 16px;
+    background:var(--surface);border:1.5px solid var(--border);border-radius:14px;
+    color:var(--text);font-family:inherit;font-size:15px;font-weight:600;
+    text-align:left;cursor:pointer;
     transition:all .18s cubic-bezier(.2,.8,.2,1);
-    animation:optionIn .35s cubic-bezier(.2,.8,.2,1) backwards}
-  .option:nth-child(1){animation-delay:.04s}.option:nth-child(2){animation-delay:.08s}
-  .option:nth-child(3){animation-delay:.12s}.option:nth-child(4){animation-delay:.16s}
-  @keyframes optionIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-  .option:hover:not(:disabled){background:var(--surface-2);border-color:var(--border-2);
-    transform:translateX(3px)}
-  .option:disabled{cursor:default}
-  .option-letter{display:flex;align-items:center;justify-content:center;width:32px;height:32px;
-    border-radius:9px;flex-shrink:0;background:rgba(251,191,36,.13);color:var(--gold);
-    font-weight:800;font-size:13.5px}
-  .option-text{flex:1;word-break:break-word;line-height:1.35}
-  .option.correct{background:var(--green-soft);border-color:var(--green);
-    animation:pop .4s cubic-bezier(.2,.8,.2,1)}
+    animation:optIn .35s cubic-bezier(.2,.8,.2,1) backwards;
+  }
+  .opt:nth-child(1){animation-delay:.03s}
+  .opt:nth-child(2){animation-delay:.07s}
+  .opt:nth-child(3){animation-delay:.11s}
+  .opt:nth-child(4){animation-delay:.15s}
+  @keyframes optIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+  .opt:hover:not(:disabled){
+    background:var(--surface-hover);border-color:var(--border-hover);
+    transform:translateX(3px);
+  }
+  .opt:disabled{cursor:default}
+  .opt-letter{
+    width:32px;height:32px;border-radius:9px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(255,206,0,.13);color:var(--gold);
+    font-weight:800;font-size:13.5px;
+  }
+  .opt-text{flex:1;word-break:break-word;line-height:1.35}
+  .opt.correct{
+    background:var(--green-soft);border-color:var(--green);
+    animation:pop .35s cubic-bezier(.2,.8,.2,1);
+  }
   @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
-  .option.correct .option-letter{background:rgba(16,185,129,.3);color:#6ee7b7}
-  .option.correct .option-text{color:#6ee7b7}
-  .option.wrong{background:var(--red-soft);border-color:var(--red)}
-  .option.wrong .option-letter{background:rgba(239,68,68,.3);color:#fca5a5}
-  .option.wrong .option-text{color:#fca5a5}
-  .option.dimmed{opacity:.4}
-
-  /* Essay */
-  .essay-input{width:100%;padding:16px 18px;border-radius:14px;border:2px solid var(--border);
-    background:rgba(0,0,0,.25);color:var(--text);font-family:inherit;
-    font-size:clamp(17px,4.6vw,21px);font-weight:700;transition:.22s;letter-spacing:-.2px}
-  .essay-input::placeholder{color:#4d5d80;font-weight:500;font-size:15px;letter-spacing:0}
-  .essay-input:focus{outline:none;border-color:var(--gold);background:rgba(251,191,36,.04);
-    box-shadow:0 0 0 4px var(--gold-glow)}
-  .essay-input:disabled{opacity:.7;cursor:not-allowed}
-  .essay-input.correct{border-color:var(--green);background:var(--green-soft);color:#6ee7b7}
-  .essay-input.wrong{border-color:var(--red);background:var(--red-soft);color:#fca5a5}
-
-  .check-btn{width:100%;margin-top:14px;padding:15px;border-radius:14px;border:none;
-    background:linear-gradient(135deg,var(--green),var(--green-2));color:#fff;
-    font-family:inherit;font-size:15.5px;font-weight:800;cursor:pointer;
-    box-shadow:0 6px 22px rgba(16,185,129,.35);transition:all .2s}
-  .check-btn:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(16,185,129,.45)}
-  .check-btn:active{transform:translateY(0) scale(.99)}
+  .opt.correct .opt-letter{background:rgba(16,185,129,.32);color:#6ee7b7}
+  .opt.correct .opt-text{color:#6ee7b7}
+  .opt.wrong{background:var(--red-soft);border-color:var(--red)}
+  .opt.wrong .opt-letter{background:rgba(239,68,68,.32);color:#fca5a5}
+  .opt.wrong .opt-text{color:#fca5a5}
+  .opt.dimmed{opacity:.4}
 
   /* Feedback */
-  .feedback{padding:12px 16px;border-radius:12px;font-size:13.5px;font-weight:600;
-    line-height:1.5;animation:rowIn .35s cubic-bezier(.2,.8,.2,1)}
-  @keyframes rowIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-  .feedback.correct{background:var(--green-soft);color:#6ee7b7;border:1px solid rgba(16,185,129,.3)}
-  .feedback.wrong{background:var(--red-soft);color:#fca5a5;border:1px solid rgba(239,68,68,.3)}
-  .feedback small{display:block;margin-top:5px;font-size:12px;opacity:.9;font-weight:500;
-    line-height:1.5}
-  .feedback small b{color:#fff;font-weight:700}
-  .feedback small i{font-style:normal;background:rgba(255,255,255,.1);padding:1px 6px;
-    border-radius:4px}
+  .fb{
+    margin-top:14px;padding:12px 16px;border-radius:12px;
+    font-size:13.5px;font-weight:600;line-height:1.5;
+    animation:fbIn .3s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes fbIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+  .fb.correct{background:var(--green-soft);color:#6ee7b7;border:1px solid rgba(16,185,129,.3)}
+  .fb.wrong{background:var(--red-soft);color:#fca5a5;border:1px solid rgba(239,68,68,.3)}
+  .fb small{
+    display:block;margin-top:5px;font-size:12px;opacity:.9;
+    font-weight:500;line-height:1.55;
+  }
+  .fb small b{color:#fff;font-weight:700}
 
-  /* Marking */
-  .mark-row{display:none;gap:8px;margin-top:14px;animation:rowIn .35s cubic-bezier(.2,.8,.2,1)}
-  .mark-row.show{display:flex}
-  .mark-btn{flex:1;padding:15px 12px;border-radius:14px;font-family:inherit;font-size:14.5px;
-    font-weight:800;cursor:pointer;transition:all .2s cubic-bezier(.2,.8,.2,1);
-    display:flex;align-items:center;justify-content:center;gap:7px;letter-spacing:.2px}
-  .mark-btn.unlearn{background:var(--amber-soft);border:1.5px solid rgba(245,158,11,.4);
-    color:#fcd34d}
-  .mark-btn.unlearn:hover{background:rgba(245,158,11,.25);border-color:var(--amber);
-    transform:translateY(-1px)}
-  .mark-btn.unlearn.suggested{border-color:var(--amber);
-    box-shadow:0 0 0 3px rgba(245,158,11,.25),0 4px 16px rgba(245,158,11,.3)}
-  .mark-btn.learn{background:var(--green-soft);border:1.5px solid rgba(16,185,129,.4);
-    color:#6ee7b7}
-  .mark-btn.learn:hover{background:rgba(16,185,129,.25);border-color:var(--green);
-    transform:translateY(-1px)}
-  .mark-btn.learn.suggested{border-color:var(--green);
-    box-shadow:0 0 0 3px rgba(16,185,129,.25),0 4px 16px rgba(16,185,129,.3)}
-  .mark-btn:active{transform:translateY(0) scale(.98)}
-
-  /* Flashcard */
-  .flash-scene{perspective:1600px;margin:8px 0 10px}
-  .flashcard{position:relative;width:100%;height:320px;cursor:pointer;
-    transform-style:preserve-3d;-webkit-transform-style:preserve-3d;
-    transition:transform .65s cubic-bezier(.4,.2,.2,1)}
-  .flashcard.flipped{transform:rotateY(180deg)}
-  .flash-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
-    border-radius:18px;padding:24px 20px;display:flex;flex-direction:column;
-    align-items:center;justify-content:center;gap:12px;text-align:center;
-    overflow:hidden;border:1px solid rgba(255,255,255,.08)}
-  .flash-front{background:linear-gradient(160deg,#1d2f52,#141f34)}
-  .flash-back{background:linear-gradient(160deg,#3d2b0e,#1d1508);transform:rotateY(180deg)}
-  .flash-label{font-size:10.5px;letter-spacing:2.2px;text-transform:uppercase;
-    color:var(--muted);font-weight:800}
-  .flash-back .flash-label{color:#d8a93a}
-  .flash-main{font-size:clamp(24px,7.6vw,40px);font-weight:800;line-height:1.15;
-    word-break:break-word;max-width:100%}
-  .flash-letter{font-size:clamp(76px,24vw,120px);font-weight:800;line-height:1;
-    letter-spacing:2px}
-  .flash-sub{font-size:clamp(13.5px,3.6vw,16px);color:var(--muted);font-weight:600;
-    line-height:1.5}
-  .flash-back .flash-sub{color:#e0c68a}
-  .flash-badge{position:absolute;top:12px;right:14px;font-size:11px;font-weight:800;
-    color:#a9bcdd;background:rgba(255,255,255,.07);padding:4px 10px;border-radius:99px}
-  .flash-back .flash-badge{color:#e8cf94;background:rgba(255,255,255,.08)}
-  .flash-hint{font-size:11.5px;color:var(--muted);text-align:center;margin-bottom:6px;
-    font-weight:600}
-  .flash-controls{display:flex;gap:8px}
-  .flash-controls button{flex:1;padding:12px;border-radius:12px;border:1px solid var(--border);
-    background:var(--surface);color:var(--text);font-family:inherit;font-size:13.5px;
-    font-weight:700;cursor:pointer;transition:all .2s}
-  .flash-controls button:hover{background:var(--surface-2);border-color:var(--border-2)}
-  .flash-controls button:active{transform:scale(.98)}
+  /* Next button */
+  .next-btn{
+    width:100%;margin-top:14px;padding:15px;
+    border-radius:14px;border:0;
+    background:linear-gradient(135deg,var(--gold),var(--gold-2));
+    color:#1a1200;font-family:inherit;font-size:15px;font-weight:800;
+    cursor:pointer;box-shadow:0 6px 20px rgba(255,206,0,.3);
+    transition:all .2s;letter-spacing:.2px;
+    animation:fbIn .3s cubic-bezier(.2,.8,.2,1);
+  }
+  .next-btn:hover{transform:translateY(-1px);box-shadow:0 8px 26px rgba(255,206,0,.4)}
+  .next-btn:active{transform:translateY(0) scale(.99)}
 
   /* Summary */
-  .summary-card{text-align:center;padding:36px 24px}
-  .summary-emoji{font-size:56px;line-height:1;margin-bottom:12px}
-  .summary-title{font-size:24px;font-weight:800;margin:0 0 6px;
-    background:linear-gradient(100deg,#fff,var(--gold));-webkit-background-clip:text;
-    background-clip:text;color:transparent}
-  .summary-sub{color:var(--muted);font-size:14px;font-weight:600;margin-bottom:22px}
-  .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;
-    text-align:left}
-  .summary-stat{background:var(--surface);border:1px solid var(--border);border-radius:14px;
-    padding:14px 16px}
-  .summary-stat .lbl{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;
-    color:var(--muted);font-weight:800;margin-bottom:4px}
-  .summary-stat .val{font-size:22px;font-weight:800;color:var(--text)}
-  .summary-stat.gold .val{color:var(--gold)}
-  .summary-stat.green .val{color:var(--green)}
-  .summary-stat.indigo .val{color:#8b9dff}
-  .summary-actions{display:flex;gap:9px}
-  .summary-actions button{flex:1;padding:14px;border-radius:13px;font-family:inherit;
-    font-size:14.5px;font-weight:800;cursor:pointer;transition:all .2s;border:1px solid var(--border)}
-  .restart-btn{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#1a1200;
-    border-color:transparent;box-shadow:0 5px 18px var(--gold-glow)}
-  .restart-btn:hover{transform:translateY(-1px)}
-  .change-btn{background:var(--surface);color:var(--text)}
-  .change-btn:hover{background:var(--surface-2)}
+  .summary{
+    text-align:center;padding:34px 22px;
+    background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+    border:1px solid var(--border);border-radius:22px;
+    box-shadow:0 20px 50px -20px rgba(0,0,0,.6);
+    -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+    animation:fadeUp .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .sum-emoji{font-size:52px;line-height:1;margin-bottom:10px}
+  .sum-title{
+    font-size:23px;font-weight:800;margin:0 0 4px;letter-spacing:-.4px;
+    background:linear-gradient(100deg,#fff,var(--gold));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .sum-sub{font-size:13.5px;color:var(--muted);font-weight:600;margin-bottom:20px}
+  .sum-stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:20px;text-align:left}
+  .sum-stat{
+    background:var(--surface);border:1px solid var(--border);border-radius:13px;
+    padding:13px 15px;
+  }
+  .sum-stat .lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+    color:var(--muted);font-weight:800;margin-bottom:3px}
+  .sum-stat .val{font-size:21px;font-weight:800;color:var(--text)}
+  .sum-stat.gold .val{color:var(--gold)}
+  .sum-stat.green .val{color:var(--green)}
+  .sum-stat.blue .val{color:#93c5fd}
+  .sum-actions{display:flex;gap:8px}
+  .sum-actions button{
+    flex:1;padding:13px;border-radius:12px;border:1px solid var(--border);
+    font-family:inherit;font-size:14px;font-weight:800;cursor:pointer;
+    transition:all .2s;
+  }
+  .sum-actions .home-btn{background:var(--surface);color:var(--text)}
+  .sum-actions .home-btn:hover{background:var(--surface-hover)}
+  .sum-actions .again-btn{
+    background:linear-gradient(135deg,var(--gold),var(--gold-2));
+    color:#1a1200;border-color:transparent;
+    box-shadow:0 5px 16px rgba(255,206,0,.3);
+  }
+  .sum-actions .again-btn:hover{transform:translateY(-1px)}
 
-  .hint{text-align:center;font-size:11.5px;color:#5a6b8f;font-weight:500;
-    line-height:1.7;padding:0 10px;margin-top:4px}
-  .hint kbd{background:rgba(255,255,255,.06);border:1px solid var(--border);
-    border-radius:5px;padding:1px 7px;font-size:10.5px;font-family:inherit;
-    color:var(--dim);font-weight:700}
+  /* Footer */
+  .foot{
+    text-align:center;font-size:11px;color:#4d5d80;font-weight:600;
+    padding-top:8px;line-height:1.7;
+  }
+  .foot kbd{
+    background:rgba(255,255,255,.06);border:1px solid var(--border);
+    border-radius:4px;padding:1px 6px;font-size:10px;font-family:inherit;
+    color:var(--text-dim);font-weight:700;
+  }
 
-  @media (max-width:420px){
-    .glass{padding:18px 15px;border-radius:20px}
-    .option{padding:12px 13px;font-size:14px;gap:11px}
-    .option-letter{width:28px;height:28px;font-size:12.5px}
-    .stat{font-size:11px;padding:8px 5px}
-    .stat b{font-size:13px}
-    .pick-card{padding:12px 4px}
-    .pick-card .icon{font-size:19px}
-    .pick-card .label{font-size:11px}
-    .pick-card .sub{display:none}
-    .mark-btn{font-size:13px;padding:14px 8px}
-    .flashcard{height:290px}
-    .flash-face{padding:20px 14px}
-    .summary-card{padding:28px 18px}
-    .category-picker{gap:7px}
-    .cat-card{padding:10px 12px}
-    .cat-card-name{font-size:12px}
-    .seg-picker button{font-size:11.5px;padding:9px 4px}
+  /* Responsive */
+  @media (max-width:440px){
+    .app{padding:22px 14px 44px;gap:18px}
+    .mode{padding:15px 13px;gap:8px}
+    .mode-emoji{width:38px;height:38px;font-size:19px;border-radius:10px}
+    .mode-name{font-size:14px}
+    .mode-desc{font-size:11px}
+    .q-card{padding:18px 15px;border-radius:20px}
+    .opt{padding:12px 13px;font-size:14px;gap:11px}
+    .opt-letter{width:28px;height:28px;font-size:12.5px}
+    .level{padding:11px 4px}
+    .level-code{font-size:15px}
+    .level-sub{font-size:8.5px}
+    .exam-section{padding:16px 13px}
   }
 </style>
 </head>
 <body>
-
-<div class="app">
-  <h1>🇩🇪 Học tiếng Đức: <em>Số &amp; Bảng chữ cái</em></h1>
-
-  <!-- ═══════════ SETUP SCREEN ═══════════ -->
-  <div id="setupScreen">
-    <div class="glass animate">
-      <h2 class="setup-title">Chọn đề luyện tập</h2>
-      <p class="setup-sub">Chọn chế độ, chủ đề và bắt đầu phiên học</p>
-
-      <div class="setup-label">Chế độ học</div>
-      <div class="section-picker">
-        <button class="pick-card active" data-section="quiz">
-          <span class="icon">📝</span>
-          <span class="label">Trắc nghiệm</span>
-          <span class="sub">A · B · C · D</span>
-        </button>
-        <button class="pick-card" data-section="essay">
-          <span class="icon">✍️</span>
-          <span class="label">Tự luận</span>
-          <span class="sub">Gõ đáp án</span>
-        </button>
-        <button class="pick-card" data-section="flash">
-          <span class="icon">🃏</span>
-          <span class="label">Lật thẻ</span>
-          <span class="sub">Xem & lật</span>
-        </button>
-      </div>
-
-      <div class="setup-label">
-        Chủ đề <span class="count" id="catCountLabel">0 mục</span>
-      </div>
-      <div class="category-picker" id="categoryPicker"></div>
-
-      <div class="setup-label">Chiều dịch</div>
-      <div class="seg-picker" id="directionPicker">
-        <button data-dir="vi-de" class="active">Số ➜ Tiếng Đức</button>
-        <button data-dir="de-vi">Tiếng Đức ➜ Số</button>
-      </div>
-
-      <div class="setup-label">Số câu mỗi phiên</div>
-      <div class="seg-picker" id="sizePicker">
-        <button data-size="20">20 câu</button>
-        <button data-size="25" class="active">25 câu</button>
-        <button data-size="30">30 câu</button>
-      </div>
-
-      <button class="start-btn" id="startBtn">
-        <span>▶</span><span>Bắt đầu học</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- ═══════════ STUDY SCREEN ═══════════ -->
-  <div id="studyScreen" style="display:none">
-    <div class="study-topbar">
-      <button class="back-btn" id="backBtn">← Đổi đề</button>
-      <div class="study-info">
-        <span class="study-tag quiz" id="studyTag">Trắc nghiệm</span>
-        <span class="study-cat" id="studyCat">Số 0–20</span>
-      </div>
-    </div>
-
-    <div class="stats">
-      <div class="stat correct"><span>✅</span> <b id="correctCount">0</b></div>
-      <div class="stat"><span>📊</span> <b id="totalCount">0</b></div>
-      <div class="stat streak"><span>🔥</span> <b id="streak">0</b></div>
-      <div class="stat learned"><span>📚</span> <b id="learnedCount">0/0</b></div>
-    </div>
-
-    <div class="session-bar">
-      <div class="session-bar-meta">
-        <span class="lbl">Phiên học</span>
-        <span id="sessionProgressText">0 / 0</span>
-      </div>
-      <div class="bar"><i id="sessionProgressBar"></i></div>
-    </div>
-
-    <div id="contentArea"></div>
-
-    <div class="hint">
-      <kbd>Enter</kbd> kiểm tra / câu tiếp · <kbd>1</kbd>–<kbd>4</kbd> chọn đáp án · <kbd>Space</kbd> lật thẻ · <kbd>🔊</kbd> nghe tiếng Đức
-    </div>
-  </div>
-</div>
+<div class="app" id="app"></div>
 
 <script>
-/* ============================================================
-   TIỆN ÍCH
-   ============================================================ */
-const randInt = (a,b) => a + Math.floor(Math.random()*(b-a+1));
-const shuffle = arr => {
-  for (let i = arr.length-1; i > 0; i--) {
-    const j = Math.floor(Math.random()*(i+1));
-    [arr[i],arr[j]] = [arr[j],arr[i]];
-  }
-  return arr;
+/* ══════════════════════════════════════════════════════════
+   UTILS
+══════════════════════════════════════════════════════════ */
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+const rand = (a,b) => a + Math.floor(Math.random()*(b-a+1));
+const shuffle = a => {
+  for (let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
 };
-const escapeHtml = s => String(s).replace(/[&<>"']/g,
+const pick = a => a[Math.floor(Math.random()*a.length)];
+const esc = s => String(s).replace(/[&<>"']/g,
   c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-/* ============================================================
-   SỐ → TIẾNG ĐỨC (0 – 1000)
-   ============================================================ */
+/* ══════════════════════════════════════════════════════════
+   GERMAN NUMBERS (0–1000)
+══════════════════════════════════════════════════════════ */
 const ONES  = ['','ein','zwei','drei','vier','fünf','sechs','sieben','acht','neun'];
 const TEENS = ['zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn'];
 const TENS  = ['','','zwanzig','dreißig','vierzig','fünfzig','sechzig','siebzig','achtzig','neunzig'];
@@ -491,848 +459,623 @@ function numToGerman(n){
   return r;
 }
 
-const VN_ONES = ['không','một','hai','ba','bốn','năm','sáu','bảy','tám','chín'];
-function numToVietnamese(n){
-  if (n === 1000) return 'một nghìn';
-  if (n === 0) return 'không';
-  if (n < 10) return VN_ONES[n];
-  if (n < 20) {
-    if (n === 10) return 'mười';
-    if (n === 15) return 'mười lăm';
-    return 'mười ' + VN_ONES[n-10];
-  }
-  if (n < 100) {
-    const t = Math.floor(n/10), u = n%10;
-    if (u === 0) return VN_ONES[t] + ' mươi';
-    if (u === 1) return VN_ONES[t] + ' mươi mốt';
-    if (u === 5) return VN_ONES[t] + ' mươi lăm';
-    return VN_ONES[t] + ' mươi ' + VN_ONES[u];
-  }
-  const h = Math.floor(n/100), rest = n%100;
-  let out = VN_ONES[h] + ' trăm';
-  if (rest === 0) return out;
-  if (rest < 10) return out + ' lẻ ' + VN_ONES[rest];
-  if (rest < 20) {
-    if (rest === 10) return out + ' mười';
-    if (rest === 15) return out + ' mười lăm';
-    return out + ' mười ' + VN_ONES[rest-10];
-  }
-  const t = Math.floor(rest/10), u = rest%10;
-  if (u === 0) return out + ' ' + VN_ONES[t] + ' mươi';
-  if (u === 1) return out + ' ' + VN_ONES[t] + ' mươi mốt';
-  if (u === 5) return out + ' ' + VN_ONES[t] + ' mươi lăm';
-  return out + ' ' + VN_ONES[t] + ' mươi ' + VN_ONES[u];
-}
-
-/* ============================================================
-   BẢNG CHỮ CÁI
-   ============================================================ */
-const ALPHABET_RAW = [
-  {letter:'A',name:'ah',       ex:'Apfel',    mean:'quả táo'},
-  {letter:'B',name:'beh',      ex:'Buch',     mean:'quyển sách'},
-  {letter:'C',name:'tseh',     ex:'Computer', mean:'máy tính'},
-  {letter:'D',name:'deh',      ex:'Danke',    mean:'cảm ơn'},
-  {letter:'E',name:'eh',       ex:'Elefant',  mean:'con voi'},
-  {letter:'F',name:'ef',       ex:'Fisch',    mean:'con cá'},
-  {letter:'G',name:'geh',      ex:'Garten',   mean:'khu vườn'},
-  {letter:'H',name:'hah',      ex:'Haus',     mean:'ngôi nhà'},
-  {letter:'I',name:'ih',       ex:'Insel',    mean:'hòn đảo'},
-  {letter:'J',name:'yot',      ex:'Jahr',     mean:'năm (thời gian)'},
-  {letter:'K',name:'kah',      ex:'Katze',    mean:'con mèo'},
-  {letter:'L',name:'el',       ex:'Lampe',    mean:'cái đèn'},
-  {letter:'M',name:'em',       ex:'Mutter',   mean:'mẹ'},
-  {letter:'N',name:'en',       ex:'Nacht',    mean:'ban đêm'},
-  {letter:'O',name:'oh',       ex:'Obst',     mean:'trái cây'},
-  {letter:'P',name:'peh',      ex:'Papa',     mean:'bố'},
-  {letter:'Q',name:'kuh',      ex:'Quelle',   mean:'nguồn'},
-  {letter:'R',name:'err',      ex:'Rot',      mean:'màu đỏ'},
-  {letter:'S',name:'ess',      ex:'Sonne',    mean:'mặt trời'},
-  {letter:'T',name:'teh',      ex:'Tisch',    mean:'cái bàn'},
-  {letter:'U',name:'uh',       ex:'Uhr',      mean:'đồng hồ'},
-  {letter:'V',name:'fau',      ex:'Vater',    mean:'bố'},
-  {letter:'W',name:'weh',      ex:'Wasser',   mean:'nước'},
-  {letter:'X',name:'iks',      ex:'Xylophon', mean:'đàn xylophone'},
-  {letter:'Y',name:'üpsilon',  ex:'Yoga',     mean:'yoga'},
-  {letter:'Z',name:'tsett',    ex:'Zug',      mean:'đoàn tàu'},
-  {letter:'Ä',name:'a-umlaut', ex:'Äpfel',    mean:'những quả táo'},
-  {letter:'Ö',name:'o-umlaut', ex:'Öl',       mean:'dầu'},
-  {letter:'Ü',name:'u-umlaut', ex:'Übung',    mean:'bài tập'},
-  {letter:'ß',name:'eszett',   ex:'Straße',   mean:'con đường'},
+/* ══════════════════════════════════════════════════════════
+   GERMAN ALPHABET
+══════════════════════════════════════════════════════════ */
+const ALPHABET = [
+  {l:'A',p:'ah',        ex:'Apfel — quả táo'},
+  {l:'B',p:'beh',       ex:'Buch — quyển sách'},
+  {l:'C',p:'tseh',      ex:'Computer — máy tính'},
+  {l:'D',p:'deh',       ex:'Danke — cảm ơn'},
+  {l:'E',p:'eh',        ex:'Elefant — con voi'},
+  {l:'F',p:'ef',        ex:'Fisch — con cá'},
+  {l:'G',p:'geh',       ex:'Garten — khu vườn'},
+  {l:'H',p:'hah',       ex:'Haus — ngôi nhà'},
+  {l:'I',p:'ih',        ex:'Insel — hòn đảo'},
+  {l:'J',p:'yot',       ex:'Jahr — năm'},
+  {l:'K',p:'kah',       ex:'Katze — con mèo'},
+  {l:'L',p:'el',        ex:'Lampe — cái đèn'},
+  {l:'M',p:'em',        ex:'Mutter — mẹ'},
+  {l:'N',p:'en',        ex:'Nacht — ban đêm'},
+  {l:'O',p:'oh',        ex:'Obst — trái cây'},
+  {l:'P',p:'peh',       ex:'Papa — bố'},
+  {l:'Q',p:'kuh',       ex:'Quelle — nguồn'},
+  {l:'R',p:'err',       ex:'Rot — màu đỏ'},
+  {l:'S',p:'ess',       ex:'Sonne — mặt trời'},
+  {l:'T',p:'teh',       ex:'Tisch — cái bàn'},
+  {l:'U',p:'uh',        ex:'Uhr — đồng hồ'},
+  {l:'V',p:'fau',       ex:'Vater — bố'},
+  {l:'W',p:'weh',       ex:'Wasser — nước'},
+  {l:'X',p:'iks',       ex:'Xylophon — đàn xylophone'},
+  {l:'Y',p:'üpsilon',   ex:'Yoga — yoga'},
+  {l:'Z',p:'tsett',     ex:'Zug — đoàn tàu'},
+  {l:'Ä',p:'a-umlaut',  ex:'Äpfel — những quả táo'},
+  {l:'Ö',p:'o-umlaut',  ex:'Öl — dầu'},
+  {l:'Ü',p:'u-umlaut',  ex:'Übung — bài tập'},
+  {l:'ß',p:'eszett',    ex:'Straße — con đường'},
 ];
 
-/* ============================================================
-   CHỦ ĐỀ
-   ============================================================ */
-function buildNumItem(n){
-  return { id:'num-'+n, type:'number', n, de:numToGerman(n), vi:numToVietnamese(n) };
-}
+/* ══════════════════════════════════════════════════════════
+   VOCABULARY
+══════════════════════════════════════════════════════════ */
+const VOCAB = [
+  // A1
+  {de:'der Apfel', art:'der', vi:'quả táo', lv:'A1'},
+  {de:'die Frau', art:'die', vi:'người phụ nữ', lv:'A1'},
+  {de:'das Haus', art:'das', vi:'ngôi nhà', lv:'A1'},
+  {de:'das Buch', art:'das', vi:'quyển sách', lv:'A1'},
+  {de:'der Mann', art:'der', vi:'người đàn ông', lv:'A1'},
+  {de:'die Katze', art:'die', vi:'con mèo', lv:'A1'},
+  {de:'der Hund', art:'der', vi:'con chó', lv:'A1'},
+  {de:'das Kind', art:'das', vi:'đứa trẻ', lv:'A1'},
+  {de:'die Schule', art:'die', vi:'trường học', lv:'A1'},
+  {de:'der Tisch', art:'der', vi:'cái bàn', lv:'A1'},
+  {de:'der Stuhl', art:'der', vi:'cái ghế', lv:'A1'},
+  {de:'das Fenster', art:'das', vi:'cửa sổ', lv:'A1'},
+  {de:'die Tür', art:'die', vi:'cửa ra vào', lv:'A1'},
+  {de:'der Lehrer', art:'der', vi:'giáo viên nam', lv:'A1'},
+  {de:'die Lehrerin', art:'die', vi:'giáo viên nữ', lv:'A1'},
+  {de:'der Freund', art:'der', vi:'bạn nam', lv:'A1'},
+  {de:'die Familie', art:'die', vi:'gia đình', lv:'A1'},
+  {de:'das Auto', art:'das', vi:'ô tô', lv:'A1'},
+  {de:'der Tag', art:'der', vi:'ngày', lv:'A1'},
+  {de:'die Nacht', art:'die', vi:'đêm', lv:'A1'},
+  {de:'das Wasser', art:'das', vi:'nước', lv:'A1'},
+  {de:'das Brot', art:'das', vi:'bánh mì', lv:'A1'},
+  {de:'die Milch', art:'die', vi:'sữa', lv:'A1'},
+  {de:'der Kaffee', art:'der', vi:'cà phê', lv:'A1'},
+  {de:'das Zimmer', art:'das', vi:'căn phòng', lv:'A1'},
+  // A2
+  {de:'die Wohnung', art:'die', vi:'căn hộ', lv:'A2'},
+  {de:'der Bahnhof', art:'der', vi:'nhà ga', lv:'A2'},
+  {de:'der Flughafen', art:'der', vi:'sân bay', lv:'A2'},
+  {de:'die Reise', art:'die', vi:'chuyến đi', lv:'A2'},
+  {de:'der Urlaub', art:'der', vi:'kỳ nghỉ', lv:'A2'},
+  {de:'das Wetter', art:'das', vi:'thời tiết', lv:'A2'},
+  {de:'die Gesundheit', art:'die', vi:'sức khỏe', lv:'A2'},
+  {de:'der Termin', art:'der', vi:'cuộc hẹn', lv:'A2'},
+  {de:'die Arbeit', art:'die', vi:'công việc', lv:'A2'},
+  {de:'der Beruf', art:'der', vi:'nghề nghiệp', lv:'A2'},
+  {de:'das Restaurant', art:'das', vi:'nhà hàng', lv:'A2'},
+  {de:'die Rechnung', art:'die', vi:'hóa đơn', lv:'A2'},
+  {de:'der Supermarkt', art:'der', vi:'siêu thị', lv:'A2'},
+  {de:'die Apotheke', art:'die', vi:'hiệu thuốc', lv:'A2'},
+  // B1
+  {de:'die Erfahrung', art:'die', vi:'kinh nghiệm', lv:'B1'},
+  {de:'die Entscheidung', art:'die', vi:'quyết định', lv:'B1'},
+  {de:'die Möglichkeit', art:'die', vi:'khả năng, cơ hội', lv:'B1'},
+  {de:'die Entwicklung', art:'die', vi:'sự phát triển', lv:'B1'},
+  {de:'der Zusammenhang', art:'der', vi:'mối liên hệ', lv:'B1'},
+  {de:'die Umgebung', art:'die', vi:'môi trường xung quanh', lv:'B1'},
+  {de:'der Vorschlag', art:'der', vi:'đề xuất', lv:'B1'},
+  {de:'die Meinung', art:'die', vi:'ý kiến', lv:'B1'},
+  {de:'die Verantwortung', art:'die', vi:'trách nhiệm', lv:'B1'},
+  {de:'die Gesellschaft', art:'die', vi:'xã hội', lv:'B1'},
+];
 
-const CATEGORIES = {
-  'num-0-20': {
-    label:'Số 0–20',
-    icon:'0️⃣',
-    items: Array.from({length:21}, (_,i) => buildNumItem(i)),
-  },
-  'num-21-100': {
-    label:'Số 21–100',
-    icon:'2️⃣',
-    items: Array.from({length:80}, (_,i) => buildNumItem(21+i)),
-  },
-  'num-101-1000': {
-    label:'Số 101–1000',
-    icon:'💯',
-    items: [101,110,111,123,150,178,200,234,250,300,345,400,500,555,600,700,777,800,888,900,999,1000]
-      .map(buildNumItem),
-  },
-  'alphabet': {
-    label:'Bảng chữ cái',
-    icon:'🔤',
-    items: ALPHABET_RAW.map(a => ({
-      id:'alpha-'+a.letter, type:'alphabet',
-      letter:a.letter, name:a.name, ex:a.ex, mean:a.mean,
-    })),
-  },
-};
+/* ══════════════════════════════════════════════════════════
+   GRAMMAR QUESTIONS
+══════════════════════════════════════════════════════════ */
+const GRAMMAR = [
+  // A1 — Artikel & Präsens
+  {q:'___ Mann ist groß.', opts:['Der','Die','Das','Den'], a:0, lv:'A1', ex:'Mann là giống đực, Nominativ → der'},
+  {q:'___ Frau ist nett.', opts:['Der','Die','Das','Dem'], a:1, lv:'A1', ex:'Frau là giống cái, Nominativ → die'},
+  {q:'___ Kind spielt.', opts:['Der','Die','Das','Den'], a:2, lv:'A1', ex:'Kind là giống trung, Nominativ → das'},
+  {q:'Ich ___ Student.', opts:['bin','bist','ist','sind'], a:0, lv:'A1', ex:'sein: ich bin'},
+  {q:'Du ___ Lehrer.', opts:['bin','bist','ist','sind'], a:1, lv:'A1', ex:'sein: du bist'},
+  {q:'Er ___ aus Vietnam.', opts:['komme','kommst','kommt','kommen'], a:2, lv:'A1', ex:'kommen: er/sie/es kommt'},
+  {q:'Wir ___ Deutsch.', opts:['lerne','lernst','lernt','lernen'], a:3, lv:'A1', ex:'lernen: wir lernen'},
+  {q:'Ich ___ einen Apfel.', opts:['habe','hast','hat','haben'], a:0, lv:'A1', ex:'haben: ich habe'},
+  {q:'Wie ___ du?', opts:['heiße','heißt','heißen','heißest'], a:1, lv:'A1', ex:'heißen: du heißt'},
+  {q:'Sie ___ eine Katze.', opts:['habe','hast','hat','haben'], a:2, lv:'A1', ex:'haben: sie hat'},
+  // A2 — Perfekt, Modalverben, Komparativ
+  {q:'Ich ___ gestern ins Kino gegangen.', opts:['bin','habe','werde','hatte'], a:0, lv:'A2', ex:'gehen dùng trợ động từ sein → bin gegangen'},
+  {q:'Er ___ das Buch gelesen.', opts:['bin','bist','hat','sind'], a:2, lv:'A2', ex:'lesen dùng haben → hat gelesen'},
+  {q:'Wir ___ nach Hause gehen.', opts:['muss','musst','müssen','müsst'], a:2, lv:'A2', ex:'müssen: wir müssen'},
+  {q:'Du ___ besser lernen.', opts:['soll','sollst','sollen','sollt'], a:1, lv:'A2', ex:'sollen: du sollst'},
+  {q:'Das Auto ist ___ als das Fahrrad.', opts:['schnell','schneller','am schnellsten','schnellste'], a:1, lv:'A2', ex:'So sánh hơn: schneller als'},
+  {q:'Ich wohne ___ Berlin.', opts:['in','im','am','an'], a:0, lv:'A2', ex:'in + thành phố (Dativ): in Berlin'},
+  {q:'Wir fahren ___ die Schweiz.', opts:['nach','in','zu','an'], a:1, lv:'A2', ex:'in + quốc gia có mạo từ: in die Schweiz'},
+  {q:'___ wohnst du? — In Hanoi.', opts:['Wo','Wohin','Woher','Was'], a:0, lv:'A2', ex:'wo = ở đâu (vị trí)'},
+  // B1 — Passiv, Relativsatz, Konnektoren
+  {q:'Das Buch ___ von Goethe geschrieben.', opts:['wurde','wurden','ward','werden'], a:0, lv:'B1', ex:'Passiv Präteritum: wurde geschrieben'},
+  {q:'Der Mann, ___ dort steht, ist mein Vater.', opts:['der','die','das','den'], a:0, lv:'B1', ex:'Relativsatz, Mann là maskulin → der'},
+  {q:'Die Frau, ___ ich sehe, ist nett.', opts:['die','der','das','dem'], a:0, lv:'B1', ex:'Frau, Akkusativ, feminin → die'},
+  {q:'Ich bleibe zu Hause, ___ ich krank bin.', opts:['weil','dass','ob','wenn'], a:0, lv:'B1', ex:'weil = bởi vì (nguyên nhân)'},
+  {q:'___ es regnet, gehe ich spazieren.', opts:['Obwohl','Weil','Dass','Wenn'], a:0, lv:'B1', ex:'obwohl = mặc dù'},
+  {q:'Ich lerne Deutsch, ___ in Deutschland zu studieren.', opts:['um','damit','weil','dass'], a:0, lv:'B1', ex:'um ... zu + Infinitiv: mục đích'},
+  {q:'Er kommt zu spät, ___ er den Bus verpasst hat.', opts:['weil','obwohl','damit','um'], a:0, lv:'B1', ex:'weil = bởi vì'},
+  // B2 — Konjunktiv II, Passiv mit Modal
+  {q:'Wenn ich reich ___, würde ich um die Welt reisen.', opts:['wäre','bin','sein würde','werde'], a:0, lv:'B2', ex:'Konjunktiv II của sein: wäre'},
+  {q:'Ich ___ das gemacht haben.', opts:['hätte','habe','würde','werde'], a:0, lv:'B2', ex:'Konjunktiv II Perfekt: hätte gemacht'},
+  {q:'Wenn er Zeit ___, würde er mitkommen.', opts:['hätte','hat','haben würde','hatte'], a:0, lv:'B2', ex:'Konjunktiv II của haben: hätte'},
+  {q:'Das Problem ___ gelöst werden müssen.', opts:['hätte','würde','wäre','habe'], a:0, lv:'B2', ex:'Passiv Konjunktiv II: hätte gelöst werden müssen'},
+  {q:'Der Mann, ___ ich gestern begegnet bin, war freundlich.', opts:['dem','den','der','denen'], a:0, lv:'B2', ex:'begegnen + Dativ → dem'},
+  {q:'___ ich das gewusst hätte, wäre ich gekommen.', opts:['Wenn','Ob','Dass','Weil'], a:0, lv:'B2', ex:'Irrealer Bedingungssatz: Wenn ... hätte'},
+];
 
-// "Tất cả số" = ghép 3 nhóm số
-CATEGORIES['num-all'] = {
-  label:'Tất cả số',
-  icon:'🔢',
-  items: [
-    ...CATEGORIES['num-0-20'].items,
-    ...CATEGORIES['num-21-100'].items,
-    ...CATEGORIES['num-101-1000'].items,
-  ],
-};
-
-const CATEGORY_ORDER = ['num-0-20','num-21-100','num-101-1000','num-all','alphabet'];
-
-/* ============================================================
-   TIẾN ĐỘ (localStorage)
-   ============================================================ */
-const STORAGE_KEY = 'german-learn-progress-v1';
-let PROGRESS = {};
-try { PROGRESS = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e){ PROGRESS = {}; }
-function saveProgress(){
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(PROGRESS)); } catch(e){}
-}
-function learnedCount(catKey){
-  const items = CATEGORIES[catKey].items;
-  const learned = items.filter(it => PROGRESS[it.id] === 'learned').length;
-  return { learned, total: items.length };
-}
-
-/* ============================================================
-   TRẠNG THÁI
-   ============================================================ */
-const state = {
-  screen: 'setup',          // setup | study
-  // cài đặt người dùng chọn trong setup
-  setup: {
-    section: 'quiz',
-    category: 'num-0-20',
-    direction: 'vi-de',
-    sessionSize: 25,
-  },
-  // cài đặt đang dùng trong phiên
-  section: 'quiz',
-  category: 'num-0-20',
-  direction: 'vi-de',
-  // session
-  session: { items:[], index:0, correct:0, total:0, streak:0, bestStreak:0 },
-  currentItem: null,
-  quizAnswered: false,
-  essayAnswered: false,
-  flipped: false,
-  quizOptions: null, quizCorrectIndex: -1, quizHint: '', quizSpeakText: '',
-  essayCorrectAnswer: '', essayCheckMode: '', essayHintHTML: '', essaySpeakText: '',
-  autoSpeak: false,
-};
-
-/* ============================================================
-   ÂM THANH
-   ============================================================ */
-let germanVoice = null;
+/* ══════════════════════════════════════════════════════════
+   TTS
+══════════════════════════════════════════════════════════ */
+let deVoice = null;
 function loadVoices(){
   if (!('speechSynthesis' in window)) return;
-  const vs = window.speechSynthesis.getVoices();
-  germanVoice = vs.find(v => /^de(-|_)/i.test(v.lang))
-             || vs.find(v => /deutsch|german/i.test(v.name))
-             || null;
+  const vs = speechSynthesis.getVoices();
+  deVoice = vs.find(v=>/^de(-|_)/i.test(v.lang))
+         || vs.find(v=>/deutsch|german/i.test(v.name))
+         || null;
 }
 if ('speechSynthesis' in window) {
   loadVoices();
-  window.speechSynthesis.onvoiceschanged = loadVoices;
+  speechSynthesis.onvoiceschanged = loadVoices;
 }
-function speakGerman(text, btn){
+function speak(text, btn){
   if (!text) return;
   if (!('speechSynthesis' in window)) {
-    alert('Trình duyệt không hỗ trợ phát âm. Hãy dùng Chrome / Edge / Safari / Firefox mới.');
+    alert('Trình duyệt không hỗ trợ phát âm. Hãy dùng Chrome / Edge / Safari.');
     return;
   }
-  window.speechSynthesis.cancel();
+  speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'de-DE'; u.rate = 0.85; u.pitch = 1;
-  if (germanVoice) u.voice = germanVoice;
-  document.querySelectorAll('.speak-btn').forEach(b => b.classList.remove('speaking'));
+  if (deVoice) u.voice = deVoice;
+  $$('.speak-btn').forEach(b => b.classList.remove('speaking'));
   if (btn) btn.classList.add('speaking');
   u.onend = () => { if (btn) btn.classList.remove('speaking'); };
   u.onerror = () => { if (btn) btn.classList.remove('speaking'); };
-  window.speechSynthesis.speak(u);
+  speechSynthesis.speak(u);
 }
 
-/* ============================================================
-   SETUP SCREEN
-   ============================================================ */
-const setupScreen = document.getElementById('setupScreen');
-const studyScreen = document.getElementById('studyScreen');
-const categoryPicker = document.getElementById('categoryPicker');
-const catCountLabel = document.getElementById('catCountLabel');
-const directionPicker = document.getElementById('directionPicker');
-const sizePicker = document.getElementById('sizePicker');
-
-// Build category cards
-function renderCategoryCards(){
-  categoryPicker.innerHTML = '';
-  CATEGORY_ORDER.forEach(key => {
-    const cat = CATEGORIES[key];
-    const { learned, total } = learnedCount(key);
-    const pct = total > 0 ? (learned/total*100) : 0;
-    const btn = document.createElement('button');
-    btn.className = 'cat-card' + (state.setup.category === key ? ' active' : '');
-    btn.dataset.cat = key;
-    btn.innerHTML = `
-      <div class="cat-card-head">
-        <span class="cat-card-name">${cat.label}</span>
-        <span class="cat-card-badge">${learned}/${total}</span>
-      </div>
-      <div class="cat-card-bar"><i style="width:${pct}%"></i></div>
-    `;
-    btn.addEventListener('click', () => {
-      state.setup.category = key;
-      if (key === 'alphabet' && state.setup.direction === 'vi-de') {
-        // direction vẫn giữ, chỉ đổi nhãn
-      }
-      document.querySelectorAll('.cat-card').forEach(c =>
-        c.classList.toggle('active', c.dataset.cat === key));
-      updateSetupLabels();
-    });
-    categoryPicker.appendChild(btn);
-  });
-}
-
-function updateSetupLabels(){
-  const isAlpha = state.setup.category === 'alphabet';
-  catCountLabel.textContent = CATEGORIES[state.setup.category].items.length + ' mục';
-
-  // Direction labels
-  const dirBtns = directionPicker.querySelectorAll('button');
-  if (isAlpha) {
-    dirBtns[0].textContent = 'Chữ ➜ Cách đọc';
-    dirBtns[1].textContent = 'Cách đọc ➜ Chữ';
-  } else {
-    dirBtns[0].textContent = 'Số ➜ Tiếng Đức';
-    dirBtns[1].textContent = 'Tiếng Đức ➜ Số';
-  }
-}
-
-// Section picker
-document.querySelectorAll('.pick-card').forEach(btn => {
-  btn.addEventListener('click', () => {
-    state.setup.section = btn.dataset.section;
-    document.querySelectorAll('.pick-card').forEach(b =>
-      b.classList.toggle('active', b.dataset.section === btn.dataset.section));
-  });
-});
-
-// Direction picker
-directionPicker.querySelectorAll('button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    state.setup.direction = btn.dataset.dir;
-    directionPicker.querySelectorAll('button').forEach(b =>
-      b.classList.toggle('active', b.dataset.dir === btn.dataset.dir));
-  });
-});
-
-// Size picker
-sizePicker.querySelectorAll('button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    state.setup.sessionSize = parseInt(btn.dataset.size, 10);
-    sizePicker.querySelectorAll('button').forEach(b =>
-      b.classList.toggle('active', b.dataset.size === btn.dataset.size));
-  });
-});
-
-// Start button
-document.getElementById('startBtn').addEventListener('click', () => {
-  state.section = state.setup.section;
-  state.category = state.setup.category;
-  state.direction = state.setup.direction;
-  state.session.size = state.setup.sessionSize;
-
-  setupScreen.style.display = 'none';
-  studyScreen.style.display = 'flex';
-  studyScreen.style.flexDirection = 'column';
-  studyScreen.style.gap = '11px';
-  state.screen = 'study';
-
-  // update study topbar
-  updateStudyTopbar();
-  startNewSession();
-});
-
-function updateStudyTopbar(){
-  const tag = document.getElementById('studyTag');
-  tag.className = 'study-tag ' + state.section;
-  tag.textContent = state.section === 'quiz' ? 'Trắc nghiệm'
-                  : state.section === 'essay' ? 'Tự luận' : 'Lật thẻ';
-  document.getElementById('studyCat').textContent = CATEGORIES[state.category].label;
-}
-
-// Back button
-document.getElementById('backBtn').addEventListener('click', () => {
-  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-  state.screen = 'setup';
-  studyScreen.style.display = 'none';
-  setupScreen.style.display = 'block';
-  renderCategoryCards();
-  updateSetupLabels();
-});
-
-/* ============================================================
-   SESSION
-   ============================================================ */
-function pickSessionItems(catKey, size){
-  const items = CATEGORIES[catKey].items;
-  const unlearned = items.filter(it => PROGRESS[it.id] !== 'learned');
-  const learned   = items.filter(it => PROGRESS[it.id] === 'learned');
-  shuffle(unlearned); shuffle(learned);
-
-  const n = Math.min(size, items.length);
-  const out = [];
-  for (let i = 0; i < unlearned.length && out.length < n; i++) out.push(unlearned[i]);
-  for (let i = 0; i < learned.length && out.length < n; i++) out.push(learned[i]);
-  return shuffle(out);
-}
-
-function startNewSession(){
-  const items = pickSessionItems(state.category, state.session.size || 25);
-  state.session = { items, index:0, correct:0, total:0, streak:0, bestStreak:0 };
-  state.quizAnswered = false;
-  state.essayAnswered = false;
-  state.flipped = false;
-  renderCurrent();
-}
-
-/* ============================================================
-   RENDER CONTENT
-   ============================================================ */
-const contentArea = document.getElementById('contentArea');
-
-function renderCurrent(){
-  if (!state.session.items.length) { startNewSession(); return; }
-  if (state.session.index >= state.session.items.length) { renderSummary(); return; }
-
-  updateSessionProgress();
-  updateStats();
-
-  const item = state.session.items[state.session.index];
-  state.currentItem = item;
-
-  if (state.section === 'quiz')       renderQuizView(item);
-  else if (state.section === 'essay') renderEssayView(item);
-  else                                renderFlashView(item);
-}
-
-function updateSessionProgress(){
-  const { index, items } = state.session;
-  document.getElementById('sessionProgressText').textContent =
-    Math.min(index + 1, items.length) + ' / ' + items.length;
-  document.getElementById('sessionProgressBar').style.width =
-    (Math.min(index, items.length) / items.length * 100) + '%';
-}
-
-function updateStats(){
-  document.getElementById('correctCount').textContent = state.session.correct;
-  document.getElementById('totalCount').textContent   = state.session.total;
-  document.getElementById('streak').textContent       = state.session.streak;
-  const { learned, total } = learnedCount(state.category);
-  document.getElementById('learnedCount').textContent = learned + '/' + total;
-}
-
-/* ---------- QUIZ ---------- */
-function renderQuizView(item){
-  const dir = state.direction;
-  let questionHTML, options, correctIndex, speakText, hint = '';
-
-  if (item.type === 'number') {
-    if (dir === 'vi-de') {
-      questionHTML = `Số <b>${item.n}</b> trong tiếng Đức viết là gì?`;
-      const correct = item.de;
-      options = shuffle([correct, ...buildNumberDistractors(item.n, true)]);
-      correctIndex = options.indexOf(correct);
-      speakText = item.de;
-    } else {
-      questionHTML = `Từ tiếng Đức <b>"${item.de}"</b> là số nào?`;
-      const correct = String(item.n);
-      options = shuffle([correct, ...buildNumberDistractors(item.n, false)]);
-      correctIndex = options.indexOf(correct);
-      speakText = item.de;
-      hint = `Số đúng: ${item.n}`;
-    }
-  } else {
-    const others = ALPHABET_RAW.filter(a => a.letter !== item.letter);
-    shuffle(others);
-    if (dir === 'vi-de') {
-      questionHTML = `Chữ <b style="font-size:1.25em">${item.letter}</b> trong tiếng Đức đọc là gì?`;
-      options = shuffle([item.name, ...others.slice(0,3).map(a => a.name)]);
-      correctIndex = options.indexOf(item.name);
-      speakText = item.letter;
-      hint = `Ví dụ: ${item.ex} — ${item.mean}`;
-    } else {
-      questionHTML = `Cách đọc <b>"${item.name}"</b> là chữ cái nào?`;
-      options = shuffle([item.letter, ...others.slice(0,3).map(a => a.letter)]);
-      correctIndex = options.indexOf(item.letter);
-      speakText = item.letter;
-      hint = `Ví dụ: ${item.ex} — ${item.mean}`;
-    }
-  }
-
-  state.quizOptions = options;
-  state.quizCorrectIndex = correctIndex;
-  state.quizHint = hint;
-  state.quizSpeakText = speakText;
-  state.quizAnswered = false;
-
-  const LETTERS = ['A','B','C','D'];
-  contentArea.innerHTML = `
-    <div class="glass animate">
-      <div class="q-header">
-        <span class="q-label">Câu hỏi</span>
-        <button class="speak-btn" id="speakBtn" title="Nghe tiếng Đức">🔊</button>
-        <span class="q-number">#${state.session.index + 1}</span>
-      </div>
-      <div class="q-text">${questionHTML}</div>
-      <div class="options" id="opts"></div>
-      <div id="feedbackArea" style="margin-top:14px"></div>
-    </div>
-    <div class="mark-row" id="markRow">
-      <button class="mark-btn unlearn" id="markUnlearn">😕 Chưa thuộc</button>
-      <button class="mark-btn learn"   id="markLearn">✅ Thuộc rồi</button>
-    </div>
-  `;
-
-  const optsEl = document.getElementById('opts');
-  options.forEach((opt, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'option';
-    btn.innerHTML = `<span class="option-letter">${LETTERS[i]}</span>` +
-                    `<span class="option-text">${escapeHtml(opt)}</span>`;
-    btn.addEventListener('click', () => selectQuizOption(i));
-    optsEl.appendChild(btn);
-  });
-
-  document.getElementById('speakBtn').addEventListener('click', e => {
-    e.stopPropagation();
-    speakGerman(speakText, e.currentTarget);
-  });
-  document.getElementById('markUnlearn').addEventListener('click', () => markAndAdvance(false));
-  document.getElementById('markLearn').addEventListener('click',   () => markAndAdvance(true));
-
-  if (state.autoSpeak) {
-    setTimeout(() => {
-      const b = document.getElementById('speakBtn');
-      if (b) speakGerman(speakText, b);
-    }, 200);
-  }
-}
-
-function selectQuizOption(idx){
-  if (state.quizAnswered) return;
-  state.quizAnswered = true;
-
-  const isCorrect = idx === state.quizCorrectIndex;
-  state.session.total++;
-  if (isCorrect) { state.session.correct++; state.session.streak++; }
-  else            { state.session.streak = 0; }
-  if (state.session.streak > state.session.bestStreak)
-    state.session.bestStreak = state.session.streak;
-  updateStats();
-
-  const opts = document.querySelectorAll('.option');
-  opts.forEach((btn, i) => {
-    btn.disabled = true;
-    if (i === state.quizCorrectIndex) btn.classList.add('correct');
-    else if (i === idx) btn.classList.add('wrong');
-    else btn.classList.add('dimmed');
-  });
-
-  const LETTERS = ['A','B','C','D'];
-  const fbArea = document.getElementById('feedbackArea');
-  const cL = LETTERS[state.quizCorrectIndex];
-  const cT = escapeHtml(state.quizOptions[state.quizCorrectIndex]);
-
-  if (isCorrect) {
-    fbArea.innerHTML = `<div class="feedback correct">✅ Chính xác!<small>Đáp án: ${cL} — ${cT}</small></div>`;
-  } else {
-    fbArea.innerHTML = `<div class="feedback wrong">❌ Sai rồi! Đáp án đúng: <b>${cL}</b> — <b>${cT}</b>` +
-      (state.quizHint ? `<small>${state.quizHint}</small>` : '') + `</div>`;
-  }
-
-  document.getElementById('markRow').classList.add('show');
-  if (isCorrect) document.getElementById('markLearn').classList.add('suggested');
-  else           document.getElementById('markUnlearn').classList.add('suggested');
-
-  if (state.autoSpeak) speakGerman(state.quizSpeakText, document.getElementById('speakBtn'));
-}
-
-function buildNumberDistractors(correctNum, asGerman){
+/* ══════════════════════════════════════════════════════════
+   QUESTION BUILDERS
+══════════════════════════════════════════════════════════ */
+function makeOpts(correct, pool, n=4){
   const set = new Set();
-  const correctStr = asGerman ? numToGerman(correctNum) : String(correctNum);
-  const cands = [];
-  const offsets = [-1,1,-2,2,-10,10,-20,20,-100,100,-11,11,-101,101];
-  for (const o of offsets) {
-    const c = correctNum + o;
-    if (c >= 0 && c <= 1000) cands.push(c);
-  }
-  if (correctNum >= 10 && correctNum <= 99) {
-    const t = Math.floor(correctNum/10), u = correctNum%10;
-    if (u !== 0 && t !== u) cands.push(u*10 + t);
-  }
-  if (correctNum >= 100 && correctNum <= 999) {
-    const h = Math.floor(correctNum/100), rest = correctNum%100;
-    if (rest >= 10) {
-      const t = Math.floor(rest/10), u = rest%10;
-      if (u !== 0 && t !== u) cands.push(h*100 + u*10 + t);
-    }
-  }
-  for (let i = 0; i < 25; i++) cands.push(randInt(0, 1000));
-  shuffle(cands);
-  for (const c of cands) {
-    if (set.size >= 3) break;
-    if (c === correctNum) continue;
-    const s = asGerman ? numToGerman(c) : String(c);
-    if (s === correctStr || set.has(s)) continue;
+  const cs = String(correct);
+  set.add(cs);
+  const ps = shuffle([...pool]);
+  for (const p of ps) {
+    if (set.size >= n) break;
+    const s = String(p);
+    if (s === cs) continue;
     set.add(s);
   }
-  let fb = 0;
-  while (set.size < 3 && fb <= 1000) {
-    if (fb !== correctNum) {
-      const s = asGerman ? numToGerman(fb) : String(fb);
-      if (s !== correctStr && !set.has(s)) set.add(s);
-    }
-    fb++;
+  return shuffle([...set]);
+}
+
+function buildVocabQ(v, forceDir){
+  const dir = forceDir || (Math.random() < 0.5 ? 'de-vi' : 'vi-de');
+  if (dir === 'de-vi') {
+    const pool = VOCAB.filter(x=>x.de!==v.de).map(x=>x.vi);
+    const opts = makeOpts(v.vi, pool);
+    return {
+      type:'vocab', level:v.lv,
+      prompt:`Từ <b>"${esc(v.de)}"</b> có nghĩa là gì?`,
+      options:opts,
+      correct: opts.indexOf(v.vi),
+      speak: v.de,
+      explain: `${v.de} = ${v.vi}`,
+    };
+  } else {
+    const pool = VOCAB.filter(x=>x.de!==v.de).map(x=>x.de);
+    const opts = makeOpts(v.de, pool);
+    return {
+      type:'vocab', level:v.lv,
+      prompt:`<b>"${esc(v.vi)}"</b> trong tiếng Đức là?`,
+      options:opts,
+      correct: opts.indexOf(v.de),
+      speak: v.de,
+      explain: `${v.vi} = ${v.de}`,
+    };
+  }
+}
+
+function buildGrammarQ(g){
+  return {
+    type:'grammar', level:g.lv,
+    prompt: g.q.replace('___', '<span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;</span>'),
+    options: [...g.opts],
+    correct: g.a,
+    speak: g.q.replace('___', g.opts[g.a]).replace(/[.,!?]/g,''),
+    explain: g.ex,
+  };
+}
+
+function numDistractors(n){
+  const set = new Set();
+  const correct = numToGerman(n);
+  set.add(correct);
+  const cands = [];
+  const offs = [-1,1,-2,2,-10,10,-20,20,-100,100];
+  for (const o of offs) {
+    const c = n + o;
+    if (c >= 0 && c <= 1000) cands.push(c);
+  }
+  if (n >= 10 && n <= 99) {
+    const t = Math.floor(n/10), u = n%10;
+    if (u !== 0) cands.push(u*10 + t);
+  }
+  for (let i = 0; i < 30; i++) cands.push(rand(0,1000));
+  shuffle(cands);
+  for (const c of cands) {
+    if (set.size >= 4) break;
+    if (c === n) continue;
+    const s = numToGerman(c);
+    if (set.has(s)) continue;
+    set.add(s);
   }
   return [...set];
 }
 
-/* ---------- ESSAY ---------- */
-function renderEssayView(item){
-  let questionHTML, correctAnswer, checkMode, speakText, hintHTML, placeholder;
-
-  if (item.type === 'number') {
-    if (state.direction === 'vi-de') {
-      questionHTML = `Số <b>${item.n}</b> trong tiếng Đức viết là gì?`;
-      correctAnswer = item.de; checkMode = 'german';
-      speakText = item.de; hintHTML = ''; placeholder = 'VD: eins, zwei, drei…';
-    } else {
-      questionHTML = `Từ tiếng Đức <b>"${item.de}"</b> là số nào?`;
-      correctAnswer = String(item.n); checkMode = 'number';
-      speakText = item.de; hintHTML = ''; placeholder = 'Nhập số…';
-    }
+function buildNumberQ(){
+  const n = rand(0, 1000);
+  if (Math.random() < 0.5) {
+    const correct = numToGerman(n);
+    const opts = shuffle(numDistractors(n));
+    return {
+      type:'numbers', level:null,
+      prompt:`Số <b>${n}</b> trong tiếng Đức viết là?`,
+      options:opts,
+      correct: opts.indexOf(correct),
+      speak: correct,
+      explain: `${n} = ${correct}`,
+    };
   } else {
-    if (state.direction === 'vi-de') {
-      questionHTML = `Chữ <b style="font-size:1.3em">${item.letter}</b> trong tiếng Đức đọc là gì?`;
-      correctAnswer = item.name; checkMode = 'german';
-      speakText = item.letter;
-      hintHTML = `Ví dụ: ${item.ex} — ${item.mean}`;
-      placeholder = 'VD: ah, beh, tseh…';
-    } else {
-      questionHTML = `Cách đọc <b>"${item.name}"</b> là chữ cái nào?`;
-      correctAnswer = item.letter; checkMode = 'german';
-      speakText = item.letter;
-      hintHTML = `Ví dụ: ${item.ex} — ${item.mean}`;
-      placeholder = 'Nhập chữ cái…';
+    const german = numToGerman(n);
+    const pool = new Set();
+    const cands = [];
+    const offs = [-1,1,-2,2,-10,10,-20,20,-100,100];
+    for (const o of offs) { const c = n+o; if (c>=0 && c<=1000) cands.push(c); }
+    for (let i = 0; i < 30; i++) cands.push(rand(0,1000));
+    shuffle(cands);
+    pool.add(String(n));
+    for (const c of cands) {
+      if (pool.size >= 4) break;
+      if (c === n) continue;
+      pool.add(String(c));
     }
+    const opts = shuffle([...pool]);
+    return {
+      type:'numbers', level:null,
+      prompt:`Từ <b>"${german}"</b> là số nào?`,
+      options:opts,
+      correct: opts.indexOf(String(n)),
+      speak: german,
+      explain: `${german} = ${n}`,
+    };
   }
+}
 
-  state.essayCorrectAnswer = correctAnswer;
-  state.essayCheckMode = checkMode;
-  state.essayHintHTML = hintHTML;
-  state.essaySpeakText = speakText;
-  state.essayAnswered = false;
+function buildAlphabetQ(a){
+  const others = ALPHABET.filter(x=>x.l!==a.l);
+  if (Math.random() < 0.5) {
+    const opts = makeOpts(a.p, others.map(x=>x.p));
+    return {
+      type:'alphabet', level:null,
+      prompt:`Chữ <b style="font-size:1.3em">${esc(a.l)}</b> đọc là gì?`,
+      options:opts,
+      correct: opts.indexOf(a.p),
+      speak: a.l,
+      explain: `${a.l} = "${a.p}" · Ví dụ: ${a.ex}`,
+    };
+  } else {
+    const opts = makeOpts(a.l, others.map(x=>x.l));
+    return {
+      type:'alphabet', level:null,
+      prompt:`Cách đọc <b>"${esc(a.p)}"</b> là chữ cái nào?`,
+      options:opts,
+      correct: opts.indexOf(a.l),
+      speak: a.l,
+      explain: `${a.p} = ${a.l} · Ví dụ: ${a.ex}`,
+    };
+  }
+}
 
-  contentArea.innerHTML = `
-    <div class="glass animate">
-      <div class="q-header">
-        <span class="q-label">Câu hỏi</span>
-        <button class="speak-btn" id="speakBtn" title="Nghe tiếng Đức">🔊</button>
-        <span class="q-number">#${state.session.index + 1}</span>
-      </div>
-      <div class="q-text">${questionHTML}</div>
-      <input type="text" id="essayInput" class="essay-input" placeholder="${placeholder}"
-             autocomplete="off" autocapitalize="off" spellcheck="false">
-      <button class="check-btn" id="checkBtn">✓ Kiểm tra</button>
-      <div id="feedbackArea" style="margin-top:14px"></div>
+/* ══════════════════════════════════════════════════════════
+   SESSION BUILDERS
+══════════════════════════════════════════════════════════ */
+function buildSession(mode, level, count=10){
+  if (mode === 'vocab') {
+    return shuffle([...VOCAB]).slice(0,count).map(v => buildVocabQ(v));
+  }
+  if (mode === 'grammar') {
+    return shuffle([...GRAMMAR]).slice(0,count).map(g => buildGrammarQ(g));
+  }
+  if (mode === 'numbers') {
+    const out = [];
+    for (let i = 0; i < count; i++) out.push(buildNumberQ());
+    return out;
+  }
+  if (mode === 'alphabet') {
+    return shuffle([...ALPHABET]).slice(0,count).map(a => buildAlphabetQ(a));
+  }
+  if (mode === 'exam') {
+    const vpool = VOCAB.filter(v => v.lv === level);
+    const gpool = GRAMMAR.filter(g => g.lv === level);
+    const all = [
+      ...vpool.map(v => buildVocabQ(v)),
+      ...gpool.map(g => buildGrammarQ(g)),
+    ];
+    shuffle(all);
+    return all.slice(0, Math.min(count, all.length));
+  }
+  return [];
+}
+
+/* ══════════════════════════════════════════════════════════
+   STATE
+══════════════════════════════════════════════════════════ */
+const state = {
+  view: 'home',
+  session: {
+    mode: null,
+    level: null,
+    questions: [],
+    index: 0,
+    correct: 0,
+    answered: false,
+  },
+};
+
+/* ══════════════════════════════════════════════════════════
+   RENDER — HOME
+══════════════════════════════════════════════════════════ */
+const app = $('#app');
+
+function renderHome(){
+  state.view = 'home';
+  document.title = 'Deutsch lernen — Lernportal';
+  app.innerHTML = `
+    <div class="hero">
+      <div class="flag"><span></span><span></span><span></span></div>
+      <h1>Deutsch<em>lernen</em></h1>
+      <p>Từ vựng · Số · Chữ cái · Ngữ pháp — luyện mỗi ngày</p>
     </div>
-    <div class="mark-row" id="markRow">
-      <button class="mark-btn unlearn" id="markUnlearn">😕 Chưa thuộc</button>
-      <button class="mark-btn learn"   id="markLearn">✅ Thuộc rồi</button>
+
+    <div class="modes">
+      <button class="mode" data-mode="vocab">
+        <div class="mode-emoji">📖</div>
+        <div class="mode-name">Vokabeln</div>
+        <div class="mode-desc">Từ vựng thông dụng</div>
+      </button>
+      <button class="mode" data-mode="numbers">
+        <div class="mode-emoji">🔢</div>
+        <div class="mode-name">Zahlen</div>
+        <div class="mode-desc">Số từ 0 đến 1000</div>
+      </button>
+      <button class="mode" data-mode="alphabet">
+        <div class="mode-emoji">🔤</div>
+        <div class="mode-name">Alphabet</div>
+        <div class="mode-desc">Bảng chữ cái &amp; phát âm</div>
+      </button>
+      <button class="mode" data-mode="grammar">
+        <div class="mode-emoji">📚</div>
+        <div class="mode-name">Grammatik</div>
+        <div class="mode-desc">Ngữ pháp A1–B2</div>
+      </button>
+    </div>
+
+    <section class="exam-section">
+      <h2 class="exam-title">Prüfung <span>Đề minh họa</span></h2>
+      <p class="exam-sub">Chọn trình độ — mỗi lần làm sẽ có bộ câu hỏi ngẫu nhiên</p>
+      <div class="levels">
+        <button class="level" data-level="A1"><span class="level-code">A1</span><span class="level-sub">Sơ cấp</span></button>
+        <button class="level" data-level="A2"><span class="level-code">A2</span><span class="level-sub">Cơ bản</span></button>
+        <button class="level" data-level="B1"><span class="level-code">B1</span><span class="level-sub">Trung cấp</span></button>
+        <button class="level" data-level="B2"><span class="level-code">B2</span><span class="level-sub">Nâng cao</span></button>
+      </div>
+    </section>
+
+    <div class="foot">
+      Nhấn <kbd>1</kbd>–<kbd>4</kbd> để chọn đáp án · <kbd>Enter</kbd> câu tiếp · <kbd>🔊</kbd> nghe phát âm
     </div>
   `;
-
-  document.getElementById('speakBtn').addEventListener('click', e => {
-    e.stopPropagation();
-    speakGerman(speakText, e.currentTarget);
-  });
-  document.getElementById('checkBtn').addEventListener('click', checkEssay);
-  document.getElementById('essayInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') { e.preventDefault(); checkEssay(); }
-  });
-  document.getElementById('markUnlearn').addEventListener('click', () => markAndAdvance(false));
-  document.getElementById('markLearn').addEventListener('click',   () => markAndAdvance(true));
-
-  setTimeout(() => document.getElementById('essayInput')?.focus(), 80);
+  $$('.mode').forEach(b => b.addEventListener('click', () => startPractice(b.dataset.mode)));
+  $$('.level').forEach(b => b.addEventListener('click', () => startPractice('exam', b.dataset.level)));
 }
 
-function normalizeGerman(s){
-  return String(s).toLowerCase().trim()
-    .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss')
-    .replace(/[-_]/g,' ').replace(/\s+/g,' ');
-}
-
-function checkEssay(){
-  if (state.essayAnswered) return;
-  const input = document.getElementById('essayInput');
-  const raw = input.value.trim();
-  if (!raw) { input.focus(); return; }
-
-  state.essayAnswered = true;
-  input.disabled = true;
-
-  let isCorrect = false;
-  if (state.essayCheckMode === 'number') {
-    const u = parseInt(raw.replace(/\D/g,''), 10);
-    const t = parseInt(state.essayCorrectAnswer, 10);
-    isCorrect = !isNaN(u) && u === t;
-  } else {
-    isCorrect = normalizeGerman(raw) === normalizeGerman(state.essayCorrectAnswer);
-  }
-
-  state.session.total++;
-  if (isCorrect) { state.session.correct++; state.session.streak++; }
-  else            { state.session.streak = 0; }
-  if (state.session.streak > state.session.bestStreak)
-    state.session.bestStreak = state.session.streak;
-  updateStats();
-
-  const fbArea = document.getElementById('feedbackArea');
-  if (isCorrect) {
-    input.classList.add('correct');
-    fbArea.innerHTML = `<div class="feedback correct">✅ Chính xác!<small>Đáp án: <b>${escapeHtml(state.essayCorrectAnswer)}</b></small></div>`;
-  } else {
-    input.classList.add('wrong');
-    fbArea.innerHTML = `<div class="feedback wrong">❌ Chưa đúng!<small>Bạn nhập: <i>${escapeHtml(raw)}</i><br>Đáp án: <b>${escapeHtml(state.essayCorrectAnswer)}</b></small>` +
-      (state.essayHintHTML ? `<small>💡 ${state.essayHintHTML}</small>` : '') + `</div>`;
-  }
-
-  document.getElementById('markRow').classList.add('show');
-  if (isCorrect) document.getElementById('markLearn').classList.add('suggested');
-  else           document.getElementById('markUnlearn').classList.add('suggested');
-
-  document.getElementById('checkBtn').style.display = 'none';
-
-  if (state.autoSpeak) speakGerman(state.essaySpeakText, document.getElementById('speakBtn'));
-}
-
-/* ---------- FLASHCARD ---------- */
-function renderFlashView(item){
-  let frontLabel, frontMain, frontSub, frontClass = 'flash-main';
-  let backLabel, backMain, backSub, backClass = 'flash-main';
-  let speakText;
-
-  if (item.type === 'number') {
-    if (state.direction === 'vi-de') {
-      frontLabel = 'Số'; frontMain = 'Số ' + item.n;
-      frontSub = 'Nhấn thẻ để xem tiếng Đức';
-      backLabel = 'Deutsch'; backMain = item.de; backSub = item.vi;
-      speakText = item.de;
-    } else {
-      frontLabel = 'Deutsch'; frontMain = item.de;
-      frontSub = 'Nhấn thẻ để xem nghĩa';
-      backLabel = 'Nghĩa'; backMain = item.n + ' — ' + item.vi;
-      backSub = 'Số ' + item.n; speakText = item.de;
-    }
-  } else {
-    frontClass = 'flash-letter'; backClass = 'flash-main';
-    if (state.direction === 'vi-de') {
-      frontLabel = 'Buchstabe'; frontMain = item.letter;
-      frontSub = 'Chữ này đọc là gì?';
-      backLabel = 'Aussprache'; backMain = item.name;
-      backSub = item.ex + ' — ' + item.mean; speakText = item.letter;
-    } else {
-      frontLabel = 'Aussprache'; frontMain = item.name;
-      frontSub = 'Đây là chữ cái nào?';
-      backLabel = 'Buchstabe'; backMain = item.letter;
-      backSub = item.ex + ' — ' + item.mean; speakText = item.letter;
-    }
-  }
-
-  state.flipped = false;
-
-  contentArea.innerHTML = `
-    <div class="glass animate">
-      <div class="q-header">
-        <span class="q-label">Lật thẻ</span>
-        <button class="speak-btn" id="speakBtn" title="Nghe tiếng Đức">🔊</button>
-        <span class="q-number">#${state.session.index + 1}</span>
-      </div>
-
-      <div class="flash-scene">
-        <div class="flashcard" id="flashcard">
-          <div class="flash-face flash-front">
-            <span class="flash-badge">Câu hỏi</span>
-            <span class="flash-label">${frontLabel}</span>
-            <div class="${frontClass}">${escapeHtml(frontMain)}</div>
-            <div class="flash-sub">${escapeHtml(frontSub)}</div>
-          </div>
-          <div class="flash-face flash-back">
-            <span class="flash-badge">Đáp án</span>
-            <span class="flash-label">${backLabel}</span>
-            <div class="${backClass}">${escapeHtml(backMain)}</div>
-            <div class="flash-sub">${escapeHtml(backSub)}</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flash-hint" id="flashHint">Nhấn vào thẻ hoặc nút bên dưới để lật</div>
-      <div class="flash-controls">
-        <button id="flipBtn">🔄 Lật thẻ</button>
-      </div>
-    </div>
-    <div class="mark-row" id="markRow">
-      <button class="mark-btn unlearn" id="markUnlearn">😕 Chưa thuộc</button>
-      <button class="mark-btn learn"   id="markLearn">✅ Thuộc rồi</button>
-    </div>
-  `;
-
-  const flashcard = document.getElementById('flashcard');
-  const flip = () => {
-    if (state.flipped) return;
-    state.flipped = true;
-    flashcard.classList.add('flipped');
-    document.getElementById('markRow').classList.add('show');
-    document.getElementById('flashHint').textContent = 'Đánh dấu để chuyển thẻ tiếp theo';
-    if (state.autoSpeak) speakGerman(speakText, document.getElementById('speakBtn'));
+/* ══════════════════════════════════════════════════════════
+   RENDER — PRACTICE
+══════════════════════════════════════════════════════════ */
+function startPractice(mode, level){
+  const count = 10;
+  const questions = buildSession(mode, level, count);
+  state.session = {
+    mode, level, questions, index:0, correct:0, answered:false,
   };
-
-  flashcard.addEventListener('click', flip);
-  document.getElementById('flipBtn').addEventListener('click', e => {
-    e.stopPropagation(); flip();
-  });
-  document.getElementById('speakBtn').addEventListener('click', e => {
-    e.stopPropagation();
-    speakGerman(speakText, e.currentTarget);
-  });
-  document.getElementById('markUnlearn').addEventListener('click', () => markAndAdvance(false));
-  document.getElementById('markLearn').addEventListener('click',   () => markAndAdvance(true));
+  state.view = 'practice';
+  renderQuestion();
 }
 
-/* ---------- MARK & ADVANCE ---------- */
-function markAndAdvance(learned){
-  const item = state.currentItem;
-  if (!item) return;
-  PROGRESS[item.id] = learned ? 'learned' : 'unlearned';
-  saveProgress();
+const MODE_LABEL = {
+  vocab:'Vokabeln', numbers:'Zahlen', alphabet:'Alphabet', grammar:'Grammatik', exam:'Prüfung',
+};
 
-  state.session.index++;
-  if (state.session.index >= state.session.items.length) {
-    renderSummary();
-  } else {
-    state.quizAnswered = false;
-    state.essayAnswered = false;
-    state.flipped = false;
-    renderCurrent();
-  }
-}
+function renderQuestion(){
+  const s = state.session;
+  if (s.index >= s.questions.length) return renderSummary();
 
-/* ---------- SUMMARY ---------- */
-function renderSummary(){
-  const { correct, total, bestStreak } = state.session;
-  const pct = total > 0 ? Math.round(correct/total*100) : 0;
-  const { learned, total: catTotal } = learnedCount(state.category);
+  const q = s.questions[s.index];
+  s.answered = false;
 
-  document.getElementById('sessionProgressText').textContent = total + ' / ' + total;
-  document.getElementById('sessionProgressBar').style.width = '100%';
-  updateStats();
+  const LETTERS = ['A','B','C','D'];
+  const tagClass = s.mode;
+  const tagText = s.mode === 'exam' ? `Prüfung ${s.level}` : MODE_LABEL[s.mode];
+  const levelBadge = s.mode === 'exam'
+    ? `<span class="q-level ${s.level}">${s.level}</span>`
+    : (q.level ? `<span class="q-level ${q.level}">${q.level}</span>` : '');
 
-  contentArea.innerHTML = `
-    <div class="glass summary-card animate">
-      <div class="summary-emoji">🎉</div>
-      <h2 class="summary-title">Hoàn thành phiên!</h2>
-      <div class="summary-sub">Bạn đã hoàn thành ${total} câu hỏi</div>
-      <div class="summary-grid">
-        <div class="summary-stat green">
-          <div class="lbl">Đúng / Tổng</div>
-          <div class="val">${correct} / ${total}</div>
-        </div>
-        <div class="summary-stat gold">
-          <div class="lbl">Tỉ lệ đúng</div>
-          <div class="val">${pct}%</div>
-        </div>
-        <div class="summary-stat gold">
-          <div class="lbl">Chuỗi tốt nhất</div>
-          <div class="val">🔥 ${bestStreak}</div>
-        </div>
-        <div class="summary-stat indigo">
-          <div class="lbl">Đã thuộc chủ đề</div>
-          <div class="val">${learned} / ${catTotal}</div>
-        </div>
+  document.title = `${tagText} · ${s.index+1}/${s.questions.length}`;
+
+  app.innerHTML = `
+    <div class="practice">
+      <div class="practice-top">
+        <button class="back" id="backBtn">← Thoát</button>
+        <span class="practice-tag ${tagClass}">${tagText}</span>
       </div>
-      <div class="summary-actions">
-        <button class="change-btn" id="changeCatBtn">← Đổi đề</button>
-        <button class="restart-btn" id="restartBtn">🔄 Làm lại</button>
+
+      <div class="progress-wrap">
+        <div class="progress-meta">
+          <span class="q-count">Câu ${s.index+1} / ${s.questions.length}</span>
+          <span class="score">✓ ${s.correct} đúng</span>
+        </div>
+        <div class="progress-bar"><i style="width:${(s.index/s.questions.length)*100}%"></i></div>
+      </div>
+
+      <div class="q-card">
+        <div class="q-head">
+          ${levelBadge}
+          <button class="speak-btn" id="speakBtn" title="Nghe tiếng Đức">🔊</button>
+        </div>
+        <div class="q-text">${q.prompt}</div>
+        <div class="options" id="opts"></div>
+        <div id="fbArea"></div>
       </div>
     </div>
   `;
 
-  document.getElementById('restartBtn').addEventListener('click', startNewSession);
-  document.getElementById('changeCatBtn').addEventListener('click', () => {
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-    state.screen = 'setup';
-    studyScreen.style.display = 'none';
-    setupScreen.style.display = 'block';
-    renderCategoryCards();
-    updateSetupLabels();
+  const optsEl = $('#opts');
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.innerHTML = `<span class="opt-letter">${LETTERS[i]}</span>` +
+                    `<span class="opt-text">${esc(opt)}</span>`;
+    btn.addEventListener('click', () => answer(i));
+    optsEl.appendChild(btn);
   });
+
+  $('#backBtn').addEventListener('click', () => {
+    if ('speechSynthesis' in window) speechSynthesis.cancel();
+    renderHome();
+  });
+  $('#speakBtn').addEventListener('click', e => {
+    e.stopPropagation();
+    speak(q.speak, e.currentTarget);
+  });
+
+  // Auto-focus first option for keyboard users
+  setTimeout(() => $('#opts .opt')?.focus(), 60);
 }
 
-/* ============================================================
+function answer(idx){
+  const s = state.session;
+  if (s.answered) return;
+  s.answered = true;
+
+  const q = s.questions[s.index];
+  const isCorrect = idx === q.correct;
+  if (isCorrect) s.correct++;
+
+  const opts = $$('#opts .opt');
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add('correct');
+    else if (i === idx)  b.classList.add('wrong');
+    else                 b.classList.add('dimmed');
+  });
+
+  const LETTERS = ['A','B','C','D'];
+  const fb = $('#fbArea');
+  if (isCorrect) {
+    fb.innerHTML = `<div class="fb correct">✅ Chính xác!<small>${esc(q.explain || '')}</small></div>`;
+  } else {
+    fb.innerHTML = `<div class="fb wrong">❌ Sai rồi! Đáp án đúng: <b>${LETTERS[q.correct]}</b> — <b>${esc(q.options[q.correct])}</b><small>${esc(q.explain || '')}</small></div>`;
+  }
+
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'next-btn';
+  nextBtn.textContent = s.index === s.questions.length - 1 ? 'Xem kết quả →' : 'Câu tiếp →';
+  nextBtn.addEventListener('click', () => {
+    s.index++;
+    renderQuestion();
+  });
+  fb.appendChild(nextBtn);
+
+  // Update score display live
+  $('.progress-meta .score').textContent = `✓ ${s.correct} đúng`;
+}
+
+function renderSummary(){
+  const s = state.session;
+  const total = s.questions.length;
+  const pct = total > 0 ? Math.round(s.correct/total*100) : 0;
+
+  let emoji = '🎉', title = 'Hoàn thành!', sub = 'Bạn đã hoàn thành phiên học';
+  if (pct === 100)      { emoji = '🏆'; title = 'Tuyệt vời!'; sub = 'Bạn trả lời đúng tất cả!'; }
+  else if (pct >= 80)   { emoji = '🌟'; title = 'Rất tốt!';   sub = 'Bạn nắm bài rất chắc'; }
+  else if (pct >= 50)   { emoji = '👍'; title = 'Khá tốt!';   sub = 'Tiếp tục luyện tập nhé'; }
+  else                  { emoji = '💪'; title = 'Cố gắng lên!'; sub = 'Ôn lại và thử lần nữa'; }
+
+  const tagText = s.mode === 'exam' ? `Prüfung ${s.level}` : MODE_LABEL[s.mode];
+
+  document.title = `Kết quả · ${tagText}`;
+
+  app.innerHTML = `
+    <div class="practice">
+      <div class="practice-top">
+        <button class="back" id="backBtn">← Trang chủ</button>
+        <span class="practice-tag ${s.mode === 'exam' ? 'exam' : s.mode}">${tagText}</span>
+      </div>
+
+      <div class="summary">
+        <div class="sum-emoji">${emoji}</div>
+        <h2 class="sum-title">${title}</h2>
+        <p class="sum-sub">${sub}</p>
+
+        <div class="sum-stats">
+          <div class="sum-stat green">
+            <div class="lbl">Đúng / Tổng</div>
+            <div class="val">${s.correct} / ${total}</div>
+          </div>
+          <div class="sum-stat gold">
+            <div class="lbl">Tỉ lệ đúng</div>
+            <div class="val">${pct}%</div>
+          </div>
+        </div>
+
+        <div class="sum-actions">
+          <button class="home-btn" id="homeBtn">🏠 Trang chủ</button>
+          <button class="again-btn" id="againBtn">🔄 Làm lại</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  $('#homeBtn').addEventListener('click', renderHome);
+  $('#backBtn').addEventListener('click', renderHome);
+  $('#againBtn').addEventListener('click', () => startPractice(s.mode, s.level));
+}
+
+/* ══════════════════════════════════════════════════════════
    KEYBOARD
-   ============================================================ */
+══════════════════════════════════════════════════════════ */
 document.addEventListener('keydown', e => {
-  if (state.screen !== 'study') return;
+  if (state.view !== 'practice') return;
   const tag = (e.target.tagName || '').toLowerCase();
   if (tag === 'input' || tag === 'textarea') return;
 
-  if (state.section === 'quiz') {
-    if (e.code === 'Digit1' || e.code === 'Numpad1') { e.preventDefault(); if (!state.quizAnswered) document.querySelectorAll('.option')[0]?.click(); }
-    else if (e.code === 'Digit2' || e.code === 'Numpad2') { e.preventDefault(); if (!state.quizAnswered) document.querySelectorAll('.option')[1]?.click(); }
-    else if (e.code === 'Digit3' || e.code === 'Numpad3') { e.preventDefault(); if (!state.quizAnswered) document.querySelectorAll('.option')[2]?.click(); }
-    else if (e.code === 'Digit4' || e.code === 'Numpad4') { e.preventDefault(); if (!state.quizAnswered) document.querySelectorAll('.option')[3]?.click(); }
-  } else if (state.section === 'flash') {
-    if (e.code === 'Space') {
+  const s = state.session;
+  if (s.index >= s.questions.length) return;
+
+  if (!s.answered) {
+    const idx = { 'Digit1':0, 'Digit2':1, 'Digit3':2, 'Digit4':3,
+                  'Numpad1':0, 'Numpad2':1, 'Numpad3':2, 'Numpad4':3 }[e.code];
+    if (idx !== undefined) {
       e.preventDefault();
-      if (!state.flipped) document.getElementById('flipBtn')?.click();
+      $$('#opts .opt')[idx]?.click();
+    }
+  } else {
+    if (e.code === 'Enter' || e.code === 'Space') {
+      e.preventDefault();
+      $('.next-btn')?.click();
     }
   }
 });
 
-/* ============================================================
+/* ══════════════════════════════════════════════════════════
    INIT
-   ============================================================ */
-renderCategoryCards();
-updateSetupLabels();
+══════════════════════════════════════════════════════════ */
+renderHome();
 </script>
 </body>
 </html>
