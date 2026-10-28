@@ -5,243 +5,544 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Học tiếng Đức – Số 1-1000 &amp; Bảng chữ cái</title>
 <style>
-  :root{
-    --panel:#16213a;
-    --text:#e8eefc;
-    --muted:#8fa3c8;
-    --gold:#f4b400;
-    --red:#f85149;
-    --red-light:#ffa198;
-    --green:#2ea043;
-    --green-light:#7ee787;
+  :root {
+    --bg-0: #080b14;
+    --bg-1: #0f1424;
+    --surface: rgba(255,255,255,0.04);
+    --surface-hover: rgba(255,255,255,0.075);
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.16);
+    --text: #eef2fb;
+    --text-dim: #c3cce0;
+    --muted: #7d8db3;
+    --gold: #fbbf24;
+    --gold-2: #f59e0b;
+    --gold-glow: rgba(251,191,36,0.35);
+    --green: #10b981;
+    --green-soft: rgba(16,185,129,0.14);
+    --red: #ef4444;
+    --red-soft: rgba(239,68,68,0.14);
+    --indigo: #6366f1;
+    --indigo-2: #4f46e5;
   }
-  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  body{
-    margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
-    padding:20px 14px;
-    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
-    background:radial-gradient(1200px 600px at 50% -10%,#1b2b4d,#0b1220 65%);
-    color:var(--text);
-  }
-  .app{width:100%;max-width:620px;display:flex;flex-direction:column;gap:12px}
-
-  h1{
-    font-size:clamp(17px,4.6vw,23px);text-align:center;margin:0;font-weight:800;letter-spacing:.3px;
-  }
-  h1 em{
-    font-style:normal;
-    background:linear-gradient(90deg,#3a3a3a,#fff 25%,var(--red) 55%,var(--gold) 85%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
-
-  /* ====== MAIN MENU (2 phần) ====== */
-  .section-menu{
-    display:flex;gap:8px;background:var(--panel);
-    padding:8px;border-radius:16px;border:1px solid #24365c;
-  }
-  .section-menu button{
-    flex:1;padding:14px 10px;border:0;border-radius:12px;
-    background:transparent;color:var(--muted);
-    font-size:15px;font-weight:800;cursor:pointer;
-    transition:.22s;font-family:inherit;letter-spacing:.3px;
-  }
-  .section-menu button[data-section="quiz"].active{
-    background:linear-gradient(135deg,#4a6db8,#2a3d63);color:#fff;
-    box-shadow:0 4px 14px rgba(74,109,184,.4);
-  }
-  .section-menu button[data-section="essay"].active{
-    background:linear-gradient(135deg,#2ea043,#1a6b2e);color:#fff;
-    box-shadow:0 4px 14px rgba(46,160,67,.4);
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 14px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    color: var(--text);
+    background: var(--bg-0);
+    background-image:
+      radial-gradient(900px 500px at 15% -10%, rgba(99,102,241,0.18), transparent 60%),
+      radial-gradient(800px 500px at 90% 10%, rgba(251,191,36,0.10), transparent 55%),
+      radial-gradient(900px 600px at 50% 110%, rgba(16,185,129,0.10), transparent 60%),
+      linear-gradient(180deg, var(--bg-0), var(--bg-1));
+    background-attachment: fixed;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* ====== Sub-mode (Số / Chữ) ====== */
-  .modes{display:flex;gap:6px;background:var(--panel);padding:5px;border-radius:13px;border:1px solid #24365c}
-  .modes button{
-    flex:1;padding:9px 6px;border:0;border-radius:9px;background:transparent;color:var(--muted);
-    font-size:13px;font-weight:700;cursor:pointer;transition:.2s;font-family:inherit;
+  .app {
+    width: 100%;
+    max-width: 620px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    animation: appIn 0.5s cubic-bezier(0.2,0.8,0.2,1);
   }
-  .modes button.active{
-    background:linear-gradient(135deg,var(--gold),#e08b00);color:#1a1200;
-    box-shadow:0 4px 12px rgba(244,180,0,.3);
-  }
-
-  /* ====== Toolbar ====== */
-  .toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-  select{
-    flex:1;min-width:150px;padding:10px 12px;border-radius:11px;border:1px solid #2a3d63;
-    background:#182741;color:var(--text);font-size:13px;font-family:inherit;font-weight:600;cursor:pointer;
-  }
-  select:focus{outline:2px solid rgba(244,180,0,.5);outline-offset:1px}
-
-  .toggle{
-    display:flex;align-items:center;gap:7px;
-    padding:9px 13px;border-radius:11px;
-    background:#182741;border:1px solid #2a3d63;
-    font-size:13px;font-weight:700;color:var(--muted);
-    cursor:pointer;user-select:none;transition:.18s;white-space:nowrap;
-  }
-  .toggle:hover{background:#213458}
-  .toggle input{accent-color:var(--gold);width:16px;height:16px;cursor:pointer;margin:0}
-  .toggle.on{color:#f4d06a;border-color:rgba(244,180,0,.55);background:rgba(244,180,0,.08)}
-
-  /* ====== Stats ====== */
-  .stats{
-    display:flex;gap:8px;justify-content:space-around;
-    background:var(--panel);border:1px solid #24365c;border-radius:14px;padding:11px 10px;
-    font-size:12.5px;font-weight:700;
-  }
-  .stats span{color:var(--muted);display:flex;align-items:center;gap:5px}
-  .stats b{color:var(--text);font-size:15px;font-weight:800}
-
-  /* ====== Card ====== */
-  .quiz-card{
-    background:linear-gradient(160deg,#1d2f52,#141f34);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:20px;padding:22px 20px;
-    box-shadow:0 20px 45px rgba(0,0,0,.5);
-    position:relative;
-  }
-  .q-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px}
-  .q-label{
-    font-size:11px;letter-spacing:2.2px;text-transform:uppercase;
-    color:var(--muted);font-weight:800;
-  }
-  .q-number{
-    font-size:11px;font-weight:800;color:#a9bcdd;
-    background:rgba(255,255,255,.07);padding:4px 10px;border-radius:99px;margin-left:auto;
+  @keyframes appIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  .speak-btn{
-    width:40px;height:40px;border-radius:50%;padding:0;flex-shrink:0;
-    border:1px solid rgba(255,255,255,.14);
-    background:rgba(255,255,255,.08);color:#e8eefc;
-    font-size:18px;line-height:1;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-    transition:.18s;
-    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  h1 {
+    font-size: clamp(18px, 4.8vw, 24px);
+    text-align: center;
+    margin: 0 0 2px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    line-height: 1.3;
   }
-  .speak-btn:hover{background:rgba(255,255,255,.18);transform:scale(1.07)}
-  .speak-btn:active{transform:scale(.93)}
-  .speak-btn.speaking{
-    background:var(--gold);color:#1a1200;border-color:transparent;
-    animation:pulse .9s infinite;
-  }
-  @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(244,180,0,.55)}
-    70%{box-shadow:0 0 0 14px rgba(244,180,0,0)}
-    100%{box-shadow:0 0 0 0 rgba(244,180,0,0)}
+  h1 em {
+    font-style: normal;
+    background: linear-gradient(100deg, #fff 0%, var(--gold) 60%, var(--gold-2) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
-  .q-text{
-    font-size:clamp(16.5px,4.4vw,20px);
-    font-weight:700;line-height:1.45;
-    margin-bottom:18px;min-height:2.6em;
+  /* ===== Section menu ===== */
+  .section-menu {
+    display: flex;
+    gap: 6px;
+    background: var(--surface);
+    padding: 6px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
   }
-  .q-text b{color:var(--gold)}
-
-  /* ====== Options ====== */
-  .options{display:flex;flex-direction:column;gap:9px}
-  .option{
-    display:flex;align-items:center;gap:13px;
-    padding:13px 15px;
-    background:#182741;border:1.5px solid #2a3d63;border-radius:13px;
-    color:var(--text);font-family:inherit;font-size:15px;font-weight:600;
-    cursor:pointer;text-align:left;transition:all .16s;
+  .section-menu button {
+    flex: 1;
+    padding: 13px 10px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 14.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.2,0.8,0.2,1);
+    font-family: inherit;
   }
-  .option:hover:not(:disabled){background:#213458;border-color:#3d5585;transform:translateX(2px)}
-  .option:disabled{cursor:default}
-  .option-letter{
-    display:flex;align-items:center;justify-content:center;
-    width:32px;height:32px;border-radius:9px;flex-shrink:0;
-    background:rgba(244,180,0,.15);color:var(--gold);
-    font-weight:800;font-size:14px;
+  .section-menu button:hover:not(.active) {
+    color: var(--text-dim);
+    background: var(--surface-hover);
   }
-  .option-text{flex:1;word-break:break-word;line-height:1.3}
-  .option.correct{background:rgba(46,160,67,.2);border-color:var(--green)}
-  .option.correct .option-letter{background:rgba(46,160,67,.3);color:var(--green-light)}
-  .option.correct .option-text{color:var(--green-light)}
-  .option.wrong{background:rgba(248,81,73,.18);border-color:var(--red)}
-  .option.wrong .option-letter{background:rgba(248,81,73,.3);color:var(--red-light)}
-  .option.wrong .option-text{color:var(--red-light)}
-  .option.dimmed{opacity:.45}
-
-  /* ====== Essay input ====== */
-  .essay-input{
-    width:100%;
-    padding:15px 18px;
-    border-radius:12px;
-    border:2px solid #2a3d63;
-    background:#0f1a30;
-    color:var(--text);
-    font-family:inherit;
-    font-size:clamp(16.5px,4.4vw,20px);
-    font-weight:700;
-    margin-bottom:14px;
-    transition:.18s;
+  .section-menu button[data-section="quiz"].active {
+    background: linear-gradient(135deg, var(--indigo), var(--indigo-2));
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(99,102,241,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
   }
-  .essay-input::placeholder{color:#4e638a;font-weight:600;font-size:15px}
-  .essay-input:focus{
-    outline:none;border-color:var(--gold);background:#142138;
-    box-shadow:0 0 0 4px rgba(244,180,0,.15);
-  }
-  .essay-input:disabled{opacity:.7;cursor:not-allowed}
-  .essay-input.correct{
-    border-color:var(--green);background:rgba(46,160,67,.1);color:var(--green-light);
-  }
-  .essay-input.wrong{
-    border-color:var(--red);background:rgba(248,81,73,.08);color:var(--red-light);
+  .section-menu button[data-section="essay"].active {
+    background: linear-gradient(135deg, var(--green), #059669);
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(16,185,129,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
   }
 
-  /* ====== Feedback ====== */
-  .feedback{
-    margin-top:14px;padding:12px 16px;border-radius:12px;
-    font-size:14px;font-weight:600;line-height:1.5;
-    display:none;
+  /* ===== Sub modes ===== */
+  .modes {
+    display: flex;
+    gap: 5px;
+    background: var(--surface);
+    padding: 5px;
+    border-radius: 13px;
+    border: 1px solid var(--border);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
   }
-  .feedback.show{display:block}
-  .feedback.correct{background:rgba(46,160,67,.15);color:var(--green-light);border:1px solid rgba(46,160,67,.3)}
-  .feedback.wrong{background:rgba(248,81,73,.12);color:var(--red-light);border:1px solid rgba(248,81,73,.3)}
-  .feedback small{display:block;margin-top:6px;font-size:12.5px;opacity:.9;font-weight:600;line-height:1.5}
-  .feedback small b{color:#fff}
-  .feedback small i{font-style:normal;background:rgba(255,255,255,.1);padding:1px 6px;border-radius:4px}
-
-  /* ====== Buttons ====== */
-  .next-btn{
-    width:100%;padding:16px;border-radius:14px;border:0;
-    background:linear-gradient(135deg,var(--gold),#e08b00);
-    color:#1a1200;font-family:inherit;font-size:16px;font-weight:800;
-    cursor:pointer;box-shadow:0 6px 22px rgba(244,180,0,.28);
-    transition:.16s;display:none;
+  .modes button {
+    flex: 1;
+    padding: 9px 6px;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.22s;
+    font-family: inherit;
   }
-  .next-btn:hover{transform:translateY(-1px);box-shadow:0 8px 26px rgba(244,180,0,.36)}
-  .next-btn:active{transform:translateY(0) scale(.99)}
-
-  .essay-actions{display:flex;gap:9px;margin-top:14px}
-  .essay-actions button{
-    flex:1;padding:14px;border-radius:12px;border:0;
-    font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;
-    transition:.16s;
-  }
-  .check-btn{
-    background:linear-gradient(135deg,#2ea043,#1a6b2e);
-    color:#fff;box-shadow:0 6px 22px rgba(46,160,67,.3);
-  }
-  .check-btn:hover{transform:translateY(-1px)}
-  .check-btn:active{transform:translateY(0) scale(.99)}
-  .essay-actions .next-btn{display:none;margin:0;width:auto;flex:1}
-
-  .hint{text-align:center;font-size:12px;color:#61789e;font-weight:600;line-height:1.6}
-  .hint kbd{
-    background:#1c2b48;border:1px solid #2a3d63;border-radius:4px;
-    padding:1px 6px;font-size:11px;font-family:inherit;color:#a9bcdd;
+  .modes button:hover:not(.active) { color: var(--text-dim); background: var(--surface-hover); }
+  .modes button.active {
+    background: linear-gradient(135deg, var(--gold), var(--gold-2));
+    color: #1a1200;
+    box-shadow: 0 4px 14px var(--gold-glow);
   }
 
-  @media (max-width:420px){
-    .quiz-card{padding:18px 14px}
-    .option{padding:11px 12px;font-size:14px}
-    .option-letter{width:28px;height:28px;font-size:12.5px}
-    .stats{font-size:11.5px}
-    .section-menu button{font-size:14px;padding:12px 8px}
+  /* ===== Toolbar ===== */
+  .toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  select {
+    flex: 1;
+    min-width: 150px;
+    padding: 11px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 13px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+  select:hover { background: var(--surface-hover); border-color: var(--border-strong); }
+  select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-glow); }
+  select option { background: #1a2236; color: var(--text); }
+
+  .toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.22s;
+    white-space: nowrap;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+  .toggle:hover { background: var(--surface-hover); color: var(--text-dim); }
+  .toggle input { accent-color: var(--gold); width: 16px; height: 16px; cursor: pointer; margin: 0; }
+  .toggle.on {
+    color: var(--gold);
+    border-color: rgba(251,191,36,0.45);
+    background: rgba(251,191,36,0.08);
+  }
+
+  /* ===== Stats ===== */
+  .stats { display: flex; gap: 8px; }
+  .stat {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 11px 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--muted);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+  .stat b {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat.streak b { color: var(--gold); }
+  .stat.correct b { color: var(--green); }
+
+  /* ===== Quiz card ===== */
+  .quiz-card {
+    background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 22px 20px;
+    box-shadow:
+      0 24px 60px -20px rgba(0,0,0,0.7),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    position: relative;
+  }
+  .quiz-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(251,191,36,0.22), transparent 40%, transparent 60%, rgba(99,102,241,0.18));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .quiz-card.animate { animation: cardIn 0.4s cubic-bezier(0.2,0.8,0.2,1); }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(8px) scale(0.99); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .q-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 10px;
+  }
+  .q-label {
+    font-size: 10.5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 800;
+  }
+  .q-number {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--gold);
+    background: rgba(251,191,36,0.12);
+    border: 1px solid rgba(251,191,36,0.25);
+    padding: 4px 11px;
+    border-radius: 99px;
+    margin-left: auto;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .speak-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 0;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .speak-btn:hover { background: var(--surface-hover); border-color: var(--border-strong); transform: scale(1.08); }
+  .speak-btn:active { transform: scale(0.94); }
+  .speak-btn.speaking {
+    background: linear-gradient(135deg, var(--gold), var(--gold-2));
+    color: #1a1200;
+    border-color: transparent;
+    animation: pulse 1s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 var(--gold-glow); }
+    70% { box-shadow: 0 0 0 14px rgba(251,191,36,0); }
+    100% { box-shadow: 0 0 0 0 rgba(251,191,36,0); }
+  }
+
+  .q-text {
+    font-size: clamp(17px, 4.6vw, 21px);
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    min-height: 2.6em;
+    letter-spacing: -0.2px;
+  }
+  .q-text b { color: var(--gold); font-weight: 800; }
+
+  /* ===== Options ===== */
+  .options { display: flex; flex-direction: column; gap: 9px; }
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.18s cubic-bezier(0.2,0.8,0.2,1);
+    animation: optionIn 0.35s cubic-bezier(0.2,0.8,0.2,1) backwards;
+  }
+  .option:nth-child(1) { animation-delay: 0.04s; }
+  .option:nth-child(2) { animation-delay: 0.08s; }
+  .option:nth-child(3) { animation-delay: 0.12s; }
+  .option:nth-child(4) { animation-delay: 0.16s; }
+  @keyframes optionIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .option:hover:not(:disabled) {
+    background: var(--surface-hover);
+    border-color: var(--border-strong);
+    transform: translateX(3px);
+  }
+  .option:disabled { cursor: default; }
+  .option-letter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    flex-shrink: 0;
+    background: rgba(251,191,36,0.13);
+    color: var(--gold);
+    font-weight: 800;
+    font-size: 13.5px;
+  }
+  .option-text { flex: 1; word-break: break-word; line-height: 1.35; }
+  .option.correct {
+    background: var(--green-soft);
+    border-color: var(--green);
+    animation: pop 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  @keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+  }
+  .option.correct .option-letter { background: rgba(16,185,129,0.3); color: #6ee7b7; }
+  .option.correct .option-text { color: #6ee7b7; }
+  .option.wrong { background: var(--red-soft); border-color: var(--red); }
+  .option.wrong .option-letter { background: rgba(239,68,68,0.3); color: #fca5a5; }
+  .option.wrong .option-text { color: #fca5a5; }
+  .option.dimmed { opacity: 0.4; }
+
+  /* ===== Essay input ===== */
+  .essay-input {
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 14px;
+    border: 2px solid var(--border);
+    background: rgba(0,0,0,0.25);
+    color: var(--text);
+    font-family: inherit;
+    font-size: clamp(17px, 4.6vw, 21px);
+    font-weight: 700;
+    transition: all 0.22s;
+    letter-spacing: -0.2px;
+  }
+  .essay-input::placeholder {
+    color: #4d5d80;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0;
+  }
+  .essay-input:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: rgba(251,191,36,0.04);
+    box-shadow: 0 0 0 4px var(--gold-glow);
+  }
+  .essay-input:disabled { opacity: 0.7; cursor: not-allowed; }
+  .essay-input.correct {
+    border-color: var(--green);
+    background: var(--green-soft);
+    color: #6ee7b7;
+  }
+  .essay-input.wrong {
+    border-color: var(--red);
+    background: var(--red-soft);
+    color: #fca5a5;
+  }
+
+  /* ===== Feedback row (with mini next) ===== */
+  .feedback-row {
+    display: none;
+    gap: 10px;
+    margin-top: 16px;
+    align-items: center;
+    animation: rowIn 0.35s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .feedback-row.show { display: flex; }
+  @keyframes rowIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .feedback {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .feedback.correct {
+    background: var(--green-soft);
+    color: #6ee7b7;
+    border: 1px solid rgba(16,185,129,0.3);
+  }
+  .feedback.wrong {
+    background: var(--red-soft);
+    color: #fca5a5;
+    border: 1px solid rgba(239,68,68,0.3);
+  }
+  .feedback small {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    opacity: 0.9;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .feedback small b { color: #fff; font-weight: 700; }
+  .feedback small i {
+    font-style: normal;
+    background: rgba(255,255,255,0.1);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+
+  .next-mini {
+    flex-shrink: 0;
+    height: 42px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-2));
+    color: #1a1200;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 16px var(--gold-glow);
+    transition: all 0.2s cubic-bezier(0.2,0.8,0.2,1);
+    white-space: nowrap;
+  }
+  .next-mini:hover {
+    transform: translateY(-1px) scale(1.03);
+    box-shadow: 0 6px 22px var(--gold-glow);
+  }
+  .next-mini:active { transform: translateY(0) scale(0.98); }
+
+  /* ===== Check button ===== */
+  .check-btn {
+    width: 100%;
+    margin-top: 14px;
+    padding: 15px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(135deg, var(--green), #059669);
+    color: #fff;
+    font-family: inherit;
+    font-size: 15.5px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 6px 22px rgba(16,185,129,0.35);
+    transition: all 0.2s;
+    letter-spacing: 0.1px;
+  }
+  .check-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(16,185,129,0.45); }
+  .check-btn:active { transform: translateY(0) scale(0.99); }
+
+  /* ===== Hint ===== */
+  .hint {
+    text-align: center;
+    font-size: 11.5px;
+    color: #5a6b8f;
+    font-weight: 500;
+    line-height: 1.7;
+    padding: 0 10px;
+  }
+  .hint kbd {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 1px 7px;
+    font-size: 10.5px;
+    font-family: inherit;
+    color: var(--text-dim);
+    font-weight: 700;
+  }
+
+  @media (max-width: 420px) {
+    .quiz-card { padding: 18px 15px; border-radius: 20px; }
+    .option { padding: 12px 13px; font-size: 14px; gap: 11px; }
+    .option-letter { width: 28px; height: 28px; font-size: 12.5px; }
+    .stat { font-size: 11.5px; padding: 10px 6px; }
+    .stat b { font-size: 14px; }
+    .section-menu button { font-size: 13.5px; padding: 12px 8px; }
+    .next-mini { height: 40px; padding: 0 13px; font-size: 13.5px; }
+    .feedback { padding: 11px 13px; font-size: 13px; }
   }
 </style>
 </head>
@@ -250,19 +551,19 @@
 <div class="app">
   <h1>🇩🇪 Học tiếng Đức: <em>Số 1–1000 &amp; Bảng chữ cái</em></h1>
 
-  <!-- ═══════ MENU CHÍNH: 2 PHẦN ═══════ -->
+  <!-- Menu chính -->
   <div class="section-menu">
     <button data-section="quiz" class="active">📝 Trắc nghiệm</button>
     <button data-section="essay">✍️ Tự luận</button>
   </div>
 
-  <!-- Sub-mode -->
+  <!-- Chế độ -->
   <div class="modes">
     <button data-mode="numbers" class="active">🔢 Số 1–1000</button>
     <button data-mode="alphabet">🔤 Bảng chữ cái</button>
   </div>
 
-  <!-- Toolbar -->
+  <!-- Công cụ -->
   <div class="toolbar">
     <select id="direction">
       <option value="vi-de">Số ➜ Tiếng Đức</option>
@@ -274,54 +575,56 @@
     </label>
   </div>
 
-  <!-- Stats -->
+  <!-- Thống kê -->
   <div class="stats">
-    <span>✅ Đúng <b id="correctCount">0</b></span>
-    <span>📊 Tổng <b id="totalCount">0</b></span>
-    <span>🔥 Chuỗi <b id="streak">0</b></span>
+    <div class="stat correct"><span>✅</span> <b id="correctCount">0</b></div>
+    <div class="stat"><span>📊</span> <b id="totalCount">0</b></div>
+    <div class="stat streak"><span>🔥</span> <b id="streak">0</b></div>
   </div>
 
-  <!-- ═══════ PHẦN 1: TRẮC NGHIỆM ═══════ -->
+  <!-- PHẦN 1: TRẮC NGHIỆM -->
   <div id="quizSection">
-    <div class="quiz-card">
+    <div class="quiz-card" id="quizCard">
       <div class="q-header">
         <span class="q-label">Câu hỏi</span>
-        <button class="speak-btn" id="quizSpeakBtn" title="Nghe phát âm tiếng Đức" aria-label="Phát âm">🔊</button>
+        <button class="speak-btn" id="quizSpeakBtn" title="Nghe phát âm tiếng Đức">🔊</button>
         <span class="q-number" id="quizQNumber">#1</span>
       </div>
       <div class="q-text" id="quizQuestionText">Đang tải…</div>
       <div class="options" id="quizOptions"></div>
-      <div class="feedback" id="quizFeedback"></div>
+      <div class="feedback-row" id="quizFeedbackRow">
+        <div class="feedback" id="quizFeedback"></div>
+        <button class="next-mini" id="quizNextBtn">Tiếp →</button>
+      </div>
     </div>
-    <button class="next-btn" id="quizNextBtn">Câu tiếp theo →</button>
   </div>
 
-  <!-- ═══════ PHẦN 2: TỰ LUẬN ═══════ -->
+  <!-- PHẦN 2: TỰ LUẬN -->
   <div id="essaySection" style="display:none">
-    <div class="quiz-card">
+    <div class="quiz-card" id="essayCard">
       <div class="q-header">
         <span class="q-label">Câu hỏi</span>
-        <button class="speak-btn" id="essaySpeakBtn" title="Nghe gợi ý phát âm tiếng Đức" aria-label="Phát âm">🔊</button>
+        <button class="speak-btn" id="essaySpeakBtn" title="Nghe gợi ý phát âm">🔊</button>
         <span class="q-number" id="essayQNumber">#1</span>
       </div>
       <div class="q-text" id="essayQuestionText"></div>
       <input type="text" id="essayInput" class="essay-input" placeholder="Nhập câu trả lời…" autocomplete="off" autocapitalize="off" spellcheck="false">
-      <div class="feedback" id="essayFeedback"></div>
-      <div class="essay-actions">
-        <button class="check-btn" id="essayCheckBtn">✓ Kiểm tra</button>
-        <button class="next-btn" id="essayNextBtn">Câu tiếp →</button>
+      <button class="check-btn" id="essayCheckBtn">✓ Kiểm tra</button>
+      <div class="feedback-row" id="essayFeedbackRow">
+        <div class="feedback" id="essayFeedback"></div>
+        <button class="next-mini" id="essayNextBtn">Tiếp →</button>
       </div>
     </div>
   </div>
 
   <div class="hint">
-    <kbd>Enter</kbd> = kiểm tra / câu tiếp · <kbd>1</kbd>–<kbd>4</kbd> = chọn đáp án (trắc nghiệm) · <kbd>🔊</kbd> = nghe tiếng Đức
+    <kbd>Enter</kbd> kiểm tra / câu tiếp · <kbd>1</kbd>–<kbd>4</kbd> chọn đáp án · <kbd>🔊</kbd> nghe tiếng Đức
   </div>
 </div>
 
 <script>
 /* ============================================================
-   CHUYỂN SỐ → TIẾNG ĐỨC (1 – 1000)
+   SỐ → TIẾNG ĐỨC (1 – 1000)
    ============================================================ */
 const ONES = ['', 'ein', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben', 'acht', 'neun'];
 const TEENS = ['zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn'];
@@ -331,7 +634,6 @@ function numToGerman(n) {
   if (n < 0 || n > 1000) return '?';
   if (n === 0) return 'null';
   let r = '';
-
   if (n >= 1000) {
     const th = Math.floor(n / 1000);
     r += (th === 1 ? 'ein' : ONES[th]) + 'tausend';
@@ -358,7 +660,6 @@ function numToGerman(n) {
   return r;
 }
 
-/* Bảng chữ cái */
 const alphabet = [
   { letter:'A', name:'ah',        ex:'Apfel',    mean:'quả táo' },
   { letter:'B', name:'beh',       ex:'Buch',     mean:'quyển sách' },
@@ -396,18 +697,15 @@ const alphabet = [
    TRẠNG THÁI
    ============================================================ */
 const state = {
-  section: 'quiz',        // 'quiz' | 'essay'
-  mode: 'numbers',        // 'numbers' | 'alphabet'
+  section: 'quiz',
+  mode: 'numbers',
   direction: 'vi-de',
   correct: 0, total: 0, streak: 0,
   autoSpeak: false,
-  // quiz
   currentQuiz: null, quizAnswered: false, quizNo: 0,
-  // essay
   currentEssay: null, essayAnswered: false, essayNo: 0,
 };
 
-/* Elements */
 const el = {
   direction:      document.getElementById('direction'),
   autoSpeak:      document.getElementById('autoSpeak'),
@@ -418,22 +716,26 @@ const el = {
   sectionBtns:    document.querySelectorAll('.section-menu button'),
   modeBtns:       document.querySelectorAll('.modes button'),
   // quiz
-  quizSection:     document.getElementById('quizSection'),
-  quizSpeakBtn:    document.getElementById('quizSpeakBtn'),
-  quizQNumber:     document.getElementById('quizQNumber'),
-  quizQuestionText:document.getElementById('quizQuestionText'),
-  quizOptions:     document.getElementById('quizOptions'),
-  quizFeedback:    document.getElementById('quizFeedback'),
-  quizNextBtn:     document.getElementById('quizNextBtn'),
+  quizSection:      document.getElementById('quizSection'),
+  quizCard:         document.getElementById('quizCard'),
+  quizSpeakBtn:     document.getElementById('quizSpeakBtn'),
+  quizQNumber:      document.getElementById('quizQNumber'),
+  quizQuestionText: document.getElementById('quizQuestionText'),
+  quizOptions:      document.getElementById('quizOptions'),
+  quizFeedback:     document.getElementById('quizFeedback'),
+  quizFeedbackRow:  document.getElementById('quizFeedbackRow'),
+  quizNextBtn:      document.getElementById('quizNextBtn'),
   // essay
-  essaySection:    document.getElementById('essaySection'),
-  essaySpeakBtn:   document.getElementById('essaySpeakBtn'),
-  essayQNumber:    document.getElementById('essayQNumber'),
-  essayQuestionText:document.getElementById('essayQuestionText'),
-  essayInput:      document.getElementById('essayInput'),
-  essayFeedback:   document.getElementById('essayFeedback'),
-  essayCheckBtn:   document.getElementById('essayCheckBtn'),
-  essayNextBtn:    document.getElementById('essayNextBtn'),
+  essaySection:      document.getElementById('essaySection'),
+  essayCard:         document.getElementById('essayCard'),
+  essaySpeakBtn:     document.getElementById('essaySpeakBtn'),
+  essayQNumber:      document.getElementById('essayQNumber'),
+  essayQuestionText: document.getElementById('essayQuestionText'),
+  essayInput:        document.getElementById('essayInput'),
+  essayFeedback:     document.getElementById('essayFeedback'),
+  essayFeedbackRow:  document.getElementById('essayFeedbackRow'),
+  essayCheckBtn:     document.getElementById('essayCheckBtn'),
+  essayNextBtn:      document.getElementById('essayNextBtn'),
 };
 
 const LETTERS = ['A','B','C','D'];
@@ -452,35 +754,26 @@ function shuffle(a) {
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
-
-/* Chuẩn hoá câu trả lời tiếng Đức — chấp nhận cả ae/oe/ue/ss */
 function normalizeGerman(s) {
   return String(s).toLowerCase().trim()
-    .replace(/ä/g,'ae')
-    .replace(/ö/g,'oe')
-    .replace(/ü/g,'ue')
-    .replace(/ß/g,'ss')
-    .replace(/[-_]/g,' ')
-    .replace(/\s+/g,' ');
+    .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss')
+    .replace(/[-_]/g,' ').replace(/\s+/g,' ');
 }
 
 /* ============================================================
-   ÂM THANH (Web Speech API)
+   ÂM THANH
    ============================================================ */
 let germanVoice = null;
 function loadVoices() {
   if (!('speechSynthesis' in window)) return;
   const voices = window.speechSynthesis.getVoices();
-  germanVoice =
-    voices.find(v => /^de(-|_)/i.test(v.lang)) ||
-    voices.find(v => /deutsch|german/i.test(v.name)) ||
-    null;
+  germanVoice = voices.find(v => /^de(-|_)/i.test(v.lang)) ||
+                voices.find(v => /deutsch|german/i.test(v.name)) || null;
 }
 if ('speechSynthesis' in window) {
   loadVoices();
   window.speechSynthesis.onvoiceschanged = loadVoices;
 }
-
 function speakGerman(text, btn) {
   if (!text) return;
   if (!('speechSynthesis' in window)) {
@@ -494,24 +787,21 @@ function speakGerman(text, btn) {
   u.pitch = 1;
   if (germanVoice) u.voice = germanVoice;
 
-  // Xác định nút nào đang "nói" để thêm hiệu ứng
   document.querySelectorAll('.speak-btn').forEach(b => b.classList.remove('speaking'));
   const target = btn || null;
   if (target) target.classList.add('speaking');
-
   u.onend = () => { if (target) target.classList.remove('speaking'); };
   u.onerror = () => { if (target) target.classList.remove('speaking'); };
   window.speechSynthesis.speak(u);
 }
 
 /* ============================================================
-   TẠO CÂU HỎI — TRẮC NGHIỆM
+   TẠO CÂU HỎI TRẮC NGHIỆM
    ============================================================ */
 function buildNumberDistractors(correctNum, asGerman) {
   const set = new Set();
   const correctStr = asGerman ? numToGerman(correctNum) : String(correctNum);
   const candidates = [];
-
   const offsets = [-1, 1, -2, 2, -10, 10, -20, 20, -100, 100, -11, 11, -101, 101];
   for (const o of offsets) {
     const c = correctNum + o;
@@ -529,7 +819,6 @@ function buildNumberDistractors(correctNum, asGerman) {
     }
   }
   for (let i = 0; i < 20; i++) candidates.push(randInt(1, 1000));
-
   shuffle(candidates);
   for (const c of candidates) {
     if (set.size >= 3) break;
@@ -556,10 +845,8 @@ function genQuizNumber() {
     const options = shuffle([correct, ...buildNumberDistractors(n, true)]);
     return {
       questionHTML: `Số <b>${n}</b> trong tiếng Đức viết là gì?`,
-      options,
-      correctIndex: options.indexOf(correct),
-      speakText: correct,
-      hint: '',
+      options, correctIndex: options.indexOf(correct),
+      speakText: correct, hint: '',
     };
   } else {
     const german = numToGerman(n);
@@ -567,10 +854,8 @@ function genQuizNumber() {
     const options = shuffle([correct, ...buildNumberDistractors(n, false)]);
     return {
       questionHTML: `Từ tiếng Đức <b>"${german}"</b> là số nào?`,
-      options,
-      correctIndex: options.indexOf(correct),
-      speakText: german,
-      hint: `Số đúng: ${n}`,
+      options, correctIndex: options.indexOf(correct),
+      speakText: german, hint: `Số đúng: ${n}`,
     };
   }
 }
@@ -579,14 +864,12 @@ function genQuizAlphabet() {
   const correct = alphabet[randInt(0, alphabet.length - 1)];
   const others = alphabet.filter(a => a !== correct);
   shuffle(others);
-
   if (state.direction === 'vi-de') {
     const distractors = others.slice(0, 3).map(a => a.name);
     const options = shuffle([correct.name, ...distractors]);
     return {
       questionHTML: `Chữ <b style="font-size:1.25em">${correct.letter}</b> trong tiếng Đức đọc là gì?`,
-      options,
-      correctIndex: options.indexOf(correct.name),
+      options, correctIndex: options.indexOf(correct.name),
       speakText: correct.letter,
       hint: `Ví dụ: ${correct.ex} — ${correct.mean}`,
     };
@@ -595,8 +878,7 @@ function genQuizAlphabet() {
     const options = shuffle([correct.letter, ...distractors]);
     return {
       questionHTML: `Cách đọc <b>"${correct.name}"</b> là chữ cái nào?`,
-      options,
-      correctIndex: options.indexOf(correct.letter),
+      options, correctIndex: options.indexOf(correct.letter),
       speakText: correct.letter,
       hint: `Ví dụ: ${correct.ex} — ${correct.mean}`,
     };
@@ -608,62 +890,50 @@ function genQuizQuestion() {
 }
 
 /* ============================================================
-   TẠO CÂU HỎI — TỰ LUẬN
+   TẠO CÂU HỎI TỰ LUẬN
    ============================================================ */
 function genEssayQuestion() {
   if (state.mode === 'alphabet') {
     const correct = alphabet[randInt(0, alphabet.length - 1)];
     if (state.direction === 'vi-de') {
-      // Chữ → Cách đọc
       return {
         questionHTML: `Chữ <b style="font-size:1.3em">${correct.letter}</b> trong tiếng Đức đọc là gì?`,
-        correctAnswer: correct.name,
-        checkMode: 'german',
+        correctAnswer: correct.name, checkMode: 'german',
         speakText: correct.letter,
         hintHTML: `Ví dụ: ${correct.ex} — ${correct.mean}`,
         inputPlaceholder: 'VD: ah, beh, tseh…',
       };
     } else {
-      // Cách đọc → Chữ
       return {
         questionHTML: `Cách đọc <b>"${correct.name}"</b> là chữ cái nào?`,
-        correctAnswer: correct.letter,
-        checkMode: 'german',
+        correctAnswer: correct.letter, checkMode: 'german',
         speakText: correct.letter,
         hintHTML: `Ví dụ: ${correct.ex} — ${correct.mean}`,
         inputPlaceholder: 'Nhập chữ cái…',
       };
     }
   }
-
   const n = randInt(1, 1000);
   const german = numToGerman(n);
-
   if (state.direction === 'vi-de') {
-    // Số → Tiếng Đức
     return {
       questionHTML: `Số <b>${n}</b> trong tiếng Đức viết là gì?`,
-      correctAnswer: german,
-      checkMode: 'german',
-      speakText: german,
-      hintHTML: '',
+      correctAnswer: german, checkMode: 'german',
+      speakText: german, hintHTML: '',
       inputPlaceholder: 'VD: eins, zwei, drei…',
     };
   } else {
-    // Tiếng Đức → Số
     return {
       questionHTML: `Từ tiếng Đức <b>"${german}"</b> là số nào?`,
-      correctAnswer: String(n),
-      checkMode: 'number',
-      speakText: german,
-      hintHTML: '',
+      correctAnswer: String(n), checkMode: 'number',
+      speakText: german, hintHTML: '',
       inputPlaceholder: 'Nhập số…',
     };
   }
 }
 
 /* ============================================================
-   RENDER — TRẮC NGHIỆM
+   RENDER TRẮC NGHIỆM
    ============================================================ */
 function renderQuiz() {
   if ('speechSynthesis' in window) window.speechSynthesis.cancel();
@@ -682,16 +952,18 @@ function renderQuiz() {
     const btn = document.createElement('button');
     btn.className = 'option';
     btn.dataset.index = i;
-    btn.innerHTML =
-      `<span class="option-letter">${LETTERS[i]}</span>` +
-      `<span class="option-text">${escapeHtml(opt)}</span>`;
+    btn.innerHTML = `<span class="option-letter">${LETTERS[i]}</span><span class="option-text">${escapeHtml(opt)}</span>`;
     btn.addEventListener('click', () => selectQuizOption(i));
     el.quizOptions.appendChild(btn);
   });
 
+  el.quizFeedbackRow.classList.remove('show');
   el.quizFeedback.className = 'feedback';
   el.quizFeedback.innerHTML = '';
-  el.quizNextBtn.style.display = 'none';
+
+  el.quizCard.classList.remove('animate');
+  void el.quizCard.offsetWidth;
+  el.quizCard.classList.add('animate');
 }
 
 function selectQuizOption(index) {
@@ -714,24 +986,24 @@ function selectQuizOption(index) {
   });
 
   if (isCorrect) {
-    el.quizFeedback.className = 'feedback correct show';
+    el.quizFeedback.className = 'feedback correct';
     el.quizFeedback.innerHTML =
       `✅ Chính xác!<small>Đáp án: ${LETTERS[q.correctIndex]} — ${escapeHtml(q.options[q.correctIndex])}</small>`;
   } else {
-    el.quizFeedback.className = 'feedback wrong show';
+    el.quizFeedback.className = 'feedback wrong';
     el.quizFeedback.innerHTML =
-      `❌ Sai rồi! Đáp án đúng là <b>${LETTERS[q.correctIndex]}</b> — <b>${escapeHtml(q.options[q.correctIndex])}</b>` +
+      `❌ Sai rồi! Đáp án đúng: <b>${LETTERS[q.correctIndex]}</b> — <b>${escapeHtml(q.options[q.correctIndex])}</b>` +
       (q.hint ? `<small>${q.hint}</small>` : '');
   }
 
+  el.quizFeedbackRow.classList.add('show');
   updateStats();
-  el.quizNextBtn.style.display = 'block';
 
   if (state.autoSpeak) speakGerman(q.speakText, el.quizSpeakBtn);
 }
 
 /* ============================================================
-   RENDER — TỰ LUẬN
+   RENDER TỰ LUẬN
    ============================================================ */
 function renderEssay() {
   if ('speechSynthesis' in window) window.speechSynthesis.cancel();
@@ -750,13 +1022,16 @@ function renderEssay() {
   el.essayInput.className = 'essay-input';
   el.essayInput.placeholder = q.inputPlaceholder || 'Nhập câu trả lời…';
 
+  el.essayCheckBtn.style.display = 'block';
+  el.essayFeedbackRow.classList.remove('show');
   el.essayFeedback.className = 'feedback';
   el.essayFeedback.innerHTML = '';
 
-  el.essayCheckBtn.style.display = 'block';
-  el.essayNextBtn.style.display = 'none';
+  el.essayCard.classList.remove('animate');
+  void el.essayCard.offsetWidth;
+  el.essayCard.classList.add('animate');
 
-  setTimeout(() => el.essayInput.focus(), 50);
+  setTimeout(() => el.essayInput.focus(), 100);
 }
 
 function checkEssay() {
@@ -769,7 +1044,6 @@ function checkEssay() {
 
   const q = state.currentEssay;
   let isCorrect = false;
-
   if (q.checkMode === 'number') {
     const userNum = parseInt(raw.replace(/\D/g, ''), 10);
     const target  = parseInt(q.correctAnswer, 10);
@@ -785,19 +1059,19 @@ function checkEssay() {
 
   if (isCorrect) {
     el.essayInput.classList.add('correct');
-    el.essayFeedback.className = 'feedback correct show';
+    el.essayFeedback.className = 'feedback correct';
     el.essayFeedback.innerHTML =
       `✅ Chính xác!<small>Đáp án: <b>${escapeHtml(q.correctAnswer)}</b></small>`;
   } else {
     el.essayInput.classList.add('wrong');
-    el.essayFeedback.className = 'feedback wrong show';
+    el.essayFeedback.className = 'feedback wrong';
     el.essayFeedback.innerHTML =
       `❌ Chưa đúng!<small>Bạn nhập: <i>${escapeHtml(raw)}</i><br>Đáp án: <b>${escapeHtml(q.correctAnswer)}</b></small>` +
       (q.hintHTML ? `<small>💡 ${q.hintHTML}</small>` : '');
   }
 
   el.essayCheckBtn.style.display = 'none';
-  el.essayNextBtn.style.display = 'block';
+  el.essayFeedbackRow.classList.add('show');
 
   if (state.autoSpeak) speakGerman(q.speakText, el.essaySpeakBtn);
 }
@@ -832,7 +1106,7 @@ function renderCurrent() {
 }
 
 /* ============================================================
-   SỰ KIỆN — MENU CHÍNH
+   SỰ KIỆN
    ============================================================ */
 el.sectionBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -853,14 +1127,12 @@ el.sectionBtns.forEach(btn => {
   });
 });
 
-/* Sự kiện — sub-mode (Số / Chữ) */
 el.modeBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     el.modeBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     state.mode = btn.dataset.mode;
 
-    // Reset thống kê khi đổi chủ đề
     state.correct = 0; state.total = 0; state.streak = 0;
     updateStats();
 
@@ -869,19 +1141,16 @@ el.modeBtns.forEach(btn => {
   });
 });
 
-/* Sự kiện — chọn chiều */
 el.direction.addEventListener('change', e => {
   state.direction = e.target.value;
   renderCurrent();
 });
 
-/* Sự kiện — tự động phát âm */
 el.autoSpeak.addEventListener('change', e => {
   state.autoSpeak = e.target.checked;
   el.autoSpeakLabel.classList.toggle('on', state.autoSpeak);
 });
 
-/* Sự kiện — nút loa */
 el.quizSpeakBtn.addEventListener('click', e => {
   e.stopPropagation();
   if (state.currentQuiz) speakGerman(state.currentQuiz.speakText, el.quizSpeakBtn);
@@ -891,24 +1160,28 @@ el.essaySpeakBtn.addEventListener('click', e => {
   if (state.currentEssay) speakGerman(state.currentEssay.speakText, el.essaySpeakBtn);
 });
 
-/* Sự kiện — điều hướng quiz */
+/* Mini next buttons */
 el.quizNextBtn.addEventListener('click', renderQuiz);
-
-/* Sự kiện — điều hướng essay */
-el.essayCheckBtn.addEventListener('click', checkEssay);
 el.essayNextBtn.addEventListener('click', renderEssay);
+
+/* Essay check + Enter */
+el.essayCheckBtn.addEventListener('click', checkEssay);
 el.essayInput.addEventListener('keydown', e => {
   if (e.key === 'Enter') {
     e.preventDefault();
-    if (state.essayAnswered) renderEssay();
-    else                     checkEssay();
+    checkEssay();
   }
 });
 
-/* Sự kiện — bàn phím toàn cục */
+/* Keyboard global */
 document.addEventListener('keydown', e => {
-  if (state.section === 'essay') return; // essay đã xử lý riêng
-
+  if (state.section === 'essay') {
+    if (e.code === 'Enter' && state.essayAnswered) {
+      e.preventDefault();
+      renderEssay();
+    }
+    return;
+  }
   if (e.code === 'Digit1' || e.code === 'Numpad1') { e.preventDefault(); clickQuizOption(0); }
   else if (e.code === 'Digit2' || e.code === 'Numpad2') { e.preventDefault(); clickQuizOption(1); }
   else if (e.code === 'Digit3' || e.code === 'Numpad3') { e.preventDefault(); clickQuizOption(2); }
