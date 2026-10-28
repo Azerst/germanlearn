@@ -7,15 +7,13 @@
 <style>
   :root{
     --bg-0:#070a12; --bg-1:#0d1220;
-    --surface:rgba(255,255,255,0.045);
-    --surface-2:rgba(255,255,255,0.075);
-    --border:rgba(255,255,255,0.08);
-    --border-2:rgba(255,255,255,0.18);
+    --surface:rgba(255,255,255,0.045); --surface-2:rgba(255,255,255,0.075);
+    --border:rgba(255,255,255,0.08); --border-2:rgba(255,255,255,0.18);
     --text:#eef2fb; --dim:#c3cce0; --muted:#7888ad;
     --gold:#fbbf24; --gold-2:#f59e0b; --gold-glow:rgba(251,191,36,0.35);
     --green:#10b981; --green-2:#059669; --green-soft:rgba(16,185,129,0.15);
     --red:#ef4444; --red-soft:rgba(239,68,68,0.15);
-    --indigo:#6366f1; --indigo-2:#4f46e5;
+    --indigo:#6366f1; --indigo-2:#4f46e5; --indigo-soft:rgba(99,102,241,0.2);
     --amber:#f59e0b; --amber-soft:rgba(245,158,11,0.15);
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -41,65 +39,123 @@
   h1 em{font-style:normal;background:linear-gradient(100deg,#fff,var(--gold) 60%,var(--gold-2));
     -webkit-background-clip:text;background-clip:text;color:transparent}
 
-  /* ===== Section menu (3 phần) ===== */
-  .section-menu{display:flex;gap:5px;background:var(--surface);padding:6px;border-radius:16px;
-    border:1px solid var(--border);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
-  .section-menu button{flex:1;padding:12px 6px;border:0;border-radius:12px;background:transparent;
-    color:var(--muted);font-size:13.5px;font-weight:700;cursor:pointer;
-    transition:all .25s cubic-bezier(.2,.8,.2,1);font-family:inherit;line-height:1.2}
-  .section-menu button:hover:not(.active){color:var(--dim);background:var(--surface-2)}
-  .section-menu button[data-section="quiz"].active{
-    background:linear-gradient(135deg,var(--indigo),var(--indigo-2));color:#fff;
-    box-shadow:0 6px 20px rgba(99,102,241,.4),inset 0 1px 0 rgba(255,255,255,.15)}
-  .section-menu button[data-section="essay"].active{
-    background:linear-gradient(135deg,var(--green),var(--green-2));color:#fff;
-    box-shadow:0 6px 20px rgba(16,185,129,.4),inset 0 1px 0 rgba(255,255,255,.15)}
-  .section-menu button[data-section="flash"].active{
-    background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#1a1200;
-    box-shadow:0 6px 20px var(--gold-glow),inset 0 1px 0 rgba(255,255,255,.25)}
+  /* ========== SHARED CARD ========== */
+  .glass{background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+    border:1px solid var(--border);border-radius:22px;padding:22px 20px;
+    box-shadow:0 24px 60px -20px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.06);
+    -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);position:relative}
+  .glass::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+    background:linear-gradient(135deg,rgba(251,191,36,.20),transparent 40%,transparent 60%,rgba(99,102,241,.16));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+  .animate{animation:cardIn .4s cubic-bezier(.2,.8,.2,1)}
+  @keyframes cardIn{from{opacity:0;transform:translateY(8px) scale(.99)}
+    to{opacity:1;transform:translateY(0) scale(1)}}
 
-  /* ===== Category chips ===== */
-  .cat-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;
-    color:var(--muted);font-weight:800;padding-left:4px}
-  .cat-chips{display:flex;gap:7px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:thin}
-  .cat-chips::-webkit-scrollbar{height:5px}
-  .cat-chips::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:99px}
-  .cat-chips::-webkit-scrollbar-track{background:transparent}
-  .chip{flex-shrink:0;padding:9px 15px;border-radius:11px;border:1px solid var(--border);
-    background:var(--surface);color:var(--muted);font-family:inherit;font-size:13px;
+  /* ========== SETUP SCREEN ========== */
+  .setup-title{font-size:20px;font-weight:800;text-align:center;margin:0 0 4px;
+    letter-spacing:-.3px}
+  .setup-sub{font-size:13px;color:var(--muted);text-align:center;margin:0 0 22px;
+    font-weight:600;line-height:1.5}
+
+  .setup-label{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--muted);font-weight:800;margin:18px 0 8px;padding-left:2px;
+    display:flex;align-items:center;gap:8px}
+  .setup-label:first-of-type{margin-top:0}
+  .setup-label .count{
+    font-size:9.5px;letter-spacing:.5px;padding:2px 7px;border-radius:99px;
+    background:rgba(255,255,255,.06);color:var(--dim);text-transform:none;font-weight:700}
+
+  .section-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .pick-card{display:flex;flex-direction:column;align-items:center;gap:5px;
+    padding:14px 6px;background:var(--surface);border:1.5px solid var(--border);
+    border-radius:14px;color:var(--text);font-family:inherit;cursor:pointer;
+    transition:all .2s cubic-bezier(.2,.8,.2,1)}
+  .pick-card:hover{background:var(--surface-2);border-color:var(--border-2);
+    transform:translateY(-1px)}
+  .pick-card:active{transform:translateY(0) scale(.98)}
+  .pick-card .icon{font-size:22px;line-height:1}
+  .pick-card .label{font-size:12px;font-weight:800;letter-spacing:.1px}
+  .pick-card .sub{font-size:9.5px;color:var(--muted);font-weight:600;margin-top:1px}
+  .pick-card.active[data-section="quiz"]{
+    background:linear-gradient(135deg,rgba(99,102,241,.22),rgba(99,102,241,.08));
+    border-color:var(--indigo);box-shadow:0 0 0 3px rgba(99,102,241,.15)}
+  .pick-card.active[data-section="essay"]{
+    background:linear-gradient(135deg,rgba(16,185,129,.22),rgba(16,185,129,.08));
+    border-color:var(--green);box-shadow:0 0 0 3px rgba(16,185,129,.15)}
+  .pick-card.active[data-section="flash"]{
+    background:linear-gradient(135deg,rgba(251,191,36,.22),rgba(251,191,36,.08));
+    border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-glow)}
+
+  .category-picker{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .cat-card{display:flex;flex-direction:column;gap:5px;padding:12px 14px;
+    background:var(--surface);border:1.5px solid var(--border);border-radius:14px;
+    color:var(--text);font-family:inherit;text-align:left;cursor:pointer;
+    transition:all .2s cubic-bezier(.2,.8,.2,1)}
+  .cat-card:hover{background:var(--surface-2);border-color:var(--border-2);
+    transform:translateY(-1px)}
+  .cat-card:active{transform:translateY(0) scale(.99)}
+  .cat-card.active{
+    background:linear-gradient(135deg,rgba(251,191,36,.18),rgba(251,191,36,.05));
+    border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-glow)}
+  .cat-card-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .cat-card-name{font-size:13px;font-weight:800;color:var(--text)}
+  .cat-card.active .cat-card-name{color:var(--gold)}
+  .cat-card-badge{font-size:9.5px;font-weight:800;padding:2px 7px;border-radius:99px;
+    background:rgba(255,255,255,.06);color:var(--muted);font-variant-numeric:tabular-nums}
+  .cat-card.active .cat-card-badge{background:rgba(251,191,36,.15);color:var(--gold)}
+  .cat-card-bar{height:3px;background:rgba(255,255,255,.06);border-radius:99px;
+    overflow:hidden;margin-top:2px}
+  .cat-card-bar > i{display:block;height:100%;width:0;
+    background:linear-gradient(90deg,var(--green),var(--green-2));
+    border-radius:99px;transition:width .35s}
+
+  .seg-picker{display:flex;gap:5px;background:var(--surface);padding:5px;
+    border-radius:12px;border:1px solid var(--border)}
+  .seg-picker button{flex:1;padding:10px 8px;border:0;border-radius:8px;
+    background:transparent;color:var(--muted);font-family:inherit;font-size:12.5px;
     font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
-  .chip:hover{color:var(--dim);background:var(--surface-2);border-color:var(--border-2)}
-  .chip.active{background:linear-gradient(135deg,rgba(251,191,36,.22),rgba(251,191,36,.12));
-    color:var(--gold);border-color:rgba(251,191,36,.5);box-shadow:0 3px 12px rgba(251,191,36,.15)}
+  .seg-picker button:hover:not(.active){color:var(--dim);background:var(--surface-2)}
+  .seg-picker button.active{
+    background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#1a1200;
+    box-shadow:0 3px 12px var(--gold-glow)}
 
-  /* ===== Toolbar ===== */
-  .toolbar{display:flex;gap:8px;flex-wrap:wrap}
-  select{flex:1;min-width:140px;padding:11px 13px;border-radius:12px;border:1px solid var(--border);
-    background:var(--surface);color:var(--text);font-size:13px;font-family:inherit;font-weight:600;
-    cursor:pointer;transition:.2s;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
-  select:hover{background:var(--surface-2)}
-  select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-glow)}
-  select option{background:#1a2236;color:var(--text)}
-  .toggle{display:flex;align-items:center;gap:8px;padding:10px 13px;border-radius:12px;
-    background:var(--surface);border:1px solid var(--border);font-size:12.5px;font-weight:700;
-    color:var(--muted);cursor:pointer;user-select:none;transition:.22s;white-space:nowrap;
-    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
-  .toggle:hover{background:var(--surface-2);color:var(--dim)}
-  .toggle input{accent-color:var(--gold);width:15px;height:15px;cursor:pointer;margin:0}
-  .toggle.on{color:var(--gold);border-color:rgba(251,191,36,.45);background:rgba(251,191,36,.08)}
+  .start-btn{width:100%;margin-top:22px;padding:17px;border-radius:15px;border:0;
+    background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#1a1200;
+    font-family:inherit;font-size:16px;font-weight:800;cursor:pointer;
+    box-shadow:0 8px 28px var(--gold-glow);transition:all .2s;
+    letter-spacing:.3px;display:flex;align-items:center;justify-content:center;gap:8px}
+  .start-btn:hover{transform:translateY(-1px);box-shadow:0 10px 36px var(--gold-glow)}
+  .start-btn:active{transform:translateY(0) scale(.99)}
 
-  /* ===== Stats ===== */
+  /* ========== STUDY SCREEN ========== */
+  .study-topbar{display:flex;align-items:center;gap:10px;padding:0 2px}
+  .back-btn{padding:9px 14px;border-radius:10px;border:1px solid var(--border);
+    background:var(--surface);color:var(--text);font-family:inherit;font-size:12.5px;
+    font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:5px}
+  .back-btn:hover{background:var(--surface-2);border-color:var(--border-2)}
+  .back-btn:active{transform:scale(.97)}
+  .study-info{display:flex;gap:6px;flex:1;justify-content:flex-end;align-items:center;
+    flex-wrap:wrap}
+  .study-tag{font-size:10.5px;font-weight:800;padding:5px 10px;border-radius:8px;
+    letter-spacing:.5px;text-transform:uppercase}
+  .study-tag.quiz{background:var(--indigo-soft);color:#a5b4fc}
+  .study-tag.essay{background:rgba(16,185,129,.2);color:#6ee7b7}
+  .study-tag.flash{background:rgba(251,191,36,.2);color:var(--gold)}
+  .study-cat{font-size:12px;font-weight:700;color:var(--muted)}
+
+  /* Stats */
   .stats{display:flex;gap:6px}
   .stat{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;
-    background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:9px 6px;
-    font-size:11.5px;font-weight:600;color:var(--muted);
+    background:var(--surface);border:1px solid var(--border);border-radius:11px;
+    padding:9px 6px;font-size:11.5px;font-weight:600;color:var(--muted);
     -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
   .stat b{color:var(--text);font-size:14px;font-weight:800;font-variant-numeric:tabular-nums}
   .stat.correct b{color:var(--green)}
   .stat.streak b{color:var(--gold)}
   .stat.learned b{color:#8b9dff}
 
-  /* ===== Session progress ===== */
+  /* Session progress */
   .session-bar{display:flex;flex-direction:column;gap:5px}
   .session-bar-meta{display:flex;justify-content:space-between;font-size:11.5px;
     font-weight:700;color:var(--muted);padding:0 2px}
@@ -109,19 +165,7 @@
     background:linear-gradient(90deg,var(--gold),var(--gold-2));
     transition:width .4s cubic-bezier(.2,.8,.2,1)}
 
-  /* ===== Card ===== */
-  .card{background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
-    border:1px solid var(--border);border-radius:22px;padding:22px 20px;
-    box-shadow:0 24px 60px -20px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.06);
-    -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);position:relative}
-  .card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
-    background:linear-gradient(135deg,rgba(251,191,36,.20),transparent 40%,transparent 60%,rgba(99,102,241,.16));
-    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-    -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-  .card.animate{animation:cardIn .4s cubic-bezier(.2,.8,.2,1)}
-  @keyframes cardIn{from{opacity:0;transform:translateY(8px) scale(.99)}
-    to{opacity:1;transform:translateY(0) scale(1)}}
-
+  /* Q header */
   .q-header{display:flex;justify-content:space-between;align-items:center;
     margin-bottom:15px;gap:10px}
   .q-label{font-size:10.5px;letter-spacing:2.5px;text-transform:uppercase;
@@ -145,7 +189,7 @@
     margin-bottom:18px;min-height:2.6em;letter-spacing:-.2px}
   .q-text b{color:var(--gold);font-weight:800}
 
-  /* ===== Options ===== */
+  /* Options */
   .options{display:flex;flex-direction:column;gap:9px}
   .option{display:flex;align-items:center;gap:13px;padding:14px 16px;background:var(--surface);
     border:1.5px solid var(--border);border-radius:14px;color:var(--text);font-family:inherit;
@@ -172,7 +216,7 @@
   .option.wrong .option-text{color:#fca5a5}
   .option.dimmed{opacity:.4}
 
-  /* ===== Essay input ===== */
+  /* Essay */
   .essay-input{width:100%;padding:16px 18px;border-radius:14px;border:2px solid var(--border);
     background:rgba(0,0,0,.25);color:var(--text);font-family:inherit;
     font-size:clamp(17px,4.6vw,21px);font-weight:700;transition:.22s;letter-spacing:-.2px}
@@ -190,7 +234,7 @@
   .check-btn:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(16,185,129,.45)}
   .check-btn:active{transform:translateY(0) scale(.99)}
 
-  /* ===== Feedback ===== */
+  /* Feedback */
   .feedback{padding:12px 16px;border-radius:12px;font-size:13.5px;font-weight:600;
     line-height:1.5;animation:rowIn .35s cubic-bezier(.2,.8,.2,1)}
   @keyframes rowIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
@@ -202,7 +246,7 @@
   .feedback small i{font-style:normal;background:rgba(255,255,255,.1);padding:1px 6px;
     border-radius:4px}
 
-  /* ===== Marking row (thuộc / chưa thuộc) ===== */
+  /* Marking */
   .mark-row{display:none;gap:8px;margin-top:14px;animation:rowIn .35s cubic-bezier(.2,.8,.2,1)}
   .mark-row.show{display:flex}
   .mark-btn{flex:1;padding:15px 12px;border-radius:14px;font-family:inherit;font-size:14.5px;
@@ -222,7 +266,7 @@
     box-shadow:0 0 0 3px rgba(16,185,129,.25),0 4px 16px rgba(16,185,129,.3)}
   .mark-btn:active{transform:translateY(0) scale(.98)}
 
-  /* ===== Flashcard ===== */
+  /* Flashcard */
   .flash-scene{perspective:1600px;margin:8px 0 10px}
   .flashcard{position:relative;width:100%;height:320px;cursor:pointer;
     transform-style:preserve-3d;-webkit-transform-style:preserve-3d;
@@ -256,7 +300,7 @@
   .flash-controls button:hover{background:var(--surface-2);border-color:var(--border-2)}
   .flash-controls button:active{transform:scale(.98)}
 
-  /* ===== Summary ===== */
+  /* Summary */
   .summary-card{text-align:center;padding:36px 24px}
   .summary-emoji{font-size:56px;line-height:1;margin-bottom:12px}
   .summary-title{font-size:24px;font-weight:800;margin:0 0 6px;
@@ -267,7 +311,7 @@
     text-align:left}
   .summary-stat{background:var(--surface);border:1px solid var(--border);border-radius:14px;
     padding:14px 16px}
-  .summary-stat .lbl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  .summary-stat .lbl{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;
     color:var(--muted);font-weight:800;margin-bottom:4px}
   .summary-stat .val{font-size:22px;font-weight:800;color:var(--text)}
   .summary-stat.gold .val{color:var(--gold)}
@@ -289,17 +333,23 @@
     color:var(--dim);font-weight:700}
 
   @media (max-width:420px){
-    .card{padding:18px 15px;border-radius:20px}
+    .glass{padding:18px 15px;border-radius:20px}
     .option{padding:12px 13px;font-size:14px;gap:11px}
     .option-letter{width:28px;height:28px;font-size:12.5px}
     .stat{font-size:11px;padding:8px 5px}
     .stat b{font-size:13px}
-    .section-menu button{font-size:12.5px;padding:11px 4px}
+    .pick-card{padding:12px 4px}
+    .pick-card .icon{font-size:19px}
+    .pick-card .label{font-size:11px}
+    .pick-card .sub{display:none}
     .mark-btn{font-size:13px;padding:14px 8px}
     .flashcard{height:290px}
     .flash-face{padding:20px 14px}
     .summary-card{padding:28px 18px}
-    .summary-grid{grid-template-columns:1fr 1fr}
+    .category-picker{gap:7px}
+    .cat-card{padding:10px 12px}
+    .cat-card-name{font-size:12px}
+    .seg-picker button{font-size:11.5px;padding:9px 4px}
   }
 </style>
 </head>
@@ -308,54 +358,85 @@
 <div class="app">
   <h1>🇩🇪 Học tiếng Đức: <em>Số &amp; Bảng chữ cái</em></h1>
 
-  <!-- Menu 3 phần -->
-  <div class="section-menu">
-    <button data-section="quiz" class="active">📝 Trắc nghiệm</button>
-    <button data-section="essay">✍️ Tự luận</button>
-    <button data-section="flash">🃏 Lật thẻ</button>
-  </div>
+  <!-- ═══════════ SETUP SCREEN ═══════════ -->
+  <div id="setupScreen">
+    <div class="glass animate">
+      <h2 class="setup-title">Chọn đề luyện tập</h2>
+      <p class="setup-sub">Chọn chế độ, chủ đề và bắt đầu phiên học</p>
 
-  <!-- Chủ đề -->
-  <div class="cat-label">Chủ đề</div>
-  <div class="cat-chips" id="catChips">
-    <button class="chip active" data-cat="num-0-20">Số 0–20</button>
-    <button class="chip" data-cat="num-21-100">Số 21–100</button>
-    <button class="chip" data-cat="num-101-1000">Số 101–1000</button>
-    <button class="chip" data-cat="num-all">Tất cả số</button>
-    <button class="chip" data-cat="alphabet">Bảng chữ cái</button>
-  </div>
+      <div class="setup-label">Chế độ học</div>
+      <div class="section-picker">
+        <button class="pick-card active" data-section="quiz">
+          <span class="icon">📝</span>
+          <span class="label">Trắc nghiệm</span>
+          <span class="sub">A · B · C · D</span>
+        </button>
+        <button class="pick-card" data-section="essay">
+          <span class="icon">✍️</span>
+          <span class="label">Tự luận</span>
+          <span class="sub">Gõ đáp án</span>
+        </button>
+        <button class="pick-card" data-section="flash">
+          <span class="icon">🃏</span>
+          <span class="label">Lật thẻ</span>
+          <span class="sub">Xem & lật</span>
+        </button>
+      </div>
 
-  <!-- Công cụ -->
-  <div class="toolbar">
-    <select id="direction"></select>
-    <label class="toggle" id="autoSpeakLabel">
-      <input type="checkbox" id="autoSpeak">
-      <span>🔊 Tự động</span>
-    </label>
-  </div>
+      <div class="setup-label">
+        Chủ đề <span class="count" id="catCountLabel">0 mục</span>
+      </div>
+      <div class="category-picker" id="categoryPicker"></div>
 
-  <!-- Thống kê -->
-  <div class="stats">
-    <div class="stat correct"><span>✅</span> <b id="correctCount">0</b></div>
-    <div class="stat"><span>📊</span> <b id="totalCount">0</b></div>
-    <div class="stat streak"><span>🔥</span> <b id="streak">0</b></div>
-    <div class="stat learned"><span>📚</span> <b id="learnedCount">0/0</b></div>
-  </div>
+      <div class="setup-label">Chiều dịch</div>
+      <div class="seg-picker" id="directionPicker">
+        <button data-dir="vi-de" class="active">Số ➜ Tiếng Đức</button>
+        <button data-dir="de-vi">Tiếng Đức ➜ Số</button>
+      </div>
 
-  <!-- Thanh tiến trình phiên -->
-  <div class="session-bar">
-    <div class="session-bar-meta">
-      <span class="lbl">Phiên học</span>
-      <span id="sessionProgressText">0 / 0</span>
+      <div class="setup-label">Số câu mỗi phiên</div>
+      <div class="seg-picker" id="sizePicker">
+        <button data-size="20">20 câu</button>
+        <button data-size="25" class="active">25 câu</button>
+        <button data-size="30">30 câu</button>
+      </div>
+
+      <button class="start-btn" id="startBtn">
+        <span>▶</span><span>Bắt đầu học</span>
+      </button>
     </div>
-    <div class="bar"><i id="sessionProgressBar"></i></div>
   </div>
 
-  <!-- PHẦN NỘI DUNG -->
-  <div id="contentArea"></div>
+  <!-- ═══════════ STUDY SCREEN ═══════════ -->
+  <div id="studyScreen" style="display:none">
+    <div class="study-topbar">
+      <button class="back-btn" id="backBtn">← Đổi đề</button>
+      <div class="study-info">
+        <span class="study-tag quiz" id="studyTag">Trắc nghiệm</span>
+        <span class="study-cat" id="studyCat">Số 0–20</span>
+      </div>
+    </div>
 
-  <div class="hint">
-    <kbd>Enter</kbd> kiểm tra / câu tiếp · <kbd>1</kbd>–<kbd>4</kbd> chọn đáp án · <kbd>Space</kbd> lật thẻ · <kbd>🔊</kbd> nghe tiếng Đức
+    <div class="stats">
+      <div class="stat correct"><span>✅</span> <b id="correctCount">0</b></div>
+      <div class="stat"><span>📊</span> <b id="totalCount">0</b></div>
+      <div class="stat streak"><span>🔥</span> <b id="streak">0</b></div>
+      <div class="stat learned"><span>📚</span> <b id="learnedCount">0/0</b></div>
+    </div>
+
+    <div class="session-bar">
+      <div class="session-bar-meta">
+        <span class="lbl">Phiên học</span>
+        <span id="sessionProgressText">0 / 0</span>
+      </div>
+      <div class="bar"><i id="sessionProgressBar"></i></div>
+    </div>
+
+    <div id="contentArea"></div>
+
+    <div class="hint">
+      <kbd>Enter</kbd> kiểm tra / câu tiếp · <kbd>1</kbd>–<kbd>4</kbd> chọn đáp án · <kbd>Space</kbd> lật thẻ · <kbd>🔊</kbd> nghe tiếng Đức
+    </div>
   </div>
 </div>
 
@@ -410,7 +491,6 @@ function numToGerman(n){
   return r;
 }
 
-/* Số → Tiếng Việt */
 const VN_ONES = ['không','một','hai','ba','bốn','năm','sáu','bảy','tám','chín'];
 function numToVietnamese(n){
   if (n === 1000) return 'một nghìn';
@@ -481,7 +561,7 @@ const ALPHABET_RAW = [
 ];
 
 /* ============================================================
-   CHỦ ĐỀ (CATEGORIES)
+   CHỦ ĐỀ
    ============================================================ */
 function buildNumItem(n){
   return { id:'num-'+n, type:'number', n, de:numToGerman(n), vi:numToVietnamese(n) };
@@ -490,20 +570,23 @@ function buildNumItem(n){
 const CATEGORIES = {
   'num-0-20': {
     label:'Số 0–20',
+    icon:'0️⃣',
     items: Array.from({length:21}, (_,i) => buildNumItem(i)),
   },
   'num-21-100': {
     label:'Số 21–100',
+    icon:'2️⃣',
     items: Array.from({length:80}, (_,i) => buildNumItem(21+i)),
   },
   'num-101-1000': {
     label:'Số 101–1000',
+    icon:'💯',
     items: [101,110,111,123,150,178,200,234,250,300,345,400,500,555,600,700,777,800,888,900,999,1000]
       .map(buildNumItem),
   },
-  'num-all': { label:'Tất cả số', items: [] },
   'alphabet': {
     label:'Bảng chữ cái',
+    icon:'🔤',
     items: ALPHABET_RAW.map(a => ({
       id:'alpha-'+a.letter, type:'alphabet',
       letter:a.letter, name:a.name, ex:a.ex, mean:a.mean,
@@ -511,16 +594,21 @@ const CATEGORIES = {
   },
 };
 
-CATEGORIES['num-all'].items = [
-  ...CATEGORIES['num-0-20'].items,
-  ...CATEGORIES['num-21-100'].items,
-  ...CATEGORIES['num-101-1000'].items,
-];
+// "Tất cả số" = ghép 3 nhóm số
+CATEGORIES['num-all'] = {
+  label:'Tất cả số',
+  icon:'🔢',
+  items: [
+    ...CATEGORIES['num-0-20'].items,
+    ...CATEGORIES['num-21-100'].items,
+    ...CATEGORIES['num-101-1000'].items,
+  ],
+};
 
-const SESSION_SIZE = 25;
+const CATEGORY_ORDER = ['num-0-20','num-21-100','num-101-1000','num-all','alphabet'];
 
 /* ============================================================
-   TIẾN ĐỘ ĐÃ THUỘC (localStorage)
+   TIẾN ĐỘ (localStorage)
    ============================================================ */
 const STORAGE_KEY = 'german-learn-progress-v1';
 let PROGRESS = {};
@@ -528,8 +616,8 @@ try { PROGRESS = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e)
 function saveProgress(){
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(PROGRESS)); } catch(e){}
 }
-function learnedCount(categoryKey){
-  const items = CATEGORIES[categoryKey].items;
+function learnedCount(catKey){
+  const items = CATEGORIES[catKey].items;
   const learned = items.filter(it => PROGRESS[it.id] === 'learned').length;
   return { learned, total: items.length };
 }
@@ -538,24 +626,31 @@ function learnedCount(categoryKey){
    TRẠNG THÁI
    ============================================================ */
 const state = {
-  section: 'quiz',     // quiz | essay | flash
+  screen: 'setup',          // setup | study
+  // cài đặt người dùng chọn trong setup
+  setup: {
+    section: 'quiz',
+    category: 'num-0-20',
+    direction: 'vi-de',
+    sessionSize: 25,
+  },
+  // cài đặt đang dùng trong phiên
+  section: 'quiz',
   category: 'num-0-20',
   direction: 'vi-de',
-  autoSpeak: false,
+  // session
   session: { items:[], index:0, correct:0, total:0, streak:0, bestStreak:0 },
   currentItem: null,
-  answered: false,
-  flipped: false,
   quizAnswered: false,
   essayAnswered: false,
-  // for quiz
-  quizOptions: null, quizCorrectIndex: -1,
-  // for essay
-  essayCorrectAnswer: '', essayCheckMode: '', essayHintHTML: '', essayPlaceholder: '',
+  flipped: false,
+  quizOptions: null, quizCorrectIndex: -1, quizHint: '', quizSpeakText: '',
+  essayCorrectAnswer: '', essayCheckMode: '', essayHintHTML: '', essaySpeakText: '',
+  autoSpeak: false,
 };
 
 /* ============================================================
-   ÂM THANH (Web Speech API)
+   ÂM THANH
    ============================================================ */
 let germanVoice = null;
 function loadVoices(){
@@ -587,7 +682,125 @@ function speakGerman(text, btn){
 }
 
 /* ============================================================
-   XÂY DỰNG PHIÊN
+   SETUP SCREEN
+   ============================================================ */
+const setupScreen = document.getElementById('setupScreen');
+const studyScreen = document.getElementById('studyScreen');
+const categoryPicker = document.getElementById('categoryPicker');
+const catCountLabel = document.getElementById('catCountLabel');
+const directionPicker = document.getElementById('directionPicker');
+const sizePicker = document.getElementById('sizePicker');
+
+// Build category cards
+function renderCategoryCards(){
+  categoryPicker.innerHTML = '';
+  CATEGORY_ORDER.forEach(key => {
+    const cat = CATEGORIES[key];
+    const { learned, total } = learnedCount(key);
+    const pct = total > 0 ? (learned/total*100) : 0;
+    const btn = document.createElement('button');
+    btn.className = 'cat-card' + (state.setup.category === key ? ' active' : '');
+    btn.dataset.cat = key;
+    btn.innerHTML = `
+      <div class="cat-card-head">
+        <span class="cat-card-name">${cat.label}</span>
+        <span class="cat-card-badge">${learned}/${total}</span>
+      </div>
+      <div class="cat-card-bar"><i style="width:${pct}%"></i></div>
+    `;
+    btn.addEventListener('click', () => {
+      state.setup.category = key;
+      if (key === 'alphabet' && state.setup.direction === 'vi-de') {
+        // direction vẫn giữ, chỉ đổi nhãn
+      }
+      document.querySelectorAll('.cat-card').forEach(c =>
+        c.classList.toggle('active', c.dataset.cat === key));
+      updateSetupLabels();
+    });
+    categoryPicker.appendChild(btn);
+  });
+}
+
+function updateSetupLabels(){
+  const isAlpha = state.setup.category === 'alphabet';
+  catCountLabel.textContent = CATEGORIES[state.setup.category].items.length + ' mục';
+
+  // Direction labels
+  const dirBtns = directionPicker.querySelectorAll('button');
+  if (isAlpha) {
+    dirBtns[0].textContent = 'Chữ ➜ Cách đọc';
+    dirBtns[1].textContent = 'Cách đọc ➜ Chữ';
+  } else {
+    dirBtns[0].textContent = 'Số ➜ Tiếng Đức';
+    dirBtns[1].textContent = 'Tiếng Đức ➜ Số';
+  }
+}
+
+// Section picker
+document.querySelectorAll('.pick-card').forEach(btn => {
+  btn.addEventListener('click', () => {
+    state.setup.section = btn.dataset.section;
+    document.querySelectorAll('.pick-card').forEach(b =>
+      b.classList.toggle('active', b.dataset.section === btn.dataset.section));
+  });
+});
+
+// Direction picker
+directionPicker.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    state.setup.direction = btn.dataset.dir;
+    directionPicker.querySelectorAll('button').forEach(b =>
+      b.classList.toggle('active', b.dataset.dir === btn.dataset.dir));
+  });
+});
+
+// Size picker
+sizePicker.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    state.setup.sessionSize = parseInt(btn.dataset.size, 10);
+    sizePicker.querySelectorAll('button').forEach(b =>
+      b.classList.toggle('active', b.dataset.size === btn.dataset.size));
+  });
+});
+
+// Start button
+document.getElementById('startBtn').addEventListener('click', () => {
+  state.section = state.setup.section;
+  state.category = state.setup.category;
+  state.direction = state.setup.direction;
+  state.session.size = state.setup.sessionSize;
+
+  setupScreen.style.display = 'none';
+  studyScreen.style.display = 'flex';
+  studyScreen.style.flexDirection = 'column';
+  studyScreen.style.gap = '11px';
+  state.screen = 'study';
+
+  // update study topbar
+  updateStudyTopbar();
+  startNewSession();
+});
+
+function updateStudyTopbar(){
+  const tag = document.getElementById('studyTag');
+  tag.className = 'study-tag ' + state.section;
+  tag.textContent = state.section === 'quiz' ? 'Trắc nghiệm'
+                  : state.section === 'essay' ? 'Tự luận' : 'Lật thẻ';
+  document.getElementById('studyCat').textContent = CATEGORIES[state.category].label;
+}
+
+// Back button
+document.getElementById('backBtn').addEventListener('click', () => {
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  state.screen = 'setup';
+  studyScreen.style.display = 'none';
+  setupScreen.style.display = 'block';
+  renderCategoryCards();
+  updateSetupLabels();
+});
+
+/* ============================================================
+   SESSION
    ============================================================ */
 function pickSessionItems(catKey, size){
   const items = CATEGORIES[catKey].items;
@@ -603,40 +816,32 @@ function pickSessionItems(catKey, size){
 }
 
 function startNewSession(){
-  const items = pickSessionItems(state.category, SESSION_SIZE);
-  state.session = {
-    items, index:0, correct:0, total:0, streak:0, bestStreak:0,
-  };
-  state.answered = false;
-  state.flipped = false;
+  const items = pickSessionItems(state.category, state.session.size || 25);
+  state.session = { items, index:0, correct:0, total:0, streak:0, bestStreak:0 };
   state.quizAnswered = false;
   state.essayAnswered = false;
+  state.flipped = false;
   renderCurrent();
 }
 
 /* ============================================================
-   RENDER
+   RENDER CONTENT
    ============================================================ */
 const contentArea = document.getElementById('contentArea');
 
 function renderCurrent(){
-  if (!state.session.items.length) {
-    startNewSession();
-    return;
-  }
-  if (state.session.index >= state.session.items.length) {
-    renderSummary();
-    return;
-  }
+  if (!state.session.items.length) { startNewSession(); return; }
+  if (state.session.index >= state.session.items.length) { renderSummary(); return; }
+
   updateSessionProgress();
   updateStats();
 
   const item = state.session.items[state.session.index];
   state.currentItem = item;
 
-  if (state.section === 'quiz')     renderQuizView(item);
+  if (state.section === 'quiz')       renderQuizView(item);
   else if (state.section === 'essay') renderEssayView(item);
-  else                              renderFlashView(item);
+  else                                renderFlashView(item);
 }
 
 function updateSessionProgress(){
@@ -655,7 +860,7 @@ function updateStats(){
   document.getElementById('learnedCount').textContent = learned + '/' + total;
 }
 
-/* ---------- QUIZ VIEW ---------- */
+/* ---------- QUIZ ---------- */
 function renderQuizView(item){
   const dir = state.direction;
   let questionHTML, options, correctIndex, speakText, hint = '';
@@ -664,15 +869,13 @@ function renderQuizView(item){
     if (dir === 'vi-de') {
       questionHTML = `Số <b>${item.n}</b> trong tiếng Đức viết là gì?`;
       const correct = item.de;
-      const distractors = buildNumberDistractors(item.n, true);
-      options = shuffle([correct, ...distractors]);
+      options = shuffle([correct, ...buildNumberDistractors(item.n, true)]);
       correctIndex = options.indexOf(correct);
       speakText = item.de;
     } else {
       questionHTML = `Từ tiếng Đức <b>"${item.de}"</b> là số nào?`;
       const correct = String(item.n);
-      const distractors = buildNumberDistractors(item.n, false);
-      options = shuffle([correct, ...distractors]);
+      options = shuffle([correct, ...buildNumberDistractors(item.n, false)]);
       correctIndex = options.indexOf(correct);
       speakText = item.de;
       hint = `Số đúng: ${item.n}`;
@@ -697,12 +900,13 @@ function renderQuizView(item){
 
   state.quizOptions = options;
   state.quizCorrectIndex = correctIndex;
+  state.quizHint = hint;
+  state.quizSpeakText = speakText;
   state.quizAnswered = false;
-  state.answered = false;
 
   const LETTERS = ['A','B','C','D'];
   contentArea.innerHTML = `
-    <div class="card animate" id="currentCard">
+    <div class="glass animate">
       <div class="q-header">
         <span class="q-label">Câu hỏi</span>
         <button class="speak-btn" id="speakBtn" title="Nghe tiếng Đức">🔊</button>
@@ -735,23 +939,17 @@ function renderQuizView(item){
   document.getElementById('markUnlearn').addEventListener('click', () => markAndAdvance(false));
   document.getElementById('markLearn').addEventListener('click',   () => markAndAdvance(true));
 
-  // Auto read
   if (state.autoSpeak) {
     setTimeout(() => {
       const b = document.getElementById('speakBtn');
       if (b) speakGerman(speakText, b);
     }, 200);
   }
-
-  // store hint on state for later
-  state.quizHint = hint;
-  state.quizSpeakText = speakText;
 }
 
 function selectQuizOption(idx){
   if (state.quizAnswered) return;
   state.quizAnswered = true;
-  state.answered = true;
 
   const isCorrect = idx === state.quizCorrectIndex;
   state.session.total++;
@@ -771,19 +969,17 @@ function selectQuizOption(idx){
 
   const LETTERS = ['A','B','C','D'];
   const fbArea = document.getElementById('feedbackArea');
-  const correctLetter = LETTERS[state.quizCorrectIndex];
-  const correctText = escapeHtml(state.quizOptions[state.quizCorrectIndex]);
+  const cL = LETTERS[state.quizCorrectIndex];
+  const cT = escapeHtml(state.quizOptions[state.quizCorrectIndex]);
 
   if (isCorrect) {
-    fbArea.innerHTML = `<div class="feedback correct">✅ Chính xác!<small>Đáp án: ${correctLetter} — ${correctText}</small></div>`;
+    fbArea.innerHTML = `<div class="feedback correct">✅ Chính xác!<small>Đáp án: ${cL} — ${cT}</small></div>`;
   } else {
-    fbArea.innerHTML = `<div class="feedback wrong">❌ Sai rồi! Đáp án đúng: <b>${correctLetter}</b> — <b>${correctText}</b>` +
+    fbArea.innerHTML = `<div class="feedback wrong">❌ Sai rồi! Đáp án đúng: <b>${cL}</b> — <b>${cT}</b>` +
       (state.quizHint ? `<small>${state.quizHint}</small>` : '') + `</div>`;
   }
 
-  // Show mark buttons, highlight suggested
-  const markRow = document.getElementById('markRow');
-  markRow.classList.add('show');
+  document.getElementById('markRow').classList.add('show');
   if (isCorrect) document.getElementById('markLearn').classList.add('suggested');
   else           document.getElementById('markUnlearn').classList.add('suggested');
 
@@ -830,7 +1026,7 @@ function buildNumberDistractors(correctNum, asGerman){
   return [...set];
 }
 
-/* ---------- ESSAY VIEW ---------- */
+/* ---------- ESSAY ---------- */
 function renderEssayView(item){
   let questionHTML, correctAnswer, checkMode, speakText, hintHTML, placeholder;
 
@@ -838,13 +1034,11 @@ function renderEssayView(item){
     if (state.direction === 'vi-de') {
       questionHTML = `Số <b>${item.n}</b> trong tiếng Đức viết là gì?`;
       correctAnswer = item.de; checkMode = 'german';
-      speakText = item.de; hintHTML = '';
-      placeholder = 'VD: eins, zwei, drei…';
+      speakText = item.de; hintHTML = ''; placeholder = 'VD: eins, zwei, drei…';
     } else {
       questionHTML = `Từ tiếng Đức <b>"${item.de}"</b> là số nào?`;
       correctAnswer = String(item.n); checkMode = 'number';
-      speakText = item.de; hintHTML = '';
-      placeholder = 'Nhập số…';
+      speakText = item.de; hintHTML = ''; placeholder = 'Nhập số…';
     }
   } else {
     if (state.direction === 'vi-de') {
@@ -867,10 +1061,9 @@ function renderEssayView(item){
   state.essayHintHTML = hintHTML;
   state.essaySpeakText = speakText;
   state.essayAnswered = false;
-  state.answered = false;
 
   contentArea.innerHTML = `
-    <div class="card animate" id="currentCard">
+    <div class="glass animate">
       <div class="q-header">
         <span class="q-label">Câu hỏi</span>
         <button class="speak-btn" id="speakBtn" title="Nghe tiếng Đức">🔊</button>
@@ -915,7 +1108,6 @@ function checkEssay(){
   if (!raw) { input.focus(); return; }
 
   state.essayAnswered = true;
-  state.answered = true;
   input.disabled = true;
 
   let isCorrect = false;
@@ -944,9 +1136,7 @@ function checkEssay(){
       (state.essayHintHTML ? `<small>💡 ${state.essayHintHTML}</small>` : '') + `</div>`;
   }
 
-  // Show mark
-  const markRow = document.getElementById('markRow');
-  markRow.classList.add('show');
+  document.getElementById('markRow').classList.add('show');
   if (isCorrect) document.getElementById('markLearn').classList.add('suggested');
   else           document.getElementById('markUnlearn').classList.add('suggested');
 
@@ -955,7 +1145,7 @@ function checkEssay(){
   if (state.autoSpeak) speakGerman(state.essaySpeakText, document.getElementById('speakBtn'));
 }
 
-/* ---------- FLASHCARD VIEW ---------- */
+/* ---------- FLASHCARD ---------- */
 function renderFlashView(item){
   let frontLabel, frontMain, frontSub, frontClass = 'flash-main';
   let backLabel, backMain, backSub, backClass = 'flash-main';
@@ -963,49 +1153,35 @@ function renderFlashView(item){
 
   if (item.type === 'number') {
     if (state.direction === 'vi-de') {
-      frontLabel = 'Số';
-      frontMain = 'Số ' + item.n;
+      frontLabel = 'Số'; frontMain = 'Số ' + item.n;
       frontSub = 'Nhấn thẻ để xem tiếng Đức';
-      backLabel = 'Deutsch';
-      backMain = item.de;
-      backSub = item.vi;
+      backLabel = 'Deutsch'; backMain = item.de; backSub = item.vi;
       speakText = item.de;
     } else {
-      frontLabel = 'Deutsch';
-      frontMain = item.de;
+      frontLabel = 'Deutsch'; frontMain = item.de;
       frontSub = 'Nhấn thẻ để xem nghĩa';
-      backLabel = 'Nghĩa';
-      backMain = item.n + ' — ' + item.vi;
-      backSub = 'Số ' + item.n;
-      speakText = item.de;
+      backLabel = 'Nghĩa'; backMain = item.n + ' — ' + item.vi;
+      backSub = 'Số ' + item.n; speakText = item.de;
     }
   } else {
-    frontClass = 'flash-letter';
-    backClass = 'flash-main';
+    frontClass = 'flash-letter'; backClass = 'flash-main';
     if (state.direction === 'vi-de') {
-      frontLabel = 'Buchstabe';
-      frontMain = item.letter;
+      frontLabel = 'Buchstabe'; frontMain = item.letter;
       frontSub = 'Chữ này đọc là gì?';
-      backLabel = 'Aussprache';
-      backMain = item.name;
-      backSub = item.ex + ' — ' + item.mean;
-      speakText = item.letter;
+      backLabel = 'Aussprache'; backMain = item.name;
+      backSub = item.ex + ' — ' + item.mean; speakText = item.letter;
     } else {
-      frontLabel = 'Aussprache';
-      frontMain = item.name;
+      frontLabel = 'Aussprache'; frontMain = item.name;
       frontSub = 'Đây là chữ cái nào?';
-      backLabel = 'Buchstabe';
-      backMain = item.letter;
-      backSub = item.ex + ' — ' + item.mean;
-      speakText = item.letter;
+      backLabel = 'Buchstabe'; backMain = item.letter;
+      backSub = item.ex + ' — ' + item.mean; speakText = item.letter;
     }
   }
 
   state.flipped = false;
-  state.answered = false;
 
   contentArea.innerHTML = `
-    <div class="card animate" id="currentCard">
+    <div class="glass animate">
       <div class="q-header">
         <span class="q-label">Lật thẻ</span>
         <button class="speak-btn" id="speakBtn" title="Nghe tiếng Đức">🔊</button>
@@ -1030,7 +1206,6 @@ function renderFlashView(item){
       </div>
 
       <div class="flash-hint" id="flashHint">Nhấn vào thẻ hoặc nút bên dưới để lật</div>
-
       <div class="flash-controls">
         <button id="flipBtn">🔄 Lật thẻ</button>
       </div>
@@ -1053,8 +1228,7 @@ function renderFlashView(item){
 
   flashcard.addEventListener('click', flip);
   document.getElementById('flipBtn').addEventListener('click', e => {
-    e.stopPropagation();
-    flip();
+    e.stopPropagation(); flip();
   });
   document.getElementById('speakBtn').addEventListener('click', e => {
     e.stopPropagation();
@@ -1075,10 +1249,9 @@ function markAndAdvance(learned){
   if (state.session.index >= state.session.items.length) {
     renderSummary();
   } else {
-    state.answered = false;
-    state.flipped = false;
     state.quizAnswered = false;
     state.essayAnswered = false;
+    state.flipped = false;
     renderCurrent();
   }
 }
@@ -1086,7 +1259,7 @@ function markAndAdvance(learned){
 /* ---------- SUMMARY ---------- */
 function renderSummary(){
   const { correct, total, bestStreak } = state.session;
-  const pct = total > 0 ? Math.round(correct / total * 100) : 0;
+  const pct = total > 0 ? Math.round(correct/total*100) : 0;
   const { learned, total: catTotal } = learnedCount(state.category);
 
   document.getElementById('sessionProgressText').textContent = total + ' / ' + total;
@@ -1094,11 +1267,10 @@ function renderSummary(){
   updateStats();
 
   contentArea.innerHTML = `
-    <div class="card summary-card animate">
+    <div class="glass summary-card animate">
       <div class="summary-emoji">🎉</div>
       <h2 class="summary-title">Hoàn thành phiên!</h2>
       <div class="summary-sub">Bạn đã hoàn thành ${total} câu hỏi</div>
-
       <div class="summary-grid">
         <div class="summary-stat green">
           <div class="lbl">Đúng / Tổng</div>
@@ -1117,9 +1289,8 @@ function renderSummary(){
           <div class="val">${learned} / ${catTotal}</div>
         </div>
       </div>
-
       <div class="summary-actions">
-        <button class="change-btn" id="changeCatBtn">Đổi chủ đề</button>
+        <button class="change-btn" id="changeCatBtn">← Đổi đề</button>
         <button class="restart-btn" id="restartBtn">🔄 Làm lại</button>
       </div>
     </div>
@@ -1127,73 +1298,20 @@ function renderSummary(){
 
   document.getElementById('restartBtn').addEventListener('click', startNewSession);
   document.getElementById('changeCatBtn').addEventListener('click', () => {
-    document.getElementById('catChips').scrollIntoView({behavior:'smooth', block:'center'});
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    state.screen = 'setup';
+    studyScreen.style.display = 'none';
+    setupScreen.style.display = 'block';
+    renderCategoryCards();
+    updateSetupLabels();
   });
 }
 
 /* ============================================================
-   DIRECTION OPTIONS
+   KEYBOARD
    ============================================================ */
-function updateDirectionOptions(){
-  const sel = document.getElementById('direction');
-  if (state.category === 'alphabet') {
-    sel.innerHTML = `
-      <option value="vi-de">Chữ ➜ Cách đọc</option>
-      <option value="de-vi">Cách đọc ➜ Chữ</option>
-    `;
-  } else {
-    sel.innerHTML = `
-      <option value="vi-de">Số ➜ Tiếng Đức</option>
-      <option value="de-vi">Tiếng Đức ➜ Số</option>
-    `;
-  }
-  sel.value = state.direction;
-}
-
-/* ============================================================
-   SỰ KIỆN
-   ============================================================ */
-// Section menu
-document.querySelectorAll('.section-menu button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const sec = btn.dataset.section;
-    if (state.section === sec) return;
-    state.section = sec;
-    document.querySelectorAll('.section-menu button').forEach(b =>
-      b.classList.toggle('active', b.dataset.section === sec));
-    startNewSession();
-  });
-});
-
-// Category chips
-document.querySelectorAll('#catChips .chip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    const cat = chip.dataset.cat;
-    if (state.category === cat) return;
-    state.category = cat;
-    document.querySelectorAll('#catChips .chip').forEach(c =>
-      c.classList.toggle('active', c.dataset.cat === cat));
-    // reset direction for alphabet
-    if (cat === 'alphabet') state.direction = 'vi-de';
-    updateDirectionOptions();
-    startNewSession();
-  });
-});
-
-// Direction
-document.getElementById('direction').addEventListener('change', e => {
-  state.direction = e.target.value;
-  startNewSession();
-});
-
-// Auto-speak
-document.getElementById('autoSpeak').addEventListener('change', e => {
-  state.autoSpeak = e.target.checked;
-  document.getElementById('autoSpeakLabel').classList.toggle('on', state.autoSpeak);
-});
-
-// Keyboard
 document.addEventListener('keydown', e => {
+  if (state.screen !== 'study') return;
   const tag = (e.target.tagName || '').toLowerCase();
   if (tag === 'input' || tag === 'textarea') return;
 
@@ -1211,10 +1329,10 @@ document.addEventListener('keydown', e => {
 });
 
 /* ============================================================
-   KHỞI TẠO
+   INIT
    ============================================================ */
-updateDirectionOptions();
-startNewSession();
+renderCategoryCards();
+updateSetupLabels();
 </script>
 </body>
 </html>
