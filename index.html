@@ -5,20 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Học Tiếng Đức · VANBAC</title>
 <style>
+  @font-face {
+    font-family: "GFF";
+    src: url("https://dl.dir.freefiremobile.com/common/web_event/common/fonts/website/GFFLatinW05-Bold.woff2") format("woff2"),
+         url("https://dl.dir.freefiremobile.com/common/web_event/common/fonts/website/GFFLatinW05-Bold.woff") format("woff");
+    font-weight: 400 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
   :root{
     --bg:#faf8f4;
     --bg-2:#f5f2ec;
     --surface:#ffffff;
-    --surface-2:#f5f2ec;
     --line:#e8e3d9;
     --line-2:#d0c9ba;
     --ink:#0a0a14;
     --ink-soft:#3a3a4a;
     --muted:#8a8a95;
-    --gold:#c9a227;
-    --gold-soft:#faf0d0;
-    --gold-2:#f4c542;
     --red:#c81e1e;
+    --red-deep:#8b0000;
     --red-soft:#fce8e8;
     --green:#0a7a4a;
     --green-soft:#ddf5ea;
@@ -28,25 +34,28 @@
     --indigo-soft:#e5e5ff;
     --blue:#1d4ed8;
     --blue-soft:#e0e8ff;
+    --gold:#c9a227;
+    --gold-soft:#faf0d0;
     --shadow-sm:0 1px 3px rgba(10,10,20,.05);
     --shadow-md:0 12px 32px -16px rgba(10,10,20,.15);
-    --shadow-lg:0 24px 60px -24px rgba(10,10,20,.22);
-    --serif:'Iowan Old Style','Palatino Linotype','Times New Roman',Georgia,serif;
+    --serif:'Times New Roman',Georgia,serif;
+    --gff:"GFF","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{height:100%}
   body{
     margin:0;min-height:100vh;
-    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    font-family:var(--gff);
+    font-weight:700;
     color:var(--ink);
     background:var(--bg);
     background-image:
       radial-gradient(900px 500px at 100% -10%, rgba(201,162,39,.09), transparent 60%),
-      radial-gradient(800px 500px at 0% 100%, rgba(61,61,201,.05), transparent 55%);
+      radial-gradient(800px 500px at 0% 100%, rgba(200,30,30,.05), transparent 55%);
     background-attachment:fixed;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
-    letter-spacing:-0.01em;
+    letter-spacing:0.02em;
   }
   .app{
     max-width:600px;margin:0 auto;padding:32px 18px 56px;
@@ -55,16 +64,16 @@
   }
   @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-  /* ============ HERO ============ */
+  /* HERO */
   .hero{
     display:flex;flex-direction:column;align-items:center;gap:0;
     text-align:center;padding:8px 0 12px;
   }
   .hero-flag{
     display:inline-flex;flex-direction:column;
-    width:34px;height:23px;border-radius:5px;overflow:hidden;
+    width:38px;height:26px;border-radius:5px;overflow:hidden;
     box-shadow:0 4px 14px rgba(10,10,20,.15),inset 0 0 0 1px rgba(0,0,0,.05);
-    margin-bottom:18px;
+    margin-bottom:20px;
   }
   .hero-flag span{flex:1}
   .hero-flag span:nth-child(1){background:#0a0a14}
@@ -72,32 +81,67 @@
   .hero-flag span:nth-child(3){background:#f4c542}
 
   .hero-title{
-    margin:0;font-size:clamp(30px,7.5vw,44px);font-weight:800;
-    letter-spacing:-1.4px;line-height:1.05;color:var(--ink);
+    margin:0;
+    font-family:var(--gff);
+    font-size:clamp(34px,9vw,56px);
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    line-height:1.05;
+    background:linear-gradient(180deg,
+      #ffffff 0%,
+      #fff0f0 15%,
+      #ff9999 38%,
+      #e01e1e 58%,
+      #a01010 80%,
+      #6b0000 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:transparent;
+    filter:drop-shadow(0 3px 10px rgba(200,30,30,.35)) drop-shadow(0 1px 0 rgba(0,0,0,.15));
+    position:relative;
+    display:inline-block;
+    padding:0 4px;
   }
+  /* Viền tối nhẹ cho title */
+  .hero-title::before{
+    content:attr(data-text);
+    position:absolute;
+    inset:0;
+    padding:0 4px;
+    -webkit-text-fill-color:transparent;
+    -webkit-text-stroke:2px rgba(10,10,20,.85);
+    z-index:-1;
+    background:none;
+  }
+
   .hero-divider{
-    width:36px;height:2px;background:var(--gold);
+    width:44px;height:3px;
+    background:linear-gradient(90deg,transparent,var(--red),transparent);
     border-radius:2px;margin:16px 0 14px;
   }
   .hero-credit{
-    margin:0;font-size:10px;letter-spacing:3.5px;
+    margin:0;font-family:var(--gff);
+    font-size:11px;letter-spacing:4px;
     text-transform:uppercase;font-weight:700;color:var(--muted);
   }
   .hero-credit strong{
-    color:var(--ink);font-weight:800;letter-spacing:3.5px;
+    color:var(--ink);font-weight:900;letter-spacing:4px;
   }
 
-  /* ============ SECTION HEAD ============ */
+  /* SECTION HEAD */
   .section-head{
     display:flex;align-items:baseline;justify-content:space-between;
     padding:0 4px;margin-top:8px;
   }
   .section-label{
-    font-size:11px;letter-spacing:2.2px;text-transform:uppercase;
-    color:var(--muted);font-weight:800;
+    font-family:var(--gff);
+    font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--muted);font-weight:700;
   }
 
-  /* ============ CATEGORY GRID ============ */
+  /* CATEGORY GRID */
   .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .cat-card{
     display:flex;flex-direction:column;gap:10px;
@@ -109,6 +153,7 @@
     transition:all .22s cubic-bezier(.2,.8,.2,1);
     box-shadow:var(--shadow-sm);
     position:relative;overflow:hidden;
+    color:var(--ink);
   }
   .cat-card:hover{
     border-color:var(--ink);transform:translateY(-2px);
@@ -122,14 +167,14 @@
     font-size:20px;flex-shrink:0;
   }
   .cat-count{
-    font-size:10.5px;font-weight:800;color:var(--muted);
+    font-size:11px;font-weight:700;color:var(--muted);
     font-variant-numeric:tabular-nums;letter-spacing:.3px;
   }
   .cat-name{
-    font-size:15px;font-weight:800;letter-spacing:-.3px;
+    font-size:16px;font-weight:900;letter-spacing:.02em;
     color:var(--ink);margin-top:2px;
   }
-  .cat-sub{font-size:11px;font-weight:600;color:var(--muted);margin-top:-6px}
+  .cat-sub{font-size:11px;font-weight:700;color:var(--muted);margin-top:-4px}
   .cat-bar{
     height:4px;background:var(--bg-2);
     border-radius:99px;overflow:hidden;margin-top:4px;
@@ -139,14 +184,14 @@
     transition:width .5s cubic-bezier(.2,.8,.2,1);
   }
 
-  /* ============ QUICK BUTTON ============ */
+  /* QUICK BUTTON */
   .quick-btn{
     display:flex;align-items:center;gap:14px;
     padding:17px 20px;
     background:var(--ink);color:#fff;
     border:none;border-radius:18px;
-    font-family:inherit;font-size:14.5px;font-weight:700;
-    letter-spacing:-.1px;
+    font-family:inherit;font-size:14px;font-weight:900;
+    letter-spacing:.05em;text-transform:uppercase;
     cursor:pointer;transition:all .22s cubic-bezier(.2,.8,.2,1);
     box-shadow:0 8px 24px -10px rgba(10,10,20,.4);
   }
@@ -158,12 +203,12 @@
   .quick-icon{font-size:18px;line-height:1}
   .quick-label{flex:1;text-align:left}
   .quick-arrow{
-    font-size:16px;font-weight:800;opacity:.85;
+    font-size:16px;font-weight:900;opacity:.85;
     transition:transform .2s;
   }
   .quick-btn:hover .quick-arrow{transform:translateX(4px)}
 
-  /* ============ EXAM GRID ============ */
+  /* EXAM GRID */
   .exam-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
   .exam-card{
     display:flex;flex-direction:column;align-items:center;gap:3px;
@@ -175,6 +220,7 @@
     transition:all .22s cubic-bezier(.2,.8,.2,1);
     position:relative;overflow:hidden;
     box-shadow:var(--shadow-sm);
+    color:var(--ink);
   }
   .exam-card::before{
     content:"";position:absolute;top:0;left:0;right:0;height:3px;
@@ -187,20 +233,20 @@
   }
   .exam-card:active{transform:translateY(0) scale(.98)}
   .exam-level{
-    font-size:22px;font-weight:800;letter-spacing:-.8px;
+    font-size:22px;font-weight:900;letter-spacing:.02em;
     color:var(--accent);line-height:1;margin-top:2px;
   }
   .exam-name{
     font-size:9.5px;font-weight:700;
-    text-transform:uppercase;letter-spacing:1.2px;
+    text-transform:uppercase;letter-spacing:1.3px;
     color:var(--muted);margin-top:2px;
   }
 
-  /* ============ FOOT ============ */
+  /* FOOT */
   .foot{
     text-align:center;font-size:11px;color:var(--muted);
-    font-weight:500;line-height:1.8;padding-top:12px;
-    letter-spacing:.05px;
+    font-weight:700;line-height:1.9;padding-top:12px;
+    letter-spacing:.03em;
   }
   .foot kbd{
     background:var(--surface);border:1px solid var(--line);
@@ -209,7 +255,7 @@
     box-shadow:0 1px 0 var(--line);
   }
 
-  /* ============ BACK BUTTON ============ */
+  /* BACK BTN */
   .back-btn{
     display:inline-flex;align-items:center;gap:6px;
     padding:9px 14px;
@@ -218,11 +264,12 @@
     font-family:inherit;font-size:12.5px;font-weight:700;
     cursor:pointer;transition:all .18s;
     box-shadow:var(--shadow-sm);
+    letter-spacing:.02em;
   }
   .back-btn:hover{border-color:var(--ink);color:var(--ink)}
   .back-btn:active{transform:scale(.97)}
 
-  /* ============ SETUP SCREEN ============ */
+  /* SETUP */
   .setup-top{display:flex;align-items:center;margin-bottom:6px}
   .setup-hero{
     display:flex;align-items:center;gap:14px;
@@ -233,26 +280,26 @@
     display:flex;align-items:center;justify-content:center;
     font-size:24px;flex-shrink:0;
   }
-  .setup-titles{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .setup-titles{display:flex;flex-direction:column;gap:3px;min-width:0}
   .setup-title{
-    font-size:22px;font-weight:800;letter-spacing:-.6px;
+    font-size:22px;font-weight:900;letter-spacing:.01em;
     color:var(--ink);margin:0;line-height:1.1;
   }
   .setup-sub{
-    font-size:12.5px;font-weight:600;color:var(--muted);
-    margin:0;letter-spacing:.05px;
+    font-size:12px;font-weight:700;color:var(--muted);
+    margin:0;letter-spacing:.03em;
   }
-  .setup-sub b{color:var(--ink);font-weight:800}
+  .setup-sub b{color:var(--ink);font-weight:900}
 
   .setup-label{
     display:flex;align-items:center;gap:8px;
-    font-size:10.5px;letter-spacing:2px;text-transform:uppercase;
-    color:var(--muted);font-weight:800;
+    font-size:10.5px;letter-spacing:2.2px;text-transform:uppercase;
+    color:var(--muted);font-weight:700;
     margin:22px 0 10px;padding-left:2px;
   }
   .setup-label:first-of-type{margin-top:0}
   .setup-label .count{
-    font-size:9.5px;letter-spacing:.4px;padding:2px 8px;
+    font-size:9.5px;letter-spacing:.5px;padding:2px 8px;
     border-radius:99px;background:var(--bg-2);color:var(--ink-soft);
     text-transform:none;font-weight:700;
   }
@@ -272,8 +319,8 @@
   }
   .mode-card:active{transform:translateY(0) scale(.98)}
   .mode-card .icon{font-size:22px;line-height:1}
-  .mode-card .name{font-size:12px;font-weight:800;letter-spacing:-.1px}
-  .mode-card .desc{font-size:9.5px;color:var(--muted);font-weight:600}
+  .mode-card .name{font-size:12px;font-weight:900;letter-spacing:.02em}
+  .mode-card .desc{font-size:9.5px;color:var(--muted);font-weight:700}
   .mode-card.active[data-mode="flash"]{
     background:var(--indigo-soft);border-color:var(--indigo);
     box-shadow:0 0 0 3px rgba(61,61,201,.12);
@@ -283,8 +330,8 @@
     box-shadow:0 0 0 3px rgba(10,122,74,.12);
   }
   .mode-card.active[data-mode="type"]{
-    background:var(--gold-soft);border-color:var(--gold);
-    box-shadow:0 0 0 3px rgba(201,162,39,.15);
+    background:var(--red-soft);border-color:var(--red);
+    box-shadow:0 0 0 3px rgba(200,30,30,.15);
   }
 
   .chips{display:flex;gap:6px;flex-wrap:wrap}
@@ -293,7 +340,7 @@
     background:var(--surface);border:1px solid var(--line);
     color:var(--muted);font-family:inherit;font-size:12.5px;font-weight:700;
     cursor:pointer;transition:all .2s;white-space:nowrap;
-    box-shadow:var(--shadow-sm);
+    box-shadow:var(--shadow-sm);letter-spacing:.02em;
   }
   .chip:hover:not(.active){border-color:var(--ink);color:var(--ink)}
   .chip.active{
@@ -309,8 +356,8 @@
     box-shadow:var(--shadow-sm);
   }
   .toggle-row:hover{border-color:var(--line-2)}
-  .toggle-row .label{font-size:13px;font-weight:700;color:var(--ink)}
-  .toggle-row .desc{font-size:11px;color:var(--muted);font-weight:600;margin-top:2px}
+  .toggle-row .label{font-size:13px;font-weight:900;color:var(--ink)}
+  .toggle-row .desc{font-size:11px;color:var(--muted);font-weight:700;margin-top:2px}
   .toggle-row .switch{
     width:42px;height:24px;border-radius:12px;
     background:var(--line-2);position:relative;
@@ -328,51 +375,52 @@
   .start-btn{
     width:100%;margin-top:22px;padding:17px;
     border-radius:16px;border:0;
-    background:var(--ink);color:#fff;
-    font-family:inherit;font-size:15.5px;font-weight:800;
+    background:linear-gradient(135deg,var(--red),var(--red-deep));
+    color:#fff;
+    font-family:inherit;font-size:15px;font-weight:900;
     cursor:pointer;transition:all .22s cubic-bezier(.2,.8,.2,1);
-    letter-spacing:-.1px;
-    box-shadow:0 10px 28px -12px rgba(10,10,20,.45);
+    letter-spacing:.05em;text-transform:uppercase;
+    box-shadow:0 10px 28px -12px rgba(200,30,30,.55);
     display:flex;align-items:center;justify-content:center;gap:8px;
   }
   .start-btn:hover{
     transform:translateY(-2px);
-    box-shadow:0 14px 36px -12px rgba(10,10,20,.5);
+    box-shadow:0 14px 36px -12px rgba(200,30,30,.6);
   }
   .start-btn:active{transform:translateY(0) scale(.99)}
 
-  /* ============ SESSION ============ */
+  /* SESSION */
   .session{display:flex;flex-direction:column;gap:16px;
     animation:fadeUp .35s cubic-bezier(.2,.8,.2,1)}
   .session-top{display:flex;align-items:center;gap:10px}
   .session-tag{
     margin-left:auto;padding:6px 12px;border-radius:99px;
-    font-size:10.5px;font-weight:800;letter-spacing:.5px;
+    font-size:10.5px;font-weight:900;letter-spacing:.08em;
     text-transform:uppercase;white-space:nowrap;
   }
   .session-tag.flash{background:var(--indigo-soft);color:var(--indigo)}
   .session-tag.quiz{background:var(--green-soft);color:var(--green)}
-  .session-tag.type{background:var(--gold-soft);color:var(--amber)}
+  .session-tag.type{background:var(--red-soft);color:var(--red)}
   .session-tag.exam{background:var(--red-soft);color:var(--red)}
 
   .progress{display:flex;flex-direction:column;gap:7px}
   .progress-meta{
     display:flex;justify-content:space-between;align-items:center;
     font-size:11.5px;font-weight:700;color:var(--muted);
+    letter-spacing:.03em;
   }
   .progress-meta .q-count{font-variant-numeric:tabular-nums}
-  .progress-meta .score{color:var(--green);font-weight:800}
+  .progress-meta .score{color:var(--green);font-weight:900}
   .progress-bar{
     height:5px;background:var(--bg-2);
     border-radius:99px;overflow:hidden;
   }
   .progress-bar > i{
     display:block;height:100%;width:0;border-radius:99px;
-    background:linear-gradient(90deg,var(--gold),var(--gold-2));
+    background:linear-gradient(90deg,var(--red),var(--red-deep));
     transition:width .4s cubic-bezier(.2,.8,.2,1);
   }
 
-  /* ============ Q CARD ============ */
   .q-card{
     background:var(--surface);
     border:1px solid var(--line);border-radius:22px;padding:22px 20px;
@@ -385,15 +433,15 @@
   .card-actions{margin-left:auto;display:flex;gap:6px}
   .level-badge{
     padding:3px 10px;border-radius:6px;font-size:10px;font-weight:900;
-    letter-spacing:.5px;
+    letter-spacing:.06em;text-transform:uppercase;
   }
   .level-badge.A1{background:var(--green-soft);color:var(--green)}
   .level-badge.A2{background:var(--blue-soft);color:var(--blue)}
   .level-badge.B1{background:var(--amber-soft);color:var(--amber)}
   .level-badge.B2{background:var(--red-soft);color:var(--red)}
   .status-badge{
-    padding:3px 10px;border-radius:6px;font-size:9.5px;font-weight:800;
-    letter-spacing:.5px;text-transform:uppercase;
+    padding:3px 10px;border-radius:6px;font-size:9.5px;font-weight:900;
+    letter-spacing:.06em;text-transform:uppercase;
   }
   .status-badge.new{background:var(--indigo-soft);color:var(--indigo)}
   .status-badge.learning{background:var(--amber-soft);color:var(--amber)}
@@ -407,23 +455,23 @@
     transition:all .2s;
     box-shadow:var(--shadow-sm);
   }
-  .hint-btn{font-family:Georgia,serif;font-weight:900;font-size:15px}
+  .hint-btn{font-family:var(--serif);font-weight:900;font-size:15px}
   .speak-btn:hover{border-color:var(--ink);color:var(--ink);transform:scale(1.06)}
   .speak-btn:active{transform:scale(.94)}
   .speak-btn.speaking{
-    background:var(--gold);border-color:var(--gold);color:#fff;
+    background:var(--red);border-color:var(--red);color:#fff;
     animation:pulse 1s infinite;
   }
   .hint-btn:hover,.hint-btn.active{
     background:var(--amber-soft);border-color:var(--amber);color:var(--amber);
   }
   @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(201,162,39,.4)}
-    70%{box-shadow:0 0 0 12px rgba(201,162,39,0)}
-    100%{box-shadow:0 0 0 0 rgba(201,162,39,0)}
+    0%{box-shadow:0 0 0 0 rgba(200,30,30,.4)}
+    70%{box-shadow:0 0 0 12px rgba(200,30,30,0)}
+    100%{box-shadow:0 0 0 0 rgba(200,30,30,0)}
   }
 
-  /* ============ FLASHCARD ============ */
+  /* FLASHCARD */
   .flash-scene{perspective:1600px;margin:4px 0 12px}
   .flashcard{
     position:relative;width:100%;height:240px;cursor:pointer;
@@ -443,52 +491,54 @@
     background:linear-gradient(160deg,#ffffff,#faf8f4);
   }
   .flash-back{
-    background:linear-gradient(160deg,#1a1a24,#0a0a14);
+    background:linear-gradient(160deg,#2a0a0a,#0a0a14);
     transform:rotateY(180deg);
-    border-color:rgba(255,255,255,.08);
+    border-color:rgba(255,255,255,.1);
     color:#faf8f4;
   }
   .flash-label{
     font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
-    color:var(--muted);font-weight:800;
+    color:var(--muted);font-weight:700;
   }
-  .flash-back .flash-label{color:rgba(255,255,255,.55)}
+  .flash-back .flash-label{color:rgba(255,180,180,.7)}
   .flash-main{
-    font-size:clamp(26px,7vw,40px);font-weight:800;line-height:1.15;
-    word-break:break-word;max-width:100%;letter-spacing:-.8px;
+    font-size:clamp(24px,6.5vw,36px);font-weight:900;line-height:1.15;
+    word-break:break-word;max-width:100%;letter-spacing:.01em;
   }
   .flash-main.letter{font-size:clamp(72px,22vw,110px);letter-spacing:2px}
   .flash-sub{
-    font-size:13.5px;color:var(--muted);font-weight:600;line-height:1.5;
+    font-size:13px;color:var(--muted);font-weight:700;line-height:1.5;
     max-width:100%;
   }
-  .flash-back .flash-sub{color:rgba(255,255,255,.65)}
+  .flash-back .flash-sub{color:rgba(255,180,180,.75)}
 
   .flip-hint{
     font-size:11.5px;color:var(--muted);text-align:center;
-    font-weight:600;margin-bottom:10px;
+    font-weight:700;margin-bottom:10px;letter-spacing:.03em;
   }
   .flip-btn{
     width:100%;padding:13px;border-radius:13px;
     background:var(--surface);border:1px solid var(--line);
-    color:var(--ink);font-family:inherit;font-size:14px;font-weight:800;
+    color:var(--ink);font-family:inherit;font-size:13px;font-weight:900;
     cursor:pointer;transition:all .2s;
     box-shadow:var(--shadow-sm);
+    letter-spacing:.05em;text-transform:uppercase;
   }
   .flip-btn:hover{border-color:var(--ink)}
   .flip-btn:active{transform:scale(.98)}
 
-  /* ============ OPTIONS ============ */
+  /* OPTIONS */
   .options{display:flex;flex-direction:column;gap:9px}
   .opt{
     display:flex;align-items:center;gap:13px;
     padding:14px 16px;
     background:var(--surface);
     border:1.5px solid var(--line);border-radius:14px;
-    color:var(--ink);font-family:inherit;font-size:14.5px;font-weight:600;
+    color:var(--ink);font-family:inherit;font-size:14px;font-weight:700;
     text-align:left;cursor:pointer;
     transition:all .18s cubic-bezier(.2,.8,.2,1);
     animation:optIn .32s cubic-bezier(.2,.8,.2,1) backwards;
+    letter-spacing:.01em;
   }
   .opt:nth-child(1){animation-delay:.03s}
   .opt:nth-child(2){animation-delay:.07s}
@@ -504,7 +554,7 @@
     width:30px;height:30px;border-radius:8px;flex-shrink:0;
     display:flex;align-items:center;justify-content:center;
     background:var(--bg-2);color:var(--ink-soft);
-    font-weight:800;font-size:13px;
+    font-weight:900;font-size:13px;
     transition:all .18s;
   }
   .opt.correct{
@@ -513,50 +563,51 @@
   }
   @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.015)}100%{transform:scale(1)}}
   .opt.correct .opt-letter{background:var(--green);color:#fff}
-  .opt.correct .opt-text{color:var(--green);font-weight:700}
+  .opt.correct .opt-text{color:var(--green);font-weight:900}
   .opt.wrong{background:var(--red-soft);border-color:var(--red)}
   .opt.wrong .opt-letter{background:var(--red);color:#fff}
-  .opt.wrong .opt-text{color:var(--red);font-weight:700}
+  .opt.wrong .opt-text{color:var(--red);font-weight:900}
   .opt.dimmed{opacity:.4}
 
-  /* ============ QUESTION TEXT ============ */
+  /* QUESTION TEXT */
   .q-text{
-    font-size:clamp(16px,4.4vw,20px);font-weight:700;line-height:1.5;
-    margin:0 0 18px;letter-spacing:-.3px;color:var(--ink);
+    font-size:clamp(15px,4.2vw,19px);font-weight:900;line-height:1.5;
+    margin:0 0 18px;letter-spacing:.01em;color:var(--ink);
   }
-  .q-text b{color:var(--gold);font-weight:800}
+  .q-text b{color:var(--red);font-weight:900}
   .q-text .blank{
     display:inline-block;min-width:52px;
-    border-bottom:2px dashed var(--gold);color:var(--gold);
+    border-bottom:2px dashed var(--red);color:var(--red);
   }
 
-  /* ============ HINT BOX ============ */
+  /* HINT BOX */
   .hint-box{
     margin:0 0 16px;padding:13px 15px;
     background:var(--amber-soft);border:1px solid #e8ce8a;
-    border-radius:12px;font-size:12.5px;font-weight:600;
-    line-height:1.55;color:var(--amber);
+    border-radius:12px;font-size:12.5px;font-weight:700;
+    line-height:1.6;color:var(--amber);
     animation:fbIn .3s cubic-bezier(.2,.8,.2,1);
+    letter-spacing:.01em;
   }
   .hint-box .label{
-    display:block;font-size:9.5px;letter-spacing:1.5px;
+    display:block;font-size:9.5px;letter-spacing:1.8px;
     text-transform:uppercase;color:var(--amber);
-    font-weight:800;margin-bottom:5px;
+    font-weight:900;margin-bottom:6px;
   }
 
-  /* ============ TYPE INPUT ============ */
+  /* TYPE INPUT */
   .type-input{
     width:100%;padding:16px 18px;
     border-radius:14px;border:2px solid var(--line);
     background:var(--bg-2);color:var(--ink);
-    font-family:inherit;font-size:17px;font-weight:700;
-    transition:all .2s;letter-spacing:-.2px;margin-bottom:11px;
+    font-family:inherit;font-size:16px;font-weight:700;
+    transition:all .2s;letter-spacing:.02em;margin-bottom:11px;
   }
-  .type-input::placeholder{color:var(--muted);font-weight:500;font-size:14px}
+  .type-input::placeholder{color:var(--muted);font-weight:700;font-size:13px}
   .type-input:focus{
-    outline:none;border-color:var(--ink);
+    outline:none;border-color:var(--red);
     background:var(--surface);
-    box-shadow:0 0 0 4px rgba(10,10,20,.06);
+    box-shadow:0 0 0 4px rgba(200,30,30,.08);
   }
   .type-input:disabled{opacity:.7;cursor:not-allowed}
   .type-input.correct{
@@ -569,10 +620,10 @@
   .check-btn{
     width:100%;padding:15px;border-radius:14px;border:none;
     background:var(--green);color:#fff;
-    font-family:inherit;font-size:14.5px;font-weight:800;
+    font-family:inherit;font-size:13.5px;font-weight:900;
     cursor:pointer;transition:all .2s;
     box-shadow:0 8px 20px -10px rgba(10,122,74,.5);
-    letter-spacing:-.1px;
+    letter-spacing:.06em;text-transform:uppercase;
   }
   .check-btn:hover{transform:translateY(-1px);box-shadow:0 10px 26px -10px rgba(10,122,74,.5)}
   .check-btn:active{transform:translateY(0) scale(.99)}
@@ -581,30 +632,31 @@
     width:100%;margin-top:14px;padding:14px;
     border-radius:13px;border:none;
     background:var(--ink);color:#fff;
-    font-family:inherit;font-size:14.5px;font-weight:800;
+    font-family:inherit;font-size:13.5px;font-weight:900;
     cursor:pointer;transition:all .2s;
     box-shadow:0 8px 20px -10px rgba(10,10,20,.4);
-    letter-spacing:-.1px;
+    letter-spacing:.06em;text-transform:uppercase;
   }
   .btn-next:hover{transform:translateY(-1px);box-shadow:0 12px 26px -10px rgba(10,10,20,.45)}
   .btn-next:active{transform:translateY(0) scale(.99)}
 
-  /* ============ FEEDBACK ============ */
+  /* FEEDBACK */
   .fb{
     margin-top:14px;padding:13px 16px;border-radius:12px;
-    font-size:13px;font-weight:600;line-height:1.55;
+    font-size:12.5px;font-weight:700;line-height:1.55;
     animation:fbIn .3s cubic-bezier(.2,.8,.2,1);
+    letter-spacing:.01em;
   }
   @keyframes fbIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
   .fb.correct{background:var(--green-soft);color:var(--green);border:1px solid #a7e8c8}
   .fb.wrong{background:var(--red-soft);color:var(--red);border:1px solid #f0b8b8}
   .fb small{
     display:block;margin-top:6px;font-size:11.5px;opacity:.92;
-    font-weight:500;line-height:1.6;
+    font-weight:700;line-height:1.6;
   }
-  .fb small b{color:var(--ink);font-weight:700}
+  .fb small b{color:var(--ink);font-weight:900}
 
-  /* ============ MARK ROW ============ */
+  /* MARK ROW */
   .mark-row{
     display:none;gap:8px;margin-top:16px;
     animation:fbIn .3s cubic-bezier(.2,.8,.2,1);
@@ -612,10 +664,10 @@
   .mark-row.show{display:flex}
   .mark-btn{
     flex:1;padding:15px 10px;border-radius:14px;
-    font-family:inherit;font-size:13.5px;font-weight:800;
+    font-family:inherit;font-size:12.5px;font-weight:900;
     cursor:pointer;transition:all .2s cubic-bezier(.2,.8,.2,1);
     display:flex;align-items:center;justify-content:center;gap:7px;
-    letter-spacing:-.1px;
+    letter-spacing:.04em;text-transform:uppercase;
   }
   .mark-btn.unlearn{
     background:var(--amber-soft);border:1.5px solid #e8ce8a;color:var(--amber);
@@ -641,7 +693,7 @@
   }
   .mark-btn:active{transform:translateY(0) scale(.98)}
 
-  /* ============ EXAM ============ */
+  /* EXAM */
   .exam-banner{
     padding:16px 18px;
     background:linear-gradient(160deg,#ffffff,#faf8f4);
@@ -651,24 +703,24 @@
   }
   .exam-banner::before{
     content:"";position:absolute;top:0;left:0;bottom:0;width:3px;
-    background:var(--gold);
+    background:linear-gradient(180deg,var(--red),var(--red-deep));
   }
   .exam-banner-title{
     font-family:var(--serif);font-size:16px;font-weight:700;
-    color:var(--ink);letter-spacing:-.1px;line-height:1.2;
+    color:var(--ink);letter-spacing:0;line-height:1.2;
     margin-bottom:4px;
   }
   .exam-banner-sub{
-    font-size:11.5px;color:var(--muted);font-weight:600;
-    letter-spacing:.1px;
+    font-size:11px;color:var(--muted);font-weight:700;
+    letter-spacing:.03em;
   }
 
   .exam-instr{
     padding:12px 15px;
     background:var(--bg-2);
-    border-left:3px solid var(--gold);
+    border-left:3px solid var(--red);
     border-radius:8px;
-    font-size:12.5px;font-weight:500;color:var(--ink-soft);
+    font-size:12.5px;font-weight:400;color:var(--ink-soft);
     line-height:1.6;margin-bottom:16px;
     font-family:var(--serif);font-style:italic;
   }
@@ -681,31 +733,33 @@
     color:var(--ink);white-space:pre-wrap;
     margin-bottom:18px;
     max-height:300px;overflow-y:auto;
+    font-weight:400;
   }
   .exam-passage::-webkit-scrollbar{width:6px}
   .exam-passage::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:99px}
   .exam-passage .blank-num{
     display:inline-block;padding:0 7px;
-    background:var(--gold-soft);color:var(--amber);
-    border-radius:5px;font-weight:800;font-size:12px;
-    font-family:'Inter',sans-serif;
+    background:var(--red-soft);color:var(--red);
+    border-radius:5px;font-weight:900;font-size:12px;
+    font-family:var(--gff);
     margin:0 2px;line-height:1.5;
-    border:1px solid #e8ce8a;
+    border:1px solid #f0b8b8;
   }
   .exam-passage .blank-num.hl{
-    background:var(--gold);color:#fff;
-    border-color:var(--gold);
-    box-shadow:0 0 0 3px rgba(201,162,39,.2);
+    background:linear-gradient(135deg,var(--red),var(--red-deep));
+    color:#fff;
+    border-color:var(--red);
+    box-shadow:0 0 0 3px rgba(200,30,30,.2);
     animation:blankPulse 1.6s infinite;
   }
   @keyframes blankPulse{
-    0%,100%{box-shadow:0 0 0 3px rgba(201,162,39,.2)}
-    50%{box-shadow:0 0 0 6px rgba(201,162,39,.05)}
+    0%,100%{box-shadow:0 0 0 3px rgba(200,30,30,.2)}
+    50%{box-shadow:0 0 0 6px rgba(200,30,30,.05)}
   }
 
   .exam-q-num{
-    font-size:10.5px;font-weight:800;color:var(--gold);
-    letter-spacing:1.8px;text-transform:uppercase;
+    font-size:10.5px;font-weight:900;color:var(--red);
+    letter-spacing:2px;text-transform:uppercase;
     margin-bottom:8px;
   }
   .exam-q-text{
@@ -713,7 +767,7 @@
     line-height:1.5;margin-bottom:16px;color:var(--ink);
   }
 
-  /* ============ SUMMARY ============ */
+  /* SUMMARY */
   .summary{
     text-align:center;padding:36px 24px;
     background:var(--surface);
@@ -723,12 +777,12 @@
   }
   .sum-emoji{font-size:54px;line-height:1;margin-bottom:14px}
   .sum-title{
-    font-size:24px;font-weight:800;margin:0 0 6px;
-    letter-spacing:-.6px;color:var(--ink);
+    font-size:24px;font-weight:900;margin:0 0 6px;
+    letter-spacing:.02em;color:var(--ink);
   }
   .sum-sub{
-    font-size:13px;color:var(--muted);font-weight:600;
-    margin-bottom:24px;line-height:1.5;
+    font-size:12.5px;color:var(--muted);font-weight:700;
+    margin-bottom:24px;line-height:1.5;letter-spacing:.02em;
   }
   .sum-stats{
     display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;
@@ -739,39 +793,39 @@
     border-radius:13px;padding:13px 14px;
   }
   .sum-stat .lbl{
-    font-size:9.5px;letter-spacing:1.3px;text-transform:uppercase;
-    color:var(--muted);font-weight:800;margin-bottom:4px;
+    font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;
+    color:var(--muted);font-weight:700;margin-bottom:4px;
   }
-  .sum-stat .val{font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.4px}
+  .sum-stat .val{font-size:20px;font-weight:900;color:var(--ink);letter-spacing:.02em}
   .sum-stat.green .val{color:var(--green)}
-  .sum-stat.gold .val{color:var(--gold)}
+  .sum-stat.red .val{color:var(--red)}
   .sum-stat.amber .val{color:var(--amber)}
   .sum-actions{display:flex;gap:9px}
   .sum-actions button{
     flex:1;padding:14px;border-radius:13px;
     border:1px solid var(--line);font-family:inherit;
-    font-size:13.5px;font-weight:800;cursor:pointer;
-    transition:all .2s;letter-spacing:-.1px;
+    font-size:12.5px;font-weight:900;cursor:pointer;
+    transition:all .2s;letter-spacing:.05em;text-transform:uppercase;
   }
   .sum-actions .home-btn{
     background:var(--surface);color:var(--ink-soft);
   }
   .sum-actions .home-btn:hover{background:var(--bg-2);border-color:var(--ink)}
   .sum-actions .again-btn{
-    background:var(--ink);color:#fff;border-color:var(--ink);
-    box-shadow:0 8px 20px -10px rgba(10,10,20,.4);
+    background:linear-gradient(135deg,var(--red),var(--red-deep));
+    color:#fff;border-color:var(--red);
+    box-shadow:0 8px 20px -10px rgba(200,30,30,.55);
   }
   .sum-actions .again-btn:hover{transform:translateY(-1px)}
 
-  /* ============ RESPONSIVE ============ */
   @media (max-width:440px){
     .app{padding:24px 15px 48px;gap:16px}
     .hero{padding:4px 0 8px}
-    .hero-title{letter-spacing:-1.2px}
+    .hero-title{letter-spacing:.01em}
     .cat-card{padding:15px 13px 13px}
     .cat-icon{width:38px;height:38px;font-size:18px;border-radius:11px}
     .cat-name{font-size:14px}
-    .quick-btn{padding:15px 17px;font-size:13.5px}
+    .quick-btn{padding:15px 17px;font-size:13px}
     .exam-card{padding:13px 4px 11px}
     .exam-level{font-size:19px}
     .exam-name{font-size:8.5px;letter-spacing:1px}
@@ -782,16 +836,15 @@
     .mode-card .name{font-size:11px}
     .mode-card .desc{display:none}
     .q-card{padding:18px 15px;border-radius:20px}
-    .opt{padding:12px 13px;font-size:13.5px;gap:10px}
+    .opt{padding:12px 13px;font-size:13px;gap:10px}
     .opt-letter{width:27px;height:27px;font-size:12px}
     .flashcard{height:220px}
     .flash-face{padding:22px 16px}
-    .flash-main{letter-spacing:-.6px}
     .sum-stats{grid-template-columns:1fr 1fr}
     .sum-stat:nth-child(3){grid-column:span 2}
     .exam-passage{font-size:13.5px;padding:14px 16px;max-height:250px}
     .exam-q-text{font-size:15px}
-    .mark-btn{font-size:12.5px;padding:13px 8px}
+    .mark-btn{font-size:11.5px;padding:13px 8px}
   }
 </style>
 </head>
@@ -814,360 +867,169 @@ const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const ONES  = ['','ein','zwei','drei','vier','fünf','sechs','sieben','acht','neun'];
 const TEENS = ['zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn'];
 const TENS  = ['','','zwanzig','dreißig','vierzig','fünfzig','sechzig','siebzig','achtzig','neunzig'];
-
 function numToGerman(n){
   if (n === 0) return 'null';
   let r = '';
-  if (n >= 1000) {
-    const th = Math.floor(n/1000);
-    r += (th === 1 ? 'ein' : ONES[th]) + 'tausend';
-    n %= 1000;
-    if (n === 0) return r;
-  }
-  if (n >= 100) {
-    const h = Math.floor(n/100);
-    r += (h === 1 ? 'ein' : ONES[h]) + 'hundert';
-    n %= 100;
-    if (n === 0) return r;
-  }
-  if (n >= 20) {
-    const t = Math.floor(n/10), u = n%10;
-    if (u === 0) r += TENS[t];
-    else         r += ONES[u] + 'und' + TENS[t];
-  } else if (n === 1) r += 'eins';
+  if (n >= 1000) { const th = Math.floor(n/1000); r += (th===1?'ein':ONES[th])+'tausend'; n %= 1000; if(n===0)return r; }
+  if (n >= 100) { const h = Math.floor(n/100); r += (h===1?'ein':ONES[h])+'hundert'; n %= 100; if(n===0)return r; }
+  if (n >= 20) { const t = Math.floor(n/10), u = n%10; if(u===0) r+=TENS[t]; else r+=ONES[u]+'und'+TENS[t]; }
+  else if (n === 1) r += 'eins';
   else if (n >= 2 && n <= 9) r += ONES[n];
   else if (n >= 10 && n <= 19) r += TEENS[n-10];
   return r;
 }
-
 const VN_ONES = ['không','một','hai','ba','bốn','năm','sáu','bảy','tám','chín'];
 function numToVietnamese(n){
-  if (n === 1000) return 'một nghìn';
-  if (n === 0) return 'không';
-  if (n < 10) return VN_ONES[n];
-  if (n < 20) { if (n===10) return 'mười'; if (n===15) return 'mười lăm'; return 'mười ' + VN_ONES[n-10]; }
-  if (n < 100) {
-    const t = Math.floor(n/10), u = n%10;
-    if (u === 0) return VN_ONES[t] + ' mươi';
-    if (u === 1) return VN_ONES[t] + ' mươi mốt';
-    if (u === 5) return VN_ONES[t] + ' mươi lăm';
-    return VN_ONES[t] + ' mươi ' + VN_ONES[u];
+  if (n===1000) return 'một nghìn';
+  if (n===0) return 'không';
+  if (n<10) return VN_ONES[n];
+  if (n<20) { if(n===10)return 'mười'; if(n===15)return 'mười lăm'; return 'mười '+VN_ONES[n-10]; }
+  if (n<100) {
+    const t=Math.floor(n/10), u=n%10;
+    if(u===0) return VN_ONES[t]+' mươi';
+    if(u===1) return VN_ONES[t]+' mươi mốt';
+    if(u===5) return VN_ONES[t]+' mươi lăm';
+    return VN_ONES[t]+' mươi '+VN_ONES[u];
   }
-  const h = Math.floor(n/100), rest = n%100;
-  let out = VN_ONES[h] + ' trăm';
-  if (rest === 0) return out;
-  if (rest < 10) return out + ' lẻ ' + VN_ONES[rest];
-  if (rest < 20) { if (rest===10) return out + ' mười'; if (rest===15) return out + ' mười lăm'; return out + ' mười ' + VN_ONES[rest-10]; }
-  const t = Math.floor(rest/10), u = rest%10;
-  if (u === 0) return out + ' ' + VN_ONES[t] + ' mươi';
-  if (u === 1) return out + ' ' + VN_ONES[t] + ' mươi mốt';
-  if (u === 5) return out + ' ' + VN_ONES[t] + ' mươi lăm';
-  return out + ' ' + VN_ONES[t] + ' mươi ' + VN_ONES[u];
+  const h=Math.floor(n/100), rest=n%100;
+  let out=VN_ONES[h]+' trăm';
+  if(rest===0) return out;
+  if(rest<10) return out+' lẻ '+VN_ONES[rest];
+  if(rest<20) { if(rest===10)return out+' mười'; if(rest===15)return out+' mười lăm'; return out+' mười '+VN_ONES[rest-10]; }
+  const t=Math.floor(rest/10), u=rest%10;
+  if(u===0) return out+' '+VN_ONES[t]+' mươi';
+  if(u===1) return out+' '+VN_ONES[t]+' mươi mốt';
+  if(u===5) return out+' '+VN_ONES[t]+' mươi lăm';
+  return out+' '+VN_ONES[t]+' mươi '+VN_ONES[u];
 }
 
 /* ══════════════════════════════════════════════════════════
    ALPHABET
 ══════════════════════════════════════════════════════════ */
 const ALPHABET_RAW = [
-  {l:'A',p:'ah',       ex:'Apfel',    mean:'quả táo'},
-  {l:'B',p:'beh',      ex:'Buch',     mean:'quyển sách'},
-  {l:'C',p:'tseh',     ex:'Computer', mean:'máy tính'},
-  {l:'D',p:'deh',      ex:'Danke',    mean:'cảm ơn'},
-  {l:'E',p:'eh',       ex:'Elefant',  mean:'con voi'},
-  {l:'F',p:'ef',       ex:'Fisch',    mean:'con cá'},
-  {l:'G',p:'geh',      ex:'Garten',   mean:'khu vườn'},
-  {l:'H',p:'hah',      ex:'Haus',     mean:'ngôi nhà'},
-  {l:'I',p:'ih',       ex:'Insel',    mean:'hòn đảo'},
-  {l:'J',p:'yot',      ex:'Jahr',     mean:'năm'},
-  {l:'K',p:'kah',      ex:'Katze',    mean:'con mèo'},
-  {l:'L',p:'el',       ex:'Lampe',    mean:'cái đèn'},
-  {l:'M',p:'em',       ex:'Mutter',   mean:'mẹ'},
-  {l:'N',p:'en',       ex:'Nacht',    mean:'ban đêm'},
-  {l:'O',p:'oh',       ex:'Obst',     mean:'trái cây'},
-  {l:'P',p:'peh',      ex:'Papa',     mean:'bố'},
-  {l:'Q',p:'kuh',      ex:'Quelle',   mean:'nguồn'},
-  {l:'R',p:'err',      ex:'Rot',      mean:'màu đỏ'},
-  {l:'S',p:'ess',      ex:'Sonne',    mean:'mặt trời'},
-  {l:'T',p:'teh',      ex:'Tisch',    mean:'cái bàn'},
-  {l:'U',p:'uh',       ex:'Uhr',      mean:'đồng hồ'},
-  {l:'V',p:'fau',      ex:'Vater',    mean:'bố'},
-  {l:'W',p:'weh',      ex:'Wasser',   mean:'nước'},
-  {l:'X',p:'iks',      ex:'Xylophon', mean:'đàn xylophone'},
-  {l:'Y',p:'üpsilon',  ex:'Yoga',     mean:'yoga'},
-  {l:'Z',p:'tsett',    ex:'Zug',      mean:'đoàn tàu'},
-  {l:'Ä',p:'a-umlaut', ex:'Äpfel',    mean:'những quả táo'},
-  {l:'Ö',p:'o-umlaut', ex:'Öl',       mean:'dầu'},
-  {l:'Ü',p:'u-umlaut', ex:'Übung',    mean:'bài tập'},
-  {l:'ß',p:'eszett',   ex:'Straße',   mean:'con đường'},
+  {l:'A',p:'ah',ex:'Apfel',mean:'quả táo'},{l:'B',p:'beh',ex:'Buch',mean:'quyển sách'},
+  {l:'C',p:'tseh',ex:'Computer',mean:'máy tính'},{l:'D',p:'deh',ex:'Danke',mean:'cảm ơn'},
+  {l:'E',p:'eh',ex:'Elefant',mean:'con voi'},{l:'F',p:'ef',ex:'Fisch',mean:'con cá'},
+  {l:'G',p:'geh',ex:'Garten',mean:'khu vườn'},{l:'H',p:'hah',ex:'Haus',mean:'ngôi nhà'},
+  {l:'I',p:'ih',ex:'Insel',mean:'hòn đảo'},{l:'J',p:'yot',ex:'Jahr',mean:'năm'},
+  {l:'K',p:'kah',ex:'Katze',mean:'con mèo'},{l:'L',p:'el',ex:'Lampe',mean:'cái đèn'},
+  {l:'M',p:'em',ex:'Mutter',mean:'mẹ'},{l:'N',p:'en',ex:'Nacht',mean:'ban đêm'},
+  {l:'O',p:'oh',ex:'Obst',mean:'trái cây'},{l:'P',p:'peh',ex:'Papa',mean:'bố'},
+  {l:'Q',p:'kuh',ex:'Quelle',mean:'nguồn'},{l:'R',p:'err',ex:'Rot',mean:'màu đỏ'},
+  {l:'S',p:'ess',ex:'Sonne',mean:'mặt trời'},{l:'T',p:'teh',ex:'Tisch',mean:'cái bàn'},
+  {l:'U',p:'uh',ex:'Uhr',mean:'đồng hồ'},{l:'V',p:'fau',ex:'Vater',mean:'bố'},
+  {l:'W',p:'weh',ex:'Wasser',mean:'nước'},{l:'X',p:'iks',ex:'Xylophon',mean:'đàn xylophone'},
+  {l:'Y',p:'üpsilon',ex:'Yoga',mean:'yoga'},{l:'Z',p:'tsett',ex:'Zug',mean:'đoàn tàu'},
+  {l:'Ä',p:'a-umlaut',ex:'Äpfel',mean:'những quả táo'},{l:'Ö',p:'o-umlaut',ex:'Öl',mean:'dầu'},
+  {l:'Ü',p:'u-umlaut',ex:'Übung',mean:'bài tập'},{l:'ß',p:'eszett',ex:'Straße',mean:'con đường'},
 ];
 
 /* ══════════════════════════════════════════════════════════
    VOCAB
 ══════════════════════════════════════════════════════════ */
 const VOCAB_RAW = [
-  {de:'der Apfel', vi:'quả táo', lv:'A1'},
-  {de:'die Frau', vi:'người phụ nữ', lv:'A1'},
-  {de:'das Haus', vi:'ngôi nhà', lv:'A1'},
-  {de:'das Buch', vi:'quyển sách', lv:'A1'},
-  {de:'der Mann', vi:'người đàn ông', lv:'A1'},
-  {de:'die Katze', vi:'con mèo', lv:'A1'},
-  {de:'der Hund', vi:'con chó', lv:'A1'},
-  {de:'das Kind', vi:'đứa trẻ', lv:'A1'},
-  {de:'die Schule', vi:'trường học', lv:'A1'},
-  {de:'der Tisch', vi:'cái bàn', lv:'A1'},
-  {de:'der Stuhl', vi:'cái ghế', lv:'A1'},
-  {de:'das Fenster', vi:'cửa sổ', lv:'A1'},
-  {de:'die Tür', vi:'cửa ra vào', lv:'A1'},
-  {de:'der Lehrer', vi:'giáo viên nam', lv:'A1'},
-  {de:'die Lehrerin', vi:'giáo viên nữ', lv:'A1'},
-  {de:'der Freund', vi:'bạn nam', lv:'A1'},
-  {de:'die Familie', vi:'gia đình', lv:'A1'},
-  {de:'das Auto', vi:'ô tô', lv:'A1'},
-  {de:'der Tag', vi:'ngày', lv:'A1'},
-  {de:'die Nacht', vi:'đêm', lv:'A1'},
-  {de:'das Wasser', vi:'nước', lv:'A1'},
-  {de:'das Brot', vi:'bánh mì', lv:'A1'},
-  {de:'die Milch', vi:'sữa', lv:'A1'},
-  {de:'der Kaffee', vi:'cà phê', lv:'A1'},
-  {de:'das Zimmer', vi:'căn phòng', lv:'A1'},
-  {de:'der Garten', vi:'khu vườn', lv:'A1'},
-  {de:'die Straße', vi:'con đường', lv:'A1'},
-  {de:'der Baum', vi:'cái cây', lv:'A1'},
-  {de:'die Blume', vi:'bông hoa', lv:'A1'},
-  {de:'der Vogel', vi:'con chim', lv:'A1'},
-  {de:'die Wohnung', vi:'căn hộ', lv:'A2'},
-  {de:'der Bahnhof', vi:'nhà ga', lv:'A2'},
-  {de:'der Flughafen', vi:'sân bay', lv:'A2'},
-  {de:'die Reise', vi:'chuyến đi', lv:'A2'},
-  {de:'der Urlaub', vi:'kỳ nghỉ', lv:'A2'},
-  {de:'das Wetter', vi:'thời tiết', lv:'A2'},
-  {de:'die Gesundheit', vi:'sức khỏe', lv:'A2'},
-  {de:'der Termin', vi:'cuộc hẹn', lv:'A2'},
-  {de:'die Arbeit', vi:'công việc', lv:'A2'},
-  {de:'der Beruf', vi:'nghề nghiệp', lv:'A2'},
-  {de:'das Restaurant', vi:'nhà hàng', lv:'A2'},
-  {de:'die Rechnung', vi:'hóa đơn', lv:'A2'},
-  {de:'der Supermarkt', vi:'siêu thị', lv:'A2'},
-  {de:'die Apotheke', vi:'hiệu thuốc', lv:'A2'},
-  {de:'der Arzt', vi:'bác sĩ', lv:'A2'},
-  {de:'das Krankenhaus', vi:'bệnh viện', lv:'A2'},
-  {de:'der Kunde', vi:'khách hàng', lv:'A2'},
-  {de:'die Firma', vi:'công ty', lv:'A2'},
-  {de:'der Kollege', vi:'đồng nghiệp', lv:'A2'},
-  {de:'die Erfahrung', vi:'kinh nghiệm', lv:'B1'},
-  {de:'die Möglichkeit', vi:'khả năng', lv:'B1'},
-  {de:'die Entwicklung', vi:'sự phát triển', lv:'B1'},
-  {de:'der Zusammenhang', vi:'mối liên hệ', lv:'B1'},
-  {de:'die Umgebung', vi:'môi trường xung quanh', lv:'B1'},
-  {de:'der Vorschlag', vi:'đề xuất', lv:'B1'},
-  {de:'die Meinung', vi:'ý kiến', lv:'B1'},
-  {de:'die Verantwortung', vi:'trách nhiệm', lv:'B1'},
-  {de:'die Gesellschaft', vi:'xã hội', lv:'B1'},
-  {de:'die Bildung', vi:'giáo dục', lv:'B1'},
-  {de:'der Erfolg', vi:'thành công', lv:'B1'},
-  {de:'die Zukunft', vi:'tương lai', lv:'B1'},
+  {de:'der Apfel',vi:'quả táo',lv:'A1'},{de:'die Frau',vi:'người phụ nữ',lv:'A1'},
+  {de:'das Haus',vi:'ngôi nhà',lv:'A1'},{de:'das Buch',vi:'quyển sách',lv:'A1'},
+  {de:'der Mann',vi:'người đàn ông',lv:'A1'},{de:'die Katze',vi:'con mèo',lv:'A1'},
+  {de:'der Hund',vi:'con chó',lv:'A1'},{de:'das Kind',vi:'đứa trẻ',lv:'A1'},
+  {de:'die Schule',vi:'trường học',lv:'A1'},{de:'der Tisch',vi:'cái bàn',lv:'A1'},
+  {de:'der Stuhl',vi:'cái ghế',lv:'A1'},{de:'das Fenster',vi:'cửa sổ',lv:'A1'},
+  {de:'die Tür',vi:'cửa ra vào',lv:'A1'},{de:'der Lehrer',vi:'giáo viên nam',lv:'A1'},
+  {de:'die Lehrerin',vi:'giáo viên nữ',lv:'A1'},{de:'der Freund',vi:'bạn nam',lv:'A1'},
+  {de:'die Familie',vi:'gia đình',lv:'A1'},{de:'das Auto',vi:'ô tô',lv:'A1'},
+  {de:'der Tag',vi:'ngày',lv:'A1'},{de:'die Nacht',vi:'đêm',lv:'A1'},
+  {de:'das Wasser',vi:'nước',lv:'A1'},{de:'das Brot',vi:'bánh mì',lv:'A1'},
+  {de:'die Milch',vi:'sữa',lv:'A1'},{de:'der Kaffee',vi:'cà phê',lv:'A1'},
+  {de:'das Zimmer',vi:'căn phòng',lv:'A1'},{de:'der Garten',vi:'khu vườn',lv:'A1'},
+  {de:'die Straße',vi:'con đường',lv:'A1'},{de:'der Baum',vi:'cái cây',lv:'A1'},
+  {de:'die Blume',vi:'bông hoa',lv:'A1'},{de:'der Vogel',vi:'con chim',lv:'A1'},
+  {de:'die Wohnung',vi:'căn hộ',lv:'A2'},{de:'der Bahnhof',vi:'nhà ga',lv:'A2'},
+  {de:'der Flughafen',vi:'sân bay',lv:'A2'},{de:'die Reise',vi:'chuyến đi',lv:'A2'},
+  {de:'der Urlaub',vi:'kỳ nghỉ',lv:'A2'},{de:'das Wetter',vi:'thời tiết',lv:'A2'},
+  {de:'die Gesundheit',vi:'sức khỏe',lv:'A2'},{de:'der Termin',vi:'cuộc hẹn',lv:'A2'},
+  {de:'die Arbeit',vi:'công việc',lv:'A2'},{de:'der Beruf',vi:'nghề nghiệp',lv:'A2'},
+  {de:'das Restaurant',vi:'nhà hàng',lv:'A2'},{de:'die Rechnung',vi:'hóa đơn',lv:'A2'},
+  {de:'der Supermarkt',vi:'siêu thị',lv:'A2'},{de:'die Apotheke',vi:'hiệu thuốc',lv:'A2'},
+  {de:'der Arzt',vi:'bác sĩ',lv:'A2'},{de:'das Krankenhaus',vi:'bệnh viện',lv:'A2'},
+  {de:'der Kunde',vi:'khách hàng',lv:'A2'},{de:'die Firma',vi:'công ty',lv:'A2'},
+  {de:'der Kollege',vi:'đồng nghiệp',lv:'A2'},{de:'die Erfahrung',vi:'kinh nghiệm',lv:'B1'},
+  {de:'die Möglichkeit',vi:'khả năng',lv:'B1'},{de:'die Entwicklung',vi:'sự phát triển',lv:'B1'},
+  {de:'der Zusammenhang',vi:'mối liên hệ',lv:'B1'},{de:'die Umgebung',vi:'môi trường xung quanh',lv:'B1'},
+  {de:'der Vorschlag',vi:'đề xuất',lv:'B1'},{de:'die Meinung',vi:'ý kiến',lv:'B1'},
+  {de:'die Verantwortung',vi:'trách nhiệm',lv:'B1'},{de:'die Gesellschaft',vi:'xã hội',lv:'B1'},
+  {de:'die Bildung',vi:'giáo dục',lv:'B1'},{de:'der Erfolg',vi:'thành công',lv:'B1'},
+  {de:'die Zukunft',vi:'tương lai',lv:'B1'},
 ];
 
 /* ══════════════════════════════════════════════════════════
    GRAMMAR
 ══════════════════════════════════════════════════════════ */
 const GRAMMAR_RAW = [
-  {q:'___ Mann ist groß.', opts:['Der','Die','Das','Den'], a:0, lv:'A1',
-   hint:'Mạo từ xác định ở Nominativ. Xác định giới tính: giống đực → der, cái → die, trung → das.',
-   ex:'Mann giống đực, Nominativ → der.'},
-  {q:'___ Frau ist nett.', opts:['Der','Die','Das','Dem'], a:1, lv:'A1',
-   hint:'Mạo từ xác định ở Nominativ. "Frau" thuộc nhóm giống cái (feminin).',
-   ex:'Frau giống cái → die.'},
-  {q:'___ Kind spielt.', opts:['Der','Die','Das','Den'], a:2, lv:'A1',
-   hint:'Mạo từ xác định ở Nominativ. "Kind" (đứa trẻ) thuộc nhóm giống trung (neutrum).',
-   ex:'Kind giống trung → das.'},
-  {q:'Ich ___ Student.', opts:['bin','bist','ist','sind'], a:0, lv:'A1',
-   hint:'Chia "sein" (hiện tại). Chủ ngữ "ich" → ich bin.',
-   ex:'sein với ich → bin.'},
-  {q:'Du ___ Lehrer.', opts:['bin','bist','ist','sind'], a:1, lv:'A1',
-   hint:'Chia "sein" với "du" → du bist.',
-   ex:'sein với du → bist.'},
-  {q:'Er ___ aus Vietnam.', opts:['komme','kommst','kommt','kommen'], a:2, lv:'A1',
-   hint:'"kommen" ở hiện tại. Với er/sie/es, động từ thêm đuôi -t.',
-   ex:'kommen với er → kommt.'},
-  {q:'Wir ___ Deutsch.', opts:['lerne','lernst','lernt','lernen'], a:3, lv:'A1',
-   hint:'"lernen" với "wir" (ngôi 1 số nhiều) → dùng nguyên thể.',
-   ex:'lernen với wir → lernen.'},
-  {q:'Ich ___ einen Apfel.', opts:['habe','hast','hat','haben'], a:0, lv:'A1',
-   hint:'Chia "haben" với "ich": ich habe, du hast, er hat, wir haben.',
-   ex:'haben với ich → habe.'},
-  {q:'Wie ___ du?', opts:['heiße','heißt','heißen','heißest'], a:1, lv:'A1',
-   hint:'"heißen" với "du". Gốc -ß → chỉ thêm -t (không thêm -st).',
-   ex:'heißen với du → heißt.'},
-  {q:'Sie ___ eine Katze.', opts:['habe','hast','hat','haben'], a:2, lv:'A1',
-   hint:'"Sie" = cô ấy (ngôi 3 số ít nữ). Chia "haben": er/sie/es + hat.',
-   ex:'haben với sie → hat.'},
-  {q:'Ich ___ gestern ins Kino gegangen.', opts:['bin','habe','werde','hatte'], a:0, lv:'A2',
-   hint:'Perfekt. Động từ chỉ di chuyển/trạng thái (gehen) → dùng trợ động từ "sein".',
-   ex:'gehen dùng sein → bin gegangen.'},
-  {q:'Er ___ das Buch gelesen.', opts:['bin','bist','hat','sind'], a:2, lv:'A2',
-   hint:'Perfekt với "lesen" — động từ thường → trợ động từ haben. Er → hat.',
-   ex:'lesen dùng haben → hat gelesen.'},
-  {q:'Wir ___ nach Hause gehen.', opts:['muss','musst','müssen','müsst'], a:2, lv:'A2',
-   hint:'Modalverb "müssen" (phải). Chủ ngữ "wir" → müssen.',
-   ex:'müssen với wir → müssen.'},
-  {q:'Du ___ besser lernen.', opts:['soll','sollst','sollen','sollt'], a:1, lv:'A2',
-   hint:'Modalverb "sollen" (nên). Chủ ngữ "du" → sollst.',
-   ex:'sollen với du → sollst.'},
-  {q:'Das Auto ist ___ als das Fahrrad.', opts:['schnell','schneller','am schnellsten','schnellste'], a:1, lv:'A2',
-   hint:'So sánh hơn (Komparativ): adj + -er + als. So sánh 2 vật → Komparativ.',
-   ex:'schneller als = nhanh hơn.'},
-  {q:'Ich wohne ___ Berlin.', opts:['in','im','am','an'], a:0, lv:'A2',
-   hint:'Với thành phố, dùng "in" + tên thành phố (không mạo từ).',
-   ex:'in + thành phố: in Berlin.'},
-  {q:'Wir fahren ___ die Schweiz.', opts:['nach','in','zu','an'], a:1, lv:'A2',
-   hint:'Quốc gia có mạo từ (die Schweiz) → "in + Akkusativ", không dùng nach.',
-   ex:'in die Schweiz.'},
-  {q:'___ wohnst du? — In Hanoi.', opts:['Wo','Wohin','Woher','Was'], a:0, lv:'A2',
-   hint:'Câu trả lời "In Hanoi" chỉ vị trí → dùng "wo" (ở đâu).',
-   ex:'wo = ở đâu.'},
-  {q:'Das Buch ___ von Goethe geschrieben.', opts:['wurde','wurden','ward','werden'], a:0, lv:'B1',
-   hint:'Passiv Präteritum: werden + Partizip II. Chủ ngữ "das Buch" số ít → wurde.',
-   ex:'wurde geschrieben.'},
-  {q:'Der Mann, ___ dort steht, ist mein Vater.', opts:['der','die','das','den'], a:0, lv:'B1',
-   hint:'Relativsatz. Mann giống đực, chủ ngữ trong mệnh đề → Nominativ (der).',
-   ex:'Mann maskulin Nominativ → der.'},
-  {q:'Die Frau, ___ ich sehe, ist nett.', opts:['die','der','das','dem'], a:0, lv:'B1',
-   hint:'Relativsatz. Frau giống cái, tân ngữ trực tiếp (Akkusativ) → die.',
-   ex:'Frau Akkusativ feminin → die.'},
-  {q:'Ich bleibe zu Hause, ___ ich krank bin.', opts:['weil','dass','ob','wenn'], a:0, lv:'B1',
-   hint:'Mệnh đề sau giải thích lý do → weil (bởi vì).',
-   ex:'weil = bởi vì.'},
-  {q:'___ es regnet, gehe ich spazieren.', opts:['Obwohl','Weil','Dass','Wenn'], a:0, lv:'B1',
-   hint:'Nhượng bộ: trời mưa NHƯNG vẫn đi dạo → obwohl (mặc dù).',
-   ex:'obwohl = mặc dù.'},
-  {q:'Ich lerne Deutsch, ___ in Deutschland zu studieren.', opts:['um','damit','weil','dass'], a:0, lv:'B1',
-   hint:'Mục đích "um ... zu + Infinitiv" khi 2 mệnh đề cùng chủ ngữ.',
-   ex:'um ... zu + Infinitiv.'},
-  {q:'Wenn ich reich ___, würde ich um die Welt reisen.', opts:['wäre','bin','sein würde','werde'], a:0, lv:'B2',
-   hint:'Câu giả định không có thật → Konjunktiv II. sein → wäre.',
-   ex:'Konjunktiv II của sein: wäre.'},
-  {q:'Ich ___ das gemacht haben.', opts:['hätte','habe','würde','werde'], a:0, lv:'B2',
-   hint:'Konjunktiv II Perfekt: hätte/wäre + Partizip II.',
-   ex:'hätte gemacht.'},
-  {q:'Wenn er Zeit ___, würde er mitkommen.', opts:['hätte','hat','haben würde','hatte'], a:0, lv:'B2',
-   hint:'Câu giả định → Konjunktiv II của "haben" là hätte.',
-   ex:'hätte.'},
-  {q:'Der Mann, ___ ich gestern begegnet bin, war freundlich.', opts:['dem','den','der','denen'], a:0, lv:'B2',
-   hint:'"begegnen" đi với Dativ. Mann giống đực → dem.',
-   ex:'begegnen + Dativ → dem.'},
+  {q:'___ Mann ist groß.',opts:['Der','Die','Das','Den'],a:0,lv:'A1',hint:'Mạo từ xác định ở Nominativ. Mann giống đực → der.',ex:'Mann giống đực → der.'},
+  {q:'___ Frau ist nett.',opts:['Der','Die','Das','Dem'],a:1,lv:'A1',hint:'Mạo từ xác định Nominativ. Frau giống cái → die.',ex:'Frau giống cái → die.'},
+  {q:'___ Kind spielt.',opts:['Der','Die','Das','Den'],a:2,lv:'A1',hint:'Kind giống trung → das.',ex:'Kind giống trung → das.'},
+  {q:'Ich ___ Student.',opts:['bin','bist','ist','sind'],a:0,lv:'A1',hint:'Chia "sein": ich bin.',ex:'sein + ich → bin.'},
+  {q:'Du ___ Lehrer.',opts:['bin','bist','ist','sind'],a:1,lv:'A1',hint:'sein với du → bist.',ex:'sein + du → bist.'},
+  {q:'Er ___ aus Vietnam.',opts:['komme','kommst','kommt','kommen'],a:2,lv:'A1',hint:'kommen với er → kommt.',ex:'kommen + er → kommt.'},
+  {q:'Wir ___ Deutsch.',opts:['lerne','lernst','lernt','lernen'],a:3,lv:'A1',hint:'lernen với wir → lernen (nguyên thể).',ex:'lernen + wir → lernen.'},
+  {q:'Ich ___ einen Apfel.',opts:['habe','hast','hat','haben'],a:0,lv:'A1',hint:'haben với ich → habe.',ex:'haben + ich → habe.'},
+  {q:'Wie ___ du?',opts:['heiße','heißt','heißen','heißest'],a:1,lv:'A1',hint:'heißen với du. Gốc -ß chỉ thêm -t.',ex:'heißen + du → heißt.'},
+  {q:'Sie ___ eine Katze.',opts:['habe','hast','hat','haben'],a:2,lv:'A1',hint:'Sie = cô ấy (ngôi 3 số ít). haben → hat.',ex:'haben + sie → hat.'},
+  {q:'Ich ___ gestern ins Kino gegangen.',opts:['bin','habe','werde','hatte'],a:0,lv:'A2',hint:'Perfekt: gehen (di chuyển) dùng trợ động từ sein.',ex:'gehen + sein → bin gegangen.'},
+  {q:'Er ___ das Buch gelesen.',opts:['bin','bist','hat','sind'],a:2,lv:'A2',hint:'Perfekt: lesen là động từ thường → haben.',ex:'lesen + haben → hat gelesen.'},
+  {q:'Wir ___ nach Hause gehen.',opts:['muss','musst','müssen','müsst'],a:2,lv:'A2',hint:'Modalverb müssen với wir → müssen.',ex:'müssen + wir → müssen.'},
+  {q:'Du ___ besser lernen.',opts:['soll','sollst','sollen','sollt'],a:1,lv:'A2',hint:'Modalverb sollen với du → sollst.',ex:'sollen + du → sollst.'},
+  {q:'Das Auto ist ___ als das Fahrrad.',opts:['schnell','schneller','am schnellsten','schnellste'],a:1,lv:'A2',hint:'So sánh 2 vật → Komparativ (adj-er).',ex:'schneller als = nhanh hơn.'},
+  {q:'Ich wohne ___ Berlin.',opts:['in','im','am','an'],a:0,lv:'A2',hint:'Với thành phố dùng "in" không mạo từ.',ex:'in + Berlin.'},
+  {q:'Wir fahren ___ die Schweiz.',opts:['nach','in','zu','an'],a:1,lv:'A2',hint:'Quốc gia có mạo từ (die Schweiz) → in + Akkusativ.',ex:'in die Schweiz.'},
+  {q:'___ wohnst du? — In Hanoi.',opts:['Wo','Wohin','Woher','Was'],a:0,lv:'A2',hint:'Hỏi vị trí → wo (ở đâu).',ex:'wo = ở đâu.'},
+  {q:'Das Buch ___ von Goethe geschrieben.',opts:['wurde','wurden','ward','werden'],a:0,lv:'B1',hint:'Passiv Präteritum: werden + Partizip II. Chủ ngữ số ít → wurde.',ex:'wurde geschrieben.'},
+  {q:'Der Mann, ___ dort steht, ist mein Vater.',opts:['der','die','das','den'],a:0,lv:'B1',hint:'Relativsatz. Mann giống đực, chủ ngữ → der.',ex:'der (maskulin Nominativ).'},
+  {q:'Die Frau, ___ ich sehe, ist nett.',opts:['die','der','das','dem'],a:0,lv:'B1',hint:'Frau giống cái, tân ngữ (Akkusativ) → die.',ex:'die (feminin Akkusativ).'},
+  {q:'Ich bleibe zu Hause, ___ ich krank bin.',opts:['weil','dass','ob','wenn'],a:0,lv:'B1',hint:'Nguyên nhân → weil (bởi vì).',ex:'weil = bởi vì.'},
+  {q:'___ es regnet, gehe ich spazieren.',opts:['Obwohl','Weil','Dass','Wenn'],a:0,lv:'B1',hint:'Nhượng bộ → obwohl (mặc dù).',ex:'obwohl = mặc dù.'},
+  {q:'Ich lerne Deutsch, ___ in Deutschland zu studieren.',opts:['um','damit','weil','dass'],a:0,lv:'B1',hint:'um ... zu + Infinitiv (mục đích, cùng chủ ngữ).',ex:'um ... zu + Infinitiv.'},
+  {q:'Wenn ich reich ___, würde ich um die Welt reisen.',opts:['wäre','bin','sein würde','werde'],a:0,lv:'B2',hint:'Konjunktiv II của sein → wäre.',ex:'wäre (Konjunktiv II).'},
+  {q:'Ich ___ das gemacht haben.',opts:['hätte','habe','würde','werde'],a:0,lv:'B2',hint:'Konjunktiv II Perfekt: hätte + Partizip II.',ex:'hätte gemacht.'},
+  {q:'Wenn er Zeit ___, würde er mitkommen.',opts:['hätte','hat','haben würde','hatte'],a:0,lv:'B2',hint:'Konjunktiv II của haben → hätte.',ex:'hätte.'},
+  {q:'Der Mann, ___ ich gestern begegnet bin, war freundlich.',opts:['dem','den','der','denen'],a:0,lv:'B2',hint:'begegnen + Dativ. Mann → dem.',ex:'begegnen + Dativ → dem.'},
 ];
 
 /* ══════════════════════════════════════════════════════════
    EXAMS
 ══════════════════════════════════════════════════════════ */
 const EXAMS = {
-  A1: {
-    name:'Goethe-Zertifikat A1',
-    subtitle:'Start Deutsch 1 · Lesen',
-    section:'Lesen',
-    duration:'25 Minuten',
+  A1:{name:'Goethe-Zertifikat A1',subtitle:'Start Deutsch 1 · Lesen',section:'Lesen',duration:'25 Minuten',
     instructions:'Lesen Sie die Texte und Aufgaben. Wählen Sie die richtige Antwort (a, b oder c).',
-    questions: [
-      {passage:'SUPERMARKT SONNE\nÖffnungszeiten:\nMontag – Freitag: 8 – 20 Uhr\nSamstag: 8 – 16 Uhr\nSonntag: geschlossen',
-       q:'Wann ist der Supermarkt geschlossen?',
-       opts:['Am Sonntag','Am Samstag','Am Freitag'], a:0,
-       explain:'Sonntag: geschlossen → Chủ nhật đóng cửa.'},
-      {passage:'Hallo Peter,\nich fahre morgen nach Hamburg. Ich besuche meine Schwester. Wir sehen uns nächste Woche.\nViele Grüße\nAnna',
-       q:'Wohin fährt Anna?',
-       opts:['Zu Peter','Nach Hamburg','Zur Arbeit'], a:1,
-       explain:'"Ich fahre morgen nach Hamburg" → Anna đi Hamburg.'},
-      {passage:'Deutschkurs A1\nBeginn: 15. Oktober\nDauer: 6 Wochen\nKosten: 150 Euro\nAnmeldung im Büro',
-       q:'Wann beginnt der Kurs?',
-       opts:['Am 15. September','Am 15. Oktober','Am 15. November'], a:1,
-       explain:'"Beginn: 15. Oktober" → khóa học bắt đầu 15/10.'},
-      {passage:'Liebe Frau Meier,\nich kann am Montag nicht kommen. Ich bin krank. Am Dienstag bin ich wieder da.\nMit freundlichen Grüßen\nTom Weber',
-       q:'Warum kann Tom am Montag nicht kommen?',
-       opts:['Er ist krank.','Er hat Urlaub.','Er ist im Ausland.'], a:0,
-       explain:'"Ich bin krank" → Tom bị ốm.'},
-      {passage:'Praxis Dr. Klein\nSprechzeiten:\nMo, Di, Do: 8 – 12 Uhr\nMi, Fr: 15 – 18 Uhr\nTermine nur mit Anmeldung!',
-       q:'Wann kann man am Mittwoch zum Arzt gehen?',
-       opts:['Um 16 Uhr','Um 9 Uhr','Um 11 Uhr'], a:0,
-       explain:'Mittwoch: 15 – 18 Uhr → 16 giờ nằm trong khung này.'},
-      {passage:'Familie Schmidt wohnt in Berlin.\nHerr Schmidt ist Lehrer.\nFrau Schmidt arbeitet in einem Krankenhaus.\nSie haben zwei Kinder.',
-       q:'Wo arbeitet Frau Schmidt?',
-       opts:['Zu Hause','Im Krankenhaus','In der Schule'], a:1,
-       explain:'"Frau Schmidt arbeitet in einem Krankenhaus" → làm ở bệnh viện.'},
-      {passage:'Bäckerei Krause\nFrisches Brot und Kuchen\nJeden Tag ab 6 Uhr geöffnet\nAuch sonntags!',
-       q:'Wann kann man hier Brot kaufen?',
-       opts:['Nur montags','Nur am Wochenende','Jeden Tag'], a:2,
-       explain:'"Jeden Tag ab 6 Uhr geöffnet" → mở cửa hằng ngày.'},
-      {passage:'Einladung!\nAm Samstag feiern wir meinen Geburtstag. Die Party beginnt um 19 Uhr bei mir zu Hause.\nKommst du?\nLisa',
-       q:'Wann beginnt die Party?',
-       opts:['Um 12 Uhr','Um 19 Uhr','Um 7 Uhr'], a:1,
-       explain:'"Die Party beginnt um 19 Uhr" → tiệc bắt đầu 19h.'},
-      {passage:'Person: Maria Lopez\nAlter: 25 Jahre\nLand: Spanien\nBeruf: Studentin',
-       q:'Was macht Maria?',
-       opts:['Sie studiert.','Sie arbeitet.','Sie ist Lehrerin.'], a:0,
-       explain:'Beruf: Studentin → Maria là sinh viên.'},
-      {passage:'Mein Tag:\n7 Uhr: aufstehen\n8 Uhr: frühstücken\n9 Uhr: zur Arbeit gehen\n18 Uhr: nach Hause kommen',
-       q:'Wann steht die Person auf?',
-       opts:['Um 8 Uhr','Um 6 Uhr','Um 7 Uhr'], a:2,
-       explain:'"7 Uhr: aufstehen" → thức dậy lúc 7 giờ.'},
-    ],
-  },
-  A2: {
-    name:'Goethe-Zertifikat A2',
-    subtitle:'Fit in Deutsch 2 · Lesen',
-    section:'Lesen',
-    duration:'30 Minuten',
+    questions:[
+      {passage:'SUPERMARKT SONNE\nÖffnungszeiten:\nMontag – Freitag: 8 – 20 Uhr\nSamstag: 8 – 16 Uhr\nSonntag: geschlossen',q:'Wann ist der Supermarkt geschlossen?',opts:['Am Sonntag','Am Samstag','Am Freitag'],a:0,explain:'Sonntag: geschlossen → Chủ nhật đóng cửa.'},
+      {passage:'Hallo Peter,\nich fahre morgen nach Hamburg. Ich besuche meine Schwester. Wir sehen uns nächste Woche.\nViele Grüße\nAnna',q:'Wohin fährt Anna?',opts:['Zu Peter','Nach Hamburg','Zur Arbeit'],a:1,explain:'"nach Hamburg" → Anna đi Hamburg.'},
+      {passage:'Deutschkurs A1\nBeginn: 15. Oktober\nDauer: 6 Wochen\nKosten: 150 Euro\nAnmeldung im Büro',q:'Wann beginnt der Kurs?',opts:['Am 15. September','Am 15. Oktober','Am 15. November'],a:1,explain:'"Beginn: 15. Oktober".'},
+      {passage:'Liebe Frau Meier,\nich kann am Montag nicht kommen. Ich bin krank. Am Dienstag bin ich wieder da.\nTom Weber',q:'Warum kann Tom am Montag nicht kommen?',opts:['Er ist krank.','Er hat Urlaub.','Er ist im Ausland.'],a:0,explain:'"Ich bin krank".'},
+      {passage:'Praxis Dr. Klein\nSprechzeiten:\nMo, Di, Do: 8 – 12 Uhr\nMi, Fr: 15 – 18 Uhr',q:'Wann kann man am Mittwoch zum Arzt gehen?',opts:['Um 16 Uhr','Um 9 Uhr','Um 11 Uhr'],a:0,explain:'Mi: 15–18 Uhr.'},
+      {passage:'Familie Schmidt wohnt in Berlin.\nHerr Schmidt ist Lehrer.\nFrau Schmidt arbeitet in einem Krankenhaus.',q:'Wo arbeitet Frau Schmidt?',opts:['Zu Hause','Im Krankenhaus','In der Schule'],a:1,explain:'"in einem Krankenhaus".'},
+      {passage:'Bäckerei Krause\nFrisches Brot und Kuchen\nJeden Tag ab 6 Uhr geöffnet\nAuch sonntags!',q:'Wann kann man hier Brot kaufen?',opts:['Nur montags','Nur am Wochenende','Jeden Tag'],a:2,explain:'"Jeden Tag ab 6 Uhr".'},
+      {passage:'Einladung!\nAm Samstag feiern wir meinen Geburtstag. Die Party beginnt um 19 Uhr bei mir zu Hause.\nLisa',q:'Wann beginnt die Party?',opts:['Um 12 Uhr','Um 19 Uhr','Um 7 Uhr'],a:1,explain:'"beginnt um 19 Uhr".'},
+      {passage:'Person: Maria Lopez\nAlter: 25 Jahre\nLand: Spanien\nBeruf: Studentin',q:'Was macht Maria?',opts:['Sie studiert.','Sie arbeitet.','Sie ist Lehrerin.'],a:0,explain:'"Studentin" → sinh viên.'},
+      {passage:'Mein Tag:\n7 Uhr: aufstehen\n8 Uhr: frühstücken\n9 Uhr: zur Arbeit gehen',q:'Wann steht die Person auf?',opts:['Um 8 Uhr','Um 6 Uhr','Um 7 Uhr'],a:2,explain:'"7 Uhr: aufstehen".'},
+    ]},
+  A2:{name:'Goethe-Zertifikat A2',subtitle:'Fit in Deutsch 2 · Lesen',section:'Lesen',duration:'30 Minuten',
     instructions:'Lesen Sie die Texte und Aufgaben. Wählen Sie die richtige Antwort (a, b oder c).',
-    questions: [
-      {passage:'Wohnung zu vermieten!\n2 Zimmer, Küche, Bad\n55 m², 3. Stock\nMiete: 650 Euro + Nebenkosten\nTel: 030-987654',
-       q:'Was wird hier angeboten?',
-       opts:['Eine Wohnung','Ein Haus','Ein Zimmer im Hotel'], a:0,
-       explain:'"Wohnung zu vermieten" → cho thuê căn hộ.'},
-      {passage:'Liebe Frau Weber,\nleider muss ich unseren Termin am Donnerstag absagen. Ich muss dringend verreisen. Können wir uns nächste Woche treffen?\nMit freundlichen Grüßen\nH. Müller',
-       q:'Warum sagt Herr Müller den Termin ab?',
-       opts:['Er hat keine Zeit.','Er muss verreisen.','Er ist krank.'], a:1,
-       explain:'"Ich muss dringend verreisen" → phải đi công tác gấp.'},
-      {passage:'Stadtbibliothek\nÖffnungszeiten:\nMo – Fr 10 – 19 Uhr\nSa 10 – 14 Uhr\nSonntag geschlossen\nAm 3. Oktober geschlossen (Feiertag)',
-       q:'Wann ist die Bibliothek am 3. Oktober geöffnet?',
-       opts:['Sie ist geschlossen.','Von 10 – 14 Uhr','Von 10 – 19 Uhr'], a:0,
-       explain:'"Am 3. Oktober geschlossen" → ngày 3/10 đóng cửa.'},
-      {passage:'Restaurant Zur Post\nSpezialitäten: Schnitzel, Bratwurst, Sauerkraut\nMittagstisch: Mo – Fr 12 – 14 Uhr\nAbendessen: 18 – 22 Uhr\nSamstag und Sonntag: geschlossen',
-       q:'Wann kann man hier abends essen?',
-       opts:['Nur mittags','Täglich 18 – 22 Uhr','Montag bis Freitag 18 – 22 Uhr'], a:2,
-       explain:'Cuối tuần đóng cửa → chỉ từ thứ 2 đến thứ 6.'},
-      {passage:'Fitnessstudio Fit & Gesund\nNeue Mitglieder willkommen!\nProbetraining kostenlos!\nKurse: Yoga, Pilates, Zumba\nÖffnungszeiten: Mo – So 6 – 23 Uhr',
-       q:'Was ist kostenlos?',
-       opts:['Ein Yogakurs','Die Mitgliedschaft','Ein Probetraining'], a:2,
-       explain:'"Probetraining kostenlos" → buổi tập thử miễn phí.'},
-      {passage:'Museum für Geschichte\nEintritt: 8 Euro\nKinder bis 12 Jahre: frei\nStudenten: 4 Euro\nFührungen: jeden Samstag um 14 Uhr',
-       q:'Wann gibt es Führungen?',
-       opts:['Jeden Tag','Nur sonntags','Jeden Samstag'], a:2,
-       explain:'"Führungen: jeden Samstag um 14 Uhr" → tour thứ 7 hằng tuần.'},
-      {passage:'Betreff: Bestellung Nr. 12345\nSehr geehrte Damen und Herren,\nleider habe ich die bestellte Ware noch nicht erhalten. Bitte prüfen Sie den Status.\nMit freundlichen Grüßen\nK. Schmidt',
-       q:'Warum schreibt Frau Schmidt?',
-       opts:['Sie hat die Ware nicht bekommen.','Sie möchte etwas bestellen.','Sie möchte stornieren.'], a:0,
-       explain:'"noch nicht erhalten" → chưa nhận được hàng.'},
-      {passage:'Deutsche Bahn · Information\nDer Zug nach München um 10:15 Uhr hat 20 Minuten Verspätung. Der Zug fährt jetzt um 10:35 Uhr von Gleis 7 ab.',
-       q:'Wann fährt der Zug nach München?',
-       opts:['Um 10:15 Uhr','Um 7:00 Uhr','Um 10:35 Uhr'], a:2,
-       explain:'"fährt jetzt um 10:35 Uhr" → tàu khởi hành lúc 10:35.'},
-      {passage:'Apotheke am Markt\nWir sind für Sie da!\nMo – Fr: 8:30 – 18:30 Uhr\nSa: 9 – 13 Uhr\nNotdienst: siehe Aushang',
-       q:'Wann ist die Apotheke am Samstag geöffnet?',
-       opts:['Von 9 – 13 Uhr','Von 8:30 – 18:30 Uhr','Sie ist geschlossen.'], a:0,
-       explain:'"Sa: 9 – 13 Uhr" → thứ 7 mở 9h–13h.'},
-      {passage:'Einladung zum Sommerfest\nLiebe Nachbarn,\nam 15. Juli feiern wir ein Sommerfest im Garten. Beginn: 15 Uhr. Bringt gerne Kuchen mit!\nFamilie Berger',
-       q:'Was soll man mitbringen?',
-       opts:['Getränke','Nichts','Kuchen'], a:2,
-       explain:'"Bringt gerne Kuchen mit" → hãy mang bánh đến.'},
-    ],
-  },
-  B1: {
-    name:'Goethe-Zertifikat B1',
-    subtitle:'Zertifikat Deutsch · Sprachbausteine',
-    section:'Sprachbausteine Teil 1',
-    duration:'15 Minuten',
+    questions:[
+      {passage:'Wohnung zu vermieten!\n2 Zimmer, Küche, Bad\n55 m², 3. Stock\nMiete: 650 Euro',q:'Was wird hier angeboten?',opts:['Eine Wohnung','Ein Haus','Ein Zimmer'],a:0,explain:'"Wohnung zu vermieten".'},
+      {passage:'Liebe Frau Weber,\nleider muss ich unseren Termin am Donnerstag absagen. Ich muss dringend verreisen.',q:'Warum sagt Herr Müller den Termin ab?',opts:['Er hat keine Zeit.','Er muss verreisen.','Er ist krank.'],a:1,explain:'"muss verreisen".'},
+      {passage:'Stadtbibliothek\nMo – Fr 10 – 19 Uhr\nSa 10 – 14 Uhr\nAm 3. Oktober geschlossen',q:'Wann ist die Bibliothek am 3. Oktober geöffnet?',opts:['Sie ist geschlossen.','Von 10 – 14 Uhr','Von 10 – 19 Uhr'],a:0,explain:'"Am 3. Oktober geschlossen".'},
+      {passage:'Restaurant Zur Post\nMittagstisch: Mo – Fr 12 – 14 Uhr\nAbendessen: 18 – 22 Uhr\nSa & So geschlossen',q:'Wann kann man hier abends essen?',opts:['Nur mittags','Täglich 18 – 22 Uhr','Mo bis Fr 18 – 22 Uhr'],a:2,explain:'Cuối tuần đóng cửa.'},
+      {passage:'Fitnessstudio Fit & Gesund\nProbetraining kostenlos!\nÖffnungszeiten: Mo – So 6 – 23 Uhr',q:'Was ist kostenlos?',opts:['Ein Yogakurs','Die Mitgliedschaft','Ein Probetraining'],a:2,explain:'"Probetraining kostenlos".'},
+      {passage:'Museum für Geschichte\nEintritt: 8 Euro\nKinder bis 12: frei\nFührungen: jeden Samstag um 14 Uhr',q:'Wann gibt es Führungen?',opts:['Jeden Tag','Nur sonntags','Jeden Samstag'],a:2,explain:'"jeden Samstag".'},
+      {passage:'Betreff: Bestellung Nr. 12345\nleider habe ich die bestellte Ware noch nicht erhalten.',q:'Warum schreibt Frau Schmidt?',opts:['Sie hat die Ware nicht bekommen.','Sie möchte etwas bestellen.','Sie möchte stornieren.'],a:0,explain:'"noch nicht erhalten".'},
+      {passage:'Deutsche Bahn\nDer Zug nach München um 10:15 Uhr hat 20 Minuten Verspätung. Der Zug fährt jetzt um 10:35 Uhr.',q:'Wann fährt der Zug nach München?',opts:['Um 10:15 Uhr','Um 7:00 Uhr','Um 10:35 Uhr'],a:2,explain:'"um 10:35 Uhr".'},
+      {passage:'Apotheke am Markt\nMo – Fr: 8:30 – 18:30 Uhr\nSa: 9 – 13 Uhr\nNotdienst: siehe Aushang',q:'Wann ist die Apotheke am Samstag geöffnet?',opts:['Von 9 – 13 Uhr','Von 8:30 – 18:30 Uhr','Sie ist geschlossen.'],a:0,explain:'"Sa: 9 – 13 Uhr".'},
+      {passage:'Einladung zum Sommerfest\nam 15. Juli feiern wir ein Sommerfest im Garten. Bringt gerne Kuchen mit!\nFamilie Berger',q:'Was soll man mitbringen?',opts:['Getränke','Nichts','Kuchen'],a:2,explain:'"Kuchen mitbringen".'},
+    ]},
+  B1:{name:'Goethe-Zertifikat B1',subtitle:'Zertifikat Deutsch · Sprachbausteine',section:'Sprachbausteine Teil 1',duration:'15 Minuten',
     instructions:'Lesen Sie den folgenden Brief. Wählen Sie für jede Lücke (1–10) die richtige Antwort (a, b oder c).',
-    sharedText:
-`Liebe Julia,
+    sharedText:`Liebe Julia,
 
 vielen Dank für deine E-Mail. Ich habe mich sehr über deine Nachricht (1) ___. Es tut mir leid, dass ich mich so lange nicht gemeldet (2) ___. Ich hatte in den letzten Wochen viel Stress bei der Arbeit.
 
@@ -1179,47 +1041,21 @@ Sag mir bitte bald Bescheid, ob du Zeit (9) ___. Ich würde mich sehr (10) ___.
 
 Liebe Grüße
 Sophie`,
-    questions: [
-      {blankNum:1, q:'Was passt in Lücke (1)?',
-       opts:['freuen','gefreut','freut'], a:1,
-       explain:'Perfekt: "Ich habe mich gefreut" — Partizip II của "freuen" là "gefreut".'},
-      {blankNum:2, q:'Was passt in Lücke (2)?',
-       opts:['bin','habe','hatte'], a:1,
-       explain:'Perfekt với "sich melden": "Ich habe mich gemeldet" — trợ động từ haben.'},
-      {blankNum:3, q:'Was passt in Lücke (3)?',
-       opts:['arbeiten','arbeitet','arbeite'], a:2,
-       explain:'Präsens với "ich" → "ich arbeite" (bỏ -en, thêm -e).'},
-      {blankNum:4, q:'Was passt in Lücke (4)?',
-       opts:['bleibe','bleibt','bleiben'], a:0,
-       explain:'Präsens với "ich" → "ich bleibe".'},
-      {blankNum:5, q:'Was passt in Lücke (5)?',
-       opts:['erholt','erholen','erhole'], a:1,
-       explain:'Sau "zu" dùng Infinitiv: "mich zu erholen".'},
-      {blankNum:6, q:'Was passt in Lücke (6)?',
-       opts:['Kann','Können','Könnt'], a:1,
-       explain:'Chủ ngữ "wir" → "Können wir uns treffen?"'},
-      {blankNum:7, q:'Was passt in Lücke (7)?',
-       opts:['können','konnte','könnten'], a:2,
-       explain:'Konjunktiv II "könnten" — đề nghị lịch sự.'},
-      {blankNum:8, q:'Was passt in Lücke (8)?',
-       opts:['unterhalte','unterhalten','unterhält'], a:1,
-       explain:'Sau "zu" dùng Infinitiv: "uns zu unterhalten".'},
-      {blankNum:9, q:'Was passt in Lücke (9)?',
-       opts:['hat','hast','habt'], a:1,
-       explain:'Chủ ngữ "du" → "ob du Zeit hast".'},
-      {blankNum:10, q:'Was passt in Lücke (10)?',
-       opts:['freut','freue','freuen'], a:2,
-       explain:'"Ich würde mich sehr freuen" — sau "würde" dùng Infinitiv.'},
-    ],
-  },
-  B2: {
-    name:'Goethe-Zertifikat B2',
-    subtitle:'Goethe-Zertifikat B2 · Sprachbausteine',
-    section:'Sprachbausteine Teil 1',
-    duration:'15 Minuten',
+    questions:[
+      {blankNum:1,q:'Was passt in Lücke (1)?',opts:['freuen','gefreut','freut'],a:1,explain:'Perfekt: "habe mich gefreut".'},
+      {blankNum:2,q:'Was passt in Lücke (2)?',opts:['bin','habe','hatte'],a:1,explain:'Perfekt: "habe mich gemeldet".'},
+      {blankNum:3,q:'Was passt in Lücke (3)?',opts:['arbeiten','arbeitet','arbeite'],a:2,explain:'Präsens: "ich arbeite".'},
+      {blankNum:4,q:'Was passt in Lücke (4)?',opts:['bleibe','bleibt','bleiben'],a:0,explain:'Präsens: "ich bleibe".'},
+      {blankNum:5,q:'Was passt in Lücke (5)?',opts:['erholt','erholen','erhole'],a:1,explain:'Sau "zu" → Infinitiv "erholen".'},
+      {blankNum:6,q:'Was passt in Lücke (6)?',opts:['Kann','Können','Könnt'],a:1,explain:'"wir können".'},
+      {blankNum:7,q:'Was passt in Lücke (7)?',opts:['können','konnte','könnten'],a:2,explain:'Konjunktiv II "könnten".'},
+      {blankNum:8,q:'Was passt in Lücke (8)?',opts:['unterhalte','unterhalten','unterhält'],a:1,explain:'Sau "zu" → "unterhalten".'},
+      {blankNum:9,q:'Was passt in Lücke (9)?',opts:['hat','hast','habt'],a:1,explain:'"du hast".'},
+      {blankNum:10,q:'Was passt in Lücke (10)?',opts:['freut','freue','freuen'],a:2,explain:'"würde mich freuen".'},
+    ]},
+  B2:{name:'Goethe-Zertifikat B2',subtitle:'Goethe-Zertifikat B2 · Sprachbausteine',section:'Sprachbausteine Teil 1',duration:'15 Minuten',
     instructions:'Lesen Sie den folgenden Brief. Wählen Sie für jede Lücke (1–10) die richtige Antwort (a, b oder c).',
-    sharedText:
-`Sehr geehrte Frau Dr. Berger,
+    sharedText:`Sehr geehrte Frau Dr. Berger,
 
 mit großem Interesse habe ich Ihre Anzeige in der Süddeutschen Zeitung (1) ___ und möchte mich hiermit um die Stelle als Projektleiter (2) ___.
 
@@ -1231,39 +1067,18 @@ Ich würde mich sehr freuen, wenn Sie mir die Möglichkeit (9) ___, mich persön
 
 Mit freundlichen Grüßen
 Thomas Weber`,
-    questions: [
-      {blankNum:1, q:'Was passt in Lücke (1)?',
-       opts:['gelesen','lese','las'], a:0,
-       explain:'Perfekt: "habe ... gelesen" — Partizip II của "lesen".'},
-      {blankNum:2, q:'Was passt in Lücke (2)?',
-       opts:['bewerbe','bewerben','beworben'], a:1,
-       explain:'"sich bewerben um" — sau "möchte" dùng Infinitiv "bewerben".'},
-      {blankNum:3, q:'Was passt in Lücke (3)?',
-       opts:['habe','bin','werde'], a:1,
-       explain:'"tätig sein" — "Ich bin ... tätig".'},
-      {blankNum:4, q:'Was passt in Lücke (4)?',
-       opts:['leiten','leite','leitet'], a:1,
-       explain:'Präsens với "ich" → "ich leite".'},
-      {blankNum:5, q:'Was passt in Lücke (5)?',
-       opts:['habe','werde','bin'], a:2,
-       explain:'"verantwortlich sein für" — "ich bin verantwortlich".'},
-      {blankNum:6, q:'Was passt in Lücke (6)?',
-       opts:['zusammenarbeiten','Zusammenarbeit','zusammengearbeitet'], a:1,
-       explain:'Sau mạo từ "die" cần danh từ: "die Zusammenarbeit".'},
-      {blankNum:7, q:'Was passt in Lücke (7)?',
-       opts:['bin','habe','hatte'], a:1,
-       explain:'Perfekt: "habe ich ... geleitet" — trợ động từ haben.'},
-      {blankNum:8, q:'Was passt in Lücke (8)?',
-       opts:['sammeln','gesammelt','sammelte'], a:1,
-       explain:'Perfekt: "habe ... gesammelt" — Partizip II của "sammeln".'},
-      {blankNum:9, q:'Was passt in Lücke (9)?',
-       opts:['geben','gibt','gäben'], a:0,
-       explain:'"die Möglichkeit geben" — sau "wenn Sie mir ..." dùng Infinitiv.'},
-      {blankNum:10, q:'Was passt in Lücke (10)?',
-       opts:['Konnten','Könnten','Können'], a:1,
-       explain:'Konjunktiv II "Könnten" — yêu cầu lịch sự trong thư từ.'},
-    ],
-  },
+    questions:[
+      {blankNum:1,q:'Was passt in Lücke (1)?',opts:['gelesen','lese','las'],a:0,explain:'Perfekt: "habe gelesen".'},
+      {blankNum:2,q:'Was passt in Lücke (2)?',opts:['bewerbe','bewerben','beworben'],a:1,explain:'"möchte mich bewerben".'},
+      {blankNum:3,q:'Was passt in Lücke (3)?',opts:['habe','bin','werde'],a:1,explain:'"bin tätig".'},
+      {blankNum:4,q:'Was passt in Lücke (4)?',opts:['leiten','leite','leitet'],a:1,explain:'Präsens: "ich leite".'},
+      {blankNum:5,q:'Was passt in Lücke (5)?',opts:['habe','werde','bin'],a:2,explain:'"bin verantwortlich".'},
+      {blankNum:6,q:'Was passt in Lücke (6)?',opts:['zusammenarbeiten','Zusammenarbeit','zusammengearbeitet'],a:1,explain:'Danh từ: "die Zusammenarbeit".'},
+      {blankNum:7,q:'Was passt in Lücke (7)?',opts:['bin','habe','hatte'],a:1,explain:'Perfekt: "habe geleitet".'},
+      {blankNum:8,q:'Was passt in Lücke (8)?',opts:['sammeln','gesammelt','sammelte'],a:1,explain:'Perfekt: "gesammelt".'},
+      {blankNum:9,q:'Was passt in Lücke (9)?',opts:['geben','gibt','gäben'],a:0,explain:'Infinitiv: "geben".'},
+      {blankNum:10,q:'Was passt in Lücke (10)?',opts:['Konnten','Könnten','Können'],a:1,explain:'Konjunktiv II "Könnten".'},
+    ]},
 };
 
 /* ══════════════════════════════════════════════════════════
@@ -1274,19 +1089,12 @@ const CATS = {
     name:'Vokabeln', sub:'Từ vựng', icon:'📖',
     color:'#3d3dc9', colorSoft:'#e5e5ff',
     filters:[{key:'A1',label:'A1'},{key:'A2',label:'A2'},{key:'B1',label:'B1'}],
-    items: VOCAB_RAW.map((v,i)=>({
-      id:'v-'+i, type:'vocab',
-      front:v.de, back:v.vi, level:v.lv, speak:v.de,
-    })),
+    items: VOCAB_RAW.map((v,i)=>({id:'v-'+i,type:'vocab',front:v.de,back:v.vi,level:v.lv,speak:v.de})),
   },
   numbers: {
     name:'Zahlen', sub:'Số đếm', icon:'🔢',
     color:'#b45309', colorSoft:'#fef3c7',
-    filters:[
-      {key:'0-20',label:'0–20'},
-      {key:'21-100',label:'21–100'},
-      {key:'101-1000',label:'101–1000'},
-    ],
+    filters:[{key:'0-20',label:'0–20'},{key:'21-100',label:'21–100'},{key:'101-1000',label:'101–1000'}],
     items: (()=>{
       const arr = [];
       for (let n=0; n<=20; n++) arr.push({id:'n-'+n,type:'number',num:n,front:'Số '+n,back:numToGerman(n),speak:numToGerman(n),extra:numToVietnamese(n),band:'0-20'});
@@ -1303,11 +1111,7 @@ const CATS = {
     name:'Alphabet', sub:'Chữ cái', icon:'🔤',
     color:'#b91c1c', colorSoft:'#fee2e2',
     filters:null,
-    items: ALPHABET_RAW.map(a=>({
-      id:'a-'+a.l, type:'alphabet', letter:a.l,
-      front:a.l, back:a.p, speak:a.l,
-      extra:`${a.ex} — ${a.mean}`,
-    })),
+    items: ALPHABET_RAW.map(a=>({id:'a-'+a.l,type:'alphabet',letter:a.l,front:a.l,back:a.p,speak:a.l,extra:`${a.ex} — ${a.mean}`})),
   },
   grammar: {
     name:'Grammatik', sub:'Ngữ pháp', icon:'📚',
@@ -1325,14 +1129,11 @@ const CATS = {
 };
 
 /* ══════════════════════════════════════════════════════════
-   PROGRESS
+   IN-MEMORY PROGRESS — KHÔNG LƯU, reset về home
 ══════════════════════════════════════════════════════════ */
-const STORAGE_KEY = 'deutsch-vanbac-progress-v1';
 let PROGRESS = {};
-try { PROGRESS = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e){ PROGRESS = {}; }
-function saveProgress(){ try { localStorage.setItem(STORAGE_KEY, JSON.stringify(PROGRESS)); } catch(e){} }
 function getStatus(id){ return PROGRESS[id] || 'new'; }
-function setStatus(id, s){ PROGRESS[id] = s; saveProgress(); }
+function setStatus(id, s){ PROGRESS[id] = s; }
 function catStats(k){
   const items = CATS[k].items;
   const m = items.filter(it=>getStatus(it.id)==='mastered').length;
@@ -1383,6 +1184,9 @@ const state = {
 const app = $('#app');
 
 function renderHome(){
+  // Reset tiến độ khi về home — KHÔNG lưu
+  PROGRESS = {};
+
   state.view='home';
   document.title='Học Tiếng Đức · VANBAC';
   const catKeys = ['vocab','numbers','alphabet','grammar'];
@@ -1406,7 +1210,7 @@ function renderHome(){
   app.innerHTML = `
     <header class="hero">
       <div class="hero-flag"><span></span><span></span><span></span></div>
-      <h1 class="hero-title">Học Tiếng Đức</h1>
+      <h1 class="hero-title" data-text="Học Tiếng Đức">Học Tiếng Đức</h1>
       <div class="hero-divider"></div>
       <p class="hero-credit">NHÀ PHÁT TRIỂN <strong>VANBAC</strong></p>
     </header>
@@ -1577,7 +1381,7 @@ function startReviewAll(){
       if (getStatus(it.id)!=='mastered') all.push({...it});
     }
   }
-  if (all.length===0) { alert('Tuyệt vời! Bạn đã thuộc hết tất cả các mục.'); return; }
+  if (all.length===0) { alert('Không có mục nào để ôn.'); return; }
   shuffle(all);
   const items = all.slice(0, SESSION_SIZE);
   state.session = {
@@ -1603,7 +1407,7 @@ function startExam(level){
 }
 
 /* ══════════════════════════════════════════════════════════
-   RENDER QUESTION (study)
+   RENDER QUESTION
 ══════════════════════════════════════════════════════════ */
 function renderQuestion(){
   const s = state.session;
@@ -1946,7 +1750,7 @@ function markItem(item, learned){
 }
 
 /* ══════════════════════════════════════════════════════════
-   EXAM RENDER
+   EXAM
 ══════════════════════════════════════════════════════════ */
 function renderExamQuestion(){
   const s = state.session;
@@ -2073,7 +1877,7 @@ function renderSummary(){
   if (isExam) {
     statsHtml = `
       <div class="sum-stat green"><div class="lbl">Đúng</div><div class="val">${correct}/${total}</div></div>
-      <div class="sum-stat gold"><div class="lbl">Tỉ lệ</div><div class="val">${pct}%</div></div>
+      <div class="sum-stat red"><div class="lbl">Tỉ lệ</div><div class="val">${pct}%</div></div>
       <div class="sum-stat amber"><div class="lbl">Cấp</div><div class="val">${s.examLevel}</div></div>
     `;
   } else {
@@ -2086,7 +1890,7 @@ function renderSummary(){
     statsHtml = `
       <div class="sum-stat green"><div class="lbl">Đúng</div><div class="val">${correct}/${total}</div></div>
       <div class="sum-stat amber"><div class="lbl">Chưa thuộc</div><div class="val">${learningCount}</div></div>
-      <div class="sum-stat gold"><div class="lbl">Đã thuộc</div><div class="val">${masteredCount}</div></div>
+      <div class="sum-stat red"><div class="lbl">Đã thuộc</div><div class="val">${masteredCount}</div></div>
     `;
   }
 
@@ -2108,6 +1912,7 @@ function renderSummary(){
     </div>
   `;
 
+  // Về home → reset PROGRESS (không lưu)
   $('#homeBtn').addEventListener('click', renderHome);
   $('#backHomeBtn').addEventListener('click', renderHome);
   $('#againBtn').addEventListener('click', ()=>{
@@ -2122,7 +1927,7 @@ function renderSummary(){
 
 function confirmExit(){
   if (state.session.index>0 && state.session.index<state.session.items.length) {
-    if (!confirm('Thoát phiên học? Tiến độ đã đánh dấu vẫn được lưu.')) return;
+    if (!confirm('Thoát phiên học? Tiến độ sẽ không được lưu.')) return;
   }
   if ('speechSynthesis' in window) speechSynthesis.cancel();
   renderHome();
