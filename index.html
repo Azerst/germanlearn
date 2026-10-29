@@ -9,18 +9,14 @@
     font-family: "GFF";
     src: url("https://dl.dir.freefiremobile.com/common/web_event/common/fonts/website/GFFLatinW05-Bold.woff2") format("woff2"),
          url("https://dl.dir.freefiremobile.com/common/web_event/common/fonts/website/GFFLatinW05-Bold.woff") format("woff");
-    font-weight: 400 900;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 400 900; font-style: normal; font-display: swap;
   }
-
   :root{
     --shadow-sm:0 1px 3px rgba(10,10,20,.06);
     --shadow-md:0 12px 32px -16px rgba(10,10,20,.15);
     --serif:'Times New Roman',Georgia,serif;
     --gff:"GFF","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   }
-
   body[data-theme="light"]{
     --bg:#faf8f4;--bg-2:#f5f2ec;--surface:#ffffff;
     --line:#e8e3d9;--line-2:#d0c9ba;
@@ -65,7 +61,6 @@
     --gold:#ff2a9a;--gold-soft:#2a0020;
     --blue:#00b0ff;--blue-soft:#001a2a;
   }
-
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{height:100%}
   body{
@@ -75,112 +70,75 @@
     background-image:
       radial-gradient(900px 500px at 100% -10%, rgba(200,30,30,.06), transparent 60%),
       radial-gradient(800px 500px at 0% 100%, rgba(61,61,201,.05), transparent 55%);
-    background-attachment:fixed;
-    -webkit-font-smoothing:antialiased;
+    background-attachment:fixed;-webkit-font-smoothing:antialiased;
     overflow-x:hidden;letter-spacing:.02em;
     transition:background-color .3s, color .3s;
   }
-  .app{
-    max-width:600px;margin:0 auto;padding:32px 18px 100px;
+  .app{max-width:600px;margin:0 auto;padding:32px 18px 100px;
     display:flex;flex-direction:column;gap:20px;
-    animation:fadeUp .5s cubic-bezier(.2,.8,.2,1);
-  }
+    animation:fadeUp .5s cubic-bezier(.2,.8,.2,1)}
   @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-  /* ============ HERO ============ */
-  .hero{display:flex;flex-direction:column;align-items:center;gap:0;
-    text-align:center;padding:8px 0 12px}
-  .hero-flag{display:inline-flex;flex-direction:column;
-    width:38px;height:26px;border-radius:5px;overflow:hidden;
-    box-shadow:0 4px 14px rgba(0,0,0,.2),inset 0 0 0 1px rgba(255,255,255,.08);
-    margin-bottom:20px}
+  .hero{display:flex;flex-direction:column;align-items:center;gap:0;text-align:center;padding:8px 0 12px}
+  .hero-flag{display:inline-flex;flex-direction:column;width:38px;height:26px;border-radius:5px;overflow:hidden;
+    box-shadow:0 4px 14px rgba(0,0,0,.2),inset 0 0 0 1px rgba(255,255,255,.08);margin-bottom:20px}
   .hero-flag span{flex:1}
   .hero-flag span:nth-child(1){background:#0a0a14}
   .hero-flag span:nth-child(2){background:#dd0000}
   .hero-flag span:nth-child(3){background:#ffce00}
-
-  .hero-title{
-    margin:0;font-family:var(--gff);
-    font-size:clamp(34px,9vw,56px);font-weight:900;
+  .hero-title{margin:0;font-family:var(--gff);font-size:clamp(34px,9vw,56px);font-weight:900;
     text-transform:uppercase;letter-spacing:.02em;line-height:1.05;
-    background:linear-gradient(90deg,
-      #ffffff 0%,#ffbbbb 15%,#ff6666 30%,#e01e1e 45%,#a01010 55%,
+    background:linear-gradient(90deg,#ffffff 0%,#ffbbbb 15%,#ff6666 30%,#e01e1e 45%,#a01010 55%,
       #e01e1e 65%,#ff6666 80%,#ffbbbb 90%,#ffffff 100%);
-    background-size:300% 100%;
-    -webkit-background-clip:text;background-clip:text;
-    -webkit-text-fill-color:transparent;color:transparent;
-    animation:flow 6s linear infinite;
-    filter:drop-shadow(0 3px 12px rgba(200,30,30,.35));
-    position:relative;display:inline-block;padding:0 4px;
-  }
+    background-size:300% 100%;-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;animation:flow 6s linear infinite;
+    filter:drop-shadow(0 3px 12px rgba(200,30,30,.35));position:relative;display:inline-block;padding:0 4px}
   @keyframes flow{0%{background-position:0% 50%}100%{background-position:300% 50%}}
-
   .hero-divider{width:44px;height:3px;
-    background:linear-gradient(90deg,transparent,var(--red),transparent);
-    border-radius:2px;margin:16px 0 14px}
-  .hero-credit{margin:0;font-size:11px;letter-spacing:4px;
-    text-transform:uppercase;font-weight:700;color:var(--muted)}
+    background:linear-gradient(90deg,transparent,var(--red),transparent);border-radius:2px;margin:16px 0 14px}
+  .hero-credit{margin:0;font-size:11px;letter-spacing:4px;text-transform:uppercase;font-weight:700;color:var(--muted)}
   .hero-credit strong{color:var(--ink);font-weight:900;letter-spacing:4px}
 
-  /* XP bar */
-  .xp-bar{display:flex;align-items:center;gap:10px;
-    padding:12px 16px;background:var(--surface);
+  .xp-bar{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--surface);
     border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm)}
   .xp-level{display:flex;flex-direction:column;align-items:center;
     padding:0 10px 0 0;border-right:1px solid var(--line);min-width:54px}
-  .xp-level-label{font-size:8.5px;letter-spacing:1.5px;
-    text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:2px}
+  .xp-level-label{font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:2px}
   .xp-level-num{font-size:22px;font-weight:900;
-    background:linear-gradient(135deg,var(--red),var(--red-deep));
-    -webkit-background-clip:text;background-clip:text;
+    background:linear-gradient(135deg,var(--red),var(--red-deep));-webkit-background-clip:text;background-clip:text;
     -webkit-text-fill-color:transparent;color:transparent;line-height:1}
   .xp-body{flex:1;display:flex;flex-direction:column;gap:5px}
-  .xp-meta{display:flex;justify-content:space-between;
-    font-size:10.5px;font-weight:700;color:var(--muted)}
+  .xp-meta{display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;color:var(--muted)}
   .xp-meta b{color:var(--ink);font-weight:900}
   .xp-track{height:6px;background:var(--bg-2);border-radius:99px;overflow:hidden}
   .xp-fill{display:block;height:100%;width:0;border-radius:99px;
     background:linear-gradient(90deg,var(--red),var(--red-deep));
-    transition:width .5s cubic-bezier(.2,.8,.2,1);
-    box-shadow:0 0 12px rgba(200,30,30,.4)}
-  .xp-combo{display:flex;align-items:center;gap:4px;
-    padding:4px 8px;border-radius:8px;
-    background:var(--amber-soft);font-size:11px;font-weight:900;color:var(--amber);
-    min-width:48px;justify-content:center}
-  .xp-combo.hot{background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;
-    animation:comboPulse .6s infinite}
+    transition:width .5s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 12px rgba(200,30,30,.4)}
+  .xp-combo{display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:8px;
+    background:var(--amber-soft);font-size:11px;font-weight:900;color:var(--amber);min-width:48px;justify-content:center}
+  .xp-combo.hot{background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;animation:comboPulse .6s infinite}
   @keyframes comboPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 
-  .section-head{display:flex;align-items:baseline;justify-content:space-between;
-    padding:0 4px;margin-top:8px}
-  .section-label{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
-    color:var(--muted);font-weight:700}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;padding:0 4px;margin-top:8px}
+  .section-label{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);font-weight:700}
 
   .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .cat-card{display:flex;flex-direction:column;gap:10px;
-    padding:18px 16px 16px;background:var(--surface);
-    border:1px solid var(--line);border-radius:20px;
-    text-align:left;cursor:pointer;font-family:inherit;
-    transition:all .22s cubic-bezier(.2,.8,.2,1);
-    box-shadow:var(--shadow-sm);color:var(--ink)}
+  .cat-card{display:flex;flex-direction:column;gap:10px;padding:18px 16px 16px;background:var(--surface);
+    border:1px solid var(--line);border-radius:20px;text-align:left;cursor:pointer;font-family:inherit;
+    transition:all .22s cubic-bezier(.2,.8,.2,1);box-shadow:var(--shadow-sm);color:var(--ink)}
   .cat-card:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-md)}
   .cat-card:active{transform:translateY(0) scale(.99)}
   .cat-head{display:flex;justify-content:space-between;align-items:flex-start}
-  .cat-icon{width:42px;height:42px;border-radius:12px;
-    display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-  .cat-count{font-size:11px;font-weight:700;color:var(--muted);
-    font-variant-numeric:tabular-nums;letter-spacing:.3px}
+  .cat-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+  .cat-count{font-size:11px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.3px}
   .cat-name{font-size:16px;font-weight:900;color:var(--ink);margin-top:2px}
   .cat-sub{font-size:11px;font-weight:700;color:var(--muted);margin-top:-4px}
   .cat-bar{height:4px;background:var(--bg-2);border-radius:99px;overflow:hidden;margin-top:4px}
   .cat-bar>i{display:block;height:100%;border-radius:99px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
 
-  .quick-btn{display:flex;align-items:center;gap:14px;
-    padding:17px 20px;background:var(--ink);color:var(--bg);
-    border:none;border-radius:18px;font-family:inherit;
-    font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;
-    cursor:pointer;transition:all .22s cubic-bezier(.2,.8,.2,1);
-    box-shadow:var(--shadow-md)}
+  .quick-btn{display:flex;align-items:center;gap:14px;padding:17px 20px;background:var(--ink);color:var(--bg);
+    border:none;border-radius:18px;font-family:inherit;font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;
+    cursor:pointer;transition:all .22s cubic-bezier(.2,.8,.2,1);box-shadow:var(--shadow-md)}
   .quick-btn:hover{transform:translateY(-2px)}
   .quick-btn:active{transform:translateY(0) scale(.99)}
   .quick-icon{font-size:18px;line-height:1}
@@ -189,114 +147,82 @@
   .quick-btn:hover .quick-arrow{transform:translateX(4px)}
 
   .exam-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-  .exam-card{display:flex;flex-direction:column;align-items:center;gap:3px;
-    padding:16px 6px 14px;background:var(--surface);
-    border:1px solid var(--line);border-radius:16px;font-family:inherit;
-    cursor:pointer;transition:all .22s cubic-bezier(.2,.8,.2,1);
-    position:relative;overflow:hidden;box-shadow:var(--shadow-sm);color:var(--ink)}
+  .exam-card{display:flex;flex-direction:column;align-items:center;gap:3px;padding:16px 6px 14px;background:var(--surface);
+    border:1px solid var(--line);border-radius:16px;font-family:inherit;cursor:pointer;
+    transition:all .22s cubic-bezier(.2,.8,.2,1);position:relative;overflow:hidden;box-shadow:var(--shadow-sm);color:var(--ink)}
   .exam-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
   .exam-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-md)}
   .exam-card:active{transform:translateY(0) scale(.98)}
   .exam-level{font-size:22px;font-weight:900;color:var(--accent);line-height:1;margin-top:2px}
-  .exam-name{font-size:9.5px;font-weight:700;text-transform:uppercase;
-    letter-spacing:1.3px;color:var(--muted);margin-top:2px}
+  .exam-name{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);margin-top:2px}
 
-  .foot{text-align:center;font-size:11px;color:var(--muted);
-    font-weight:700;line-height:1.9;padding-top:12px}
-  .foot kbd{background:var(--surface);border:1px solid var(--line);
-    border-radius:5px;padding:1.5px 7px;font-size:10.5px;
+  .foot{text-align:center;font-size:11px;color:var(--muted);font-weight:700;line-height:1.9;padding-top:12px}
+  .foot kbd{background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:1.5px 7px;font-size:10.5px;
     font-family:inherit;color:var(--ink-soft);font-weight:700}
 
-  /* FAB & Drawer */
-  .settings-fab{position:fixed;right:20px;bottom:20px;z-index:50;
-    width:52px;height:52px;border-radius:50%;border:none;
-    background:var(--ink);color:var(--bg);font-size:22px;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-    box-shadow:0 8px 24px -8px rgba(0,0,0,.5);
-    transition:all .22s cubic-bezier(.2,.8,.2,1)}
+  .settings-fab{position:fixed;right:20px;bottom:20px;z-index:50;width:52px;height:52px;border-radius:50%;border:none;
+    background:var(--ink);color:var(--bg);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px -8px rgba(0,0,0,.5);transition:all .22s cubic-bezier(.2,.8,.2,1)}
   .settings-fab:hover{transform:scale(1.08) rotate(45deg)}
   .settings-fab:active{transform:scale(.95)}
 
-  .drawer-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5);
-    z-index:98;opacity:0;pointer-events:none;transition:opacity .3s;
-    -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+  .drawer-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:98;opacity:0;pointer-events:none;
+    transition:opacity .3s;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
   .drawer-backdrop.show{opacity:1;pointer-events:auto}
-  .drawer{position:fixed;top:0;right:0;bottom:0;width:min(340px,90vw);
-    background:var(--bg);border-left:1px solid var(--line);
-    z-index:99;padding:24px 20px;overflow-y:auto;
-    transform:translateX(100%);
-    transition:transform .3s cubic-bezier(.2,.8,.2,1);
-    box-shadow:-12px 0 40px -10px rgba(0,0,0,.3)}
+  .drawer{position:fixed;top:0;right:0;bottom:0;width:min(340px,90vw);background:var(--bg);border-left:1px solid var(--line);
+    z-index:99;padding:24px 20px;overflow-y:auto;transform:translateX(100%);
+    transition:transform .3s cubic-bezier(.2,.8,.2,1);box-shadow:-12px 0 40px -10px rgba(0,0,0,.3)}
   .drawer.show{transform:translateX(0)}
   .drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
   .drawer-title{font-size:20px;font-weight:900;color:var(--ink)}
-  .drawer-close{width:36px;height:36px;border-radius:50%;
-    background:var(--surface);border:1px solid var(--line);
-    color:var(--ink-soft);font-size:16px;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;transition:all .2s}
+  .drawer-close{width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--line);
+    color:var(--ink-soft);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
   .drawer-close:hover{background:var(--bg-2);color:var(--ink)}
-
   .setting-group{padding:14px 0;border-bottom:1px solid var(--line)}
   .setting-group:last-child{border-bottom:none}
-  .setting-label{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;
-    color:var(--muted);font-weight:800;margin-bottom:10px}
+  .setting-label{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:800;margin-bottom:10px}
   .theme-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-  .theme-btn{aspect-ratio:1;border-radius:10px;border:2px solid var(--line);
-    cursor:pointer;transition:all .2s;position:relative;overflow:hidden;
-    display:flex;flex-direction:column}
+  .theme-btn{aspect-ratio:1;border-radius:10px;border:2px solid var(--line);cursor:pointer;transition:all .2s;
+    position:relative;overflow:hidden;display:flex;flex-direction:column}
   .theme-btn:hover{transform:scale(1.05)}
   .theme-btn.active{border-color:var(--red);box-shadow:0 0 0 3px rgba(200,30,30,.2)}
-  .theme-btn::after{content:attr(data-label);position:absolute;bottom:0;left:0;right:0;
-    background:rgba(0,0,0,.75);color:#fff;font-size:8px;font-weight:900;
-    text-transform:uppercase;padding:2px 0;text-align:center;letter-spacing:.5px;
-    font-family:var(--gff)}
+  .theme-btn::after{content:attr(data-label);position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.75);
+    color:#fff;font-size:8px;font-weight:900;text-transform:uppercase;padding:2px 0;text-align:center;
+    letter-spacing:.5px;font-family:var(--gff)}
   .theme-preview{display:flex;flex-direction:column;flex:1}
   .theme-preview>span{flex:1}
-
-  .setting-toggle{display:flex;align-items:center;justify-content:space-between;
-    padding:10px 0;cursor:pointer}
+  .setting-toggle{display:flex;align-items:center;justify-content:space-between;padding:10px 0;cursor:pointer}
   .setting-toggle .t-name{font-size:13px;font-weight:800;color:var(--ink)}
   .setting-toggle .t-desc{font-size:10.5px;color:var(--muted);font-weight:700;margin-top:2px}
-  .t-switch{width:42px;height:24px;border-radius:12px;
-    background:var(--line-2);position:relative;transition:all .25s;flex-shrink:0}
-  .t-switch::after{content:"";position:absolute;top:3px;left:3px;
-    width:18px;height:18px;border-radius:50%;background:#fff;
-    box-shadow:0 1px 3px rgba(0,0,0,.2);
-    transition:all .25s cubic-bezier(.2,.8,.2,1)}
+  .t-switch{width:42px;height:24px;border-radius:12px;background:var(--line-2);position:relative;transition:all .25s;flex-shrink:0}
+  .t-switch::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;
+    box-shadow:0 1px 3px rgba(0,0,0,.2);transition:all .25s cubic-bezier(.2,.8,.2,1)}
   .setting-toggle.on .t-switch{background:var(--green)}
   .setting-toggle.on .t-switch::after{left:21px}
 
-  /* Back btn */
-  .back-btn{display:inline-flex;align-items:center;gap:6px;
-    padding:9px 14px;background:var(--surface);color:var(--ink-soft);
-    border:1px solid var(--line);border-radius:10px;
-    font-family:inherit;font-size:12.5px;font-weight:700;
+  .back-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;background:var(--surface);color:var(--ink-soft);
+    border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:12.5px;font-weight:700;
     cursor:pointer;transition:all .18s;box-shadow:var(--shadow-sm)}
   .back-btn:hover{border-color:var(--ink);color:var(--ink)}
   .back-btn:active{transform:scale(.97)}
 
-  /* Setup */
   .setup-top{display:flex;align-items:center;margin-bottom:6px}
   .setup-hero{display:flex;align-items:center;gap:14px;padding:4px 0 8px}
-  .setup-icon{width:52px;height:52px;border-radius:14px;
-    display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+  .setup-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
   .setup-titles{display:flex;flex-direction:column;gap:3px;min-width:0}
   .setup-title{font-size:22px;font-weight:900;color:var(--ink);margin:0;line-height:1.1}
   .setup-sub{font-size:12px;font-weight:700;color:var(--muted);margin:0}
   .setup-sub b{color:var(--ink);font-weight:900}
 
-  .setup-label{display:flex;align-items:center;gap:8px;
-    font-size:10.5px;letter-spacing:2.2px;text-transform:uppercase;
+  .setup-label{display:flex;align-items:center;gap:8px;font-size:10.5px;letter-spacing:2.2px;text-transform:uppercase;
     color:var(--muted);font-weight:800;margin:22px 0 10px;padding-left:2px}
   .setup-label:first-of-type{margin-top:0}
-  .setup-label .count{font-size:9.5px;padding:2px 8px;border-radius:99px;
-    background:var(--bg-2);color:var(--ink-soft);text-transform:none;font-weight:700}
+  .setup-label .count{font-size:9.5px;padding:2px 8px;border-radius:99px;background:var(--bg-2);color:var(--ink-soft);
+    text-transform:none;font-weight:700}
 
   .mode-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-  .mode-card{display:flex;flex-direction:column;align-items:center;gap:6px;
-    padding:16px 6px;background:var(--surface);
-    border:1.5px solid var(--line);border-radius:14px;
-    color:var(--ink);font-family:inherit;cursor:pointer;
+  .mode-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 6px;background:var(--surface);
+    border:1.5px solid var(--line);border-radius:14px;color:var(--ink);font-family:inherit;cursor:pointer;
     transition:all .2s cubic-bezier(.2,.8,.2,1);box-shadow:var(--shadow-sm)}
   .mode-card:hover:not(.active){border-color:var(--line-2);transform:translateY(-1px)}
   .mode-card:active{transform:translateY(0) scale(.98)}
@@ -308,45 +234,33 @@
   .mode-card.active[data-mode="type"]{background:var(--red-soft);border-color:var(--red)}
 
   .chips{display:flex;gap:6px;flex-wrap:wrap}
-  .chip{padding:8px 15px;border-radius:10px;background:var(--surface);
-    border:1px solid var(--line);color:var(--muted);font-family:inherit;
-    font-size:12.5px;font-weight:700;cursor:pointer;transition:all .2s;
-    white-space:nowrap;box-shadow:var(--shadow-sm)}
+  .chip{padding:8px 15px;border-radius:10px;background:var(--surface);border:1px solid var(--line);color:var(--muted);
+    font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;
+    box-shadow:var(--shadow-sm)}
   .chip:hover:not(.active){border-color:var(--ink);color:var(--ink)}
   .chip.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 
-  .toggle-row{display:flex;align-items:center;justify-content:space-between;gap:12px;
-    padding:14px 16px;background:var(--surface);border:1px solid var(--line);
-    border-radius:14px;margin-top:16px;cursor:pointer;transition:all .2s;
-    box-shadow:var(--shadow-sm)}
+  .toggle-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:var(--surface);
+    border:1px solid var(--line);border-radius:14px;margin-top:16px;cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm)}
   .toggle-row:hover{border-color:var(--line-2)}
   .toggle-row .label{font-size:13px;font-weight:900;color:var(--ink)}
   .toggle-row .desc{font-size:11px;color:var(--muted);font-weight:700;margin-top:2px}
-  .toggle-row .switch{width:42px;height:24px;border-radius:12px;
-    background:var(--line-2);position:relative;transition:all .25s;flex-shrink:0}
-  .toggle-row .switch::after{content:"";position:absolute;top:3px;left:3px;
-    width:18px;height:18px;border-radius:50%;background:#fff;
-    box-shadow:0 1px 3px rgba(0,0,0,.2);
-    transition:all .25s cubic-bezier(.2,.8,.2,1)}
+  .toggle-row .switch{width:42px;height:24px;border-radius:12px;background:var(--line-2);position:relative;transition:all .25s;flex-shrink:0}
+  .toggle-row .switch::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;
+    box-shadow:0 1px 3px rgba(0,0,0,.2);transition:all .25s cubic-bezier(.2,.8,.2,1)}
   .toggle-row.on .switch{background:var(--green)}
   .toggle-row.on .switch::after{left:21px}
 
   .start-btn{width:100%;margin-top:22px;padding:17px;border-radius:16px;border:0;
-    background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;
-    font-family:inherit;font-size:15px;font-weight:900;cursor:pointer;
-    transition:all .22s cubic-bezier(.2,.8,.2,1);
-    letter-spacing:.05em;text-transform:uppercase;
-    box-shadow:0 10px 28px -12px rgba(200,30,30,.55);
-    display:flex;align-items:center;justify-content:center;gap:8px}
+    background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;font-family:inherit;font-size:15px;font-weight:900;
+    cursor:pointer;transition:all .22s cubic-bezier(.2,.8,.2,1);letter-spacing:.05em;text-transform:uppercase;
+    box-shadow:0 10px 28px -12px rgba(200,30,30,.55);display:flex;align-items:center;justify-content:center;gap:8px}
   .start-btn:hover{transform:translateY(-2px)}
   .start-btn:active{transform:translateY(0) scale(.99)}
 
-  /* Session */
-  .session{display:flex;flex-direction:column;gap:14px;
-    animation:fadeUp .35s cubic-bezier(.2,.8,.2,1)}
+  .session{display:flex;flex-direction:column;gap:14px;animation:fadeUp .35s cubic-bezier(.2,.8,.2,1)}
   .session-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-  .session-tag{padding:6px 12px;border-radius:99px;
-    font-size:10.5px;font-weight:900;letter-spacing:.08em;
+  .session-tag{padding:6px 12px;border-radius:99px;font-size:10.5px;font-weight:900;letter-spacing:.08em;
     text-transform:uppercase;white-space:nowrap}
   .session-tag.flash{background:var(--indigo-soft);color:var(--indigo)}
   .session-tag.quiz{background:var(--green-soft);color:var(--green)}
@@ -354,134 +268,83 @@
   .session-tag.exam{background:var(--red-soft);color:var(--red)}
 
   .progress{display:flex;flex-direction:column;gap:7px}
-  .progress-meta{display:flex;justify-content:space-between;align-items:center;
-    font-size:11.5px;font-weight:700;color:var(--muted)}
+  .progress-meta{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:700;color:var(--muted)}
   .progress-meta .q-count{font-variant-numeric:tabular-nums}
   .progress-meta .score{color:var(--green);font-weight:900}
   .progress-bar{height:5px;background:var(--bg-2);border-radius:99px;overflow:hidden}
   .progress-bar>i{display:block;height:100%;width:0;border-radius:99px;
-    background:linear-gradient(90deg,var(--red),var(--red-deep));
-    transition:width .4s cubic-bezier(.2,.8,.2,1)}
+    background:linear-gradient(90deg,var(--red),var(--red-deep));transition:width .4s cubic-bezier(.2,.8,.2,1)}
 
-  .q-card{background:var(--surface);border:1px solid var(--line);
-    border-radius:22px;padding:22px 20px;
-    box-shadow:var(--shadow-sm),0 8px 32px -16px rgba(0,0,0,.1);
-    position:relative}
+  .q-card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px 20px;
+    box-shadow:var(--shadow-sm),0 8px 32px -16px rgba(0,0,0,.1);position:relative}
   .card-head{display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap}
   .card-badges{display:flex;gap:6px;flex-wrap:wrap}
   .card-actions{margin-left:auto;display:flex;gap:6px}
-  .level-badge{padding:3px 10px;border-radius:6px;font-size:10px;font-weight:900;
-    letter-spacing:.06em;text-transform:uppercase}
+  .level-badge{padding:3px 10px;border-radius:6px;font-size:10px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
   .level-badge.A1{background:var(--green-soft);color:var(--green)}
   .level-badge.A2{background:var(--blue-soft);color:var(--blue)}
   .level-badge.B1{background:var(--amber-soft);color:var(--amber)}
   .level-badge.B2{background:var(--red-soft);color:var(--red)}
-  .status-badge{padding:3px 10px;border-radius:6px;font-size:9.5px;font-weight:900;
-    letter-spacing:.06em;text-transform:uppercase}
+  .status-badge{padding:3px 10px;border-radius:6px;font-size:9.5px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
   .status-badge.new{background:var(--indigo-soft);color:var(--indigo)}
   .status-badge.learning{background:var(--amber-soft);color:var(--amber)}
   .status-badge.mastered{background:var(--green-soft);color:var(--green)}
 
-  /* ============ SPEAKER BUTTONS ============ */
-  .speak-btn,.hint-btn{
-    width:38px;height:38px;border-radius:50%;padding:0;
-    background:var(--surface);border:1px solid var(--line);
-    color:var(--ink-soft);font-size:15px;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
+  .speak-btn,.hint-btn{width:38px;height:38px;border-radius:50%;padding:0;background:var(--surface);border:1px solid var(--line);
+    color:var(--ink-soft);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;
     transition:all .2s;box-shadow:var(--shadow-sm)}
   .hint-btn{font-family:var(--serif);font-weight:900;font-size:15px}
   .speak-btn:hover{border-color:var(--red);color:var(--red);transform:scale(1.08)}
   .speak-btn:active{transform:scale(.92)}
-  .speak-btn.speaking{background:var(--red);border-color:var(--red);color:#fff;
-    animation:pulse 1s infinite}
+  .speak-btn.speaking{background:var(--red);border-color:var(--red);color:#fff;animation:pulse 1s infinite}
   .hint-btn:hover,.hint-btn.active{background:var(--amber-soft);border-color:var(--amber);color:var(--amber)}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(200,30,30,.4)}
-    70%{box-shadow:0 0 0 12px rgba(200,30,30,0)}
-    100%{box-shadow:0 0 0 0 rgba(200,30,30,0)}}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(200,30,30,.4)}70%{box-shadow:0 0 0 12px rgba(200,30,30,0)}100%{box-shadow:0 0 0 0 rgba(200,30,30,0)}}
 
-  /* Mini speaker inside option */
-  .speak-mini{
-    width:26px;height:26px;border-radius:50%;padding:0;flex-shrink:0;
-    background:var(--bg-2);border:1px solid var(--line);
-    color:var(--muted);font-size:12px;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-    transition:all .18s;
-    opacity:.7;
-  }
-  .speak-mini:hover{
-    background:var(--red-soft);border-color:var(--red);color:var(--red);
-    transform:scale(1.1);opacity:1;
-  }
+  .speak-mini{width:26px;height:26px;border-radius:50%;padding:0;flex-shrink:0;background:var(--bg-2);
+    border:1px solid var(--line);color:var(--muted);font-size:12px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:all .18s;opacity:.7}
+  .speak-mini:hover{background:var(--red-soft);border-color:var(--red);color:var(--red);transform:scale(1.1);opacity:1}
   .speak-mini:active{transform:scale(.9)}
-  .speak-mini.speaking{
-    background:var(--red);border-color:var(--red);color:#fff;opacity:1;
-    animation:miniPulse 1s infinite;
-  }
-  @keyframes miniPulse{0%,100%{box-shadow:0 0 0 0 rgba(200,30,30,.4)}
-    50%{box-shadow:0 0 0 6px rgba(200,30,30,0)}}
+  .speak-mini.speaking{background:var(--red);border-color:var(--red);color:#fff;opacity:1;animation:miniPulse 1s infinite}
+  @keyframes miniPulse{0%,100%{box-shadow:0 0 0 0 rgba(200,30,30,.4)}50%{box-shadow:0 0 0 6px rgba(200,30,30,0)}}
 
-  /* Flashcard speaker */
-  .speak-flash{
-    position:absolute;top:12px;left:14px;z-index:5;
-    width:36px;height:36px;border-radius:50%;padding:0;
-    background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.2);
-    color:#fff;font-size:14px;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-    transition:all .2s;
-    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
-  }
-  .speak-flash:hover{background:rgba(200,30,30,.7);border-color:var(--red);
-    transform:scale(1.1)}
+  .speak-flash{position:absolute;top:12px;left:14px;z-index:5;width:36px;height:36px;border-radius:50%;padding:0;
+    background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:14px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:all .2s;
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .speak-flash:hover{background:rgba(200,30,30,.7);border-color:var(--red);transform:scale(1.1)}
   .speak-flash:active{transform:scale(.92)}
-  .speak-flash.speaking{
-    background:var(--red);border-color:var(--red);
-    animation:pulse 1s infinite;
-  }
-  .flash-front .speak-flash{
-    background:var(--surface);border-color:var(--line);color:var(--ink-soft);
-  }
-  .flash-front .speak-flash:hover{
-    background:var(--red-soft);border-color:var(--red);color:var(--red);
-  }
+  .speak-flash.speaking{background:var(--red);border-color:var(--red);animation:pulse 1s infinite}
+  .flash-front .speak-flash{background:var(--surface);border-color:var(--line);color:var(--ink-soft)}
+  .flash-front .speak-flash:hover{background:var(--red-soft);border-color:var(--red);color:var(--red)}
 
-  /* Flashcard */
   .flash-scene{perspective:1600px;margin:4px 0 12px}
   .flashcard{position:relative;width:100%;height:240px;cursor:pointer;
-    transform-style:preserve-3d;-webkit-transform-style:preserve-3d;
-    transition:transform .65s cubic-bezier(.4,.2,.2,1)}
+    transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,.2,.2,1)}
   .flashcard.flipped{transform:rotateY(180deg)}
-  .flash-face{position:absolute;inset:0;
-    backface-visibility:hidden;-webkit-backface-visibility:hidden;
-    border-radius:18px;padding:26px 22px;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  .flash-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    border-radius:18px;padding:26px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
     text-align:center;overflow:hidden;border:1px solid var(--line)}
   .flash-front{background:linear-gradient(160deg,var(--surface),var(--bg-2))}
-  .flash-back{background:linear-gradient(160deg,#2a0a0a,#0a0a14);
-    transform:rotateY(180deg);border-color:rgba(255,255,255,.1);color:#faf8f4}
-  .flash-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
-    color:var(--muted);font-weight:700}
+  .flash-back{background:linear-gradient(160deg,#2a0a0a,#0a0a14);transform:rotateY(180deg);
+    border-color:rgba(255,255,255,.1);color:#faf8f4}
+  .flash-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);font-weight:700}
   .flash-back .flash-label{color:rgba(255,180,180,.7)}
-  .flash-main{font-size:clamp(24px,6.5vw,36px);font-weight:900;line-height:1.15;
-    word-break:break-word;max-width:100%}
+  .flash-main{font-size:clamp(24px,6.5vw,36px);font-weight:900;line-height:1.15;word-break:break-word;max-width:100%}
   .flash-main.letter{font-size:clamp(72px,22vw,110px);letter-spacing:2px}
   .flash-sub{font-size:13px;color:var(--muted);font-weight:700;line-height:1.5;max-width:100%}
   .flash-back .flash-sub{color:rgba(255,180,180,.75)}
 
-  .flip-hint{font-size:11.5px;color:var(--muted);text-align:center;
-    font-weight:700;margin-bottom:10px}
-  .flip-btn{width:100%;padding:13px;border-radius:13px;
-    background:var(--surface);border:1px solid var(--line);
-    color:var(--ink);font-family:inherit;font-size:13px;font-weight:900;
-    cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm);
+  .flip-hint{font-size:11.5px;color:var(--muted);text-align:center;font-weight:700;margin-bottom:10px}
+  .flip-btn{width:100%;padding:13px;border-radius:13px;background:var(--surface);border:1px solid var(--line);color:var(--ink);
+    font-family:inherit;font-size:13px;font-weight:900;cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm);
     letter-spacing:.05em;text-transform:uppercase}
   .flip-btn:hover{border-color:var(--ink)}
   .flip-btn:active{transform:scale(.98)}
 
-  /* Options */
   .options{display:flex;flex-direction:column;gap:9px}
-  .opt{display:flex;align-items:center;gap:11px;padding:14px 16px;
-    background:var(--surface);border:1.5px solid var(--line);border-radius:14px;
-    color:var(--ink);font-family:inherit;font-size:14px;font-weight:700;
+  .opt{display:flex;align-items:center;gap:11px;padding:14px 16px;background:var(--surface);
+    border:1.5px solid var(--line);border-radius:14px;color:var(--ink);font-family:inherit;font-size:14px;font-weight:700;
     text-align:left;cursor:pointer;transition:all .18s cubic-bezier(.2,.8,.2,1);
     animation:optIn .32s cubic-bezier(.2,.8,.2,1) backwards}
   .opt:nth-child(1){animation-delay:.03s}.opt:nth-child(2){animation-delay:.07s}
@@ -489,10 +352,8 @@
   @keyframes optIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
   .opt:hover:not(:disabled){border-color:var(--ink);background:var(--bg-2);transform:translateX(2px)}
   .opt:disabled{cursor:default}
-  .opt-letter{width:30px;height:30px;border-radius:8px;flex-shrink:0;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--bg-2);color:var(--ink-soft);font-weight:900;font-size:13px;
-    transition:all .18s}
+  .opt-letter{width:30px;height:30px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+    background:var(--bg-2);color:var(--ink-soft);font-weight:900;font-size:13px;transition:all .18s}
   .opt-text{flex:1;word-break:break-word;line-height:1.35;min-width:0}
   .opt.correct{background:var(--green-soft);border-color:var(--green);animation:pop .35s}
   @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.015)}100%{transform:scale(1)}}
@@ -503,69 +364,51 @@
   .opt.wrong .opt-text{color:var(--red);font-weight:900}
   .opt.dimmed{opacity:.25;pointer-events:none}
 
-  .q-text{font-size:clamp(15px,4.2vw,19px);font-weight:900;line-height:1.5;
-    margin:0 0 18px;color:var(--ink)}
+  .q-text{font-size:clamp(15px,4.2vw,19px);font-weight:900;line-height:1.5;margin:0 0 18px;color:var(--ink)}
   .q-text b{color:var(--red);font-weight:900}
-  .q-text .blank{display:inline-block;min-width:52px;
-    border-bottom:2px dashed var(--red);color:var(--red)}
+  .q-text .blank{display:inline-block;min-width:52px;border-bottom:2px dashed var(--red);color:var(--red)}
 
-  .hint-box{margin:0 0 16px;padding:13px 15px;
-    background:var(--amber-soft);border:1px solid var(--amber);
-    border-radius:12px;font-size:12.5px;font-weight:700;line-height:1.6;color:var(--amber);
-    animation:fbIn .3s cubic-bezier(.2,.8,.2,1)}
-  .hint-box .label{display:block;font-size:9.5px;letter-spacing:1.8px;
-    text-transform:uppercase;color:var(--amber);font-weight:900;margin-bottom:6px}
+  .hint-box{margin:0 0 16px;padding:13px 15px;background:var(--amber-soft);border:1px solid var(--amber);border-radius:12px;
+    font-size:12.5px;font-weight:700;line-height:1.6;color:var(--amber);animation:fbIn .3s cubic-bezier(.2,.8,.2,1)}
+  .hint-box .label{display:block;font-size:9.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--amber);
+    font-weight:900;margin-bottom:6px}
 
-  .type-input{width:100%;padding:16px 18px;border-radius:14px;border:2px solid var(--line);
-    background:var(--bg-2);color:var(--ink);font-family:inherit;
-    font-size:16px;font-weight:700;transition:all .2s;margin-bottom:11px}
+  .type-input{width:100%;padding:16px 18px;border-radius:14px;border:2px solid var(--line);background:var(--bg-2);
+    color:var(--ink);font-family:inherit;font-size:16px;font-weight:700;transition:all .2s;margin-bottom:11px}
   .type-input::placeholder{color:var(--muted);font-weight:700;font-size:13px}
-  .type-input:focus{outline:none;border-color:var(--red);background:var(--surface);
-    box-shadow:0 0 0 4px rgba(200,30,30,.08)}
+  .type-input:focus{outline:none;border-color:var(--red);background:var(--surface);box-shadow:0 0 0 4px rgba(200,30,30,.08)}
   .type-input:disabled{opacity:.7;cursor:not-allowed}
   .type-input.correct{border-color:var(--green);background:var(--green-soft);color:var(--green)}
   .type-input.wrong{border-color:var(--red);background:var(--red-soft);color:var(--red)}
 
-  .check-btn{width:100%;padding:15px;border-radius:14px;border:none;
-    background:var(--green);color:#fff;font-family:inherit;
-    font-size:13.5px;font-weight:900;cursor:pointer;transition:all .2s;
-    letter-spacing:.06em;text-transform:uppercase;
+  .check-btn{width:100%;padding:15px;border-radius:14px;border:none;background:var(--green);color:#fff;font-family:inherit;
+    font-size:13.5px;font-weight:900;cursor:pointer;transition:all .2s;letter-spacing:.06em;text-transform:uppercase;
     box-shadow:0 8px 20px -10px rgba(10,122,74,.5)}
   .check-btn:hover{transform:translateY(-1px)}
   .check-btn:active{transform:translateY(0) scale(.99)}
 
-  .btn-next{width:100%;margin-top:14px;padding:14px;border-radius:13px;border:none;
-    background:var(--ink);color:var(--bg);font-family:inherit;
-    font-size:13.5px;font-weight:900;cursor:pointer;transition:all .2s;
-    letter-spacing:.06em;text-transform:uppercase;
-    box-shadow:0 8px 20px -10px rgba(0,0,0,.4)}
+  .btn-next{width:100%;margin-top:14px;padding:14px;border-radius:13px;border:none;background:var(--ink);color:var(--bg);
+    font-family:inherit;font-size:13.5px;font-weight:900;cursor:pointer;transition:all .2s;
+    letter-spacing:.06em;text-transform:uppercase;box-shadow:0 8px 20px -10px rgba(0,0,0,.4)}
   .btn-next:hover{transform:translateY(-1px)}
 
-  .fb{margin-top:14px;padding:13px 16px;border-radius:12px;
-    font-size:12.5px;font-weight:700;line-height:1.55;
+  .fb{margin-top:14px;padding:13px 16px;border-radius:12px;font-size:12.5px;font-weight:700;line-height:1.55;
     animation:fbIn .3s cubic-bezier(.2,.8,.2,1)}
   @keyframes fbIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
   .fb.correct{background:var(--green-soft);color:var(--green);border:1px solid var(--green)}
   .fb.wrong{background:var(--red-soft);color:var(--red);border:1px solid var(--red)}
-  .fb small{display:block;margin-top:6px;font-size:11.5px;opacity:.92;
-    font-weight:700;line-height:1.6}
+  .fb small{display:block;margin-top:6px;font-size:11.5px;opacity:.92;font-weight:700;line-height:1.6}
   .fb small b{color:var(--ink);font-weight:900}
-  .fb-speak{
-    display:inline-flex;align-items:center;justify-content:center;
-    width:28px;height:28px;border-radius:50%;margin-left:8px;
-    background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
-    color:inherit;cursor:pointer;vertical-align:middle;
-    transition:all .2s;
-  }
+  .fb-speak{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;margin-left:8px;
+    background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:inherit;cursor:pointer;vertical-align:middle;
+    transition:all .2s}
   .fb-speak:hover{background:rgba(255,255,255,.3);transform:scale(1.1)}
   .fb-speak:active{transform:scale(.9)}
 
   .mark-row{display:none;gap:8px;margin-top:16px;animation:fbIn .3s}
   .mark-row.show{display:flex}
-  .mark-btn{flex:1;padding:15px 10px;border-radius:14px;
-    font-family:inherit;font-size:12.5px;font-weight:900;
-    cursor:pointer;transition:all .2s;
-    display:flex;align-items:center;justify-content:center;gap:7px;
+  .mark-btn{flex:1;padding:15px 10px;border-radius:14px;font-family:inherit;font-size:12.5px;font-weight:900;
+    cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:7px;
     letter-spacing:.04em;text-transform:uppercase}
   .mark-btn.unlearn{background:var(--amber-soft);border:1.5px solid var(--amber);color:var(--amber)}
   .mark-btn.unlearn:hover{transform:translateY(-1px)}
@@ -575,84 +418,52 @@
   .mark-btn.learn.suggested{box-shadow:0 0 0 3px rgba(10,122,74,.15)}
   .mark-btn:active{transform:translateY(0) scale(.98)}
 
-  /* Exam */
-  .exam-banner{padding:16px 18px;background:var(--surface);
-    border:1px solid var(--line);border-radius:16px;
+  .exam-banner{padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:16px;
     box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
   .exam-banner::before{content:"";position:absolute;top:0;left:0;bottom:0;width:3px;
     background:linear-gradient(180deg,var(--red),var(--red-deep))}
-  .exam-banner-title{font-family:var(--serif);font-size:16px;font-weight:700;
-    color:var(--ink);line-height:1.2;margin-bottom:4px}
+  .exam-banner-title{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:4px}
   .exam-banner-sub{font-size:11px;color:var(--muted);font-weight:700}
-
-  .exam-instr{padding:12px 15px;background:var(--bg-2);
-    border-left:3px solid var(--red);border-radius:8px;
-    font-size:12.5px;font-weight:400;color:var(--ink-soft);
-    line-height:1.6;margin-bottom:16px;
+  .exam-instr{padding:12px 15px;background:var(--bg-2);border-left:3px solid var(--red);border-radius:8px;
+    font-size:12.5px;font-weight:400;color:var(--ink-soft);line-height:1.6;margin-bottom:16px;
     font-family:var(--serif);font-style:italic}
-
-  .exam-passage{padding:18px 20px;background:var(--bg-2);
-    border:1px solid var(--line);border-radius:12px;
-    font-family:var(--serif);font-size:14.5px;line-height:1.75;
-    color:var(--ink);white-space:pre-wrap;margin-bottom:18px;
+  .exam-passage{padding:18px 20px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;
+    font-family:var(--serif);font-size:14.5px;line-height:1.75;color:var(--ink);white-space:pre-wrap;margin-bottom:18px;
     max-height:300px;overflow-y:auto;font-weight:400}
   .exam-passage::-webkit-scrollbar{width:6px}
   .exam-passage::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:99px}
-  .exam-passage .blank-num{display:inline-block;padding:0 7px;
-    background:var(--red-soft);color:var(--red);border-radius:5px;
-    font-weight:900;font-size:12px;font-family:var(--gff);
-    margin:0 2px;line-height:1.5;border:1px solid var(--red)}
-  .exam-passage .blank-num.hl{
-    background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;
-    border-color:var(--red);box-shadow:0 0 0 3px rgba(200,30,30,.2);
-    animation:blankPulse 1.6s infinite}
-  @keyframes blankPulse{
-    0%,100%{box-shadow:0 0 0 3px rgba(200,30,30,.2)}
-    50%{box-shadow:0 0 0 6px rgba(200,30,30,.05)}}
+  .exam-passage .blank-num{display:inline-block;padding:0 7px;background:var(--red-soft);color:var(--red);border-radius:5px;
+    font-weight:900;font-size:12px;font-family:var(--gff);margin:0 2px;line-height:1.5;border:1px solid var(--red)}
+  .exam-passage .blank-num.hl{background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;
+    border-color:var(--red);box-shadow:0 0 0 3px rgba(200,30,30,.2);animation:blankPulse 1.6s infinite}
+  @keyframes blankPulse{0%,100%{box-shadow:0 0 0 3px rgba(200,30,30,.2)}50%{box-shadow:0 0 0 6px rgba(200,30,30,.05)}}
+  .exam-q-num{font-size:10.5px;font-weight:900;color:var(--red);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+  .exam-q-text{font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.5;margin-bottom:16px;color:var(--ink)}
 
-  .exam-q-num{font-size:10.5px;font-weight:900;color:var(--red);
-    letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
-  .exam-q-text{font-family:var(--serif);font-size:16px;font-weight:700;
-    line-height:1.5;margin-bottom:16px;color:var(--ink)}
-
-  /* Summary */
-  .summary{text-align:center;padding:36px 24px;background:var(--surface);
-    border:1px solid var(--line);border-radius:22px;
-    box-shadow:var(--shadow-sm),0 12px 40px -20px rgba(0,0,0,.12);
-    animation:fadeUp .4s cubic-bezier(.2,.8,.2,1)}
+  .summary{text-align:center;padding:36px 24px;background:var(--surface);border:1px solid var(--line);border-radius:22px;
+    box-shadow:var(--shadow-sm),0 12px 40px -20px rgba(0,0,0,.12);animation:fadeUp .4s cubic-bezier(.2,.8,.2,1)}
   .sum-emoji{font-size:54px;line-height:1;margin-bottom:14px}
   .sum-title{font-size:24px;font-weight:900;margin:0 0 6px;color:var(--ink)}
-  .sum-sub{font-size:12.5px;color:var(--muted);font-weight:700;
-    margin-bottom:24px;line-height:1.5}
-  .sum-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;
-    margin-bottom:16px;text-align:left}
-  .sum-stat{background:var(--bg-2);border:1px solid var(--line);
-    border-radius:13px;padding:13px 14px}
-  .sum-stat .lbl{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;
-    color:var(--muted);font-weight:700;margin-bottom:4px}
+  .sum-sub{font-size:12.5px;color:var(--muted);font-weight:700;margin-bottom:24px;line-height:1.5}
+  .sum-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:16px;text-align:left}
+  .sum-stat{background:var(--bg-2);border:1px solid var(--line);border-radius:13px;padding:13px 14px}
+  .sum-stat .lbl{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:4px}
   .sum-stat .val{font-size:20px;font-weight:900;color:var(--ink)}
   .sum-stat.green .val{color:var(--green)}
   .sum-stat.red .val{color:var(--red)}
   .sum-stat.amber .val{color:var(--amber)}
-
   .sum-actions{display:flex;gap:9px}
-  .sum-actions button{flex:1;padding:14px;border-radius:13px;
-    border:1px solid var(--line);font-family:inherit;
-    font-size:12.5px;font-weight:900;cursor:pointer;transition:all .2s;
-    letter-spacing:.05em;text-transform:uppercase}
+  .sum-actions button{flex:1;padding:14px;border-radius:13px;border:1px solid var(--line);font-family:inherit;
+    font-size:12.5px;font-weight:900;cursor:pointer;transition:all .2s;letter-spacing:.05em;text-transform:uppercase}
   .sum-actions .home-btn{background:var(--surface);color:var(--ink-soft)}
   .sum-actions .home-btn:hover{background:var(--bg-2);border-color:var(--ink)}
-  .sum-actions .again-btn{
-    background:linear-gradient(135deg,var(--red),var(--red-deep));
-    color:#fff;border-color:var(--red);
+  .sum-actions .again-btn{background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;border-color:var(--red);
     box-shadow:0 8px 20px -10px rgba(200,30,30,.55)}
   .sum-actions .again-btn:hover{transform:translateY(-1px)}
 
-  .toast{position:fixed;top:24px;left:50%;transform:translateX(-50%) translateY(-120%);
-    padding:14px 24px;border-radius:14px;background:var(--ink);color:var(--bg);
-    font-family:inherit;font-size:13px;font-weight:900;
-    box-shadow:0 12px 32px rgba(0,0,0,.4);z-index:200;
-    transition:transform .4s cubic-bezier(.2,.8,.2,1);
+  .toast{position:fixed;top:24px;left:50%;transform:translateX(-50%) translateY(-120%);padding:14px 24px;border-radius:14px;
+    background:var(--ink);color:var(--bg);font-family:inherit;font-size:13px;font-weight:900;
+    box-shadow:0 12px 32px rgba(0,0,0,.4);z-index:200;transition:transform .4s cubic-bezier(.2,.8,.2,1);
     display:flex;align-items:center;gap:8px}
   .toast.show{transform:translateX(-50%) translateY(0)}
 
@@ -694,9 +505,6 @@
 <div class="toast" id="toast"></div>
 
 <script>
-/* ══════════════════════════════════════════════════════════
-   UTILS
-══════════════════════════════════════════════════════════ */
 const $ = (s,r=document) => r.querySelector(s);
 const $$ = (s,r=document) => [...r.querySelectorAll(s)];
 const rand = (a,b) => a + Math.floor(Math.random()*(b-a+1));
@@ -704,45 +512,23 @@ const shuffle = a => { for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.ran
 const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 /* ══════════════════════════════════════════════════════════
-   ⭐ TTS ENGINE - Phát âm chuẩn tiếng Đức (FIXED)
+   TTS ENGINE - Phát âm chuẩn tiếng Đức
 ══════════════════════════════════════════════════════════ */
 const TTS = {
-  cache: {},
-  currentAudio: null,
-  useGoogle: true,
-  rate: 0.9,
-  _timeoutId: null,
-
-  isGermanText(text) {
-    if (!text) return false;
-    const t = String(text).trim();
-    if (t.length < 1) return false;
-    if (/[ăâđêôơưàảãáạằẳẵắặầẩẫấậèẻẽéẹềểễếệìỉĩíịòỏõóọồổỗốộờởỡớợùủũúụừửữứựỳỷỹýỵ]/i.test(t)) return false;
-    return true;
-  },
+  currentAudio: null, useGoogle: true, rate: 0.9, _timeoutId: null,
 
   cleanText(text) {
-    return String(text)
-      .replace(/[„""«»]/g, '')
-      .replace(/[''`]/g, '')
-      .replace(/\s+/g, ' ')
-      .trim();
+    return String(text).replace(/[„""«»]/g,'').replace(/[''`]/g,'').replace(/\s+/g,' ').trim();
   },
 
   stop() {
     if (this._timeoutId) { clearTimeout(this._timeoutId); this._timeoutId = null; }
     if (this.currentAudio) {
-      try {
-        this.currentAudio.onended = null;
-        this.currentAudio.onerror = null;
-        this.currentAudio.pause();
-        this.currentAudio.currentTime = 0;
-      } catch(e){}
+      try { this.currentAudio.onended = null; this.currentAudio.onerror = null;
+            this.currentAudio.pause(); this.currentAudio.currentTime = 0; } catch(e){}
       this.currentAudio = null;
     }
-    if ('speechSynthesis' in window) {
-      try { speechSynthesis.cancel(); } catch(e){}
-    }
+    if ('speechSynthesis' in window) { try { speechSynthesis.cancel(); } catch(e){} }
     $$('.speak-btn, .speak-mini, .speak-flash, .fb-speak').forEach(b => b.classList.remove('speaking'));
   },
 
@@ -751,14 +537,9 @@ const TTS = {
     this.stop();
     const cleanText = this.cleanText(text);
     if (btn) btn.classList.add('speaking');
-
     const useWebSpeech = () => this.speakWebSpeech(text, btn);
-
-    if (this.useGoogle) {
-      this.tryGoogle(cleanText, useWebSpeech);
-    } else {
-      useWebSpeech();
-    }
+    if (this.useGoogle) this.tryGoogle(cleanText, useWebSpeech);
+    else useWebSpeech();
   },
 
   tryGoogle(cleanText, fallback) {
@@ -771,14 +552,9 @@ const TTS = {
       audio.src = url;
       audio.playbackRate = this.rate;
       this.currentAudio = audio;
-    } catch(e) {
-      fallback();
-      return;
-    }
+    } catch(e) { fallback(); return; }
 
-    let done = false;
-    let started = false;
-
+    let done = false, started = false;
     const doFallback = () => {
       if (done) return;
       done = true;
@@ -787,25 +563,18 @@ const TTS = {
       if (this.currentAudio === audio) this.currentAudio = null;
       fallback();
     };
-
-    // ⏱ Watchdog: nếu audio không bắt đầu phát trong 1.2s → fallback
-    this._timeoutId = setTimeout(() => {
-      if (!started) doFallback();
-    }, 1200);
-
+    this._timeoutId = setTimeout(() => { if (!started) doFallback(); }, 1200);
     audio.addEventListener('playing', () => {
       started = true;
       if (done) { try { audio.pause(); } catch(e){} return; }
       if (this._timeoutId) { clearTimeout(this._timeoutId); this._timeoutId = null; }
     }, { once: true });
-
     audio.onended = () => {
       if (this._timeoutId) { clearTimeout(this._timeoutId); this._timeoutId = null; }
       if (this.currentAudio === audio) this.currentAudio = null;
       $$('.speak-btn, .speak-mini, .speak-flash, .fb-speak').forEach(b => b.classList.remove('speaking'));
     };
     audio.onerror = doFallback;
-
     const p = audio.play();
     if (p && typeof p.catch === 'function') p.catch(doFallback);
   },
@@ -816,38 +585,24 @@ const TTS = {
       if (btn) btn.classList.remove('speaking');
       return;
     }
-    // Đảm bảo voice đã load (fix lần click đầu bị miss)
     if (!deVoice) loadVoices();
-
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'de-DE';
-    u.rate = 0.85;
-    u.pitch = 1;
+    u.lang = 'de-DE'; u.rate = 0.85; u.pitch = 1;
     if (deVoice) u.voice = deVoice;
     if (btn) btn.classList.add('speaking');
     u.onend = () => { if (btn) btn.classList.remove('speaking'); };
     u.onerror = () => { if (btn) btn.classList.remove('speaking'); };
-    try {
-      speechSynthesis.speak(u);
-    } catch(e) {
-      if (btn) btn.classList.remove('speaking');
-      showToast('⚠️ Không thể phát âm');
-    }
+    try { speechSynthesis.speak(u); }
+    catch(e) { if (btn) btn.classList.remove('speaking'); showToast('⚠️ Không thể phát âm'); }
   }
 };
 
-// Load German voice cho Web Speech fallback (có retry vì voices load bất đồng bộ)
 let deVoice = null;
 function loadVoices(retries = 10) {
   if (!('speechSynthesis' in window)) return;
   const vs = speechSynthesis.getVoices();
-  if (!vs || vs.length === 0) {
-    if (retries > 0) setTimeout(() => loadVoices(retries - 1), 200);
-    return;
-  }
-  deVoice = vs.find(v => /^de(-|_)/i.test(v.lang))
-         || vs.find(v => /deutsch|german/i.test(v.name))
-         || null;
+  if (!vs || vs.length === 0) { if (retries > 0) setTimeout(() => loadVoices(retries - 1), 200); return; }
+  deVoice = vs.find(v => /^de(-|_)/i.test(v.lang)) || vs.find(v => /deutsch|german/i.test(v.name)) || null;
 }
 if ('speechSynthesis' in window) {
   loadVoices();
@@ -855,7 +610,6 @@ if ('speechSynthesis' in window) {
   setTimeout(() => loadVoices(), 500);
   setTimeout(() => loadVoices(), 1500);
 }
-
 function speak(text, btn) { TTS.speak(text, btn); }
 
 /* ══════════════════════════════════════════════════════════
@@ -896,12 +650,10 @@ const Confetti = {
     this.init();
     const colors=['#c81e1e','#f4c542','#0a0a14','#ffffff','#ff6b6b','#0a7a4a','#3d3dc9'];
     for(let i=0;i<count;i++){
-      this.particles.push({
-        x,y, vx:(Math.random()-.5)*10, vy:Math.random()*-9-3,
-        gravity:.35, life:1, decay:.012+Math.random()*.008,
-        size:4+Math.random()*5, color:colors[Math.floor(Math.random()*colors.length)],
-        rot:Math.random()*360, rotSpeed:(Math.random()-.5)*22
-      });
+      this.particles.push({x,y, vx:(Math.random()-.5)*10, vy:Math.random()*-9-3,
+        gravity:.35, life:1, decay:.012+Math.random()*.008, size:4+Math.random()*5,
+        color:colors[Math.floor(Math.random()*colors.length)],
+        rot:Math.random()*360, rotSpeed:(Math.random()-.5)*22});
     }
     if(!this.raf) this.animate();
   },
@@ -925,9 +677,7 @@ const Confetti = {
 
 let toastTimeout;
 function showToast(text,dur=2200){
-  const t = $('#toast');
-  t.textContent = text;
-  t.classList.add('show');
+  const t = $('#toast'); t.textContent = text; t.classList.add('show');
   clearTimeout(toastTimeout);
   toastTimeout = setTimeout(()=>t.classList.remove('show'),dur);
 }
@@ -1246,9 +996,11 @@ Thomas Weber`,
 const CATS={
   vocab:{name:'Vokabeln',sub:'Từ vựng',icon:'📖',color:'#3d3dc9',colorSoft:'#e5e5ff',
     filters:[{key:'A1',label:'A1'},{key:'A2',label:'A2'},{key:'B1',label:'B1'},{key:'B2',label:'B2'}],
+    hasDirection:true,
     items:VOCAB_RAW.map((v,i)=>({id:'v-'+i,type:'vocab',front:v.de,back:v.vi,level:v.lv,speak:v.de}))},
   numbers:{name:'Zahlen',sub:'Số đếm',icon:'🔢',color:'#b45309',colorSoft:'#fef3c7',
     filters:[{key:'0-20',label:'0–20'},{key:'21-100',label:'21–100'},{key:'101-1000',label:'101–1000'}],
+    hasDirection:true,
     items:(()=>{const arr=[];
       for(let n=0;n<=20;n++)arr.push({id:'n-'+n,type:'number',num:n,front:'Số '+n,back:numToGerman(n),speak:numToGerman(n),extra:numToVietnamese(n),band:'0-20'});
       [21,22,23,25,30,31,40,50,60,70,80,90,99,100].forEach(n=>{
@@ -1260,9 +1012,11 @@ const CATS={
       return arr;})()},
   alphabet:{name:'Alphabet',sub:'Chữ cái',icon:'🔤',color:'#b91c1c',colorSoft:'#fee2e2',
     filters:null,
+    hasDirection:true,
     items:ALPHABET_RAW.map(a=>({id:'a-'+a.l,type:'alphabet',letter:a.l,front:a.l,back:a.p,speak:a.l,extra:`${a.ex} — ${a.mean}`}))},
   grammar:{name:'Grammatik',sub:'Ngữ pháp',icon:'📚',color:'#047857',colorSoft:'#d1fae5',
     filters:[{key:'A1',label:'A1'},{key:'A2',label:'A2'},{key:'B1',label:'B1'},{key:'B2',label:'B2'}],
+    hasDirection:false,
     items:GRAMMAR_RAW.map((g,i)=>({
       id:'g-'+i,type:'grammar',sentence:g.q,opts:g.opts,correct:g.a,
       hint:g.hint,explain:g.ex,level:g.lv,
@@ -1287,9 +1041,9 @@ const state={
   view:'home',
   settings:{sound:true, confetti:true, theme:'light'},
   xp:0, level:1, combo:0,
-  setup:{cat:null, filter:null, mode:'flash', onlyUnlearned:false},
+  setup:{cat:null, filter:null, mode:'flash', onlyUnlearned:false, direction:'de-vi'},
   session:{
-    cat:null, filter:null, mode:null, items:[], index:0, correct:0,
+    cat:null, filter:null, mode:null, direction:'de-vi', items:[], index:0, correct:0,
     answered:false, flipped:false, currentOpts:null, currentCorrect:null, typeMode:null,
     isExam:false, examData:null, examLevel:null,
   },
@@ -1306,11 +1060,72 @@ function addXP(amount){
 }
 function xpProgress(){ return state.xp % 100; }
 
+const app = $('#app');
+
+/* ══════════════════════════════════════════════════════════
+   DIRECTION HELPERS
+══════════════════════════════════════════════════════════ */
+function getFlashContent(item, direction){
+  if(item.type === 'vocab'){
+    if(direction === 'vi-de'){
+      return {
+        front: item.back, back: item.front,
+        frontLabel: 'Tiếng Việt', backLabel: 'Deutsch',
+        frontSpeak: item.front, backSpeak: item.front,
+        backSub: ''
+      };
+    }
+    return {
+      front: item.front, back: item.back,
+      frontLabel: 'Deutsch', backLabel: 'Tiếng Việt',
+      frontSpeak: item.front, backSpeak: item.front,
+      backSub: ''
+    };
+  }
+  if(item.type === 'number'){
+    if(direction === 'vi-de'){
+      return {
+        front: 'Số ' + item.num, back: item.back,
+        frontLabel: 'Số', backLabel: 'Deutsch',
+        frontSpeak: item.back, backSpeak: item.back,
+        backSub: item.extra
+      };
+    }
+    return {
+      front: item.back, back: 'Số ' + item.num + ' (' + item.extra + ')',
+      frontLabel: 'Deutsch', backLabel: 'Số',
+      frontSpeak: item.back, backSpeak: item.back,
+      backSub: ''
+    };
+  }
+  if(item.type === 'alphabet'){
+    if(direction === 'vi-de'){
+      return {
+        front: item.back, back: item.letter,
+        frontLabel: 'Cách đọc', backLabel: 'Buchstabe',
+        frontSpeak: item.letter, backSpeak: item.letter,
+        backSub: item.extra
+      };
+    }
+    return {
+      front: item.letter, back: item.back,
+      frontLabel: 'Buchstabe', backLabel: 'Cách đọc',
+      frontSpeak: item.letter, backSpeak: item.letter,
+      backSub: item.extra
+    };
+  }
+  // grammar
+  return {
+    front: item.front, back: item.back,
+    frontLabel: 'Aufgabe', backLabel: 'Đáp án',
+    frontSpeak: item.speak, backSpeak: item.back,
+    backSub: item.explain || ''
+  };
+}
+
 /* ══════════════════════════════════════════════════════════
    RENDER HOME
 ══════════════════════════════════════════════════════════ */
-const app = $('#app');
-
 function renderHome(){
   PROGRESS={};
   state.combo=0;
@@ -1341,7 +1156,6 @@ function renderHome(){
       <div class="hero-divider"></div>
       <p class="hero-credit">NHÀ PHÁT TRIỂN <strong>VANBAC</strong></p>
     </header>
-
     <div class="xp-bar">
       <div class="xp-level">
         <div class="xp-level-label">Level</div>
@@ -1353,16 +1167,13 @@ function renderHome(){
       </div>
       <div class="xp-combo ${state.combo>=3?'hot':''}">🔥 ${state.combo}</div>
     </div>
-
     <div class="section-head"><span class="section-label">Luyện tập</span></div>
     <div class="cat-grid">${cards}</div>
-
     <button class="quick-btn" id="reviewAllBtn">
       <span class="quick-icon">🎯</span>
       <span class="quick-label">Ôn tập chưa thuộc</span>
       <span class="quick-arrow">→</span>
     </button>
-
     <div class="section-head"><span class="section-label">Thi thử · A1 – B2</span></div>
     <div class="exam-grid">
       <button class="exam-card" data-level="A1" style="--accent:#047857;"><div class="exam-level">A1</div><div class="exam-name">Start</div></button>
@@ -1370,7 +1181,6 @@ function renderHome(){
       <button class="exam-card" data-level="B1" style="--accent:#b45309;"><div class="exam-level">B1</div><div class="exam-name">Zert.</div></button>
       <button class="exam-card" data-level="B2" style="--accent:#b91c1c;"><div class="exam-level">B2</div><div class="exam-name">Zert.</div></button>
     </div>
-
     <div class="foot">
       <kbd>1</kbd>–<kbd>4</kbd> chọn đáp án · <kbd>Space</kbd> lật thẻ · <kbd>Enter</kbd> tiếp · <kbd>🔊</kbd> nghe phát âm chuẩn
     </div>
@@ -1385,7 +1195,8 @@ function renderHome(){
    SETUP
 ══════════════════════════════════════════════════════════ */
 function openSetup(cat){
-  state.setup={cat,filter:null,mode:'flash',onlyUnlearned:false};
+  const defaultDir = cat === 'numbers' ? 'vi-de' : 'de-vi';
+  state.setup={cat,filter:null,mode:'flash',onlyUnlearned:false,direction:defaultDir};
   state.view='setup';
   renderSetup();
 }
@@ -1405,6 +1216,14 @@ function renderSetup(){
     </div>
   `:'';
 
+  const dirHtml = c.hasDirection ? `
+    <div class="setup-label">Chiều học</div>
+    <div class="chips" id="dirChips">
+      <button class="chip ${state.setup.direction==='de-vi'?'active':''}" data-dir="de-vi">🇩🇪 Đức → Việt</button>
+      <button class="chip ${state.setup.direction==='vi-de'?'active':''}" data-dir="vi-de">🇻🇳 Việt → Đức</button>
+    </div>
+  ` : '';
+
   app.innerHTML=`
     <div class="setup-top"><button class="back-btn" id="backBtn">← Quay lại</button></div>
     <div class="setup-hero">
@@ -1414,7 +1233,6 @@ function renderSetup(){
         <p class="setup-sub">Đã thuộc <b>${s.mastered}</b> / ${s.total} mục (${Math.round(pct)}%)</p>
       </div>
     </div>
-
     <div>
       <div class="setup-label">Chế độ học</div>
       <div class="mode-picker">
@@ -1423,9 +1241,8 @@ function renderSetup(){
         <button class="mode-card" data-mode="type"><span class="icon">⌨️</span><span class="name">Gõ đáp án</span><span class="desc">Chủ động</span></button>
       </div>
     </div>
-
+    ${dirHtml}
     ${filterHtml}
-
     <div class="toggle-row" id="onlyUnlearnedToggle">
       <div>
         <div class="label">Chỉ ôn chưa thuộc</div>
@@ -1433,7 +1250,6 @@ function renderSetup(){
       </div>
       <div class="switch"></div>
     </div>
-
     <button class="start-btn" id="startBtn">▶ Bắt đầu học</button>
   `;
 
@@ -1443,9 +1259,17 @@ function renderSetup(){
     $$('.mode-card').forEach(x=>x.classList.toggle('active',x.dataset.mode===b.dataset.mode));
   }));
 
+  if(c.hasDirection){
+    $$('#dirChips .chip').forEach(ch=>ch.addEventListener('click',()=>{
+      $$('#dirChips .chip').forEach(x=>x.classList.remove('active'));
+      ch.classList.add('active');
+      state.setup.direction = ch.dataset.dir;
+    }));
+  }
+
   if(c.filters){
-    $$('.chip').forEach(ch=>ch.addEventListener('click',()=>{
-      $$('.chip').forEach(x=>x.classList.remove('active'));
+    $$('.chip[data-key]').forEach(ch=>ch.addEventListener('click',()=>{
+      $$('.chip[data-key]').forEach(x=>x.classList.remove('active'));
       ch.classList.add('active');
       state.setup.filter=ch.dataset.key==='__all'?null:ch.dataset.key;
       updateFilterCount();
@@ -1498,12 +1322,12 @@ function pickSessionItems(items,onlyUnlearned){
 }
 
 function startSession(){
-  const {cat,filter,mode}=state.setup;
+  const {cat,filter,mode,direction}=state.setup;
   const pool=getFilteredItems(cat,filter);
   const items=pickSessionItems(pool,state.setup.onlyUnlearned);
   if(!items.length){alert('Không có mục nào. Thử bỏ "Chỉ ôn chưa thuộc".');return;}
 
-  state.session={cat,filter,mode,items,index:0,correct:0,
+  state.session={cat,filter,mode,direction,items,index:0,correct:0,
     answered:false,flipped:false,currentOpts:null,currentCorrect:null,
     typeMode:null,isExam:false,examData:null,examLevel:null};
   state.view='session';
@@ -1520,7 +1344,7 @@ function startReviewAll(){
   if(!all.length){alert('Không có mục nào để ôn.');return;}
   shuffle(all);
   const items=all.slice(0,SESSION_SIZE);
-  state.session={cat:'__review',filter:null,mode:'flash',items,index:0,correct:0,
+  state.session={cat:'__review',filter:null,mode:'flash',direction:'de-vi',items,index:0,correct:0,
     answered:false,flipped:false,currentOpts:null,currentCorrect:null,
     typeMode:null,isExam:false,examData:null,examLevel:null};
   state.view='session';
@@ -1530,7 +1354,7 @@ function startReviewAll(){
 function startExam(level){
   const exam=EXAMS[level];
   const questions=shuffle([...exam.questions]);
-  state.session={cat:'__exam',filter:level,mode:'exam',items:questions,index:0,correct:0,
+  state.session={cat:'__exam',filter:level,mode:'exam',direction:'de-vi',items:questions,index:0,correct:0,
     answered:false,flipped:false,currentOpts:null,currentCorrect:null,
     typeMode:null,isExam:true,examData:exam,examLevel:level};
   state.view='session';
@@ -1554,13 +1378,13 @@ function renderQuestion(){
   document.title=`${modeLabel} · ${s.index+1}/${s.items.length}`;
 
   let bodyHtml='';
-  if(s.mode==='flash')bodyHtml=renderFlashBody(item);
+  if(s.mode==='flash')bodyHtml=renderFlashBody(item,s.direction);
   else if(s.mode==='quiz'){
-    const q=buildQuiz(item);
+    const q=buildQuiz(item,s.direction);
     s.currentOpts=q.options;
     s.currentCorrect=q.correctIndex;
     bodyHtml=renderQuizBody(item,q);
-  } else bodyHtml=renderTypeBody(item);
+  } else bodyHtml=renderTypeBody(item,s.direction);
 
   app.innerHTML=`
     <div class="session">
@@ -1598,7 +1422,13 @@ function renderQuestion(){
   `;
 
   $('#backBtn').addEventListener('click', confirmExit);
-  $('#speakBtn').addEventListener('click', e=>{ e.stopPropagation(); speak(item.speak, e.currentTarget); });
+
+  // Speaker chính: luôn phát âm tiếng Đức chuẩn
+  const mainSpeak = item.type==='vocab' ? item.front
+                   : item.type==='number' ? item.back
+                   : item.type==='alphabet' ? item.letter
+                   : item.speak;
+  $('#speakBtn').addEventListener('click', e=>{ e.stopPropagation(); speak(mainSpeak, e.currentTarget); });
 
   const hintBtnEl=$('#hintBtn');
   if(hintBtnEl&&item.hint){
@@ -1623,28 +1453,24 @@ function renderQuestion(){
   if(s.mode==='type')setTimeout(()=>$('#typeInput')?.focus(),80);
 }
 
-function renderFlashBody(item){
-  const isLetter=item.type==='alphabet';
-  const frontClass=isLetter?'flash-main letter':'flash-main';
-  const frontLabel=item.type==='vocab'?'Deutsch':item.type==='number'?'Số':item.type==='alphabet'?'Buchstabe':'Aufgabe';
-  const backLabel=item.type==='vocab'?'Tiếng Việt':item.type==='number'?'Deutsch':item.type==='alphabet'?'Aussprache':'Đáp án';
-  const backSub=item.explain||item.extra||'';
-  const frontSpeak = (item.type==='vocab'||item.type==='alphabet') ? item.front : (item.type==='number'?item.back:item.speak);
-  const backSpeak = item.type==='number' ? item.back : (item.type==='vocab' ? item.front : item.back);
+function renderFlashBody(item, direction){
+  const c = getFlashContent(item, direction);
+  const isFrontLetter = item.type === 'alphabet' && c.front === item.letter;
+  const isBackLetter = item.type === 'alphabet' && c.back === item.letter;
   return `
     <div class="flash-scene">
       <div class="flashcard" id="flashcard">
         <div class="flash-face flash-front">
-          <button class="speak-flash" data-speak="${esc(frontSpeak)}" title="Nghe phát âm" onclick="event.stopPropagation(); speak(this.dataset.speak, this)">🔊</button>
-          <span class="flash-label">${frontLabel}</span>
-          <div class="${frontClass}">${esc(item.front)}</div>
+          <button class="speak-flash" data-speak="${esc(c.frontSpeak)}" title="Nghe phát âm" onclick="event.stopPropagation(); speak(this.dataset.speak, this)">🔊</button>
+          <span class="flash-label">${c.frontLabel}</span>
+          <div class="${isFrontLetter ? 'flash-main letter' : 'flash-main'}">${esc(c.front)}</div>
           <div class="flash-sub">Nhấn thẻ để xem đáp án</div>
         </div>
         <div class="flash-face flash-back">
-          <button class="speak-flash" data-speak="${esc(backSpeak)}" title="Nghe phát âm" onclick="event.stopPropagation(); speak(this.dataset.speak, this)">🔊</button>
-          <span class="flash-label">${backLabel}</span>
-          <div class="flash-main">${esc(item.back)}</div>
-          <div class="flash-sub">${esc(backSub)}</div>
+          <button class="speak-flash" data-speak="${esc(c.backSpeak)}" title="Nghe phát âm" onclick="event.stopPropagation(); speak(this.dataset.speak, this)">🔊</button>
+          <span class="flash-label">${c.backLabel}</span>
+          <div class="${isBackLetter ? 'flash-main letter' : 'flash-main'}">${esc(c.back)}</div>
+          <div class="flash-sub">${esc(c.backSub)}</div>
         </div>
       </div>
     </div>
@@ -1667,58 +1493,50 @@ function wireFlash(item){
   $('#flipBtn').addEventListener('click',e=>{e.stopPropagation();flip();});
 }
 
-function buildQuiz(item){
-  let questionText,correctAnswer,pool,speakText;
-  let optionsAreGerman=false;
+function buildQuiz(item, direction){
+  let questionText, correctAnswer, pool, speakText, optionsAreGerman;
   if(item.type==='vocab'){
-    if(Math.random()<0.5){
+    if(direction === 'vi-de'){
+      questionText=`Từ <b>"${esc(item.back)}"</b> trong tiếng Đức là?`;
+      correctAnswer=item.front;
+      pool=CATS.vocab.items.filter(x=>x.id!==item.id).map(x=>x.front);
+      speakText=item.front; optionsAreGerman=true;
+    } else {
       questionText=`Từ <b>"${esc(item.front)}"</b> có nghĩa là gì?`;
       correctAnswer=item.back;
       pool=CATS.vocab.items.filter(x=>x.id!==item.id).map(x=>x.back);
-      speakText=item.front;
-      optionsAreGerman=false;
-    } else {
-      questionText=`<b>"${esc(item.back)}"</b> trong tiếng Đức là?`;
-      correctAnswer=item.front;
-      pool=CATS.vocab.items.filter(x=>x.id!==item.id).map(x=>x.front);
-      speakText=item.front;
-      optionsAreGerman=true;
+      speakText=item.front; optionsAreGerman=false;
     }
   } else if(item.type==='number'){
-    if(Math.random()<0.5){
+    if(direction === 'vi-de'){
       questionText=`Số <b>${item.num}</b> trong tiếng Đức là?`;
       correctAnswer=item.back;
       pool=buildNumberDistractors(item.num);
-      speakText=item.back;
-      optionsAreGerman=true;
+      speakText=item.back; optionsAreGerman=true;
     } else {
       questionText=`Từ <b>"${esc(item.back)}"</b> là số nào?`;
       correctAnswer=String(item.num);
       pool=buildNumberDistractorsNum(item.num);
-      speakText=item.back;
-      optionsAreGerman=false;
+      speakText=item.back; optionsAreGerman=false;
     }
   } else if(item.type==='alphabet'){
     const others=CATS.alphabet.items.filter(x=>x.id!==item.id);
-    if(Math.random()<0.5){
-      questionText=`Chữ <b style="font-size:1.2em">${esc(item.letter)}</b> đọc là gì?`;
-      correctAnswer=item.back;
-      pool=others.map(x=>x.back);
-      speakText=item.letter;
-      optionsAreGerman=true;
-    } else {
+    if(direction === 'vi-de'){
       questionText=`Cách đọc <b>"${esc(item.back)}"</b> là chữ cái nào?`;
       correctAnswer=item.letter;
       pool=others.map(x=>x.letter);
-      speakText=item.letter;
-      optionsAreGerman=true;
+      speakText=item.letter; optionsAreGerman=true;
+    } else {
+      questionText=`Chữ <b style="font-size:1.2em">${esc(item.letter)}</b> đọc là gì?`;
+      correctAnswer=item.back;
+      pool=others.map(x=>x.back);
+      speakText=item.letter; optionsAreGerman=true;
     }
   } else {
     questionText=item.sentence.replace('___','<span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;</span>');
     correctAnswer=item.opts[item.correct];
     pool=item.opts.filter((_,i)=>i!==item.correct);
-    speakText=item.speak;
-    optionsAreGerman=true;
+    speakText=item.speak; optionsAreGerman=true;
   }
   const opts=makeOpts(correctAnswer,pool,4);
   return {questionText,options:opts,correctIndex:opts.indexOf(String(correctAnswer)),speakText,optionsAreGerman};
@@ -1751,12 +1569,14 @@ function makeOpts(correct,pool,n=4){
 function renderQuizBody(item,q){
   const LETTERS=['A','B','C','D'];
   const optsHtml=q.options.map((o,i)=>{
-    const isGerman = q.optionsAreGerman && TTS.isGermanText(o) && !/^\d+$/.test(String(o).trim());
+    const isGerman = q.optionsAreGerman && TTS.cleanText && /^[\p{L}\s\-.,;:!?'"()]+$/u.test(o) && !/^(der|die|das|ein|eine)\s/i.test('') ;
+    // Cứ hiển thị loa cho option tiếng Đức (không phải số thuần)
+    const showSpeak = q.optionsAreGerman && !/^\d+$/.test(String(o).trim());
     return `
       <button class="opt" data-idx="${i}">
         <span class="opt-letter">${LETTERS[i]}</span>
         <span class="opt-text">${esc(o)}</span>
-        ${isGerman?`<span class="speak-mini" data-speak="${esc(o)}" title="Nghe" onclick="event.stopPropagation(); speak(this.dataset.speak, this)">🔊</span>`:''}
+        ${showSpeak?`<span class="speak-mini" data-speak="${esc(o)}" title="Nghe" onclick="event.stopPropagation(); speak(this.dataset.speak, this)">🔊</span>`:''}
       </button>
     `;
   }).join('');
@@ -1789,13 +1609,14 @@ function wireQuiz(item){
       const LETTERS=['A','B','C','D'];
       let extra='';
       const correctAnswer=s.currentOpts[correctIdx];
-      const speakAnswer = item.type==='number' && !s.optionsAreGerman ? correctAnswer : (item.type==='vocab' && !s.optionsAreGerman ? item.front : correctAnswer);
+      const speakAnswer = s.direction==='vi-de'
+        ? (item.type==='vocab'?item.front:item.type==='number'?item.back:item.type==='alphabet'?item.letter:correctAnswer)
+        : (item.type==='number'?item.back:item.type==='alphabet'?item.letter:item.type==='vocab'?item.front:correctAnswer);
       if(item.type==='grammar'&&item.explain)extra=`<small>${esc(item.explain)}</small>`;
       else if(item.type==='alphabet')extra=`<small>${esc(item.extra||'')}</small>`;
       else if(item.type==='number')extra=`<small>${item.num} = ${esc(item.back)} · ${esc(item.extra||'')}</small>`;
       else if(item.type==='vocab')extra=`<small>${esc(item.front)} = ${esc(item.back)}</small>`;
-      const speakBtn = TTS.isGermanText(speakAnswer)
-        ? `<button class="fb-speak" data-speak="${esc(speakAnswer)}" onclick="event.stopPropagation(); speak(this.dataset.speak, this)">🔊</button>` : '';
+      const speakBtn = `<button class="fb-speak" data-speak="${esc(speakAnswer)}" onclick="event.stopPropagation(); speak(this.dataset.speak, this)">🔊</button>`;
       if(isCorrect)fb.innerHTML=`<div class="fb correct">✅ Chính xác! <b>+10 XP</b>${speakBtn}${extra}</div>`;
       else fb.innerHTML=`<div class="fb wrong">❌ Sai! Đáp án: <b>${LETTERS[correctIdx]}</b> — <b>${esc(correctAnswer)}</b>${speakBtn}${extra}</div>`;
       $('#markRow').classList.add('show');
@@ -1806,20 +1627,35 @@ function wireQuiz(item){
   });
 }
 
-function renderTypeBody(item){
+function renderTypeBody(item, direction){
   let questionText,placeholder,inputMode;
   if(item.type==='vocab'){
-    if(Math.random()<0.5){questionText=`Viết từ tiếng Đức cho: <b>"${esc(item.back)}"</b>`;placeholder='VD: der Apfel…';inputMode='de';}
-    else{questionText=`Nghĩa tiếng Việt của: <b>"${esc(item.front)}"</b>`;placeholder='Nhập nghĩa…';inputMode='vi';}
+    if(direction==='vi-de'){
+      questionText=`Viết từ tiếng Đức cho: <b>"${esc(item.back)}"</b>`;
+      placeholder='VD: der Apfel…'; inputMode='de';
+    } else {
+      questionText=`Nghĩa tiếng Việt của: <b>"${esc(item.front)}"</b>`;
+      placeholder='Nhập nghĩa…'; inputMode='vi';
+    }
   } else if(item.type==='number'){
-    if(Math.random()<0.5){questionText=`Viết số <b>${item.num}</b> bằng tiếng Đức`;placeholder='VD: eins…';inputMode='de';}
-    else{questionText=`Số <b>"${esc(item.back)}"</b> là số nào?`;placeholder='Nhập số…';inputMode='number';}
+    if(direction==='vi-de'){
+      questionText=`Viết số <b>${item.num}</b> bằng tiếng Đức`;
+      placeholder='VD: eins…'; inputMode='de';
+    } else {
+      questionText=`Số <b>"${esc(item.back)}"</b> là số nào?`;
+      placeholder='Nhập số…'; inputMode='number';
+    }
   } else if(item.type==='alphabet'){
-    questionText=`Chữ <b style="font-size:1.2em">${esc(item.letter)}</b> đọc là gì?`;
-    placeholder='VD: ah…';inputMode='de';
+    if(direction==='vi-de'){
+      questionText=`Cách đọc <b>"${esc(item.back)}"</b> là chữ cái nào?`;
+      placeholder='VD: A…'; inputMode='de';
+    } else {
+      questionText=`Chữ <b style="font-size:1.2em">${esc(item.letter)}</b> đọc là gì?`;
+      placeholder='VD: ah…'; inputMode='de';
+    }
   } else {
     questionText=item.sentence.replace('___','<span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;</span>');
-    placeholder='Điền từ còn thiếu…';inputMode='de';
+    placeholder='Điền từ còn thiếu…'; inputMode='de';
   }
   state.session.typeMode=inputMode;
   return `
@@ -1845,23 +1681,37 @@ function wireType(item){
     s.answered=true; input.disabled=true;
     let correctAnswer,isCorrect;
     const mode=s.typeMode;
+    const direction=s.direction;
+
     if(item.type==='vocab'){
-      correctAnswer=mode==='de'?item.front:item.back;
+      correctAnswer = mode==='de' ? item.front : item.back;
       if(mode==='de'){
         const norm=normalize(val),full=normalize(correctAnswer);
         const noArt=full.replace(/^(der|die|das)\s+/,'');
-        isCorrect=norm===full||norm===noArt;
-      } else isCorrect=normalize(val)===normalize(correctAnswer);
+        isCorrect = norm===full || norm===noArt;
+      } else {
+        isCorrect = normalize(val)===normalize(correctAnswer);
+      }
     } else if(item.type==='number'){
-      if(mode==='de'){correctAnswer=item.back;isCorrect=normalize(val)===normalize(correctAnswer);}
-      else{correctAnswer=String(item.num);isCorrect=val.replace(/\D/g,'')===correctAnswer;}
+      if(mode==='de'){
+        correctAnswer=item.back;
+        isCorrect = normalize(val)===normalize(correctAnswer);
+      } else {
+        correctAnswer=String(item.num);
+        isCorrect = val.replace(/\D/g,'')===correctAnswer;
+      }
     } else if(item.type==='alphabet'){
-      correctAnswer=item.back;
-      isCorrect=normalize(val)===normalize(correctAnswer);
+      // Chấp nhận cả chữ cái hoặc phiên âm
+      const nv = normalize(val);
+      const letterNorm = normalize(item.letter);
+      const pNorm = normalize(item.back);
+      isCorrect = (nv===letterNorm || nv===pNorm);
+      correctAnswer = direction==='vi-de' ? item.letter : item.back;
     } else {
       correctAnswer=item.opts[item.correct];
-      isCorrect=normalize(val)===normalize(correctAnswer);
+      isCorrect = normalize(val)===normalize(correctAnswer);
     }
+
     if(isCorrect){s.correct++;s.combo++;addXP(15);} else {s.combo=0;}
     if(state.settings.sound)Sound.play(isCorrect?'correct':'wrong');
     input.classList.add(isCorrect?'correct':'wrong');
@@ -1871,7 +1721,10 @@ function wireType(item){
     else if(item.type==='alphabet')extra=`<small>${esc(item.extra||'')}</small>`;
     else if(item.type==='number')extra=`<small>${item.num} = ${esc(item.back)} · ${esc(item.extra||'')}</small>`;
     else if(item.type==='vocab')extra=`<small>${esc(item.front)} = ${esc(item.back)}</small>`;
-    const speakAnswer = TTS.isGermanText(correctAnswer) ? correctAnswer : item.front || item.back;
+    const speakAnswer = item.type==='vocab'?item.front
+                       : item.type==='number'?item.back
+                       : item.type==='alphabet'?item.letter
+                       : correctAnswer;
     const speakBtn = `<button class="fb-speak" data-speak="${esc(speakAnswer)}" onclick="event.stopPropagation(); speak(this.dataset.speak, this)">🔊</button>`;
     if(isCorrect)fb.innerHTML=`<div class="fb correct">✅ Chính xác! <b>+15 XP</b>${speakBtn}${extra}</div>`;
     else fb.innerHTML=`<div class="fb wrong">❌ Chưa đúng! Đáp án: <b>${esc(correctAnswer)}</b>${speakBtn}${extra}</div>`;
@@ -1898,11 +1751,9 @@ function markItem(item,learned){
 function renderExamQuestion(){
   const s=state.session;
   if(s.index>=s.items.length)return renderSummary();
-
   const q=s.items[s.index];
   const exam=s.examData;
   s.answered=false;
-
   const LETTERS=['a','b','c'];
   let passageHtml='';
   if(exam.sharedText){
@@ -1916,9 +1767,7 @@ function renderExamQuestion(){
   } else if(q.passage){
     passageHtml=`<div class="exam-passage">${esc(q.passage)}</div>`;
   }
-
   document.title=`${exam.name} · ${s.index+1}/${s.items.length}`;
-
   app.innerHTML=`
     <div class="session">
       <div class="session-top">
@@ -1946,7 +1795,6 @@ function renderExamQuestion(){
       </div>
     </div>
   `;
-
   const optsEl=$('#opts');
   q.opts.forEach((opt,i)=>{
     const btn=document.createElement('button');
@@ -1955,7 +1803,6 @@ function renderExamQuestion(){
     btn.addEventListener('click',()=>answerExam(i));
     optsEl.appendChild(btn);
   });
-
   $('#backBtn').addEventListener('click',confirmExit);
 }
 
@@ -1963,12 +1810,10 @@ function answerExam(idx){
   const s=state.session;
   if(s.answered)return;
   s.answered=true;
-
   const q=s.items[s.index];
   const isCorrect=idx===q.a;
   if(isCorrect){s.correct++;addXP(10);}
   if(state.settings.sound)Sound.play(isCorrect?'correct':'wrong');
-
   const LETTERS=['a','b','c'];
   const opts=$$('#opts .opt');
   opts.forEach((b,i)=>{
@@ -1977,17 +1822,11 @@ function answerExam(idx){
     else if(i===idx)b.classList.add('wrong');
     else b.classList.add('dimmed');
   });
-
   const fb=$('#fbArea');
   const correctAns=q.opts[q.a];
-  const speakBtn = TTS.isGermanText(correctAns)
-    ? `<button class="fb-speak" data-speak="${esc(correctAns)}" onclick="event.stopPropagation(); speak(this.dataset.speak, this)">🔊</button>` : '';
-  if(isCorrect){
-    fb.innerHTML=`<div class="fb correct">✅ Richtig!${speakBtn}<small>${esc(q.explain||'')}</small></div>`;
-  } else {
-    fb.innerHTML=`<div class="fb wrong">❌ Falsch! Richtige Antwort: <b>${LETTERS[q.a]})</b> <b>${esc(correctAns)}</b>${speakBtn}<small>${esc(q.explain||'')}</small></div>`;
-  }
-
+  const speakBtn = `<button class="fb-speak" data-speak="${esc(correctAns)}" onclick="event.stopPropagation(); speak(this.dataset.speak, this)">🔊</button>`;
+  if(isCorrect)fb.innerHTML=`<div class="fb correct">✅ Richtig!${speakBtn}<small>${esc(q.explain||'')}</small></div>`;
+  else fb.innerHTML=`<div class="fb wrong">❌ Falsch! Richtige Antwort: <b>${LETTERS[q.a]})</b> <b>${esc(correctAns)}</b>${speakBtn}<small>${esc(q.explain||'')}</small></div>`;
   const nextBtn=document.createElement('button');
   nextBtn.className='btn-next';
   nextBtn.textContent=s.index===s.items.length-1?'Ergebnis ansehen →':'Weiter →';
@@ -1997,7 +1836,6 @@ function answerExam(idx){
     else renderExamQuestion();
   });
   fb.appendChild(nextBtn);
-
   $('.progress-meta .score').textContent=`✓ ${s.correct} richtig`;
 }
 
@@ -2010,16 +1848,13 @@ function renderSummary(){
   const correct=s.correct;
   const pct=total>0?Math.round(correct/total*100):0;
   const isExam=s.isExam;
-
   let emoji='🎉',title='Hoàn thành!',sub='Bạn đã hoàn thành phiên học';
   if(pct===100){emoji='🏆';title='Tuyệt vời!';sub='Bạn trả lời đúng tất cả!';}
   else if(pct>=80){emoji='🌟';title='Rất tốt!';sub='Bạn nắm bài rất chắc';}
   else if(pct>=50){emoji='👍';title='Khá tốt!';sub='Tiếp tục luyện tập nhé';}
   else {emoji='💪';title='Cố gắng lên!';sub='Ôn lại và thử lần nữa';}
-
   if(pct>=80&&state.settings.sound)Sound.play('victory');
   if(pct>=80&&state.settings.confetti)Confetti.big();
-
   let statsHtml='';
   if(isExam){
     statsHtml=`
@@ -2040,9 +1875,7 @@ function renderSummary(){
       <div class="sum-stat red"><div class="lbl">Đã thuộc</div><div class="val">${masteredCount}</div></div>
     `;
   }
-
   document.title='Kết quả · Học Tiếng Đức';
-
   app.innerHTML=`
     <div class="session">
       <div class="session-top"><button class="back-btn" id="homeBtn">← Trang chủ</button></div>
@@ -2058,14 +1891,13 @@ function renderSummary(){
       </div>
     </div>
   `;
-
   $('#homeBtn').addEventListener('click',renderHome);
   $('#backHomeBtn').addEventListener('click',renderHome);
   $('#againBtn').addEventListener('click',()=>{
     if(isExam)startExam(s.examLevel);
     else if(s.cat==='__review')startReviewAll();
     else{
-      state.setup={cat:s.cat,filter:s.filter,mode:s.mode,onlyUnlearned:true};
+      state.setup={cat:s.cat,filter:s.filter,mode:s.mode,onlyUnlearned:true,direction:s.direction};
       startSession();
     }
   });
@@ -2089,7 +1921,6 @@ function renderDrawer(){
       <div class="drawer-title">⚙️ Cài đặt</div>
       <button class="drawer-close" id="drawerClose">✕</button>
     </div>
-
     <div class="setting-group">
       <div class="setting-label">Giao diện</div>
       <div class="theme-grid">
@@ -2107,7 +1938,6 @@ function renderDrawer(){
         </button>
       </div>
     </div>
-
     <div class="setting-group">
       <div class="setting-label">Âm thanh & Hiệu ứng</div>
       <div class="setting-toggle ${state.settings.sound?'on':''}" data-toggle="sound">
@@ -2125,7 +1955,6 @@ function renderDrawer(){
         <div class="t-switch"></div>
       </div>
     </div>
-
     <div class="setting-group">
       <div class="setting-label">Phát âm</div>
       <div class="setting-toggle ${TTS.useGoogle?'on':''}" data-toggle-tts>
@@ -2136,7 +1965,6 @@ function renderDrawer(){
         <div class="t-switch"></div>
       </div>
     </div>
-
     <div class="setting-group">
       <div class="setting-label">Thông tin</div>
       <div style="font-size:12px;line-height:1.7;color:var(--muted);font-weight:600">
@@ -2148,7 +1976,6 @@ function renderDrawer(){
       </div>
     </div>
   `;
-
   $('#drawerClose').addEventListener('click',closeDrawer);
   $$('.theme-btn').forEach(b=>{
     b.addEventListener('click',()=>{
@@ -2188,11 +2015,7 @@ function closeDrawer(){
   $('#drawer').classList.remove('show');
   $('#drawerBackdrop').classList.remove('show');
 }
-
-$('#settingsFab').addEventListener('click',()=>{
-  Sound.play('click');
-  openDrawer();
-});
+$('#settingsFab').addEventListener('click',()=>{ Sound.play('click'); openDrawer(); });
 $('#drawerBackdrop').addEventListener('click',closeDrawer);
 
 /* ══════════════════════════════════════════════════════════
@@ -2202,10 +2025,8 @@ document.addEventListener('keydown',e=>{
   if(state.view!=='session')return;
   const tag=(e.target.tagName||'').toLowerCase();
   if(tag==='input'||tag==='textarea')return;
-
   const s=state.session;
   if(s.index>=s.items.length)return;
-
   if(s.isExam){
     if(!s.answered){
       const idx={'Digit1':0,'Digit2':1,'Digit3':2,'Numpad1':0,'Numpad2':1,'Numpad3':2}[e.code];
@@ -2216,7 +2037,6 @@ document.addEventListener('keydown',e=>{
     }
     return;
   }
-
   if(s.mode==='flash'){
     if(e.code==='Space'&&!s.flipped){e.preventDefault();$('#flipBtn')?.click();}
   } else if(s.mode==='quiz'){
@@ -2225,7 +2045,6 @@ document.addEventListener('keydown',e=>{
       if(idx!==undefined){e.preventDefault();$$('#opts .opt')[idx]?.click();}
     }
   }
-
   if(s.answered||s.flipped){
     if(e.code==='Enter'){e.preventDefault();$('#markLearn')?.click();}
     if(e.code==='Backspace'){e.preventDefault();$('#markUnlearn')?.click();}
