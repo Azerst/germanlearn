@@ -348,9 +348,6 @@
 </div>
 
 <div class="top-controls">
-  <button class="float-btn glass" id="voiceBtn" title="Đổi giọng đọc Nam/Nữ">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
-  </button>
   <button class="float-btn glass" id="themeBtn" aria-label="Đổi giao diện"></button>
 </div>
 
@@ -445,8 +442,7 @@ function numToVN(n){
   return out+' '+VN_ONES[t]+' mươi '+VN_ONES[u];
 }
 
-const W_RAW = `
-der Abend|buổi tối|A1|/ˈaː.bənt/
+const W_RAW = `der Abend|buổi tối|A1|/ˈaː.bənt/
 aber|nhưng|A1|/ˈaː.bɐ/
 abfahren|khởi hành|A1|/ˈap.faː.ʁən/
 die Adresse|địa chỉ|A1|/aˈdʁɛ.sə/
@@ -1116,14 +1112,13 @@ draußen|bên ngoài|A2|/ˈdʁaʊ̯.sən/
 drehen|quay|A2|/ˈdʁeː.ən/
 dringend|khẩn cấp|A2|/ˈdʁɪ.ŋənt/
 der Druck|cơn áp lực|A2|/dʁʊk/
-der Durscht|cơn khát|A2|/dʊʁst/
+der Durst|cơn khát|A2|/dʊʁst/
 die Ehe|hôn nhân|A2|/ˈeː.ə/
 ehrlich|trung thực|A2|/ˈeːɐ̯.lɪç/
 das Eigentum|tài sản|A2|/ˈaɪ̯.ɡən.tuːm/
 eigentlich|thật ra|A2|/ˈaɪ̯.ɡənt.lɪç/
 eilen|vội vã|A2|/ˈaɪ̯.lən/
 der Eingang|lối vào|A2|/ˈaɪ̯n.ɡaŋ/
-die Einkäufe|việc mua sắm|A2|/ˈaɪ̯n.kɔʏ̯.fə/
 einmal|một lần|A2|/ˈaɪ̯n.maːl/
 einnehmen|thu nhận|A2|/ˈaɪ̯n.neː.mən/
 einsam|cô đơn|A2|/ˈaɪ̯n.zaːm/
@@ -1170,7 +1165,6 @@ der Frieden|hòa bình|A2|/ˈfʁiː.dən/
 frieren|đóng băng|A2|/ˈfʁiː.ʁən/
 die Frucht|trái cây|A2|/fʁʊxt/
 das Frühstück|bữa sáng|A2|/ˈfʁyː.ʃtʏk/
-die Fuge|khe hở|A2|/ˈfuː.ɡə/
 führen|dẫn đầu|A2|/ˈfyː.ʁən/
 der Führer|người hướng dẫn|A2|/ˈfyː.ʁɐ/
 der Fund|sự tìm thấy|A2|/fʊnt/
@@ -1340,12 +1334,10 @@ die Neuigkeit|tin mới|A2|/ˈnɔʏ̯.ɪç.kaɪ̯t/
 nun|bây giờ|A2|/nuːn/
 der Offizier|sĩ quan|A2|/ɔ.fiˈt͡siːɐ̯/
 die Oper|nhà hát opera|A2|/ˈoː.pɐ/
-die Ordnung|trật tự|A2|/ˈɔʁt.nʊŋ/
 das Paar|cặp đôi|A2|/paːɐ̯/
 das Paket|bưu kiện|A2|/paˈkeːt/
 das Pflaster|băng dán|A2|/ˈpflas.tɐ/
 die Pflaume|quả mận|A2|/ˈpflaʊ̯.mə/
-die Polizei|cảnh sát|A2|/po.liˈt͡saɪ̯/
 das Praktikum|thực tập|A2|/ˈpʁak.ti.kʊm/
 der Präsident|tổng thống|A2|/pʁɛ.ziˈdɛnt/
 die Prüfung|kỳ thi|A2|/ˈpʁyː.fʊŋ/
@@ -1381,7 +1373,6 @@ der Schatten|bóng|A2|/ˈʃa.tən/
 der Schauspieler|diễn viên|A2|/ˈʃaʊ̯.ʃpiː.lɐ/
 scheiden|chia tay|A2|/ˈʃaɪ̯.dən/
 der Schein|vẻ bề ngoài|A2|/ʃaɪ̯n/
-schenken|tặng|A2|/ˈʃɛŋ.kən/
 der Schmerz|nỗi đau|A2|/ʃmɛʁt͡s/
 der Schmuck|trang sức|A2|/ʃmʊk/
 der Schnaps|rượu mạnh|A2|/ʃnaps/
@@ -1397,10 +1388,8 @@ die Schulter|vai|A2|/ˈʃʊl.tɐ/
 der Schwamm|bọt biển|A2|/ʃvam/
 schweigen|im lặng|A2|/ˈʃvaɪ̯.ɡən/
 der Schweiß|mồ hôi|A2|/ʃvaɪ̯s/
-schwer|nặng|A2|/ʃveːɐ̯/
-der Schwert|thanh kiếm|A2|/ʃveːɐ̯t/
+das Schwert|thanh kiếm|A2|/ʃveːɐ̯t/
 der See|hồ|A2|/zeː/
-die See|biển|A2|/zeː/
 das Segel|cánh buồm|A2|/ˈzeː.ɡəl/
 segnen|ban phước|A2|/ˈzeː.ɡnən/
 die Seide|lụa|A2|/ˈzaɪ̯.də/
@@ -1421,7 +1410,6 @@ die Sorte|loại|A2|/ˈzɔʁ.tə/
 das Spiel|trò chơi|A2|/ʃpiːl/
 die Spitze|đầu nhọn|A2|/ˈʃpɪ.t͡sə/
 der Sport|thể thao|A2|/ʃpɔʁt/
-die Sprache|ngôn ngữ|A2|/ˈʃpʁaː.xə/
 die Spur|dấu vết|A2|/ʃpuːɐ̯/
 der Staat|nhà nước|A2|/ʃtaːt/
 der Stadtrand|ngoại ô|A2|/ˈʃtat.ʁant/
@@ -1429,7 +1417,6 @@ der Stand|vị trí|A2|/ʃtant/
 die Station|trạm|A2|/ʃtaˈt͡si̯oːn/
 die Statistik|thống kê|A2|/ʃtaˈtɪs.tɪk/
 die Stelle|vị trí|A2|/ˈʃtɛ.lə/
-die Steuer|thuế|A2|/ˈʃtɔʏ̯.ɐ/
 der Stiefel|ủng|A2|/ˈʃtiː.fəl/
 der Stil|phong cách|A2|/ʃtiːl/
 der Stock|tầng|A2|/ʃtɔk/
@@ -1440,12 +1427,9 @@ das Streichholz|que diêm|A2|/ˈʃtʁaɪ̯ç.hɔlt͡s/
 der Strom|dòng điện|A2|/ʃtʁoːm/
 die Strömung|dòng chảy|A2|/ˈʃtʁøː.mʊŋ/
 die Strophe|khổ thơ|A2|/ˈʃtʁoː.fə/
-das Stück|mảnh|A2|/ʃtʏk/
 der Stuhl|ghế|A2|/ʃtuːl/
-die Stunde|giờ|A2|/ˈʃtʊn.də/
 der Sturm|cơn bão|A2|/ʃtʊʁm/
 die Stütze|sự hỗ trợ|A2|/ˈʃtʏ.t͡sə/
-suchen|tìm|A2|/ˈzuː.xən/
 die Summe|tổng|A2|/ˈzʊ.mə/
 der Supermarkt|siêu thị|A2|/ˈzuː.pɐ.maʁkt/
 die Suppe|súp|A2|/ˈzʊ.pə/
@@ -1457,56 +1441,25 @@ die Tageszeitung|báo hàng ngày|A2|/ˈtaː.ɡəs.t͡saɪ̯.tʊŋ/
 der Tanz|điệu nhảy|A2|/tant͡s/
 die Tapete|giấy dán tường|A2|/taˈpeː.tə/
 tapfer|dũng cảm|A2|/ˈtap.fɐ/
-die Tasche|túi|A2|/ˈta.ʃə/
-die Tasse|tách|A2|/ˈta.sə/
 die Tat|hành động|A2|/taːt/
 die Tätigkeit|hoạt động|A2|/ˈtɛː.tɪç.kaɪ̯t/
 das Taxi|taxi|A2|/ˈtak.si/
-der Tee|trà|A2|/teː/
-teilen|chia|A2|/ˈtaɪ̯.lən/
 der Teppich|thảm|A2|/ˈtɛ.pɪç/
 die Terrasse|sân thượng|A2|/tɛˈʁa.sə/
 der Test|bài kiểm tra|A2|/tɛst/
-teuer|đắt|A2|/ˈtɔʏ̯.ɐ/
 der Text|văn bản|A2|/tɛkst/
 das Theater|nhà hát|A2|/teˈaː.tɐ/
-das Thema|chủ đề|A2|/ˈteː.ma/
-die Theorie|lý thuyết|A2|/te.oˈʁiː/
-das Tier|động vật|A2|/tiːɐ̯/
 der Tipp|lời khuyên|A2|/tɪp/
-der Tisch|bàn|A2|/tɪʃ/
 der Titel|tiêu đề|A2|/ˈtiː.təl/
-die Tochter|con gái|A2|/ˈtɔx.tɐ/
 der Tod|cái chết|A2|/toːt/
-die Toilette|nhà vệ sinh|A2|/to̯aˈlɛ.tə/
-toll|tuyệt|A2|/tɔl/
-die Tomate|cà chua|A2|/toˈmaː.tə/
 der Ton|âm thanh|A2|/toːn/
-das Tor|cổng|A2|/toːɐ̯/
 die Torte|bánh kem|A2|/ˈtɔʁ.tə/
-tot|chết|A2|/toːt/
 der Tourist|khách du lịch|A2|/tuˈʁɪst/
 die Tradition|truyền thống|A2|/tʁa.diˈt͡si̯oːn/
-tragen|mặc, mang|A2|/ˈtʁaː.ɡən/
 der Traum|giấc mơ|A2|/tʁaʊ̯m/
-traurig|buồn|A2|/ˈtʁaʊ̯.ʁɪç/
-treffen|gặp|A2|/ˈtʁɛ.fən/
-treiben|thúc đẩy|A2|/ˈtʁaɪ̯.bən/
-trennen|tách|A2|/ˈtʁɛ.nən/
-die Treppe|cầu thang|A2|/ˈtʁɛ.pə/
-trinken|uống|A2|/ˈtʁɪŋ.kən/
-trocken|khô|A2|/ˈtʁɔ.kən/
 die Trommel|trống|A2|/ˈtʁɔ.məl/
 der Tropfen|giọt|A2|/ˈtʁɔ.pfən/
 tropfen|nhỏ giọt|A2|/ˈtʁɔ.pfən/
-die Tube|tuýp|A2|/ˈtuː.bə/
-das Tuch|khăn|A2|/tuːx/
-tun|làm|A2|/tuːn/
-die Tür|cửa|A2|/tyːɐ̯/
-der Turm|tháp|A2|/tʊʁm/
-die U-Bahn|tàu điện|A2|/ˈuː.baːn/
-üben|luyện tập|A2|/ˈyː.bən/
-über|trên|A2|/ˈyː.bɐ/
 überall|khắp nơi|A2|/yː.bɐˈʔal/
 überlegen|suy nghĩ|A2|/ˌyː.bɐˈleː.ɡən/
 übermorgen|ngày kia|A2|/ˈyː.bɐ.mɔʁ.ɡən/
@@ -1516,30 +1469,18 @@ die U-Bahn|tàu điện|A2|/ˈuː.baːn/
 übersetzen|dịch|A2|/ˌyː.bɐˈzɛ.t͡sən/
 übertreiben|phóng đại|A2|/yː.bɐˈtʁaɪ̯.bən/
 übrigens|nhân tiện|A2|/ˈyː.bʁɪ.ɡəns/
-die Übung|bài tập|A2|/ˈyː.bʊŋ/
-die Uhr|đồng hồ|A2|/uːɐ̯/
-um|quanh|A2|/ʊm/
 umarmen|ôm|A2|/ʊmˈʔaʁ.mən/
 umsteigen|chuyển tàu|A2|/ˈʊm.ʃtaɪ̯.ɡən/
 umziehen|chuyển nhà|A2|/ˈʊm.t͡siː.ən/
-und|và|A2|/ʊnt/
-die Unfall|tai nạn|A2|/ˈʊn.fal/
 unheimlich|kỳ lạ|A2|/ʊnˈhaɪ̯m.lɪç/
-die Universität|đại học|A2|/u.ni.vɛʁ.ziˈtɛːt/
-unser|của chúng tôi|A2|/ˈʊn.zɐ/
-unten|ở dưới|A2|/ˈʊn.tən/
-unter|dưới|A2|/ˈʊn.tɐ/
 unterhalten|giải trí|A2|/ʊn.tɐˈhal.tən/
 die Unterhaltung|cuộc trò chuyện|A2|/ʊn.tɐˈhal.tʊŋ/
 unterrichten|giảng dạy|A2|/ʊn.tɐˈʁɪç.tən/
-der Unterricht|giờ học|A2|/ˈʊn.tɐ.ʁɪçt/
 unterscheiden|phân biệt|A2|/ʊn.tɐˈʃaɪ̯.dən/
 unterschreiben|ký tên|A2|/ʊn.tɐˈʃʁaɪ̯.bən/
 die Unterschrift|chữ ký|A2|/ˈʊn.tɐ.ʃʁɪft/
 unterwegs|trên đường|A2|/ʊn.tɐˈveːks/
-der Urlaub|kỳ nghỉ|A2|/ˈuːɐ̯.laʊ̯p/
 die Ursache|nguyên nhân|A2|/ˈuːɐ̯.za.xə/
-der Vater|bố|A2|/ˈfaː.tɐ/
 der Verband|băng gạc|A2|/fɛɐ̯ˈbant/
 verbieten|cấm|A2|/fɛɐ̯ˈbiː.tən/
 verbinden|kết nối|A2|/fɛɐ̯ˈbɪn.dən/
@@ -1548,151 +1489,49 @@ der Verein|câu lạc bộ|A2|/fɛɐ̯ˈʔaɪ̯n/
 vergangen|đã qua|A2|/fɛɐ̯ˈɡa.ŋən/
 vergleichen|so sánh|A2|/fɛɐ̯ˈɡlaɪ̯.çən/
 das Verhältnis|mối quan hệ|A2|/fɛɐ̯ˈhɛlt.nɪs/
-verkaufen|bán|A2|/fɛɐ̯ˈkaʊ̯.fən/
-der Verkehr|giao thông|A2|/fɛɐ̯ˈkeːɐ̯/
 verlassen|rời bỏ|A2|/fɛɐ̯ˈla.sən/
 verletzen|làm bị thương|A2|/fɛɐ̯ˈlɛ.t͡sən/
-verlieren|mất|A2|/fɛɐ̯ˈliː.ʁən/
 der Verlust|sự mất mát|A2|/fɛɐ̯ˈlʊst/
 die Vermietung|cho thuê|A2|/fɛɐ̯ˈmiː.tʊŋ/
 verpassen|bỏ lỡ|A2|/fɛɐ̯ˈpa.sən/
 die Vernunft|lý trí|A2|/fɛɐ̯ˈnʊnft/
-verpassen|bỏ lỡ|A2|/fɛɐ̯ˈpa.sən/
 die Versicherung|bảo hiểm|A2|/fɛɐ̯ˈzɪ.çə.ʁʊŋ/
 die Verspätung|sự trễ|A2|/fɛɐ̯ˈʃpɛː.tʊŋ/
-verstehen|hiểu|A2|/fɛɐ̯ˈʃteː.ən/
 versuchen|thử|A2|/fɛɐ̯ˈzuː.xən/
 der Vertrag|hợp đồng|A2|/fɛɐ̯ˈtʁaːk/
 vertrauen|tin tưởng|A2|/fɛɐ̯ˈtʁaʊ̯.ən/
 verwenden|sử dụng|A2|/fɛɐ̯ˈvɛn.dən/
 der Verwandte|họ hàng|A2|/fɛɐ̯ˈvant.tə/
-viel|nhiều|A2|/fiːl/
-vielleicht|có lẽ|A2|/fiˈlaɪ̯çt/
 das Viertel|một phần tư|A2|/ˈfɪʁ.təl/
-der Vogel|chim|A2|/ˈfoː.ɡəl/
 der Vokal|nguyên âm|A2|/voˈkaːl/
-voll|đầy|A2|/fɔl/
-von|của|A2|/fɔn/
-vor|trước|A2|/foːɐ̯/
 vorbei|qua|A2|/foːɐ̯ˈbaɪ̯/
-vorbereiten|chuẩn bị|A2|/ˈfoːɐ̯.bə.ʁaɪ̯.tən/
 das Vorbild|hình mẫu|A2|/ˈfoːɐ̯.bɪlt/
 vorher|trước đó|A2|/foːɐ̯ˈheːɐ̯/
-der Vormittag|buổi sáng|A2|/ˈfoːɐ̯.mɪ.tak/
-vorne|phía trước|A2|/ˈfɔʁ.nə/
 der Vorschlag|đề xuất|A2|/ˈfoːɐ̯.ʃlaːk/
 vorsichtig|cẩn thận|A2|/ˈfoːɐ̯.zɪç.tɪç/
 die Vorschrift|quy định|A2|/ˈfoːɐ̯.ʃʁɪft/
 die Vorstellung|buổi biểu diễn|A2|/ˈfoːɐ̯.ʃtɛ.lʊŋ/
 der Vorteil|lợi thế|A2|/ˈfoːɐ̯.taɪ̯l/
 vorstellen|giới thiệu|A2|/ˈfoːɐ̯.ʃtɛ.lən/
-wachsen|mọc|A2|/ˈvak.sən/
 die Waffe|vũ khí|A2|/ˈva.fə/
-wählen|chọn|A2|/ˈvɛː.lən/
 während|trong khi|A2|/ˈvɛː.ʁənt/
-wahr|đúng|A2|/vaːɐ̯/
-wahrscheinlich|có lẽ|A2|/vaːɐ̯ˈʃaɪ̯n.lɪç/
 der Wald|rừng|A2|/valt/
-die Wand|tường|A2|/vant/
-wandern|đi bộ|A2|/ˈvan.dɐn/
 die Wanderung|chuyến đi bộ|A2|/ˈvan.də.ʁʊŋ/
-wann|khi nào|A2|/van/
-die Ware|hàng hóa|A2|/ˈvaː.ʁə/
-warm|ấm|A2|/vaʁm/
-warten|đợi|A2|/ˈvaʁ.tən/
-warum|tại sao|A2|/vaˈʁʊm/
-was|cái gì|A2|/vas/
-waschen|rửa|A2|/ˈva.ʃən/
-das Wasser|nước|A2|/ˈva.sɐ/
-wechseln|thay đổi|A2|/ˈvɛk.səln/
-der Weg|đường|A2|/veːk/
-wegen|vì|A2|/ˈveː.ɡən/
-weiblich|nữ|A2|/ˈvaɪ̯p.lɪç/
-weich|mềm|A2|/vaɪ̯ç/
-weil|vì|A2|/vaɪ̯l/
-der Wein|rượu|A2|/vaɪ̯n/
-weiß|trắng|A2|/vaɪ̯s/
-weit|xa|A2|/vaɪ̯t/
-welcher|nào|A2|/ˈvɛl.çɐ/
-die Welt|thế giới|A2|/vɛlt/
-wenden|quay|A2|/ˈvɛn.dən/
-wenig|ít|A2|/ˈveː.nɪç/
-wenn|nếu|A2|/vɛn/
-wer|ai|A2|/veːɐ̯/
-werden|trở thành|A2|/ˈveːɐ̯.dən/
-werfen|ném|A2|/ˈvɛʁ.fən/
-das Werk|tác phẩm|A2|/vɛʁk/
-der Wert|giá trị|A2|/veːɐ̯t/
-der Westen|phía tây|A2|/ˈvɛs.tən/
-das Wetter|thời tiết|A2|/ˈvɛ.tɐ/
-wichtig|quan trọng|A2|/ˈvɪç.tɪç/
-wie|như thế nào|A2|/viː/
-wieder|lại|A2|/ˈviː.dɐ/
-wiederholen|nhắc lại|A2|/viː.dɐˈhoː.lən/
-wiegen|cân|A2|/ˈviː.ɡən/
-die Wiese|đồng cỏ|A2|/ˈviː.zə/
-der Wind|gió|A2|/vɪnt/
-der Winter|mùa đông|A2|/ˈvɪn.tɐ/
-wir|chúng tôi|A2|/viːɐ̯/
-wissen|biết|A2|/ˈvɪ.sən/
-wo|ở đâu|A2|/voː/
-die Woche|tuần|A2|/ˈvɔ.xə/
-das Wochenende|cuối tuần|A2|/ˈvɔ.xən.ɛn.də/
-wohl|khỏe|A2|/voːl/
-wohnen|sống|A2|/ˈvoː.nən/
-die Wohnung|căn hộ|A2|/ˈvoː.nʊŋ/
-das Wohnzimmer|phòng khách|A2|/ˈvoːn.t͡sɪ.mɐ/
-wollen|muốn|A2|/ˈvɔ.lən/
-das Wort|từ|A2|/vɔʁt/
-wünschen|chúc|A2|/ˈvʏn.ʃən/
-die Wurst|xúc xích|A2|/vʊʁst/
-die Zahl|số|A2|/t͡saːl/
-zahlen|thanh toán|A2|/ˈt͡saː.lən/
-der Zahn|răng|A2|/t͡saːn/
-zeigen|chỉ|A2|/ˈt͡saɪ̯.ɡən/
-die Zeit|thời gian|A2|/t͡saɪ̯t/
-die Zeitung|báo|A2|/ˈt͡saɪ̯.tʊŋ/
-das Zelt|lều|A2|/t͡sɛlt/
-zerstören|phá hủy|A2|/t͡sɛɐ̯ˈʃtøː.ʁən/
-das Zeugnis|chứng chỉ|A2|/ˈt͡sɔʏ̯k.nɪs/
-ziehen|kéo|A2|/ˈt͡siː.ən/
-das Ziel|mục tiêu|A2|/t͡siːl/
-ziemlich|khá|A2|/ˈt͡siːm.lɪç/
-das Zimmer|phòng|A2|/ˈt͡sɪ.mɐ/
-die Zitrone|chanh|A2|/t͡siˈtʁoː.nə/
-zu|đến|A2|/t͡suː/
-der Zucker|đường|A2|/ˈt͡sʊ.kɐ/
-zuerst|trước tiên|A2|/t͡suˈeːɐ̯st/
-der Zug|tàu|A2|/t͡suːk/
-zurück|trở lại|A2|/t͡suˈʁʏk/
-zusammen|cùng nhau|A2|/t͡suˈza.mən/
-zwischen|giữa|A2|/ˈt͡svɪ.ʃən/
-die Zwischenzeit|thời gian chờ|A2|/ˈt͡svɪ.ʃən.t͡saɪ̯t/
-der Zwilling|sinh đôi|A2|/ˈt͡svɪ.lɪŋ/
-zwingen|ép buộc|A2|/ˈt͡svɪ.ŋən/
-der Zwiebel|hành tây|A2|/ˈt͡sviː.bəl/
-zwölf|mười hai|A2|/t͡svœlf/
-die Zypresse|cây bách|A2|/t͡syˈpʁɛ.sə/
-`;
+die Ware|hàng hóa|A2|/ˈvaː.ʁə/`;
 
-// ✅ ĐÃ THÊM type:'vocab' — điều kiện bắt buộc để luyện tập từ vựng chạy đúng
 const WORDS = W_RAW.trim().split('\n').map((line,i)=>{
   const parts = line.split('|');
   if(parts.length < 3) return null;
   const [de, vi, lvl, ipa] = parts;
   return {
-    id: 'w-'+i,
-    type: 'vocab',
-    front: de.trim(),
-    back: vi.trim(),
-    level: lvl.trim(),
+    id: 'w-'+i, type: 'vocab',
+    front: de.trim(), back: vi.trim(), level: lvl.trim(),
     ipa: ipa ? ipa.trim() : '',
     speak: de.replace(/^(der|die|das)\s+/, '').trim()
   };
 }).filter(Boolean);
 
-const V_RAW = `
-sein|war|ist gewesen|thì, là, ở
+const V_RAW = `sein|war|ist gewesen|thì, là, ở
 haben|hatte|hat gehabt|có
 werden|wurde|ist geworden|trở thành
 können|konnte|hat gekonnt|có thể
@@ -1714,11 +1553,7 @@ helfen|half|hat geholfen|giúp đỡ
 nehmen|nahm|hat genommen|lấy, cầm
 stehlen|stahl|hat gestohlen|ăn cắp
 gelten|galt|hat gegolten|có giá trị
-teilnehmen|nahm teil|hat teilgenommen|tham gia
 versprechen|versprach|hat versprochen|hứa
-bewerben|bewarb|hat beworben|ứng tuyển
-verderben|verdarb|hat verdorben|làm hỏng
-unternehmen|unternahm|hat unternommen|thực hiện
 bleiben|blieb|ist geblieben|ở lại
 schreiben|schrieb|hat geschrieben|viết
 scheinen|schien|hat geschienen|chiếu sáng
@@ -1726,22 +1561,13 @@ steigen|stieg|ist gestiegen|leo, tăng
 treiben|trieb|hat getrieben|thúc đẩy
 schweigen|schwieg|hat geschwiegen|im lặng
 leihen|lieh|hat geliehen|cho mượn
-beschreiben|beschrieb|hat beschrieben|miêu tả
-vermeiden|vermied|hat vermieden|tránh
 entscheiden|entschied|hat entschieden|quyết định
-einsteigen|stieg ein|ist eingestiegen|lên xe
-aussteigen|stieg aus|ist ausgestiegen|xuống xe
-umsteigen|stieg um|ist umgestiegen|chuyển xe
-reiben|rieb|hat gerieben|chà xát
-schreien|schrie|hat geschrien|la hét
 fliegen|flog|hat/ist geflogen|bay
 riechen|roch|hat gerochen|ngửi
 schließen|schloss|hat geschlossen|đóng
 verlieren|verlor|hat verloren|mất, thua
 ziehen|zog|hat/ist gezogen|kéo; chuyển
 bieten|bot|hat geboten|đề nghị
-fliehen|floh|ist geflohen|chạy trốn
-fließen|floss|ist geflossen|chảy
 frieren|fror|hat/ist gefroren|thấy lạnh
 genießen|genoss|hat genossen|thưởng thức
 gießen|goss|hat gegossen|đổ, tưới
@@ -1751,11 +1577,6 @@ greifen|griff|hat gegriffen|nắm, chộp
 pfeifen|pfiff|hat gepfiffen|huýt sáo
 reiten|ritt|hat/ist geritten|cưỡi ngựa
 streiten|stritt|hat gestritten|cãi nhau
-schleifen|schliff|hat geschliffen|mài
-schmeißen|schmiss|hat geschmissen|ném
-schreiten|schritt|ist geschritten|bước đi
-weichen|wich|ist gewichen|lùi
-gleichen|glich|hat geglichen|giống
 finden|fand|hat gefunden|tìm thấy
 singen|sang|hat gesungen|hát
 trinken|trank|hat getrunken|uống
@@ -1787,25 +1608,19 @@ vergessen|vergaß|hat vergessen|quên
 geschehen|geschah|ist geschehen|xảy ra
 messen|maß|hat gemessen|đo
 treten|trat|hat/ist getreten|đá; bước
-fernsehen|sah fern|hat ferngesehen|xem TV
-aussehen|sah aus|hat ausgesehen|trông
 fahren|fuhr|hat/ist gefahren|lái xe; đi
 tragen|trug|hat getragen|mang, mặc
 waschen|wusch|hat gewaschen|rửa, giặt
 wachsen|wuchs|ist gewachsen|mọc
 schlagen|schlug|hat geschlagen|đánh
-einladen|lud ein|hat eingeladen|mời
-abfahren|fuhr ab|ist abgefahren|khởi hành
 erfahren|erfuhr|hat erfahren|biết được
 graben|grub|hat gegraben|đào
 lügen|log|hat gelogen|nói dối
 heben|hob|hat gehoben|nâng
 schwören|schwor|hat geschworen|thề
-erlöschen|erlosch|ist erloschen|tắt
 beginnen|begann|hat begonnen|bắt đầu
 schwimmen|schwamm|ist geschwommen|bơi
 gewinnen|gewann|hat gewonnen|thắng
-spinnen|spann|hat gesponnen|se sợi
 gehen|ging|ist gegangen|đi bộ
 kommen|kam|ist gekommen|đến
 heißen|hieß|hat geheißen|tên là
@@ -1818,7 +1633,6 @@ bitten|bat|hat gebeten|nhờ, xin
 backen|backte|hat gebacken|nướng
 stoßen|stieß|hat/ist gestoßen|đẩy
 entstehen|entstand|ist entstanden|hình thành
-weggehen|ging weg|ist weggegangen|rời đi
 anbieten|bot an|hat angeboten|đề nghị
 ankommen|kam an|ist angekommen|đến nơi
 anrufen|rief an|hat angerufen|gọi điện
@@ -1834,29 +1648,23 @@ bestehen|bestand|hat bestanden|thi đỗ
 betrügen|betrog|hat betrogen|lừa dối
 biegen|bog|hat/ist gebogen|uốn; rẽ
 dringen|drang|ist gedrungen|xuyên qua
-einfallen|fiel ein|ist eingefallen|nghĩ ra
 empfehlen|empfahl|hat empfohlen|giới thiệu
 enthalten|enthielt|hat enthalten|chứa
 erkennen|erkannte|hat erkannt|nhận ra
 erschrecken|erschrak|ist erschrocken|giật mình
 erwägen|erwog|hat erwogen|cân nhắc
 fressen|fraß|hat gefressen|ăn (động vật)
-gebären|gebar|hat geboren|sinh
 gedeihen|gedieh|ist gediehen|phát triển
 gleiten|glitt|ist geglitten|trượt
 hängen|hing|hat gehangen|treo
-hauen|haute|hat gehauen|đánh
 kneifen|kniff|hat gekniffen|véo
 kriechen|kroch|ist gekrochen|bò
 laden|lud|hat geladen|chất
 leiden|litt|hat gelitten|chịu đựng
-mahlen|mahlte|hat gemahlen|xay
 meiden|mied|hat gemieden|tránh
 mitbringen|brachte mit|hat mitgebracht|mang theo
 mitkommen|kam mit|ist mitgekommen|đi cùng
 ringen|rang|hat gerungen|vật lộn
-saufen|soff|hat gesoffen|uống (đv)
-schaffen|schuf|hat geschaffen|tạo ra
 scheiden|schied|hat/ist geschieden|chia tay
 schieben|schob|hat geschoben|đẩy
 schießen|schoss|hat geschossen|bắn
@@ -1868,17 +1676,13 @@ schwingen|schwang|hat geschwungen|vung
 stechen|stach|hat gestochen|đâm, chích
 sterben|starb|ist gestorben|chết
 streichen|strich|hat gestrichen|sơn, xóa
-umziehen|zog um|ist umgezogen|chuyển nhà
 verbieten|verbot|hat verboten|cấm
 verbrennen|verbrannte|hat/ist verbrannt|đốt cháy
 verzeihen|verzieh|hat verziehen|tha thứ
-vorschlagen|schlug vor|hat vorgeschlagen|đề xuất
 wenden|wandte|hat gewandt|quay, lật
 werben|warb|hat geworben|quảng cáo
 werfen|warf|hat geworfen|ném
-wiegen|wog|hat gewogen|cân
-winden|wand|hat gewunden|quấn
-`;
+wiegen|wog|hat gewogen|cân`;
 
 const VERBS = V_RAW.trim().split('\n').map((line,i)=>{
   const [inf,praet,perf,mean] = line.split('|');
@@ -1982,10 +1786,10 @@ const EXAMS = {
 };
 
 const CATS = {
-  v1000:{name:'Từ vựng',sub:`${WORDS.length} từ · A1–B2`,icon:I.book,
+  v1000:{name:'Từ vựng',sub:`${WORDS.length} từ · A1–A2`,icon:I.book,
     grad:'linear-gradient(135deg,#fbbf24,#d97706)',glow:'rgba(251,191,36,.5)',
     filters:[{key:'A1',label:'A1'},{key:'A2',label:'A2'}],
-    hasDirection:true,hasTopics:false,items:WORDS},
+    hasDirection:true,items:WORDS},
   numbers:{name:'Số đếm',sub:'0–1000 · Zahlen',icon:I.numbers,
     grad:'linear-gradient(135deg,#f97316,#ea580c)',glow:'rgba(249,115,22,.5)',
     filters:[{key:'0-20',label:'0–20'},{key:'21-100',label:'21–100'},{key:'101-1000',label:'101–1000'}],
@@ -2016,7 +1820,6 @@ const state = {
   tab:'home', prevTab:'home',
   view:'home',
   theme:localStorage.getItem('theme')||'light',
-  voiceGender:localStorage.getItem('voiceGender')||'female',
   setup:{cat:null,filter:null,mode:'quiz',direction:'de-vi',topic:0},
   session:{cat:null,filter:null,mode:null,direction:'de-vi',topic:0,items:[],index:0,correct:0,
     answered:false,currentOpts:null,currentCorrect:null,typeMode:null,
@@ -2035,15 +1838,7 @@ function toggleTheme(){
   localStorage.setItem('theme',state.theme);
   applyTheme();
 }
-function toggleVoice(){
-  state.voiceGender = state.voiceGender === 'female' ? 'male' : 'female';
-  localStorage.setItem('voiceGender', state.voiceGender);
-  showToast(state.voiceGender === 'female' ? '👩 Đã chọn giọng Nữ' : '👨 Đã chọn giọng Nam');
-  const b = $('#voiceBtn');
-  if(b) b.style.color = state.voiceGender === 'female' ? '#ec4899' : '#3b82f6';
-}
 $('#themeBtn').addEventListener('click', toggleTheme);
-$('#voiceBtn').addEventListener('click', toggleVoice);
 
 const PronBanner = {
   init(){this.el=$('#pronBanner');this.txt=$('#pronText')},
@@ -2059,56 +1854,83 @@ const PronBanner = {
   hide(){if(!this.el) return;this.el.classList.remove('show');clearTimeout(this.timer)}
 };
 
+// ===== FIX: chỉ đọc 1 lần duy nhất =====
 const TTS = {
   audio:null, timer:null,
   stop(){
     if(this.timer){clearTimeout(this.timer);this.timer=null}
-    if(this.audio){try{this.audio.pause();this.audio.currentTime=0}catch(e){}this.audio=null}
+    if(this.audio){
+      try{ this.audio.pause(); this.audio.currentTime=0; }catch(e){}
+      this.audio=null;
+    }
     if('speechSynthesis' in window){try{speechSynthesis.cancel()}catch(e){}}
     $$('.speaking').forEach(b=>b.classList.remove('speaking'));
     PronBanner.hide();
   },
-  speak(text,btn){
+  speak(text, btn){
     if(!text) return;
     this.stop();
     if(btn) btn.classList.add('speaking');
     PronBanner.show(text);
     const clean = String(text).replace(/[""]/g,'').replace(/[''`]/g,'').replace(/\s+/g,' ').trim();
-    
-    if (state.voiceGender === 'male') {
-      this.speakWeb(text,btn);
-    } else {
-      const fallback = ()=>this.speakWeb(text,btn);
-      try{
-        const url = 'https://translate.google.com/translate_tts?ie=UTF-8&q='+encodeURIComponent(clean)+'&tl=de&client=tw-ob';
-        const audio = new Audio();
-        audio.src = url; audio.playbackRate = .9;
-        this.audio = audio;
-        let started = false;
-        this.timer = setTimeout(()=>{ if(!started) fallback(); }, 1200);
-        audio.addEventListener('playing',()=>{ started=true; if(this.timer){clearTimeout(this.timer);this.timer=null} },{once:true});
-        audio.onended = ()=>{ if(this.audio===audio)this.audio=null; if(btn)btn.classList.remove('speaking'); PronBanner.hide(); };
-        audio.onerror = ()=>{ if(this.audio===audio)this.audio=null; fallback(); };
-        const p = audio.play();
-        if(p && p.catch) p.catch(fallback);
-      }catch(e){ fallback(); }
+
+    // Cờ đảm bảo fallback (Web Speech) chỉ được kích hoạt DUY NHẤT 1 lần
+    let settled = false;
+    let started = false;
+    const useWeb = ()=>{
+      if(settled) return;
+      settled = true;
+      if(this.timer){clearTimeout(this.timer);this.timer=null}
+      if(this.audio){ try{this.audio.pause()}catch(e){} this.audio=null; }
+      this.speakWeb(text, btn);
+    };
+
+    try{
+      const url = 'https://translate.google.com/translate_tts?ie=UTF-8&q='+encodeURIComponent(clean)+'&tl=de&client=tw-ob';
+      const audio = new Audio();
+      audio.src = url;
+      audio.playbackRate = .9;
+      this.audio = audio;
+
+      audio.addEventListener('playing', ()=>{
+        started = true;
+        if(this.timer){clearTimeout(this.timer);this.timer=null}
+      }, {once:true});
+
+      audio.addEventListener('ended', ()=>{
+        if(this.audio===audio) this.audio=null;
+        if(btn) btn.classList.remove('speaking');
+        PronBanner.hide();
+      }, {once:true});
+
+      audio.addEventListener('error', ()=>{
+        if(started) return;   // đã phát rồi thì bỏ qua lỗi
+        if(this.audio===audio) this.audio=null;
+        useWeb();
+      }, {once:true});
+
+      // Timeout fallback nếu Google TTS không phản hồi
+      this.timer = setTimeout(()=>useWeb(), 3000);
+
+      const p = audio.play();
+      if(p && p.catch) p.catch(()=>useWeb());
+    }catch(e){
+      useWeb();
     }
   },
-  speakWeb(text,btn){
-    if(!('speechSynthesis' in window)){showToast('⚠️ Không hỗ trợ phát âm');if(btn)btn.classList.remove('speaking');PronBanner.hide();return}
+  speakWeb(text, btn){
+    if(!('speechSynthesis' in window)){
+      showToast('⚠️ Không hỗ trợ phát âm');
+      if(btn) btn.classList.remove('speaking');
+      PronBanner.hide();
+      return;
+    }
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'de-DE'; u.rate = .85;
     const vs = speechSynthesis.getVoices().filter(v => v.lang.startsWith('de'));
-    
-    let voice = null;
-    if(state.voiceGender === 'female') {
-      voice = vs.find(v => v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('woman') || v.name.toLowerCase().includes('marlene') || v.name.toLowerCase().includes('vicki'));
-    } else {
-      voice = vs.find(v => v.name.toLowerCase().includes('male') || v.name.toLowerCase().includes('man') || v.name.toLowerCase().includes('stefan') || v.name.toLowerCase().includes('hans'));
-    }
-    if(!voice && vs.length > 0) voice = vs[0];
+    // Ưu tiên giọng nữ nếu có; nếu không lấy giọng Đức đầu tiên
+    const voice = vs.find(v => /female|woman|marlene|vicki|anna/i.test(v.name)) || vs[0];
     if(voice) u.voice = voice;
-
     u.onend = ()=>{if(btn)btn.classList.remove('speaking');PronBanner.hide()};
     u.onerror = ()=>{if(btn)btn.classList.remove('speaking');PronBanner.hide()};
     try{speechSynthesis.speak(u)}catch(e){if(btn)btn.classList.remove('speaking');PronBanner.hide()}
@@ -2248,7 +2070,7 @@ function renderDictionary(){
   app.innerHTML = `
     <div class="page-header">
       <h1 class="page-title">Từ điển Đức–Việt</h1>
-      <p class="page-sub">Tra cứu ${WORDS.length} từ vựng từ A1 đến B2</p>
+      <p class="page-sub">Tra cứu ${WORDS.length} từ vựng từ A1 đến A2</p>
     </div>
 
     <div class="search-wrap glass">
@@ -2395,7 +2217,6 @@ function renderPractice(){
   document.title = 'Luyện tập · VAN BAC';
   window.scrollTo(0,0);
 
-  // ✅ THÊM 'v1000' ĐỂ HIỂN THỊ BỘ TỪ VỰNG
   const keys = ['v1000','numbers','alphabet','grammar'];
   app.innerHTML = `
     <div class="page-header">
@@ -2606,8 +2427,6 @@ function renderQuestion(){
   else if(item.type==='alphabet') mainSpeak = item.letter;
   else mainSpeak = item.speak;
 
-  const topicBadge = item.topic?`<span class="meta-tag topic">${TOPICS[item.topic]||''}</span>`:'';
-
   app.innerHTML = `
     <div class="session">
       <div class="session-head">
@@ -2624,7 +2443,6 @@ function renderQuestion(){
       <div class="quiz-card glass">
         <div class="quiz-meta">
           ${item.level?`<span class="meta-tag ${item.level}">${item.level}</span>`:''}
-          ${topicBadge}
           <button class="hint-toggle" id="hintBtn" ${item.hint?'':'style="display:none"'}>?</button>
           <button class="quiz-spk glass" data-speak="${esc(mainSpeak)}">${I.speakerFull}</button>
         </div>
@@ -3044,7 +2862,6 @@ document.addEventListener('keydown', e=>{
 
 document.body.dataset.theme = state.theme;
 applyTheme();
-$('#voiceBtn').style.color = state.voiceGender === 'female' ? '#ec4899' : '#3b82f6';
 renderHome();
 </script>
 </body>
