@@ -2,25 +2,3050 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NGỪNG HOẠT ĐỘNG</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1">
+<title>Học Tiếng Đức · VAN BAC</title>
 <style>
-  body { margin:0; height:100vh; display:flex; align-items:center;
-         justify-content:center; background:#111; }
-  h1 { font:900 clamp(2rem,10vw,6rem) Arial,sans-serif; text-align:center;
-       background:linear-gradient(120deg,#ff0000,#fff,#b30000,#fff,#ff0000);
-       background-size:300% 300%;
-       -webkit-background-clip:text; background-clip:text;
-       -webkit-text-fill-color:transparent; color:transparent;
-       animation:loang 5s ease-in-out infinite;
-       filter:drop-shadow(0 0 12px rgba(255,0,0,.5)); }
-  @keyframes loang {
-    0%,100% { background-position:0% 50%; }
-    50% { background-position:100% 50%; }
+  @font-face{font-family:"GFF";src:url("https://dl.dir.freefiremobile.com/common/web_event/common/fonts/website/GFFLatinW05-Bold.woff2") format("woff2"),url("https://dl.dir.freefiremobile.com/common/web_event/common/fonts/website/GFFLatinW05-Bold.woff") format("woff");font-weight:400 900;font-display:swap}
+
+  :root{
+    --font:"GFF","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    --ease:cubic-bezier(.4,0,.2,1);
+    --spring:cubic-bezier(.34,1.56,.64,1);
   }
+
+  body[data-theme="light"]{
+    --bg:#f0f4f8;
+    --glass-bg:rgba(255, 255, 255, 0.45);
+    --glass-bg-hover:rgba(255, 255, 255, 0.65);
+    --glass-border:rgba(255, 255, 255, 0.7);
+    --glass-border-2:rgba(255, 255, 255, 0.9);
+    --glass-shadow:0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    --glass-shadow-hover:0 12px 40px 0 rgba(31, 38, 135, 0.15);
+    
+    --ink:#1a1a2e; --ink-2:#4a4b5c; --muted:#8e90a3;
+    --primary:#ef4444; --primary-soft:rgba(239, 68, 68, 0.15);
+    --success:#10b981; --success-soft:rgba(16, 185, 129, 0.15);
+    --danger:#ef4444; --danger-soft:rgba(239, 68, 68, 0.15);
+    --warn:#f59e0b; --warn-soft:rgba(245, 158, 11, 0.15);
+  }
+
+  body[data-theme="dark"]{
+    --bg:#0b0b14;
+    --glass-bg:rgba(20, 20, 30, 0.5);
+    --glass-bg-hover:rgba(30, 30, 45, 0.7);
+    --glass-border:rgba(255, 255, 255, 0.1);
+    --glass-border-2:rgba(255, 255, 255, 0.2);
+    --glass-shadow:0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    --glass-shadow-hover:0 12px 40px 0 rgba(0, 0, 0, 0.6);
+    
+    --ink:#f5f5f8; --ink-2:#c8c8d4; --muted:#797a8c;
+    --primary:#f87171; --primary-soft:rgba(248, 113, 113, 0.15);
+    --success:#34d399; --success-soft:rgba(52, 211, 153, 0.15);
+    --danger:#f87171; --danger-soft:rgba(248, 113, 113, 0.15);
+    --warn:#fbbf24; --warn-soft:rgba(251, 191, 36, 0.15);
+  }
+
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:var(--font);font-weight:700;color:var(--ink);
+    background:var(--bg);-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;letter-spacing:-.01em;
+    transition:background-color .4s,color .4s;
+    padding-bottom:90px;position:relative;
+  }
+  
+  .blob-wrap {
+    position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
+    background: var(--bg);
+  }
+  .blob {
+    position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6;
+    animation: float 12s infinite alternate;
+  }
+  .blob-1 { width: 400px; height: 400px; background: #ff9a9e; top: -10%; left: -10%; animation-delay: 0s; }
+  .blob-2 { width: 300px; height: 300px; background: #a18cd1; bottom: 10%; right: -10%; animation-delay: -2s; }
+  .blob-3 { width: 350px; height: 350px; background: #fecfef; top: 40%; left: 30%; animation-delay: -4s; }
+  .blob-4 { width: 250px; height: 250px; background: #fbc2eb; top: 10%; right: 10%; animation-delay: -6s; }
+  body[data-theme="dark"] .blob { opacity: 0.3; }
+  body[data-theme="dark"] .blob-1 { background: #4a00e0; }
+  body[data-theme="dark"] .blob-2 { background: #8e2de2; }
+  body[data-theme="dark"] .blob-3 { background: #00c6ff; }
+  body[data-theme="dark"] .blob-4 { background: #ff416c; }
+  @keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, 50px) scale(1.1); }
+  }
+
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;letter-spacing:inherit;font-weight:inherit;transition:all .2s var(--ease)}
+  
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+  
+  button:active, .glass:active {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px var(--primary-soft) !important;
+    transform: scale(0.98) !important;
+  }
+
+  .top-controls{
+    position:fixed;top:16px;right:16px;z-index:50;
+    display:flex;gap:8px;
+  }
+  .float-btn{
+    width:40px;height:40px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-2);
+  }
+  .float-btn:hover{background:var(--glass-bg-hover);transform:scale(1.05)}
+  .float-btn svg{width:18px;height:18px;stroke-width:2.2}
+
+  .main{max-width:680px;margin:0 auto;padding:20px 18px 24px;animation:fadeIn .4s var(--ease)}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+  .hero-new{
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    padding:40px 0 24px;cursor:pointer;
+  }
+  .german-flag{
+    width:48px;height:32px;border-radius:6px;overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+    display:flex;flex-direction:column;margin-bottom:24px;
+    transition:transform .2s var(--spring);
+  }
+  .german-flag:hover{transform:scale(1.1)}
+  .german-flag div{flex:1;width:100%}
+  
+  .hero-title-new{
+    font-size:clamp(34px,9vw,44px);font-weight:900;
+    text-transform:uppercase;letter-spacing:-.02em;line-height:1.1;
+    background: linear-gradient(90deg, #ef4444 0%, #b91c1c 50%, #ef4444 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 4s linear infinite;
+    text-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+  }
+  @keyframes shine { to { background-position: 200% center; } }
+  
+  .hero-sub-new{
+    margin-top:20px;
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 14px;border-radius:99px;
+    font-size:10px;font-weight:900;letter-spacing:2px;
+    text-transform:uppercase;color:var(--ink-2);
+  }
+  .hero-sub-new strong{color:var(--primary);font-weight:900;letter-spacing:2.5px;}
+  .hero-sub-new::before, .hero-sub-new::after {content:'★';color:var(--warn);font-size:9px;}
+
+  .feat-grid {display:flex;flex-direction:column;gap:14px;margin-top:10px;}
+  .feature-card {
+    display:flex;align-items:center;gap:16px;padding:20px;border-radius:20px;
+    text-align:left;position:relative;overflow:hidden;
+  }
+  .feature-card:hover{background:var(--glass-bg-hover);box-shadow:var(--glass-shadow-hover)}
+  .feature-icon{
+    width:56px;height:56px;border-radius:16px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--fc-grad);box-shadow:0 8px 20px -6px var(--fc-glow);
+    position:relative;
+  }
+  .feature-icon::after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(255,255,255,.3),transparent 55%);}
+  .feature-icon svg{width:26px;height:26px;color:#fff;stroke-width:2.2;position:relative;z-index:1}
+  .feature-body{flex:1;min-width:0}
+  .feature-name{font-size:17px;font-weight:900;letter-spacing:-.02em;margin-bottom:4px}
+  .feature-meta{font-size:12px;font-weight:700;color:var(--muted);line-height:1.4}
+
+  .page-header{padding:10px 4px 18px}
+  .page-title{font-size:24px;font-weight:900;letter-spacing:-.03em;margin-bottom:4px}
+  .page-sub{font-size:13px;font-weight:700;color:var(--muted)}
+
+  .search-wrap{position:relative;margin-bottom:12px}
+  .search-wrap svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--muted);stroke-width:2.4;pointer-events:none}
+  .search-input{
+    width:100%;padding:15px 16px 15px 48px;border-radius:14px;
+    font-family:inherit;font-size:14.5px;font-weight:700;transition:all .2s var(--ease);
+  }
+  .search-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px var(--primary-soft)}
+  .search-input::placeholder{color:var(--muted)}
+
+  .alphabet-filter{display:flex;gap:6px;overflow-x:auto;padding:4px 2px 12px;scrollbar-width:none;margin:0 -2px}
+  .alphabet-filter::-webkit-scrollbar{display:none}
+  .af-letter{
+    flex-shrink:0;min-width:34px;height:34px;padding:0 10px;border-radius:10px;
+    font-size:12px;font-weight:900;color:var(--ink-2);
+    transition:all .15s var(--ease);display:flex;align-items:center;justify-content:center;
+  }
+  .af-letter.active{background:var(--primary);border-color:var(--primary);color:#fff}
+
+  .dict-count{font-size:11.5px;font-weight:800;color:var(--muted);padding:4px 2px 12px;}
+  .dict-count b{color:var(--ink);font-weight:900}
+
+  .dict-list{display:flex;flex-direction:column;gap:8px}
+  .dict-item{
+    display:flex;align-items:center;gap:14px;padding:14px 16px;
+    border-radius:14px;transition:all .2s var(--ease);cursor:pointer;
+  }
+  .dict-item:hover{background:var(--glass-bg-hover);transform:translateX(2px)}
+  
+  .dict-art{font-size:10px;font-weight:900;padding:2px 6px;border-radius:5px;letter-spacing:.5px;text-transform:lowercase;flex-shrink:0}
+  .dict-art.der{background:rgba(59,130,246,.15);color:#3b82f6}
+  .dict-art.die{background:rgba(236,72,153,.15);color:#ec4899}
+  .dict-art.das{background:rgba(16,185,129,.15);color:#10b981}
+  
+  .dict-word-wrap{display:flex;flex-direction:column;gap:2px;flex-shrink:0;max-width:50%}
+  .dict-word-with-art{display:flex;align-items:center;gap:6px}
+  .dict-word{font-size:15px;font-weight:900;color:var(--ink);letter-spacing:-.015em;}
+  .dict-ipa{font-size:12px;font-weight:700;color:var(--muted);font-family:'Times New Roman', serif;letter-spacing:0}
+  .dict-meaning{font-size:12.5px;font-weight:700;color:var(--ink-2);flex:1;text-align:right;line-height:1.35;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .dict-speak{
+    width:34px;height:34px;border-radius:50%;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;color:var(--ink-2);transition:all .2s var(--ease);
+  }
+  .dict-speak:hover{background:var(--primary-soft);border-color:var(--primary);color:var(--primary);transform:scale(1.08)}
+  .dict-speak svg{width:15px;height:15px;stroke-width:2.4}
+
+  .verb-item{position:relative;padding:16px 18px;border-radius:16px;margin-bottom:8px;transition:all .2s var(--ease);}
+  .verb-item:hover{background:var(--glass-bg-hover)}
+  .verb-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+  .verb-inf{font-size:18px;font-weight:900;color:var(--primary);letter-spacing:-.02em;flex-shrink:0}
+  .verb-mean{font-size:11.5px;font-weight:700;color:var(--ink-2);margin-left:auto;text-align:right;max-width:52%;line-height:1.35}
+  .verb-speak-main{width:34px;height:34px;border-radius:50%;flex-shrink:0;background:var(--primary-soft);border:1px solid transparent;color:var(--primary);display:flex;align-items:center;justify-content:center;transition:all .2s var(--ease);}
+  .verb-forms{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .form-badge{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:11px;min-width:0;}
+  .form-tag{font-size:8.5px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);flex-shrink:0;padding:2px 5px;border-radius:4px;background:var(--primary-soft)}
+  .form-value{font-size:12px;font-weight:800;color:var(--ink);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .form-speak{width:24px;height:24px;border-radius:50%;flex-shrink:0;background:transparent;border:none;color:var(--muted);display:flex;align-items:center;justify-content:center;}
+  .form-speak:hover{background:var(--primary-soft);color:var(--primary)}
+
+  .practice-list{display:flex;flex-direction:column;gap:10px}
+  .practice-item{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;text-align:left;transition:all .2s var(--ease);width:100%;}
+  .practice-item:hover{background:var(--glass-bg-hover);transform:translateY(-2px)}
+  .practice-icon{width:46px;height:46px;border-radius:13px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--pi-grad);box-shadow:0 6px 16px -6px var(--pi-glow);position:relative;}
+  .practice-icon::after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(255,255,255,.25),transparent 55%);}
+  .practice-icon svg{width:22px;height:22px;color:#fff;stroke-width:2.2;position:relative;z-index:1}
+  .practice-name{font-size:15px;font-weight:900;margin-bottom:2px}
+  .practice-meta{font-size:11px;font-weight:700;color:var(--muted)}
+
+  .session-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 4px 18px}
+  .btn-back-sm{display:flex;align-items:center;gap:6px;padding:8px 13px;border-radius:10px;color:var(--ink-2);font-size:12px;font-weight:800;}
+  .btn-back-sm svg{width:14px;height:14px;stroke-width:2.5}
+  .session-tag{padding:6px 12px;border-radius:99px;font-size:9.5px;font-weight:900;letter-spacing:1.1px;text-transform:uppercase;background:var(--primary-soft);color:var(--primary)}
+  .progress-wrap{margin-bottom:20px}
+  .progress-info{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:800;color:var(--muted);margin-bottom:8px;padding:0 4px}
+  .progress-info .score{color:var(--success);font-weight:900}
+  .progress-track{height:6px;background:rgba(0,0,0,.05);border-radius:99px;overflow:hidden;border:1px solid var(--glass-border)}
+  body[data-theme="dark"] .progress-track{background:rgba(255,255,255,.05);}
+  .progress-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--primary),#f97316);transition:width .5s var(--ease)}
+  
+  .quiz-card{padding:24px 22px;border-radius:24px;position:relative}
+  .quiz-meta{display:flex;align-items:center;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+  .meta-tag{padding:4px 10px;border-radius:6px;font-size:10px;font-weight:900;letter-spacing:.7px;text-transform:uppercase}
+  .meta-tag.A1{background:var(--success-soft);color:var(--success)}
+  .meta-tag.A2{background:var(--primary-soft);color:var(--primary)}
+  .meta-tag.B1{background:var(--warn-soft);color:var(--warn)}
+  .meta-tag.B2{background:var(--danger-soft);color:var(--danger)}
+  .meta-tag.topic{background:var(--glass-bg);color:var(--ink-2);font-weight:800;text-transform:none;letter-spacing:.02em;font-size:10.5px}
+  .quiz-spk{width:42px;height:42px;border-radius:12px;margin-left:auto;display:flex;align-items:center;justify-content:center;color:var(--ink-2);transition:all .2s var(--ease);}
+  .quiz-spk svg{width:17px;height:17px;stroke-width:2.2}
+  .hint-toggle{width:42px;height:42px;border-radius:12px;background:var(--warn-soft);border:1px solid transparent;color:var(--warn);font-size:17px;font-weight:900;display:flex;align-items:center;justify-content:center;transition:all .2s var(--ease);flex-shrink:0}
+  .question-text{font-size:19px;font-weight:900;line-height:1.45;letter-spacing:-.02em;margin-bottom:22px;color:var(--ink)}
+  .question-text b{color:var(--primary);font-weight:900}
+  .question-text .blank{display:inline-block;min-width:60px;height:26px;border-bottom:2.5px dashed var(--primary);vertical-align:middle}
+  
+  .options{display:flex;flex-direction:column;gap:10px}
+  .option{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:14px;text-align:left;font-size:14.5px;font-weight:700;transition:all .2s var(--ease);}
+  .option:hover:not(:disabled){background:var(--glass-bg-hover);transform:translateX(2px)}
+  .option-letter{width:32px;height:32px;border-radius:9px;flex-shrink:0;background:var(--glass-bg);border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:var(--ink-2);}
+  .option-text{flex:1;line-height:1.4;word-break:break-word;min-width:0}
+  .option.correct{background:var(--success-soft) !important;border-color:var(--success) !important;}
+  .option.correct .option-letter{background:var(--success);border-color:var(--success);color:#fff}
+  .option.correct .option-text{color:var(--success);font-weight:900}
+  .option.wrong{background:var(--danger-soft) !important;border-color:var(--danger) !important;}
+  .option.wrong .option-letter{background:var(--danger);border-color:var(--danger);color:#fff}
+  .option.wrong .option-text{color:var(--danger);font-weight:900}
+  .option.dimmed{opacity:.3;pointer-events:none}
+  
+  .type-field{width:100%;padding:18px 20px;border-radius:14px;font-family:inherit;font-size:17px;font-weight:700;color:var(--ink);transition:all .2s var(--ease);margin-bottom:14px;}
+  .type-field:focus{outline:none;border-color:var(--primary);background:var(--glass-bg-hover);box-shadow:0 0 0 4px var(--primary-soft)}
+  .type-field.correct{border-color:var(--success);background:var(--success-soft);color:var(--success)}
+  .type-field.wrong{border-color:var(--danger);background:var(--danger-soft);color:var(--danger)}
+  .btn-check{width:100%;padding:16px;border-radius:14px;background:linear-gradient(135deg,var(--success),#059669);color:#fff;font-size:14px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 10px 24px -8px rgba(16,185,129,.5);}
+  .btn-next{width:100%;padding:15px;border-radius:14px;margin-top:14px;background:var(--ink);color:var(--bg);font-size:13.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;}
+
+  .bottom-nav{
+    position:fixed;bottom:0;left:0;right:0;z-index:100;
+    background:var(--glass-bg);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);
+    border-top:1px solid var(--glass-border);
+    padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));
+    display:flex;justify-content:space-around;align-items:center;
+  }
+  .nav-btn{flex:1;max-width:100px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px;border-radius:12px;color:var(--muted);transition:all .2s var(--ease);position:relative}
+  .nav-btn.active{color:var(--primary)}
+  .nav-btn.active::before{content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:20px;height:3px;border-radius:0 0 3px 3px;background:var(--primary);}
+  .nav-btn svg{width:22px;height:22px;stroke-width:2.2;}
+  .nav-lbl{font-size:9.5px;font-weight:800;}
+
+  .pron-banner{
+    position:fixed;top:16px;left:50%;z-index:9999;
+    transform:translate(-50%,-180%) scale(.85);opacity:0;pointer-events:none;
+    transition:transform .5s var(--spring),opacity .3s var(--ease);
+    max-width:min(94vw,440px);
+  }
+  .pron-banner.show{transform:translate(-50%,0) scale(1);opacity:1}
+  .pron-card{
+    display:flex;align-items:center;gap:14px;padding:12px 18px 12px 12px;border-radius:18px;
+    background:var(--glass-bg);backdrop-filter:blur(24px) saturate(200%);-webkit-backdrop-filter:blur(24px) saturate(200%);
+    border:1px solid var(--glass-border-2);box-shadow:0 20px 48px -12px rgba(0,0,0,.3);
+  }
+  .pron-icon{
+    width:40px;height:40px;border-radius:50%;flex-shrink:0;
+    background:linear-gradient(135deg,var(--primary),#b91c1c);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 16px -4px rgba(239,68,68,.6);position:relative;
+  }
+  .pron-icon svg{width:16px;height:16px;color:#fff;stroke-width:2.4;}
+  .pron-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+  .pron-label{font-size:8.5px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:var(--primary)}
+  .pron-text{font-size:14.5px;font-weight:900;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .pron-waves{display:flex;align-items:center;gap:2.5px;height:18px;flex-shrink:0}
+  .pron-waves span{width:2.5px;border-radius:2px;background:linear-gradient(to top,var(--primary),#f97316);animation:pronWave 1s ease-in-out infinite}
+  @keyframes pronWave{0%,100%{height:4px;opacity:.5}50%{height:16px;opacity:1}}
+
+  .toast{position:fixed;top:20px;left:50%;z-index:200;transform:translate(-50%,-140%);padding:13px 22px;border-radius:12px;background:var(--glass-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--glass-border);color:var(--ink);font-size:12.5px;font-weight:900;box-shadow:0 16px 40px rgba(0,0,0,.2);transition:transform .45s var(--spring);display:flex;align-items:center;gap:8px;}
+  .toast.show{transform:translate(-50%,0)}
+  
+  .empty{text-align:center;padding:60px 20px;color:var(--muted);font-size:13px;font-weight:700}
+  .empty-icon{font-size:44px;margin-bottom:12px;opacity:.4}
+
+  .setup-section{margin-bottom:20px}
+  .setup-label{font-size:12px;font-weight:900;margin-bottom:10px;color:var(--muted)}
+  .mode-btn{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:15px;border-radius:14px;text-align:left;transition:all .2s}
+  .mode-btn.active{border-color:var(--primary);background:var(--primary-soft);box-shadow:0 0 0 3px var(--primary-soft)}
+  .mode-ico{width:32px;height:32px;border-radius:9px;background:var(--glass-bg);display:flex;align-items:center;justify-content:center;font-size:16px;}
+  .mode-btn.active .mode-ico{background:var(--primary);color:#fff}
+  .mode-name{font-size:13px;font-weight:900;}
+  .mode-desc{font-size:10.5px;font-weight:700;color:var(--muted)}
+  .btn-primary{width:100%;padding:17px;border-radius:14px;background:linear-gradient(135deg,var(--primary),#b91c1c);color:#fff;font-size:14.5px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;margin-top:8px;box-shadow:0 12px 28px -10px rgba(239,68,68,.5);}
+  
+  .chip{padding:9px 15px;border-radius:10px;font-size:12.5px;font-weight:800;color:var(--ink-2);transition:all .2s}
+  .chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
 </style>
 </head>
-<body>
-  <h1>NGỪNG<br>HOẠT ĐỘNG</h1>
+<body data-theme="light">
+
+<div class="blob-wrap">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+</div>
+
+<div class="top-controls">
+  <button class="float-btn glass" id="voiceBtn" title="Đổi giọng đọc Nam/Nữ">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+  </button>
+  <button class="float-btn glass" id="themeBtn" aria-label="Đổi giao diện"></button>
+</div>
+
+<div class="pron-banner" id="pronBanner">
+  <div class="pron-card">
+    <div class="pron-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/>
+        <path d="M16 9a5 5 0 0 1 0 6"/>
+        <path d="M19.364 18.364a9 9 0 0 0 0-12.728"/>
+      </svg>
+    </div>
+    <div class="pron-body">
+      <div class="pron-label">Đang phát âm</div>
+      <div class="pron-text" id="pronText"></div>
+    </div>
+    <div class="pron-waves"><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+</div>
+
+<main class="main" id="app"></main>
+
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-tab="home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span class="nav-lbl">Trang chủ</span>
+  </button>
+  <button class="nav-btn" data-tab="dictionary">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+    <span class="nav-lbl">Từ điển</span>
+  </button>
+  <button class="nav-btn" data-tab="verbs">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <span class="nav-lbl">Động từ</span>
+  </button>
+  <button class="nav-btn" data-tab="practice">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    <span class="nav-lbl">Luyện tập</span>
+  </button>
+  <button class="nav-btn" data-tab="exam">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span class="nav-lbl">Thi thử</span>
+  </button>
+</nav>
+
+<canvas id="confetti" style="position:fixed;inset:0;pointer-events:none;z-index:9998"></canvas>
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+
+const I = {
+  speaker:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/></svg>',
+  speakerFull:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/></svg>',
+  sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>',
+  moon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',
+  arrowLeft:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>',
+  search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+  book:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h6"/><path d="M9 11h4"/></svg>',
+  numbers:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>',
+  letter:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/><path d="M4 12h4"/><path d="M16 12h4"/></svg>',
+  pencil:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/><path d="M15 5l2 2"/></svg>',
+};
+
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const rand=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const ONES=['','ein','zwei','drei','vier','fünf','sechs','sieben','acht','neun'];
+const TEENS=['zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn'];
+const TENS=['','','zwanzig','dreißig','vierzig','fünfzig','sechzig','siebzig','achtzig','neunzig'];
+function numToGerman(n){
+  if(n===0)return 'null';let r='';
+  if(n>=1000){const th=Math.floor(n/1000);r+=(th===1?'ein':ONES[th])+'tausend';n%=1000;if(!n)return r}
+  if(n>=100){const h=Math.floor(n/100);r+=(h===1?'ein':ONES[h])+'hundert';n%=100;if(!n)return r}
+  if(n>=20){const t=Math.floor(n/10),u=n%10;if(!u)r+=TENS[t];else r+=ONES[u]+'und'+TENS[t]}
+  else if(n===1)r+='eins';else if(n>=2&&n<=9)r+=ONES[n];else if(n>=10&&n<=19)r+=TEENS[n-10];
+  return r;
+}
+const VN_ONES=['không','một','hai','ba','bốn','năm','sáu','bảy','tám','chín'];
+function numToVN(n){
+  if(n===1000)return 'một nghìn';if(n===0)return 'không';if(n<10)return VN_ONES[n];
+  if(n<20){if(n===10)return 'mười';if(n===15)return 'mười lăm';return 'mười '+VN_ONES[n-10]}
+  if(n<100){const t=Math.floor(n/10),u=n%10;if(!u)return VN_ONES[t]+' mươi';if(u===1)return VN_ONES[t]+' mươi mốt';if(u===5)return VN_ONES[t]+' mươi lăm';return VN_ONES[t]+' mươi '+VN_ONES[u]}
+  const h=Math.floor(n/100),rest=n%100;let out=VN_ONES[h]+' trăm';if(!rest)return out;
+  if(rest<10)return out+' lẻ '+VN_ONES[rest];
+  if(rest<20){if(rest===10)return out+' mười';if(rest===15)return out+' mười lăm';return out+' mười '+VN_ONES[rest-10]}
+  const t=Math.floor(rest/10),u=rest%10;if(!u)return out+' '+VN_ONES[t]+' mươi';
+  if(u===1)return out+' '+VN_ONES[t]+' mươi mốt';if(u===5)return out+' '+VN_ONES[t]+' mươi lăm';
+  return out+' '+VN_ONES[t]+' mươi '+VN_ONES[u];
+}
+
+const W_RAW = `
+der Abend|buổi tối|A1|/ˈaː.bənt/
+aber|nhưng|A1|/ˈaː.bɐ/
+abfahren|khởi hành|A1|/ˈap.faː.ʁən/
+die Adresse|địa chỉ|A1|/aˈdʁɛ.sə/
+der Apfel|quả táo|A1|/ˈap.fəl/
+arbeiten|làm việc|A1|/ˈaʁ.baɪ.tən/
+der Arm|cánh tay|A1|/aʁm/
+der Arzt|bác sĩ|A1|/aːɐ̯t͡st/
+auch|cũng|A1|/aʊ̯x/
+auf Wiedersehen|tạm biệt|A1|/aʊ̯f ˈviː.dɐ.zeː.ən/
+das Auge|mắt|A1|/ˈaʊ̯.ɡə/
+aussehen|trông có vẻ|A1|/ˈaʊ̯s.zeː.ən/
+aussteigen|xuống xe|A1|/ˈaʊ̯s.ʃtaɪ̯.ɡən/
+das Auto|ô tô|A1|/ˈaʊ̯.to/
+die Bäckerei|tiệm bánh mì|A1|/bɛ.kəˈʁaɪ̯/
+das Bad|phòng tắm|A1|/baːt/
+die Banane|quả chuối|A1|/baˈnaː.nə/
+der Bauch|bụng|A1|/baʊ̯x/
+der Baum|cái cây|A1|/baʊ̯m/
+beginnen|bắt đầu|A1|/bəˈɡɪ.nən/
+beißen|cắn|A1|/ˈbaɪ̯.sən/
+bekommen|nhận được|A1|/bəˈkɔ.mən/
+benutzen|sử dụng|A1|/bəˈnʊ.t͡sən/
+der Berg|núi|A1|/bɛʁk/
+berufstätig|đang đi làm|A1|/bəˈʁuːfs.tɛː.tɪç/
+beschreiben|miêu tả|A1|/bəˈʃʁaɪ̯.bən/
+bestellen|gọi món|A1|/bəˈʃtɛ.lən/
+besuchen|thăm|A1|/bəˈzuː.xən/
+das Bett|cái giường|A1|/bɛt/
+bezahlen|thanh toán|A1|/bəˈt͡saː.lən/
+das Bier|bia|A1|/biːɐ̯/
+das Bild|bức tranh|A1|/bɪlt/
+billig|rẻ|A1|/ˈbɪ.lɪç/
+die Birne|quả lê|A1|/ˈbɪʁ.nə/
+bis|đến|A1|/bɪs/
+bitte|làm ơn|A1|/ˈbɪ.tə/
+blau|xanh dương|A1|/blaʊ̯/
+bleiben|ở lại|A1|/ˈblaɪ̯.bən/
+der Bleistift|bút chì|A1|/ˈblaɪ̯.ʃtɪft/
+die Blume|bông hoa|A1|/ˈbluː.mə/
+brauchen|cần|A1|/ˈbʁaʊ̯.xən/
+braun|nâu|A1|/bʁaʊ̯n/
+breit|rộng|A1|/bʁaɪ̯t/
+bringen|mang đến|A1|/ˈbʁɪ.ŋən/
+das Brot|bánh mì|A1|/bʁoːt/
+das Brötchen|bánh mì nhỏ|A1|/ˈbʁøːt.çən/
+der Bruder|anh/em trai|A1|/ˈbʁuː.dɐ/
+das Buch|quyển sách|A1|/buːx/
+der Bus|xe buýt|A1|/bʊs/
+die Butter|bơ|A1|/ˈbʊ.tɐ/
+das Café|quán cà phê|A1|/kaˈfeː/
+der Chef|sếp|A1|/ʃɛf/
+der Computer|máy tính|A1|/kɔmˈpjuː.tɐ/
+danke|cảm ơn|A1|/ˈdaŋ.kə/
+dann|sau đó|A1|/dan/
+das|đó|A1|/das/
+dauern|kéo dài|A1|/ˈdaʊ̯.ɐn/
+dein|của bạn|A1|/daɪ̯n/
+denken|nghĩ|A1|/ˈdɛŋ.kən/
+denn|vì|A1|/dɛn/
+der|đó|A1|/deːɐ̯/
+deutsch|tiếng Đức|A1|/dɔʏ̯t͡ʃ/
+dich|bạn|A1|/dɪç/
+die|đó|A1|/diː/
+dieser|này|A1|/ˈdiː.zɐ/
+dir|bạn|A1|/diːɐ̯/
+doch|có chứ|A1|/dɔx/
+dort|ở đó|A1|/dɔʁt/
+die Dusche|vòi sen|A1|/ˈduː.ʃə/
+du|bạn|A1|/duː/
+dunkel|tối|A1|/ˈdʊŋ.kəl/
+dünn|mỏng|A1|/dʏn/
+durch|qua|A1|/dʊʁç/
+dürfen|được phép|A1|/ˈdʏʁ.fən/
+sich duschen|tắm|A1|/ˈdʊ.ʃən/
+die Ecke|góc phố|A1|/ˈɛ.kə/
+das Ei|quả trứng|A1|/aɪ̯/
+einfach|dễ|A1|/ˈaɪ̯n.fax/
+einige|một số|A1|/ˈaɪ̯.nɪ.ɡə/
+einkaufen|đi mua sắm|A1|/ˈaɪ̯n.kaʊ̯.fən/
+einladen|mời|A1|/ˈaɪ̯n.laː.dən/
+einsteigen|lên xe|A1|/ˈaɪ̯n.ʃtaɪ̯.ɡən/
+der Elefant|con voi|A1|/e.leˈfant/
+die Eltern|bố mẹ|A1|/ˈɛl.tɐn/
+empfehlen|giới thiệu|A1|/ɛmˈpfeː.lən/
+enden|kết thúc|A1|/ˈɛn.dən/
+eng|chật|A1|/ɛŋ/
+die Entschuldigung|lời xin lỗi|A1|/ɛntˈʃʊl.dɪ.ɡʊŋ/
+er|anh ấy|A1|/eːɐ̯/
+essen|ăn|A1|/ˈɛ.sən/
+das Essen|đồ ăn|A1|/ˈɛ.sən/
+euer|của các bạn|A1|/ˈɔʏ̯.ɐ/
+fahren|đi (bằng xe)|A1|/ˈfaː.ʁən/
+das Fahrrad|xe đạp|A1|/ˈfaːɐ̯.ʁaːt/
+fallen|ngã, rơi|A1|/ˈfa.lən/
+falsch|sai|A1|/falʃ/
+die Familie|gia đình|A1|/faˈmiː.li̯ə/
+fangen|bắt|A1|/ˈfa.ŋən/
+die Farbe|màu sắc|A1|/ˈfaʁ.bə/
+fast|gần như|A1|/fast/
+faul|lười|A1|/faʊ̯l/
+der Fehler|lỗi|A1|/ˈfeː.lɐ/
+feiern|tổ chức tiệc|A1|/ˈfaɪ̯.ɐn/
+das Fenster|cửa sổ|A1|/ˈfɛn.stɐ/
+die Ferien|kỳ nghỉ|A1|/ˈfeː.ʁi̯ən/
+fernsehen|xem tivi|A1|/ˈfɛʁn.zeː.ən/
+fertig|xong|A1|/ˈfɛʁ.tɪç/
+das Feuer|lửa|A1|/ˈfɔʏ̯.ɐ/
+das Fieber|sốt|A1|/ˈfiː.bɐ/
+der Film|bộ phim|A1|/fɪlm/
+finden|tìm thấy|A1|/ˈfɪn.dən/
+der Fisch|con cá|A1|/fɪʃ/
+fliegen|bay|A1|/ˈfliː.ɡən/
+das Fleisch|thịt|A1|/flaɪ̯ʃ/
+fleißig|chăm chỉ|A1|/ˈflaɪ̯.sɪç/
+die Flasche|chai|A1|/ˈfla.ʃə/
+das Formular|mẫu đơn|A1|/fɔʁ.muˈlaːɐ̯/
+fragen|hỏi|A1|/ˈfʁaː.ɡən/
+die Frau|phụ nữ|A1|/fʁaʊ̯/
+frei|trống|A1|/fʁaɪ̯/
+der Freitag|thứ Sáu|A1|/ˈfʁaɪ̯.taːk/
+fressen|ăn (động vật)|A1|/ˈfʁɛ.sən/
+sich freuen|vui mừng|A1|/ˈfʁɔʏ̯.ən/
+der Freund|bạn nam|A1|/fʁɔʏ̯nt/
+die Freundin|bạn nữ|A1|/ˈfʁɔʏ̯n.dɪn/
+frisch|tươi|A1|/fʁɪʃ/
+froh|vui|A1|/fʁoː/
+früh|sớm|A1|/fʁyː/
+das Frühstück|bữa sáng|A1|/ˈfʁyː.ʃtʏk/
+frühstücken|ăn sáng|A1|/ˈfʁyː.ʃtʏ.kən/
+der Frühling|mùa xuân|A1|/ˈfʁyː.lɪŋ/
+fühlen|cảm thấy|A1|/ˈfyː.lən/
+der Fuß|bàn chân|A1|/fuːs/
+ganz|khá; toàn|A1|/ɡan t͡s/
+der Garten|khu vườn|A1|/ˈɡaʁ.tən/
+geben|cho|A1|/ˈɡeː.bən/
+geboren|được sinh ra|A1|/ɡəˈboː.ʁən/
+der Geburtstag|sinh nhật|A1|/ɡəˈbuːɐ̯t͡s.taːk/
+gefallen|làm hài lòng|A1|/ɡəˈfa.lən/
+gegen|chống lại|A1|/ˈɡeː.ɡən/
+gehen|đi bộ|A1|/ˈɡeː.ən/
+gehören|thuộc về|A1|/ɡəˈhøː.ʁən/
+gelb|vàng|A1|/ɡɛlp/
+das Geld|tiền|A1|/ɡɛlt/
+gemeinsam|cùng nhau|A1|/ɡəˈmaɪ̯n.zaːm/
+genau|chính xác|A1|/ɡəˈnaʊ̯/
+genug|đủ|A1|/ɡəˈnuːk/
+geradeaus|đi thẳng|A1|/ɡəˈʁaː.də.aʊ̯s/
+gern|thích|A1|/ɡɛʁn/
+das Geschäft|cửa hàng|A1|/ɡəˈʃɛft/
+gestern|hôm qua|A1|/ˈɡɛs.tɐn/
+gesund|khỏe mạnh|A1|/ɡəˈzʊnt/
+das Getränk|đồ uống|A1|/ɡəˈtʁɛŋk/
+gewinnen|thắng|A1|/ɡəˈvɪ.nən/
+gießen|đổ, tưới|A1|/ˈɡiː.sən/
+die Gitarre|đàn ghi-ta|A1|/ɡiˈta.ʁə/
+der Glück|may mắn|A1|/ɡlʏk/
+grau|xám|A1|/ɡʁaʊ̯/
+groß|to|A1|/ɡʁoːs/
+die Größe|kích cỡ|A1|/ˈɡʁøː.sə/
+grün|xanh lá|A1|/ɡʁyːn/
+gut|tốt|A1|/ɡuːt/
+das Haar|tóc|A1|/haːɐ̯/
+haben|có|A1|/ˈhaː.bən/
+hallo|xin chào|A1|/haˈloː/
+halten|giữ|A1|/ˈhal.tən/
+die Hand|bàn tay|A1|/hant/
+der Hund|con chó|A1|/hʊnt/
+hängen|treo|A1|/ˈhɛ.ŋən/
+hassen|ghét|A1|/ˈha.sən/
+häufig|thường xuyên|A1|/ˈhɔʏ̯.fɪç/
+das Haus|ngôi nhà|A1|/haʊ̯s/
+heben|nâng|A1|/ˈheː.bən/
+das Heft|vở|A1|/hɛft/
+heiraten|kết hôn|A1|/ˈhaɪ̯.ʁaː.tən/
+heiß|nóng|A1|/haɪ̯s/
+heißen|tên là|A1|/ˈhaɪ̯.sən/
+helfen|giúp đỡ|A1|/ˈhɛl.fən/
+hell|sáng|A1|/hɛl/
+das Hemd|áo sơ mi|A1|/hɛmt/
+der Herbst|mùa thu|A1|/hɛʁpst/
+der Herr|ông|A1|/hɛʁ/
+herzlich|nồng nhiệt|A1|/ˈhɛʁt͡s.lɪç/
+heute|hôm nay|A1|/ˈhɔʏ̯.tə/
+hier|ở đây|A1|/hiːɐ̯/
+die Hilfe|sự giúp đỡ|A1|/ˈhɪl.fə/
+der Himmel|bầu trời|A1|/ˈhɪ.məl/
+hinten|phía sau|A1|/ˈhɪn.tən/
+das Hobby|sở thích|A1|/ˈhɔ.bi/
+hoch|cao|A1|/hoːx/
+holen|đi lấy|A1|/ˈhoː.lən/
+hören|nghe|A1|/ˈhøː.ʁən/
+die Hose|cái quần|A1|/ˈhoː.zə/
+das Hotel|khách sạn|A1|/hoˈtɛl/
+hübsch|xinh|A1|/hʏpʃ/
+der Hunger|cơn đói|A1|/ˈhʊ.ŋɐ/
+ich|tôi|A1|/ɪç/
+immer|luôn|A1|/ˈɪ.mɐ/
+in|trong|A1|/ɪn/
+die Information|thông tin|A1|/ɪn.fɔʁ.maˈt͡si̯oːn/
+das Internet|internet|A1|/ˈɪn.tɐ.nɛt/
+ja|vâng|A1|/jaː/
+die Jacke|áo khoác|A1|/ˈja.kə/
+das Jahr|năm|A1|/jaːɐ̯/
+der Januar|tháng Một|A1|/ˈja.nu.aːɐ̯/
+jetzt|bây giờ|A1|/jɛt͡st/
+der Job|việc làm|A1|/d͡ʒɔp/
+der Jugendliche|thanh thiếu niên|A1|/ˈjuː.ɡənt.lɪ.çə/
+der Junge|cậu bé|A1|/ˈjʊ.ŋə/
+der Kaffee|cà phê|A1|/ˈka.fe/
+kalt|lạnh|A1|/kalt/
+die Kamera|máy ảnh|A1|/ˈka.me.ʁa/
+der Käse|phô mai|A1|/ˈkɛː.zə/
+die Kasse|quầy thu ngân|A1|/ˈka.sə/
+kaufen|mua|A1|/ˈkaʊ̯.fən/
+das Kind|đứa trẻ|A1|/kɪnt/
+das Kino|rạp phim|A1|/ˈkiː.no/
+klar|rõ ràng|A1|/klaːɐ̯/
+die Klasse|lớp học|A1|/ˈkla.sə/
+das Kleid|váy liền|A1|/klaɪ̯t/
+die Kleidung|quần áo|A1|/ˈklaɪ̯.dʊŋ/
+klein|nhỏ|A1|/klaɪ̯n/
+klettern|leo trèo|A1|/ˈklɛ.tɐn/
+klingeln|reo chuông|A1|/ˈklɪ.ŋəln/
+kochen|nấu ăn|A1|/ˈkɔ.xən/
+der Koffer|va li|A1|/ˈkɔ.fɐ/
+der Kollege|đồng nghiệp|A1|/kɔˈleː.ɡə/
+kommen|đến|A1|/ˈkɔ.mən/
+können|có thể|A1|/ˈkœ.nən/
+das Konto|tài khoản|A1|/ˈkɔn.to/
+der Kopf|đầu|A1|/kɔpf/
+der Körper|cơ thể|A1|/ˈkœʁ.pɐ/
+die Kosten|chi phí|A1|/ˈkɔs.tən/
+kosten|giá là|A1|/ˈkɔs.tən/
+krank|ốm|A1|/kʁaŋk/
+das Krankenhaus|bệnh viện|A1|/ˈkʁaŋ.kən.haʊ̯s/
+die Krankheit|bệnh tật|A1|/ˈkʁaŋk.haɪ̯t/
+der Kuchen|bánh ngọt|A1|/ˈkuː.xən/
+der Kühlschrank|tủ lạnh|A1|/ˈkyːl.ʃʁaŋk/
+kühl|mát|A1|/kyːl/
+der Kunde|khách hàng|A1|/ˈkʊn.də/
+die Küche|nhà bếp|A1|/ˈkʏ.çə/
+der Kurs|khóa học|A1|/kʊʁs/
+kurz|ngắn|A1|/kʊʁt͡s/
+lachen|cười|A1|/ˈla.xən/
+der Laden|cửa hàng|A1|/ˈlaː.dən/
+das Land|đất nước|A1|/lant/
+lang|dài|A1|/laŋ/
+langsam|chậm|A1|/ˈlaŋ.zaːm/
+langweilig|chán|A1|/ˈlaŋ.vaɪ̯.lɪç/
+laufen|chạy|A1|/ˈlaʊ̯.fən/
+laut|ồn ào|A1|/laʊ̯t/
+leben|sống|A1|/ˈleː.bən/
+das Leben|cuộc sống|A1|/ˈleː.bən/
+lecker|ngon|A1|/ˈlɛ.kɐ/
+legen|để nằm|A1|/ˈleː.ɡən/
+der Lehrer|giáo viên|A1|/ˈleː.ʁɐ/
+leicht|nhẹ; dễ|A1|/laɪ̯çt/
+leider|tiếc là|A1|/ˈlaɪ̯.dɐ/
+lernen|học|A1|/ˈlɛʁ.nən/
+lesen|đọc|A1|/ˈleː.zən/
+letzte|trước|A1|/ˈlɛt͡s.tə/
+die Leute|mọi người|A1|/ˈlɔʏ̯.tə/
+das Licht|ánh sáng|A1|/lɪçt/
+lieben|yêu|A1|/ˈliː.bən/
+lieber|thích hơn|A1|/ˈliː.bɐ/
+liegen|nằm|A1|/ˈliː.ɡən/
+links|bên trái|A1|/lɪŋks/
+die List|danh sách|A1|/lɪst/
+lösen|giải quyết|A1|/ˈløː.zən/
+die Lösung|lời giải|A1|/ˈløː.zʊŋ/
+machen|làm|A1|/ˈma.xən/
+das Mädchen|cô bé|A1|/ˈmɛːt.çən/
+der Mai|tháng Năm|A1|/maɪ̯/
+der Mann|đàn ông|A1|/man/
+der Markt|chợ|A1|/maʁkt/
+die Maus|con chuột|A1|/maʊ̯s/
+die Miete|tiền thuê|A1|/ˈmiː.tə/
+die Milch|sữa|A1|/mɪlç/
+mit|với|A1|/mɪt/
+mitbringen|mang theo|A1|/ˈmɪt.bʁɪ.ŋən/
+mitkommen|đi cùng|A1|/ˈmɪt.kɔ.mən/
+mitnehmen|mang theo|A1|/ˈmɪt.neː.mən/
+die Mitte|trung tâm|A1|/ˈmɪ.tə/
+das Möbel|đồ nội thất|A1|/ˈmøː.bəl/
+möchten|muốn (lịch sự)|A1|/ˈmœç.tən/
+die Mode|thời trang|A1|/ˈmoː.də/
+mögen|thích|A1|/ˈmøː.ɡən/
+der Monat|tháng|A1|/ˈmoː.nat/
+der Montag|thứ Hai|A1|/ˈmoːn.taːk/
+morgen|ngày mai|A1|/ˈmɔʁ.ɡən/
+der Morgen|buổi sáng|A1|/ˈmɔʁ.ɡən/
+müde|mệt|A1|/ˈmyː.də/
+der Mund|miệng|A1|/mʊnt/
+das Museum|bảo tàng|A1|/muˈzeː.ʊm/
+die Musik|âm nhạc|A1|/muˈziːk/
+müssen|phải|A1|/ˈmʏ.sən/
+die Mutter|mẹ|A1|/ˈmʊ.tɐ/
+die Mütze|mũ len|A1|/ˈmʏ.t͡sə/
+nach|sau|A1|/naːx/
+die Nachricht|tin nhắn|A1|/ˈnaːx.ʁɪçt/
+nächste|tới|A1|/ˈnɛːç.stə/
+die Nacht|đêm|A1|/naxt/
+der Name|tên|A1|/ˈnaː.mə/
+nass|ướt|A1|/nas/
+natürlich|tất nhiên|A1|/naˈtyːɐ̯.lɪç/
+neben|bên cạnh|A1|/ˈneː.bən/
+nehmen|lấy|A1|/ˈneː.mən/
+nein|không|A1|/naɪ̯n/
+nennen|gọi tên|A1|/ˈnɛ.nən/
+neu|mới|A1|/nɔʏ̯/
+nicht|không|A1|/nɪçt/
+nichts|không có gì|A1|/nɪçt͡s/
+nie|không bao giờ|A1|/niː/
+der Niederschlag|lượng mưa|A1|/ˈniː.dɐ.ʃlaːk/
+niemand|không ai|A1|/ˈniː.mant/
+noch|vẫn|A1|/nɔx/
+der Norden|phía bắc|A1|/ˈnɔʁ.dən/
+normal|bình thường|A1|/nɔʁˈmaːl/
+die Note|điểm|A1|/ˈnoː.tə/
+die Nummer|số|A1|/ˈnʊ.mɐ/
+nur|chỉ|A1|/nuːɐ̯/
+oben|ở trên|A1|/ˈoː.bən/
+das Obst|trái cây|A1|/oːpst/
+oder|hoặc|A1|/ˈoː.dɐ/
+offen|mở|A1|/ˈɔ.fən/
+oft|thường|A1|/ɔft/
+ohne|không có|A1|/ˈoː.nə/
+das Ohr|tai|A1|/oːɐ̯/
+die Oma|bà|A1|/ˈoː.ma/
+der Onkel|chú|A1|/ˈɔŋ.kəl/
+der Opa|ông|A1|/ˈoː.pa/
+die Ordnung|trật tự|A1|/ˈɔʁt.nʊŋ/
+der Osten|phía đông|A1|/ˈɔs.tən/
+das Papier|giấy|A1|/paˈpiːɐ̯/
+die Pause|giờ nghỉ|A1|/ˈpaʊ̯.zə/
+die Person|người|A1|/pɛʁˈzoːn/
+das Pferd|ngựa|A1|/pfeːɐ̯t/
+die Pflanze|cây|A1|/ˈpflan.t͡sə/
+der Plan|kế hoạch|A1|/plaːn/
+der Platz|quảng trường|A1|/plat͡s/
+die Polizei|cảnh sát|A1|/po.liˈt͡saɪ̯/
+die Post|bưu điện|A1|/pɔst/
+der Preis|giá|A1|/pʁaɪ̯s/
+das Problem|vấn đề|A1|/pʁoˈbleːm/
+das Produkt|sản phẩm|A1|/pʁoˈdʊkt/
+der Pullover|áo len|A1|/pʊˈloː.vɐ/
+pünktlich|đúng giờ|A1|/ˈpʏŋkt.lɪç/
+die Qualität|chất lượng|A1|/kva.liˈtɛːt/
+der Rabatt|giảm giá|A1|/ʁaˈbat/
+der Regen|mưa|A1|/ˈʁeː.ɡən/
+regnen|mưa|A1|/ˈʁeː.ɡnən/
+der Reis|gạo|A1|/ʁaɪ̯s/
+reisen|du lịch|A1|/ˈʁaɪ̯.zən/
+die Reise|chuyến đi|A1|/ˈʁaɪ̯.zə/
+rennen|chạy|A1|/ˈʁɛ.nən/
+das Restaurant|nhà hàng|A1|/ʁɛs.toˈʁɑ̃/
+richtig|đúng|A1|/ˈʁɪç.tɪç/
+riechen|ngửi|A1|/ˈʁiː.xən/
+der Rock|chân váy|A1|/ʁɔk/
+rot|đỏ|A1|/ʁoːt/
+der Rücken|lưng|A1|/ˈʁʏ.kən/
+der Rucksack|ba lô|A1|/ˈʁʊk.zak/
+rufen|gọi|A1|/ˈʁuː.fən/
+ruhig|yên tĩnh|A1|/ˈʁuː.ɪç/
+rund|tròn|A1|/ʁʊnt/
+der Saft|nước ép|A1|/zaft/
+sagen|nói|A1|/ˈzaː.ɡən/
+der Salat|salad|A1|/zaˈlaːt/
+sammeln|sưu tầm|A1|/ˈza.məln/
+der Samstag|thứ Bảy|A1|/ˈzam.staːk/
+satt|no|A1|/zat/
+sauber|sạch|A1|/ˈzaʊ̯.bɐ/
+schade|tiếc|A1|/ˈʃaː.də/
+scharf|cay|A1|/ʃaʁf/
+schauen|nhìn|A1|/ˈʃaʊ̯.ən/
+scheinen|chiếu sáng|A1|/ˈʃaɪ̯.nən/
+schenken|tặng|A1|/ˈʃɛŋ.kən/
+schlafen|ngủ|A1|/ˈʃlaː.fən/
+schlecht|xấu|A1|/ʃlɛçt/
+schließen|đóng|A1|/ˈʃliː.sən/
+der Schlüssel|chìa khóa|A1|/ˈʃlʏ.səl/
+schmecken|có vị|A1|/ˈʃmɛ.kən/
+schmutzig|bẩn|A1|/ˈʃmʊ.t͡sɪç/
+der Schnee|tuyết|A1|/ʃneː/
+schneien|tuyết rơi|A1|/ˈʃnaɪ̯.ən/
+schnell|nhanh|A1|/ʃnɛl/
+schön|đẹp|A1|/ʃøːn/
+der Schrank|cái tủ|A1|/ʃʁaŋk/
+schreiben|viết|A1|/ˈʃʁaɪ̯.bən/
+der Schuh|giày|A1|/ʃuː/
+die Schule|trường học|A1|/ˈʃuː.lə/
+der Schüler|học sinh|A1|/ˈʃyː.lɐ/
+schwimmen|bơi|A1|/ˈʃvɪ.mən/
+schwarz|đen|A1|/ʃvaʁt͡s/
+schwer|khó; nặng|A1|/ʃveːɐ̯/
+die Schwester|chị/em gái|A1|/ˈʃvɛs.tɐ/
+sehr|rất|A1|/zeːɐ̯/
+sein|là|A1|/zaɪ̯n/
+seit|từ|A1|/zaɪ̯t/
+die Seite|trang|A1|/ˈzaɪ̯.tə/
+der Sekt|sâm panh|A1|/zɛkt/
+selbst|tự mình|A1|/zɛlpst/
+selten|hiếm khi|A1|/ˈzɛl.tən/
+der September|tháng Chín|A1|/zɛpˈtɛm.bɐ/
+setzen|đặt, để|A1|/ˈzɛ.t͡sən/
+sicher|chắc chắn|A1|/ˈzɪ.çɐ/
+singen|hát|A1|/ˈzɪ.ŋən/
+sitzen|ngồi|A1|/ˈzɪ.t͡sən/
+so|như vậy|A1|/zoː/
+das Sofa|ghế sofa|A1|/ˈzoː.fa/
+sogar|thậm chí|A1|/zoˈɡaːɐ̯/
+der Sohn|con trai|A1|/zoːn/
+solch|như thế|A1|/zɔlç/
+sollen|nên|A1|/ˈzɔ.lən/
+der Sommer|mùa hè|A1|/ˈzɔ.mɐ/
+die Sonne|mặt trời|A1|/ˈzɔ.nə/
+sonnig|nắng|A1|/ˈzɔ.nɪç/
+der Sonntag|Chủ nhật|A1|/ˈzɔn.taːk/
+sonst|nếu không|A1|/zɔnst/
+sparen|tiết kiệm|A1|/ˈʃpaː.ʁən/
+der Spaß|niềm vui|A1|/ʃpaːs/
+spät|muộn|A1|/ʃpɛːt/
+spazieren|đi dạo|A1|/ʃpaˈt͡siː.ʁən/
+der Speisesaal|phòng ăn|A1|/ˈʃpaɪ̯.zə.zaːl/
+spielen|chơi|A1|/ˈʃpiː.lən/
+die Sprache|ngôn ngữ|A1|/ˈʃpʁaː.xə/
+sprechen|nói|A1|/ˈʃpʁɛ.çən/
+springen|nhảy|A1|/ˈʃpʁɪ.ŋən/
+die Stadt|thành phố|A1|/ʃtat/
+der Stall|chuồng|A1|/ʃtal/
+stark|mạnh|A1|/ʃtaʁk/
+statt|thay vì|A1|/ʃtat/
+stehen|đứng|A1|/ˈʃteː.ən/
+steigen|leo, tăng|A1|/ˈʃtaɪ̯.ɡən/
+der Stein|đá|A1|/ʃtaɪ̯n/
+stellen|đặt|A1|/ˈʃtɛ.lən/
+sterben|chết|A1|/ˈʃtɛʁ.bən/
+der Stern|ngôi sao|A1|/ʃtɛʁn/
+die Steuer|thuế|A1|/ˈʃtɔʏ̯.ɐ/
+der Stift|bút|A1|/ʃtɪft/
+stimmen|đúng|A1|/ˈʃtɪ.mən/
+die Stirn|trán|A1|/ʃtɪʁn/
+der Stoff|chất liệu|A1|/ʃtɔf/
+stolz|tự hào|A1|/ʃtɔlt͡s/
+stören|làm phiền|A1|/ˈʃtøː.ʁən/
+die Straße|con phố|A1|/ˈʃtʁaː.sə/
+streiten|cãi nhau|A1|/ˈʃtʁaɪ̯.tən/
+das Stück|miếng|A1|/ʃtʏk/
+der Student|sinh viên|A1|/ʃtuˈdɛnt/
+studieren|học đại học|A1|/ʃtuˈdiː.ʁən/
+das Studium|việc học|A1|/ˈʃtuː.di̯ʊm/
+die Stunde|giờ|A1|/ˈʃtʊn.də/
+suchen|tìm|A1|/ˈzuː.xən/
+der Süden|phía nam|A1|/ˈzyː.dən/
+süß|ngọt|A1|/zyːs/
+tanzen|nhảy|A1|/ˈtan.t͡sən/
+die Tasche|túi|A1|/ˈta.ʃə/
+das Taschentuch|khăn tay|A1|/ˈta.ʃən.tuːx/
+die Tasse|tách|A1|/ˈta.sə/
+die Tafel|bảng|A1|/ˈtaː.fəl/
+der Tag|ngày|A1|/taːk/
+das Tal|thung lũng|A1|/taːl/
+die Tante|cô|A1|/ˈtan.tə/
+teuer|đắt|A1|/ˈtɔʏ̯.ɐ/
+der Tee|trà|A1|/teː/
+teilen|chia sẻ|A1|/ˈtaɪ̯.lən/
+das Telefon|điện thoại|A1|/te.leˈfoːn/
+telefonieren|gọi điện|A1|/te.le.foˈniː.ʁən/
+der Teller|cái đĩa|A1|/ˈtɛ.lɐ/
+das Thema|chủ đề|A1|/ˈteː.ma/
+die Theorie|lý thuyết|A1|/te.oˈʁiː/
+tief|sâu|A1|/tiːf/
+das Tier|con vật|A1|/tiːɐ̯/
+der Tisch|cái bàn|A1|/tɪʃ/
+die Tochter|con gái|A1|/ˈtɔx.tɐ/
+die Toilette|nhà vệ sinh|A1|/to̯aˈlɛ.tə/
+toll|tuyệt|A1|/tɔl/
+die Tomate|cà chua|A1|/toˈmaː.tə/
+der Topf|nồi|A1|/tɔpf/
+das Tor|cổng|A1|/toːɐ̯/
+tot|chết|A1|/toːt/
+tragen|mặc|A1|/ˈtʁaː.ɡən/
+traurig|buồn|A1|/ˈtʁaʊ̯.ʁɪç/
+treffen|gặp|A1|/ˈtʁɛ.fən/
+treiben|thúc đẩy|A1|/ˈtʁaɪ̯.bən/
+trennen|tách ra|A1|/ˈtʁɛ.nən/
+die Treppe|cầu thang|A1|/ˈtʁɛ.pə/
+trinken|uống|A1|/ˈtʁɪŋ.kən/
+trocken|khô|A1|/ˈtʁɔ.kən/
+die Tube|tuýp|A1|/ˈtuː.bə/
+das Tuch|khăn|A1|/tuːx/
+tun|làm|A1|/tuːn/
+die Tür|cửa|A1|/tyːɐ̯/
+der Turm|tòa tháp|A1|/tʊʁm/
+die U-Bahn|tàu điện ngầm|A1|/ˈuː.baːn/
+üben|luyện tập|A1|/ˈyː.bən/
+über|trên|A1|/ˈyː.bɐ/
+die Übung|bài luyện tập|A1|/ˈyː.bʊŋ/
+die Uhr|đồng hồ|A1|/uːɐ̯/
+um|quanh|A1|/ʊm/
+und|và|A1|/ʊnt/
+der Unfall|tai nạn|A1|/ˈʊn.fal/
+uns|chúng tôi|A1|/ʊns/
+unser|của chúng tôi|A1|/ˈʊn.zɐ/
+unten|ở dưới|A1|/ˈʊn.tən/
+unter|dưới|A1|/ˈʊn.tɐ/
+der Unterricht|giờ học|A1|/ˈʊn.tɐ.ʁɪçt/
+die Universität|đại học|A1|/u.ni.vɛʁ.ziˈtɛːt/
+der Urlaub|kỳ nghỉ|A1|/ˈuːɐ̯.laʊ̯p/
+der Vater|bố|A1|/ˈfaː.tɐ/
+der Verkäufer|người bán hàng|A1|/fɛɐ̯ˈkɔʏ̯.fɐ/
+verkaufen|bán|A1|/fɛɐ̯ˈkaʊ̯.fən/
+der Verkehr|giao thông|A1|/fɛɐ̯ˈkeːɐ̯/
+verlieren|mất, thua|A1|/fɛɐ̯ˈliː.ʁən/
+verstehen|hiểu|A1|/fɛɐ̯ˈʃteː.ən/
+viel|nhiều|A1|/fiːl/
+vielleicht|có lẽ|A1|/fiˈlaɪ̯çt/
+der Vogel|chim|A1|/ˈfoː.ɡəl/
+voll|đầy|A1|/fɔl/
+von|của|A1|/fɔn/
+vor|trước|A1|/foːɐ̯/
+vorbereiten|chuẩn bị|A1|/ˈfoːɐ̯.bə.ʁaɪ̯.tən/
+der Vormittag|buổi sáng|A1|/ˈfoːɐ̯.mɪ.tak/
+vorne|phía trước|A1|/ˈfɔʁ.nə/
+wachsen|mọc|A1|/ˈvak.sən/
+wählen|chọn|A1|/ˈvɛː.lən/
+wahr|đúng|A1|/vaːɐ̯/
+wahrscheinlich|có lẽ|A1|/vaːɐ̯ˈʃaɪ̯n.lɪç/
+die Wand|bức tường|A1|/vant/
+wandern|đi bộ đường dài|A1|/ˈvan.dɐn/
+wann|khi nào|A1|/van/
+warm|ấm|A1|/vaʁm/
+warten|đợi|A1|/ˈvaʁ.tən/
+warum|tại sao|A1|/vaˈʁʊm/
+was|cái gì|A1|/vas/
+waschen|rửa, giặt|A1|/ˈva.ʃən/
+das Wasser|nước|A1|/ˈva.sɐ/
+wechseln|thay đổi|A1|/ˈvɛk.səln/
+der Weg|con đường|A1|/veːk/
+wegen|vì|A1|/ˈveː.ɡən/
+weiblich|nữ|A1|/ˈvaɪ̯p.lɪç/
+weich|mềm|A1|/vaɪ̯ç/
+weil|vì|A1|/vaɪ̯l/
+der Wein|rượu vang|A1|/vaɪ̯n/
+weiß|trắng|A1|/vaɪ̯s/
+weit|xa|A1|/vaɪ̯t/
+welcher|nào|A1|/ˈvɛl.çɐ/
+die Welt|thế giới|A1|/vɛlt/
+wenden|quay, lật|A1|/ˈvɛn.dən/
+wenig|ít|A1|/ˈveː.nɪç/
+wenn|nếu|A1|/vɛn/
+wer|ai|A1|/veːɐ̯/
+werden|trở thành|A1|/ˈveːɐ̯.dən/
+werfen|ném|A1|/ˈvɛʁ.fən/
+das Werk|tác phẩm|A1|/vɛʁk/
+der Wert|giá trị|A1|/veːɐ̯t/
+der Westen|phía tây|A1|/ˈvɛs.tən/
+das Wetter|thời tiết|A1|/ˈvɛ.tɐ/
+wichtig|quan trọng|A1|/ˈvɪç.tɪç/
+wie|như thế nào|A1|/viː/
+wieder|lại|A1|/ˈviː.dɐ/
+wiederholen|nhắc lại|A1|/viː.dɐˈhoː.lən/
+wiegen|cân|A1|/ˈviː.ɡən/
+die Wiese|đồng cỏ|A1|/ˈviː.zə/
+der Wind|gió|A1|/vɪnt/
+der Winter|mùa đông|A1|/ˈvɪn.tɐ/
+wir|chúng tôi|A1|/viːɐ̯/
+wissen|biết|A1|/ˈvɪ.sən/
+wo|ở đâu|A1|/voː/
+die Woche|tuần|A1|/ˈvɔ.xə/
+das Wochenende|cuối tuần|A1|/ˈvɔ.xən.ɛn.də/
+wohl|khỏe|A1|/voːl/
+wohnen|sống, ở|A1|/ˈvoː.nən/
+die Wohnung|căn hộ|A1|/ˈvoː.nʊŋ/
+das Wohnzimmer|phòng khách|A1|/ˈvoːn.t͡sɪ.mɐ/
+wollen|muốn|A1|/ˈvɔ.lən/
+das Wort|từ|A1|/vɔʁt/
+wünschen|chúc; mong|A1|/ˈvʏn.ʃən/
+die Wurst|xúc xích|A1|/vʊʁst/
+die Zahl|con số|A1|/t͡saːl/
+zahlen|thanh toán|A1|/ˈt͡saː.lən/
+der Zahn|răng|A1|/t͡saːn/
+zeigen|chỉ|A1|/ˈt͡saɪ̯.ɡən/
+die Zeit|thời gian|A1|/t͡saɪ̯t/
+die Zeitung|báo|A1|/ˈt͡saɪ̯.tʊŋ/
+das Zelt|lều|A1|/t͡sɛlt/
+zerstören|phá hủy|A1|/t͡sɛɐ̯ˈʃtøː.ʁən/
+das Zeugnis|chứng chỉ|A1|/ˈt͡sɔʏ̯k.nɪs/
+ziehen|kéo|A1|/ˈt͡siː.ən/
+das Ziel|mục tiêu|A1|/t͡siːl/
+ziemlich|khá|A1|/ˈt͡siːm.lɪç/
+das Zimmer|căn phòng|A1|/ˈt͡sɪ.mɐ/
+die Zitrone|quả chanh|A1|/t͡siˈtʁoː.nə/
+zu|đến|A1|/t͡suː/
+der Zucker|đường|A1|/ˈt͡sʊ.kɐ/
+zuerst|trước tiên|A1|/t͡suˈeːɐ̯st/
+der Zug|tàu|A1|/t͡suːk/
+zurück|trở lại|A1|/t͡suˈʁʏk/
+zusammen|cùng nhau|A1|/t͡suˈza.mən/
+zwischen|giữa|A1|/ˈt͡svɪ.ʃən/
+die Zwischenzeit|thời gian chờ|A1|/ˈt͡svɪ.ʃən.t͡saɪ̯t/
+der Zwilling|anh em sinh đôi|A1|/ˈt͡svɪ.lɪŋ/
+zwingen|ép buộc|A1|/ˈt͡svɪ.ŋən/
+der Zwiebel|hành tây|A1|/ˈt͡sviː.bəl/
+zwölf|mười hai|A1|/t͡svœlf/
+die Zypresse|cây bách|A1|/t͡syˈpʁɛ.sə/
+die Abfahrt|sự khởi hành|A2|/ˈap.faːɐ̯t/
+die Absicht|ý định|A2|/ˈap.zɪçt/
+der Alltag|ngày thường|A2|/ˈal.taːk/
+allerdings|tuy nhiên|A2|/ˈal.lɐ.dɪŋs/
+allgemein|chung|A2|/ˈal.ɡə.maɪ̯n/
+die Anzeige|quảng cáo|A2|/ˈan.t͡saɪ̯.ɡə/
+die Apotheke|hiệu thuốc|A2|/a.poˈteː.kə/
+der Appetit|sự ngon miệng|A2|/a.peˈtiːt/
+der Artikel|bài báo|A2|/aʁˈtiː.kəl/
+aufstehen|thức dậy|A2|/ˈaʊ̯f.ʃteː.ən/
+ausgeben|tiêu tiền|A2|/ˈaʊ̯s.ɡeː.bən/
+ausgezeichnet|xuất sắc|A2|/ˈaʊ̯s.ɡə.t͡saɪ̯ç.nət/
+die Auskunft|thông tin|A2|/ˈaʊ̯s.kʊnft/
+das Ausland|nước ngoài|A2|/ˈaʊ̯s.lant/
+ausmachen|tắt|A2|/ˈaʊ̯s.ma.xən/
+die Ausstellung|triển lãm|A2|/ˈaʊ̯s.ʃtɛ.lʊŋ/
+der Ausweis|chứng minh thư|A2|/ˈaʊ̯s.vaɪ̯s/
+der Automat|máy tự động|A2|/aʊ̯.toˈmaːt/
+der Balkon|ban công|A2|/balˈkɔ̃ː/
+die Bank|ngân hàng|A2|/baŋk/
+der Bart|râu|A2|/baːɐ̯t/
+die Batterie|pin|A2|/ba.təˈʁiː/
+der Bauernhof|nông trại|A2|/ˈbaʊ̯.ɐn.hoːf/
+bedeuten|có nghĩa là|A2|/bəˈdɔʏ̯.tən/
+behalten|giữ lại|A2|/bəˈhal.tən/
+beides|cả hai|A2|/ˈbaɪ̯.dəs/
+das Beispiel|ví dụ|A2|/ˈbaɪ̯.ʃpiːl/
+bekannt|nổi tiếng|A2|/bəˈkant/
+beliebt|được yêu thích|A2|/bəˈliːpt/
+bemerken|nhận thấy|A2|/bəˈmɛʁ.kən/
+bequem|thoải mái|A2|/bəˈkveːm/
+bereits|đã rồi|A2|/bəˈʁaɪ̯t͡s/
+berichten|báo cáo|A2|/bəˈʁɪç.tən/
+berühmt|nổi tiếng|A2|/bəˈʁyːmt/
+beschäftigt|bận rộn|A2|/bəˈʃɛf.tɪçt/
+besonders|đặc biệt|A2|/bəˈzɔn.dɐs/
+besser|tốt hơn|A2|/ˈbɛ.sɐ/
+bestimmt|chắc chắn|A2|/bəˈʃtɪmt/
+die Bibliothek|thư viện|A2|/bi.bli.oˈteːk/
+das Billett|vé|A2|/biˈlɛt/
+der Blick|cái nhìn|A2|/blɪk/
+der Bodensee|hồ Bodensee|A2|/ˈboː.dən.zeː/
+die Bühne|sân khấu|A2|/ˈbyː.nə/
+der Brunnen|cái giếng|A2|/ˈbʁʊ.nən/
+das Bügeleisen|bàn là|A2|/ˈbyː.ɡəl.aɪ̯.zən/
+die Bushaltestelle|trạm xe buýt|A2|/ˈbʊs.hal.tə.ʃtɛ.lə/
+der Charakter|tính cách|A2|/kaˈʁak.tɐ/
+der Comic|truyện tranh|A2|/ˈkɔ.mɪk/
+die Creme|kem|A2|/kʁeːm/
+deshalb|vì thế|A2|/ˈdɛs.halp/
+deswegen|do đó|A2|/ˈdɛs.veː.ɡən/
+der Dieb|kẻ trộm|A2|/diːp/
+der Dienstag|thứ Ba|A2|/ˈdiːns.taːk/
+das Ding|đồ vật|A2|/dɪŋ/
+der Direktor|giám đốc|A2|/diˈʁɛk.toːɐ̯/
+die Disco|sàn nhảy|A2|/ˈdɪs.ko/
+der Dom|nhà thờ lớn|A2|/doːm/
+der Donnerstag|thứ Năm|A2|/ˈdɔ.nɐs.taːk/
+das Dorf|ngôi làng|A2|/dɔʁf/
+draußen|bên ngoài|A2|/ˈdʁaʊ̯.sən/
+drehen|quay|A2|/ˈdʁeː.ən/
+dringend|khẩn cấp|A2|/ˈdʁɪ.ŋənt/
+der Druck|cơn áp lực|A2|/dʁʊk/
+der Durscht|cơn khát|A2|/dʊʁst/
+die Ehe|hôn nhân|A2|/ˈeː.ə/
+ehrlich|trung thực|A2|/ˈeːɐ̯.lɪç/
+das Eigentum|tài sản|A2|/ˈaɪ̯.ɡən.tuːm/
+eigentlich|thật ra|A2|/ˈaɪ̯.ɡənt.lɪç/
+eilen|vội vã|A2|/ˈaɪ̯.lən/
+der Eingang|lối vào|A2|/ˈaɪ̯n.ɡaŋ/
+die Einkäufe|việc mua sắm|A2|/ˈaɪ̯n.kɔʏ̯.fə/
+einmal|một lần|A2|/ˈaɪ̯n.maːl/
+einnehmen|thu nhận|A2|/ˈaɪ̯n.neː.mən/
+einsam|cô đơn|A2|/ˈaɪ̯n.zaːm/
+eintreten|bước vào|A2|/ˈaɪ̯n.tʁeː.tən/
+die Empfehlung|lời khuyên|A2|/ɛmˈpfeː.lʊŋ/
+enthalten|chứa|A2|/ɛntˈhal.tən/
+entlang|dọc theo|A2|/ɛntˈlaŋ/
+entscheiden|quyết định|A2|/ɛntˈʃaɪ̯.dən/
+die Entwicklung|sự phát triển|A2|/ɛntˈvɪk.lʊŋ/
+erfinden|phát minh|A2|/ɛɐ̯ˈfɪn.dən/
+erhalten|nhận được|A2|/ɛɐ̯ˈhal.tən/
+sich erholen|nghỉ ngơi|A2|/ɛɐ̯ˈhoː.lən/
+erklären|giải thích|A2|/ɛɐ̯ˈklɛː.ʁən/
+erlauben|cho phép|A2|/ɛɐ̯ˈlaʊ̯.bən/
+erleben|trải nghiệm|A2|/ɛɐ̯ˈleː.bən/
+ernst|nghiêm túc|A2|/ɛʁnst/
+erreichen|đạt được|A2|/ɛɐ̯ˈʁaɪ̯.çən/
+erscheinen|xuất hiện|A2|/ɛɐ̯ˈʃaɪ̯.nən/
+ersetzen|thay thế|A2|/ɛɐ̯ˈzɛ.t͡sən/
+erzählen|kể|A2|/ɛɐ̯ˈt͡sɛː.lən/
+die Fabrik|nhà máy|A2|/faˈbʁiːk/
+das Fach|môn học|A2|/fax/
+die Fahrt|chuyến đi|A2|/faːɐ̯t/
+der Fall|trường hợp|A2|/fal/
+der Fan|cổ động viên|A2|/fɛn/
+faulenzen|lười biếng|A2|/ˈfaʊ̯.lɛn.t͡sən/
+der Feiertag|ngày lễ|A2|/ˈfaɪ̯.ɐ.taːk/
+das Feld|cánh đồng|A2|/fɛlt/
+fern|xa|A2|/fɛʁn/
+das Fest|lễ hội|A2|/fɛst/
+feucht|ẩm ướt|A2|/fɔʏ̯çt/
+das Feuerwehr|đội cứu hỏa|A2|/ˈfɔʏ̯.ɐ.veːɐ̯/
+die Firma|công ty|A2|/ˈfɪʁ.ma/
+die Flöte|sáo|A2|/ˈfløː.tə/
+der Fluch|lời nguyền rủa|A2|/fluːx/
+der Fluss|con sông|A2|/flʊs/
+die Folge|hệ quả|A2|/ˈfɔl.ɡə/
+die Form|hình dạng|A2|/fɔʁm/
+das Foto|bức ảnh|A2|/ˈfoː.to/
+die Frage|câu hỏi|A2|/ˈfʁaː.ɡə/
+die Freizeit|thời gian rảnh|A2|/ˈfʁaɪ̯.t͡saɪ̯t/
+fremd|lạ|A2|/fʁɛmt/
+der Frieden|hòa bình|A2|/ˈfʁiː.dən/
+frieren|đóng băng|A2|/ˈfʁiː.ʁən/
+die Frucht|trái cây|A2|/fʁʊxt/
+das Frühstück|bữa sáng|A2|/ˈfʁyː.ʃtʏk/
+die Fuge|khe hở|A2|/ˈfuː.ɡə/
+führen|dẫn đầu|A2|/ˈfyː.ʁən/
+der Führer|người hướng dẫn|A2|/ˈfyː.ʁɐ/
+der Fund|sự tìm thấy|A2|/fʊnt/
+der Fußball|bóng đá|A2|/ˈfuːs.bal/
+das Gas|khí ga|A2|/ɡaːs/
+der Gast|khách|A2|/ɡast/
+das Gebiet|khu vực|A2|/ɡəˈbiːt/
+das Gebäude|tòa nhà|A2|/ɡəˈbɔʏ̯.də/
+das Gebot|điều răn|A2|/ɡəˈboːt/
+der Gebrauch|việc sử dụng|A2|/ɡəˈbʁaʊ̯x/
+geduldig|kiên nhẫn|A2|/ɡəˈdʊl.dɪç/
+die Gefahr|nguy hiểm|A2|/ɡəˈfaːɐ̯/
+das Gefängnis|nhà tù|A2|/ɡəˈfɛŋ.nɪs/
+das Gegenteil|điều ngược lại|A2|/ˈɡeː.ɡən.taɪ̯l/
+der Gegner|đối thủ|A2|/ˈɡeː.ɡnɐ/
+geheim|bí mật|A2|/ɡəˈhaɪ̯m/
+das Gehalt|tiền lương|A2|/ɡəˈhalt/
+der Geist|tinh thần|A2|/ɡaɪ̯st/
+die Gelegenheit|cơ hội|A2|/ɡəˈleː.ɡən.haɪ̯t/
+das Gemüse|rau củ|A2|/ɡəˈmyː.zə/
+gemütlich|ấm cúng|A2|/ɡəˈmyːt.lɪç/
+der General|tướng quân|A2|/ɡe.neˈʁaːl/
+genießen|thưởng thức|A2|/ɡəˈniː.sən/
+das Genie|thiên tài|A2|/ʒeˈniː/
+die Gerechtigkeit|công lý|A2|/ɡəˈʁɛç.tɪç.kaɪ̯t/
+das Gericht|tòa án|A2|/ɡəˈʁɪçt/
+der Geschmack|hương vị|A2|/ɡəˈʃmak/
+das Gesicht|khuôn mặt|A2|/ɡəˈzɪçt/
+die Gesellschaft|xã hội|A2|/ɡəˈzɛl.ʃaft/
+das Gesetz|luật pháp|A2|/ɡəˈzɛt͡s/
+das Gespräch|cuộc trò chuyện|A2|/ɡəˈʃpʁɛːç/
+die Gesundheit|sức khỏe|A2|/ɡəˈzʊnt.haɪ̯t/
+das Gewicht|cân nặng|A2|/ɡəˈvɪçt/
+das Gewitter|giông bão|A2|/ɡəˈvɪ.tɐ/
+gewöhnen|quen với|A2|/ɡəˈvøː.nən/
+der Gipfel|đỉnh núi|A2|/ˈɡɪp.fəl/
+das Glas|cái ly|A2|/ɡlaːs/
+glauben|tin|A2|/ˈɡlaʊ̯.bən/
+gleich|ngay|A2|/ɡlaɪ̯ç/
+das Gleis|đường ray|A2|/ɡlaɪ̯s/
+der Glanz|sự tỏa sáng|A2|/ɡlant͡s/
+der Grad|độ|A2|/ɡʁaːt/
+gratulieren|chúc mừng|A2|/ɡʁa.tuˈliː.ʁən/
+das Gras|cỏ|A2|/ɡʁaːs/
+die Grenze|biên giới|A2|/ˈɡʁɛn.t͡sə/
+die Großmutter|bà|A2|/ˈɡʁoːs.mʊ.tɐ/
+der Großvater|ông|A2|/ˈɡʁoːs.faː.tɐ/
+die Gruppe|nhóm|A2|/ˈɡʁʊ.pə/
+der Gruß|lời chào|A2|/ɡʁuːs/
+der Grund|lý do|A2|/ɡʁʊnt/
+die Grundschule|trường tiểu học|A2|/ˈɡʁʊnt.ʃuː.lə/
+gucken|nhìn|A2|/ˈɡʊ.kən/
+günstig|thuận lợi|A2|/ˈɡʏn.stɪç/
+der Hafen|cảng|A2|/ˈhaː.fən/
+die Halle|hội trường|A2|/ˈha.lə/
+der Hals|cổ|A2|/hals/
+die Haltestelle|trạm dừng|A2|/ˈhal.tə.ʃtɛ.lə/
+das Handtuch|khăn tắm|A2|/ˈhant.tuːx/
+die Handtasche|túi xách|A2|/ˈhant.ta.ʃə/
+das Handy|điện thoại|A2|/ˈhɛn.di/
+hart|cứng|A2|/haʁt/
+die Hausfrau|nội trợ|A2|/ˈhaʊ̯s.fʁaʊ̯/
+die Heimat|quê hương|A2|/ˈhaɪ̯.maːt/
+der Helm|mũ bảo hiểm|A2|/hɛlm/
+der Herd|bếp lò|A2|/heːɐ̯t/
+das Herz|trái tim|A2|/hɛʁt͡s/
+das Hindernis|chướng ngại vật|A2|/ˈhɪn.dɐ.nɪs/
+hinter|phía sau|A2|/ˈhɪn.tɐ/
+der Hintern|mông|A2|/ˈhɪn.tɐn/
+der Hof|sân|A2|/hoːf/
+hoffen|hy vọng|A2|/ˈhɔ.fən/
+hoffentlich|hy vọng rằng|A2|/ˈhɔ.fənt.lɪç/
+die Hochzeit|đám cưới|A2|/ˈhɔx.t͡saɪ̯t/
+das Holz|gỗ|A2|/hɔlt͡s/
+die Industrie|công nghiệp|A2|/ɪn.dʊsˈtʁiː/
+der Ingenieur|kỹ sư|A2|/ɪn.ʒeˈni̯øːɐ̯/
+das Insekt|côn trùng|A2|/ɪnˈzɛkt/
+das Instrument|nhạc cụ|A2|/ɪn.stʁuˈmɛnt/
+das Interesse|sự quan tâm|A2|/ɪn.təˈʁɛ.sə/
+interessant|thú vị|A2|/ɪn.tə.ʁɛˈsant/
+die Insel|hòn đảo|A2|/ˈɪn.zəl/
+der Jahrgang|niên khóa|A2|/ˈjaːɐ̯.ɡaŋ/
+die Jahreszeit|mùa|A2|/ˈjaː.ʁəs.t͡saɪ̯t/
+die Jeans|quần bò|A2|/d͡ʒiːns/
+jedoch|tuy nhiên|A2|/jeˈdɔx/
+der Juli|tháng 7|A2|/ˈjuː.li/
+der Juni|tháng 6|A2|/ˈjuː.ni/
+der Kaiser|hoàng đế|A2|/ˈkaɪ̯.zɐ/
+der Kamin|lò sưởi|A2|/kaˈmiːn/
+der Kampf|cuộc chiến|A2|/kampf/
+das Kanu|xuồng|A2|/ˈka.nu/
+die Karte|thẻ|A2|/ˈkaʁ.tə/
+die Kartoffel|khoai tây|A2|/kaʁˈtɔ.fəl/
+die Katze|con mèo|A2|/ˈka.t͡sə/
+das Kaufhaus|cửa hàng bách hóa|A2|/ˈkaʊ̯f.haʊ̯s/
+kaum|hầu như không|A2|/kaʊ̯m/
+kein|không|A2|/kaɪ̯n/
+der Keller|tầng hầm|A2|/ˈkɛ.lɐ/
+der Kellner|bồi bàn|A2|/ˈkɛl.nɐ/
+kennen|biết|A2|/ˈkɛ.nən/
+die Kenntnis|kiến thức|A2|/ˈkɛnt.nɪs/
+der Kiosk|quầy báo|A2|/ˈkiː.ɔsk/
+die Kirche|nhà thờ|A2|/ˈkɪʁ.çə/
+das Klavier|đàn piano|A2|/klaˈviːɐ̯/
+kleben|dán|A2|/ˈkleː.bən/
+klopfen|gõ cửa|A2|/ˈklɔ.pfən/
+der Knabe|cậu bé|A2|/ˈknaː.bə/
+kneifen|véo|A2|/ˈknaɪ̯.fən/
+der Knopf|cúc áo|A2|/knɔpf/
+korrigieren|sửa lỗi|A2|/kɔ.ʁiˈɡiː.ʁən/
+die Kraft|sức mạnh|A2|/kʁaft/
+der Kreis|vòng tròn|A2|/kʁaɪ̯s/
+die Kreide|phấn viết|A2|/ˈkʁaɪ̯.də/
+der Krieg|chiến tranh|A2|/kʁiːk/
+der Kugelschreiber|bút bi|A2|/ˈkuː.ɡəl.ʃʁaɪ̯.bɐ/
+die Kunst|nghệ thuật|A2|/kʊnst/
+der Lärm|tiếng ồn|A2|/lɛʁm/
+die Last|gánh nặng|A2|/last/
+die Laune|tâm trạng|A2|/ˈlaʊ̯.nə/
+der Lebenslauf|sơ yếu lý lịch|A2|/ˈleː.bəns.laʊ̯f/
+leise|nhỏ|A2|/ˈlaɪ̯.zə/
+lieb|đáng yêu|A2|/liːp/
+das Lied|bài hát|A2|/liːt/
+der Lift|thang máy|A2|/lɪft/
+der Link|đường link|A2|/lɪŋk/
+die Lippe|môi|A2|/ˈlɪ.pə/
+die Liste|danh sách|A2|/ˈlɪs.tə/
+der Lkw|xe tải|A2|/ˌɛl.kaːˈveː/
+das Loch|lỗ|A2|/lɔx/
+der Löffel|thìa|A2|/ˈlœ.fəl/
+die Logik|logic|A2|/ˈloː.ɡɪk/
+sich lohnen|đáng giá|A2|/ˈloː.nən/
+das Los|số phận|A2|/loːs/
+die Macht|quyền lực|A2|/maxt/
+die Magie|phép thuật|A2|/maˈɡiː/
+die Mail|thư điện tử|A2|/meːl/
+die Mahlzeit|bữa ăn|A2|/ˈmaːl.t͡saɪ̯t/
+die Mannschaft|đội|A2|/ˈman.ʃaft/
+der Mantel|áo khoác|A2|/ˈman.təl/
+die Mappe|cặp tài liệu|A2|/ˈma.pə/
+die Mauer|bức tường|A2|/ˈmaʊ̯.ɐ/
+die Medizin|thuốc|A2|/me.diˈt͡siːn/
+das Meer|biển|A2|/meːɐ̯/
+mehr|nhiều hơn|A2|/meːɐ̯/
+die Mehrheit|đa số|A2|/ˈmeːɐ̯.haɪ̯t/
+meinen|cho rằng|A2|/ˈmaɪ̯.nən/
+die Meinung|ý kiến|A2|/ˈmaɪ̯.nʊŋ/
+der Meister|bậc thầy|A2|/ˈmaɪ̯.stɐ/
+die Melodie|giai điệu|A2|/me.loˈdiː/
+die Menge|số lượng|A2|/ˈmɛ.ŋə/
+der Mensch|con người|A2|/mɛnʃ/
+die Messe|hội chợ|A2|/ˈmɛ.sə/
+das Messer|con dao|A2|/ˈmɛ.sɐ/
+der Meter|mét|A2|/ˈmeː.tɐ/
+die Minderheit|thiểu số|A2|/ˈmɪn.dɐ.haɪ̯t/
+der Minirock|váy ngắn|A2|/ˈmɪ.ni.ʁɔk/
+die Minute|phút|A2|/miˈnuː.tə/
+das Mitglied|thành viên|A2|/ˈmɪt.ɡliːt/
+das Mittel|phương tiện|A2|/ˈmɪ.təl/
+der Mond|mặt trăng|A2|/moːnt/
+der Nachbar|hàng xóm|A2|/ˈnax.baːɐ̯/
+der Nachteil|nhược điểm|A2|/ˈnaːx.taɪ̯l/
+die Natur|tự nhiên|A2|/naˈtuːɐ̯/
+der Nebel|sương mù|A2|/ˈneː.bəl/
+das Netz|lưới|A2|/nɛt͡s/
+die Neuigkeit|tin mới|A2|/ˈnɔʏ̯.ɪç.kaɪ̯t/
+nun|bây giờ|A2|/nuːn/
+der Offizier|sĩ quan|A2|/ɔ.fiˈt͡siːɐ̯/
+die Oper|nhà hát opera|A2|/ˈoː.pɐ/
+die Ordnung|trật tự|A2|/ˈɔʁt.nʊŋ/
+das Paar|cặp đôi|A2|/paːɐ̯/
+das Paket|bưu kiện|A2|/paˈkeːt/
+das Pflaster|băng dán|A2|/ˈpflas.tɐ/
+die Pflaume|quả mận|A2|/ˈpflaʊ̯.mə/
+die Polizei|cảnh sát|A2|/po.liˈt͡saɪ̯/
+das Praktikum|thực tập|A2|/ˈpʁak.ti.kʊm/
+der Präsident|tổng thống|A2|/pʁɛ.ziˈdɛnt/
+die Prüfung|kỳ thi|A2|/ˈpʁyː.fʊŋ/
+die Puppe|búp bê|A2|/ˈpʊ.pə/
+die Quelle|nguồn|A2|/ˈkvɛ.lə/
+der Rahm|kem|A2|/ʁaːm/
+der Rand|rìa|A2|/ʁant/
+der Rat|lời khuyên|A2|/ʁaːt/
+das Rathaus|tòa thị chính|A2|/ˈʁaːt.haʊ̯s/
+rauchen|hút thuốc|A2|/ˈʁaʊ̯.xən/
+der Raum|căn phòng|A2|/ʁaʊ̯m/
+die Rechnung|hóa đơn|A2|/ˈʁɛç.nʊŋ/
+die Regel|quy tắc|A2|/ˈʁeː.ɡəl/
+regelmäßig|đều đặn|A2|/ˈʁeː.ɡəl.mɛː.sɪç/
+der Reichtum|sự giàu có|A2|/ˈʁaɪ̯ç.tuːm/
+die Reihe|hàng|A2|/ˈʁaɪ̯.ə/
+der Reifen|lốp xe|A2|/ˈʁaɪ̯.fən/
+die Rente|lương hưu|A2|/ˈʁɛn.tə/
+der Richter|thẩm phán|A2|/ˈʁɪç.tɐ/
+die Richtung|hướng|A2|/ˈʁɪç.tʊŋ/
+das Risiko|rủi ro|A2|/ˈʁiː.zi.ko/
+der Roman|tiểu thuyết|A2|/ʁoˈmaːn/
+die Römer|người La Mã|A2|/ˈʁøː.mɐ/
+die Rose|hoa hồng|A2|/ˈʁoː.zə/
+der Ruhm|danh vọng|A2|/ʁuːm/
+die Sache|vật, việc|A2|/ˈza.xə/
+der Saal|hội trường|A2|/zaːl/
+die Sahne|kem tươi|A2|/ˈzaː.nə/
+der Satz|câu|A2|/zat͡s/
+sauer|chua|A2|/ˈzaʊ̯.ɐ/
+die Schale|bát|A2|/ˈʃaː.lə/
+der Schatten|bóng|A2|/ˈʃa.tən/
+der Schauspieler|diễn viên|A2|/ˈʃaʊ̯.ʃpiː.lɐ/
+scheiden|chia tay|A2|/ˈʃaɪ̯.dən/
+der Schein|vẻ bề ngoài|A2|/ʃaɪ̯n/
+schenken|tặng|A2|/ˈʃɛŋ.kən/
+der Schmerz|nỗi đau|A2|/ʃmɛʁt͡s/
+der Schmuck|trang sức|A2|/ʃmʊk/
+der Schnaps|rượu mạnh|A2|/ʃnaps/
+die Schnecke|ốc sên|A2|/ˈʃnɛ.kə/
+schneiden|cắt|A2|/ˈʃnaɪ̯.dən/
+der Schnupfen|cảm lạnh|A2|/ˈʃnʊ.pfən/
+die Schokolade|sô cô la|A2|/ʃo.koˈlaː.də/
+der Schreck|nỗi sợ|A2|/ʃʁɛk/
+schütteln|lắc|A2|/ˈʃʏ.təln/
+schützen|bảo vệ|A2|/ˈʃʏ.t͡sən/
+die Schuld|lỗi|A2|/ʃʊlt/
+die Schulter|vai|A2|/ˈʃʊl.tɐ/
+der Schwamm|bọt biển|A2|/ʃvam/
+schweigen|im lặng|A2|/ˈʃvaɪ̯.ɡən/
+der Schweiß|mồ hôi|A2|/ʃvaɪ̯s/
+schwer|nặng|A2|/ʃveːɐ̯/
+der Schwert|thanh kiếm|A2|/ʃveːɐ̯t/
+der See|hồ|A2|/zeː/
+die See|biển|A2|/zeː/
+das Segel|cánh buồm|A2|/ˈzeː.ɡəl/
+segnen|ban phước|A2|/ˈzeː.ɡnən/
+die Seide|lụa|A2|/ˈzaɪ̯.də/
+die Seife|xà phòng|A2|/ˈzaɪ̯.fə/
+der Seemann|thủy thủ|A2|/ˈzeː.man/
+die Sehenswürdigkeit|điểm tham quan|A2|/ˈzeː.əns.vʏʁ.dɪç.kaɪ̯t/
+die Sehnsucht|nỗi nhớ|A2|/ˈzeːn.zʊxt/
+seltsam|lạ lùng|A2|/ˈzɛlt.zaːm/
+die Sendung|chương trình|A2|/ˈzɛn.dʊŋ/
+der Sinn|ý nghĩa|A2|/zɪn/
+die Sitte|phong tục|A2|/ˈzɪ.tə/
+die Sitzung|buổi họp|A2|/ˈzɪ.t͡sʊŋ/
+der Ski|ván trượt|A2|/ʃiː/
+der Soldat|người lính|A2|/zɔlˈdaːt/
+sondern|mà là|A2|/ˈzɔn.dɐn/
+die Sorge|nỗi lo|A2|/ˈzɔʁ.ɡə/
+die Sorte|loại|A2|/ˈzɔʁ.tə/
+das Spiel|trò chơi|A2|/ʃpiːl/
+die Spitze|đầu nhọn|A2|/ˈʃpɪ.t͡sə/
+der Sport|thể thao|A2|/ʃpɔʁt/
+die Sprache|ngôn ngữ|A2|/ˈʃpʁaː.xə/
+die Spur|dấu vết|A2|/ʃpuːɐ̯/
+der Staat|nhà nước|A2|/ʃtaːt/
+der Stadtrand|ngoại ô|A2|/ˈʃtat.ʁant/
+der Stand|vị trí|A2|/ʃtant/
+die Station|trạm|A2|/ʃtaˈt͡si̯oːn/
+die Statistik|thống kê|A2|/ʃtaˈtɪs.tɪk/
+die Stelle|vị trí|A2|/ˈʃtɛ.lə/
+die Steuer|thuế|A2|/ˈʃtɔʏ̯.ɐ/
+der Stiefel|ủng|A2|/ˈʃtiː.fəl/
+der Stil|phong cách|A2|/ʃtiːl/
+der Stock|tầng|A2|/ʃtɔk/
+der Stolz|niềm tự hào|A2|/ʃtɔlt͡s/
+der Strand|bãi biển|A2|/ʃtʁant/
+der Streit|cuộc cãi vã|A2|/ʃtʁaɪ̯t/
+das Streichholz|que diêm|A2|/ˈʃtʁaɪ̯ç.hɔlt͡s/
+der Strom|dòng điện|A2|/ʃtʁoːm/
+die Strömung|dòng chảy|A2|/ˈʃtʁøː.mʊŋ/
+die Strophe|khổ thơ|A2|/ˈʃtʁoː.fə/
+das Stück|mảnh|A2|/ʃtʏk/
+der Stuhl|ghế|A2|/ʃtuːl/
+die Stunde|giờ|A2|/ˈʃtʊn.də/
+der Sturm|cơn bão|A2|/ʃtʊʁm/
+die Stütze|sự hỗ trợ|A2|/ˈʃtʏ.t͡sə/
+suchen|tìm|A2|/ˈzuː.xən/
+die Summe|tổng|A2|/ˈzʊ.mə/
+der Supermarkt|siêu thị|A2|/ˈzuː.pɐ.maʁkt/
+die Suppe|súp|A2|/ˈzʊ.pə/
+die Süßigkeit|đồ ngọt|A2|/ˈzyː.sɪç.kaɪ̯t/
+die Tablette|viên thuốc|A2|/taˈblɛ.tə/
+der Tabak|thuốc lá|A2|/ˈta.bak/
+das Tablett|cái khay|A2|/taˈblɛt/
+die Tageszeitung|báo hàng ngày|A2|/ˈtaː.ɡəs.t͡saɪ̯.tʊŋ/
+der Tanz|điệu nhảy|A2|/tant͡s/
+die Tapete|giấy dán tường|A2|/taˈpeː.tə/
+tapfer|dũng cảm|A2|/ˈtap.fɐ/
+die Tasche|túi|A2|/ˈta.ʃə/
+die Tasse|tách|A2|/ˈta.sə/
+die Tat|hành động|A2|/taːt/
+die Tätigkeit|hoạt động|A2|/ˈtɛː.tɪç.kaɪ̯t/
+das Taxi|taxi|A2|/ˈtak.si/
+der Tee|trà|A2|/teː/
+teilen|chia|A2|/ˈtaɪ̯.lən/
+der Teppich|thảm|A2|/ˈtɛ.pɪç/
+die Terrasse|sân thượng|A2|/tɛˈʁa.sə/
+der Test|bài kiểm tra|A2|/tɛst/
+teuer|đắt|A2|/ˈtɔʏ̯.ɐ/
+der Text|văn bản|A2|/tɛkst/
+das Theater|nhà hát|A2|/teˈaː.tɐ/
+das Thema|chủ đề|A2|/ˈteː.ma/
+die Theorie|lý thuyết|A2|/te.oˈʁiː/
+das Tier|động vật|A2|/tiːɐ̯/
+der Tipp|lời khuyên|A2|/tɪp/
+der Tisch|bàn|A2|/tɪʃ/
+der Titel|tiêu đề|A2|/ˈtiː.təl/
+die Tochter|con gái|A2|/ˈtɔx.tɐ/
+der Tod|cái chết|A2|/toːt/
+die Toilette|nhà vệ sinh|A2|/to̯aˈlɛ.tə/
+toll|tuyệt|A2|/tɔl/
+die Tomate|cà chua|A2|/toˈmaː.tə/
+der Ton|âm thanh|A2|/toːn/
+das Tor|cổng|A2|/toːɐ̯/
+die Torte|bánh kem|A2|/ˈtɔʁ.tə/
+tot|chết|A2|/toːt/
+der Tourist|khách du lịch|A2|/tuˈʁɪst/
+die Tradition|truyền thống|A2|/tʁa.diˈt͡si̯oːn/
+tragen|mặc, mang|A2|/ˈtʁaː.ɡən/
+der Traum|giấc mơ|A2|/tʁaʊ̯m/
+traurig|buồn|A2|/ˈtʁaʊ̯.ʁɪç/
+treffen|gặp|A2|/ˈtʁɛ.fən/
+treiben|thúc đẩy|A2|/ˈtʁaɪ̯.bən/
+trennen|tách|A2|/ˈtʁɛ.nən/
+die Treppe|cầu thang|A2|/ˈtʁɛ.pə/
+trinken|uống|A2|/ˈtʁɪŋ.kən/
+trocken|khô|A2|/ˈtʁɔ.kən/
+die Trommel|trống|A2|/ˈtʁɔ.məl/
+der Tropfen|giọt|A2|/ˈtʁɔ.pfən/
+tropfen|nhỏ giọt|A2|/ˈtʁɔ.pfən/
+die Tube|tuýp|A2|/ˈtuː.bə/
+das Tuch|khăn|A2|/tuːx/
+tun|làm|A2|/tuːn/
+die Tür|cửa|A2|/tyːɐ̯/
+der Turm|tháp|A2|/tʊʁm/
+die U-Bahn|tàu điện|A2|/ˈuː.baːn/
+üben|luyện tập|A2|/ˈyː.bən/
+über|trên|A2|/ˈyː.bɐ/
+überall|khắp nơi|A2|/yː.bɐˈʔal/
+überlegen|suy nghĩ|A2|/ˌyː.bɐˈleː.ɡən/
+übermorgen|ngày kia|A2|/ˈyː.bɐ.mɔʁ.ɡən/
+übernachten|qua đêm|A2|/yː.bɐˈnax.tən/
+übernehmen|đảm nhận|A2|/yː.bɐˈneː.mən/
+überraschen|làm ngạc nhiên|A2|/yː.bɐˈʁa.ʃən/
+übersetzen|dịch|A2|/ˌyː.bɐˈzɛ.t͡sən/
+übertreiben|phóng đại|A2|/yː.bɐˈtʁaɪ̯.bən/
+übrigens|nhân tiện|A2|/ˈyː.bʁɪ.ɡəns/
+die Übung|bài tập|A2|/ˈyː.bʊŋ/
+die Uhr|đồng hồ|A2|/uːɐ̯/
+um|quanh|A2|/ʊm/
+umarmen|ôm|A2|/ʊmˈʔaʁ.mən/
+umsteigen|chuyển tàu|A2|/ˈʊm.ʃtaɪ̯.ɡən/
+umziehen|chuyển nhà|A2|/ˈʊm.t͡siː.ən/
+und|và|A2|/ʊnt/
+die Unfall|tai nạn|A2|/ˈʊn.fal/
+unheimlich|kỳ lạ|A2|/ʊnˈhaɪ̯m.lɪç/
+die Universität|đại học|A2|/u.ni.vɛʁ.ziˈtɛːt/
+unser|của chúng tôi|A2|/ˈʊn.zɐ/
+unten|ở dưới|A2|/ˈʊn.tən/
+unter|dưới|A2|/ˈʊn.tɐ/
+unterhalten|giải trí|A2|/ʊn.tɐˈhal.tən/
+die Unterhaltung|cuộc trò chuyện|A2|/ʊn.tɐˈhal.tʊŋ/
+unterrichten|giảng dạy|A2|/ʊn.tɐˈʁɪç.tən/
+der Unterricht|giờ học|A2|/ˈʊn.tɐ.ʁɪçt/
+unterscheiden|phân biệt|A2|/ʊn.tɐˈʃaɪ̯.dən/
+unterschreiben|ký tên|A2|/ʊn.tɐˈʃʁaɪ̯.bən/
+die Unterschrift|chữ ký|A2|/ˈʊn.tɐ.ʃʁɪft/
+unterwegs|trên đường|A2|/ʊn.tɐˈveːks/
+der Urlaub|kỳ nghỉ|A2|/ˈuːɐ̯.laʊ̯p/
+die Ursache|nguyên nhân|A2|/ˈuːɐ̯.za.xə/
+der Vater|bố|A2|/ˈfaː.tɐ/
+der Verband|băng gạc|A2|/fɛɐ̯ˈbant/
+verbieten|cấm|A2|/fɛɐ̯ˈbiː.tən/
+verbinden|kết nối|A2|/fɛɐ̯ˈbɪn.dən/
+verdienen|kiếm tiền|A2|/fɛɐ̯ˈdiː.nən/
+der Verein|câu lạc bộ|A2|/fɛɐ̯ˈʔaɪ̯n/
+vergangen|đã qua|A2|/fɛɐ̯ˈɡa.ŋən/
+vergleichen|so sánh|A2|/fɛɐ̯ˈɡlaɪ̯.çən/
+das Verhältnis|mối quan hệ|A2|/fɛɐ̯ˈhɛlt.nɪs/
+verkaufen|bán|A2|/fɛɐ̯ˈkaʊ̯.fən/
+der Verkehr|giao thông|A2|/fɛɐ̯ˈkeːɐ̯/
+verlassen|rời bỏ|A2|/fɛɐ̯ˈla.sən/
+verletzen|làm bị thương|A2|/fɛɐ̯ˈlɛ.t͡sən/
+verlieren|mất|A2|/fɛɐ̯ˈliː.ʁən/
+der Verlust|sự mất mát|A2|/fɛɐ̯ˈlʊst/
+die Vermietung|cho thuê|A2|/fɛɐ̯ˈmiː.tʊŋ/
+verpassen|bỏ lỡ|A2|/fɛɐ̯ˈpa.sən/
+die Vernunft|lý trí|A2|/fɛɐ̯ˈnʊnft/
+verpassen|bỏ lỡ|A2|/fɛɐ̯ˈpa.sən/
+die Versicherung|bảo hiểm|A2|/fɛɐ̯ˈzɪ.çə.ʁʊŋ/
+die Verspätung|sự trễ|A2|/fɛɐ̯ˈʃpɛː.tʊŋ/
+verstehen|hiểu|A2|/fɛɐ̯ˈʃteː.ən/
+versuchen|thử|A2|/fɛɐ̯ˈzuː.xən/
+der Vertrag|hợp đồng|A2|/fɛɐ̯ˈtʁaːk/
+vertrauen|tin tưởng|A2|/fɛɐ̯ˈtʁaʊ̯.ən/
+verwenden|sử dụng|A2|/fɛɐ̯ˈvɛn.dən/
+der Verwandte|họ hàng|A2|/fɛɐ̯ˈvant.tə/
+viel|nhiều|A2|/fiːl/
+vielleicht|có lẽ|A2|/fiˈlaɪ̯çt/
+das Viertel|một phần tư|A2|/ˈfɪʁ.təl/
+der Vogel|chim|A2|/ˈfoː.ɡəl/
+der Vokal|nguyên âm|A2|/voˈkaːl/
+voll|đầy|A2|/fɔl/
+von|của|A2|/fɔn/
+vor|trước|A2|/foːɐ̯/
+vorbei|qua|A2|/foːɐ̯ˈbaɪ̯/
+vorbereiten|chuẩn bị|A2|/ˈfoːɐ̯.bə.ʁaɪ̯.tən/
+das Vorbild|hình mẫu|A2|/ˈfoːɐ̯.bɪlt/
+vorher|trước đó|A2|/foːɐ̯ˈheːɐ̯/
+der Vormittag|buổi sáng|A2|/ˈfoːɐ̯.mɪ.tak/
+vorne|phía trước|A2|/ˈfɔʁ.nə/
+der Vorschlag|đề xuất|A2|/ˈfoːɐ̯.ʃlaːk/
+vorsichtig|cẩn thận|A2|/ˈfoːɐ̯.zɪç.tɪç/
+die Vorschrift|quy định|A2|/ˈfoːɐ̯.ʃʁɪft/
+die Vorstellung|buổi biểu diễn|A2|/ˈfoːɐ̯.ʃtɛ.lʊŋ/
+der Vorteil|lợi thế|A2|/ˈfoːɐ̯.taɪ̯l/
+vorstellen|giới thiệu|A2|/ˈfoːɐ̯.ʃtɛ.lən/
+wachsen|mọc|A2|/ˈvak.sən/
+die Waffe|vũ khí|A2|/ˈva.fə/
+wählen|chọn|A2|/ˈvɛː.lən/
+während|trong khi|A2|/ˈvɛː.ʁənt/
+wahr|đúng|A2|/vaːɐ̯/
+wahrscheinlich|có lẽ|A2|/vaːɐ̯ˈʃaɪ̯n.lɪç/
+der Wald|rừng|A2|/valt/
+die Wand|tường|A2|/vant/
+wandern|đi bộ|A2|/ˈvan.dɐn/
+die Wanderung|chuyến đi bộ|A2|/ˈvan.də.ʁʊŋ/
+wann|khi nào|A2|/van/
+die Ware|hàng hóa|A2|/ˈvaː.ʁə/
+warm|ấm|A2|/vaʁm/
+warten|đợi|A2|/ˈvaʁ.tən/
+warum|tại sao|A2|/vaˈʁʊm/
+was|cái gì|A2|/vas/
+waschen|rửa|A2|/ˈva.ʃən/
+das Wasser|nước|A2|/ˈva.sɐ/
+wechseln|thay đổi|A2|/ˈvɛk.səln/
+der Weg|đường|A2|/veːk/
+wegen|vì|A2|/ˈveː.ɡən/
+weiblich|nữ|A2|/ˈvaɪ̯p.lɪç/
+weich|mềm|A2|/vaɪ̯ç/
+weil|vì|A2|/vaɪ̯l/
+der Wein|rượu|A2|/vaɪ̯n/
+weiß|trắng|A2|/vaɪ̯s/
+weit|xa|A2|/vaɪ̯t/
+welcher|nào|A2|/ˈvɛl.çɐ/
+die Welt|thế giới|A2|/vɛlt/
+wenden|quay|A2|/ˈvɛn.dən/
+wenig|ít|A2|/ˈveː.nɪç/
+wenn|nếu|A2|/vɛn/
+wer|ai|A2|/veːɐ̯/
+werden|trở thành|A2|/ˈveːɐ̯.dən/
+werfen|ném|A2|/ˈvɛʁ.fən/
+das Werk|tác phẩm|A2|/vɛʁk/
+der Wert|giá trị|A2|/veːɐ̯t/
+der Westen|phía tây|A2|/ˈvɛs.tən/
+das Wetter|thời tiết|A2|/ˈvɛ.tɐ/
+wichtig|quan trọng|A2|/ˈvɪç.tɪç/
+wie|như thế nào|A2|/viː/
+wieder|lại|A2|/ˈviː.dɐ/
+wiederholen|nhắc lại|A2|/viː.dɐˈhoː.lən/
+wiegen|cân|A2|/ˈviː.ɡən/
+die Wiese|đồng cỏ|A2|/ˈviː.zə/
+der Wind|gió|A2|/vɪnt/
+der Winter|mùa đông|A2|/ˈvɪn.tɐ/
+wir|chúng tôi|A2|/viːɐ̯/
+wissen|biết|A2|/ˈvɪ.sən/
+wo|ở đâu|A2|/voː/
+die Woche|tuần|A2|/ˈvɔ.xə/
+das Wochenende|cuối tuần|A2|/ˈvɔ.xən.ɛn.də/
+wohl|khỏe|A2|/voːl/
+wohnen|sống|A2|/ˈvoː.nən/
+die Wohnung|căn hộ|A2|/ˈvoː.nʊŋ/
+das Wohnzimmer|phòng khách|A2|/ˈvoːn.t͡sɪ.mɐ/
+wollen|muốn|A2|/ˈvɔ.lən/
+das Wort|từ|A2|/vɔʁt/
+wünschen|chúc|A2|/ˈvʏn.ʃən/
+die Wurst|xúc xích|A2|/vʊʁst/
+die Zahl|số|A2|/t͡saːl/
+zahlen|thanh toán|A2|/ˈt͡saː.lən/
+der Zahn|răng|A2|/t͡saːn/
+zeigen|chỉ|A2|/ˈt͡saɪ̯.ɡən/
+die Zeit|thời gian|A2|/t͡saɪ̯t/
+die Zeitung|báo|A2|/ˈt͡saɪ̯.tʊŋ/
+das Zelt|lều|A2|/t͡sɛlt/
+zerstören|phá hủy|A2|/t͡sɛɐ̯ˈʃtøː.ʁən/
+das Zeugnis|chứng chỉ|A2|/ˈt͡sɔʏ̯k.nɪs/
+ziehen|kéo|A2|/ˈt͡siː.ən/
+das Ziel|mục tiêu|A2|/t͡siːl/
+ziemlich|khá|A2|/ˈt͡siːm.lɪç/
+das Zimmer|phòng|A2|/ˈt͡sɪ.mɐ/
+die Zitrone|chanh|A2|/t͡siˈtʁoː.nə/
+zu|đến|A2|/t͡suː/
+der Zucker|đường|A2|/ˈt͡sʊ.kɐ/
+zuerst|trước tiên|A2|/t͡suˈeːɐ̯st/
+der Zug|tàu|A2|/t͡suːk/
+zurück|trở lại|A2|/t͡suˈʁʏk/
+zusammen|cùng nhau|A2|/t͡suˈza.mən/
+zwischen|giữa|A2|/ˈt͡svɪ.ʃən/
+die Zwischenzeit|thời gian chờ|A2|/ˈt͡svɪ.ʃən.t͡saɪ̯t/
+der Zwilling|sinh đôi|A2|/ˈt͡svɪ.lɪŋ/
+zwingen|ép buộc|A2|/ˈt͡svɪ.ŋən/
+der Zwiebel|hành tây|A2|/ˈt͡sviː.bəl/
+zwölf|mười hai|A2|/t͡svœlf/
+die Zypresse|cây bách|A2|/t͡syˈpʁɛ.sə/
+`;
+
+// ✅ ĐÃ THÊM type:'vocab' — điều kiện bắt buộc để luyện tập từ vựng chạy đúng
+const WORDS = W_RAW.trim().split('\n').map((line,i)=>{
+  const parts = line.split('|');
+  if(parts.length < 3) return null;
+  const [de, vi, lvl, ipa] = parts;
+  return {
+    id: 'w-'+i,
+    type: 'vocab',
+    front: de.trim(),
+    back: vi.trim(),
+    level: lvl.trim(),
+    ipa: ipa ? ipa.trim() : '',
+    speak: de.replace(/^(der|die|das)\s+/, '').trim()
+  };
+}).filter(Boolean);
+
+const V_RAW = `
+sein|war|ist gewesen|thì, là, ở
+haben|hatte|hat gehabt|có
+werden|wurde|ist geworden|trở thành
+können|konnte|hat gekonnt|có thể
+müssen|musste|hat gemusst|phải
+dürfen|durfte|hat gedurft|được phép
+sollen|sollte|hat gesollt|nên
+wollen|wollte|hat gewollt|muốn
+mögen|mochte|hat gemocht|thích
+denken|dachte|hat gedacht|nghĩ
+bringen|brachte|hat gebracht|mang đến
+kennen|kannte|hat gekannt|biết, quen
+wissen|wusste|hat gewusst|biết
+nennen|nannte|hat genannt|gọi tên
+rennen|rannte|ist gerannt|chạy
+brennen|brannte|hat gebrannt|cháy
+senden|sandte|hat gesandt|gửi
+verbringen|verbrachte|hat verbracht|trải qua
+helfen|half|hat geholfen|giúp đỡ
+nehmen|nahm|hat genommen|lấy, cầm
+stehlen|stahl|hat gestohlen|ăn cắp
+gelten|galt|hat gegolten|có giá trị
+teilnehmen|nahm teil|hat teilgenommen|tham gia
+versprechen|versprach|hat versprochen|hứa
+bewerben|bewarb|hat beworben|ứng tuyển
+verderben|verdarb|hat verdorben|làm hỏng
+unternehmen|unternahm|hat unternommen|thực hiện
+bleiben|blieb|ist geblieben|ở lại
+schreiben|schrieb|hat geschrieben|viết
+scheinen|schien|hat geschienen|chiếu sáng
+steigen|stieg|ist gestiegen|leo, tăng
+treiben|trieb|hat getrieben|thúc đẩy
+schweigen|schwieg|hat geschwiegen|im lặng
+leihen|lieh|hat geliehen|cho mượn
+beschreiben|beschrieb|hat beschrieben|miêu tả
+vermeiden|vermied|hat vermieden|tránh
+entscheiden|entschied|hat entschieden|quyết định
+einsteigen|stieg ein|ist eingestiegen|lên xe
+aussteigen|stieg aus|ist ausgestiegen|xuống xe
+umsteigen|stieg um|ist umgestiegen|chuyển xe
+reiben|rieb|hat gerieben|chà xát
+schreien|schrie|hat geschrien|la hét
+fliegen|flog|hat/ist geflogen|bay
+riechen|roch|hat gerochen|ngửi
+schließen|schloss|hat geschlossen|đóng
+verlieren|verlor|hat verloren|mất, thua
+ziehen|zog|hat/ist gezogen|kéo; chuyển
+bieten|bot|hat geboten|đề nghị
+fliehen|floh|ist geflohen|chạy trốn
+fließen|floss|ist geflossen|chảy
+frieren|fror|hat/ist gefroren|thấy lạnh
+genießen|genoss|hat genossen|thưởng thức
+gießen|goss|hat gegossen|đổ, tưới
+vergleichen|verglich|hat verglichen|so sánh
+schneiden|schnitt|hat geschnitten|cắt
+greifen|griff|hat gegriffen|nắm, chộp
+pfeifen|pfiff|hat gepfiffen|huýt sáo
+reiten|ritt|hat/ist geritten|cưỡi ngựa
+streiten|stritt|hat gestritten|cãi nhau
+schleifen|schliff|hat geschliffen|mài
+schmeißen|schmiss|hat geschmissen|ném
+schreiten|schritt|ist geschritten|bước đi
+weichen|wich|ist gewichen|lùi
+gleichen|glich|hat geglichen|giống
+finden|fand|hat gefunden|tìm thấy
+singen|sang|hat gesungen|hát
+trinken|trank|hat getrunken|uống
+springen|sprang|ist gesprungen|nhảy
+binden|band|hat gebunden|buộc
+sinken|sank|ist gesunken|chìm
+verschwinden|verschwand|ist verschwunden|biến mất
+zwingen|zwang|hat gezwungen|ép buộc
+gelingen|gelang|ist gelungen|thành công
+klingen|klang|hat geklungen|vang lên
+stinken|stank|hat gestunken|bốc mùi
+schlafen|schlief|hat geschlafen|ngủ
+halten|hielt|hat gehalten|giữ
+lassen|ließ|hat gelassen|để, cho phép
+fallen|fiel|ist gefallen|ngã, rơi
+fangen|fing|hat gefangen|bắt
+braten|briet|hat gebraten|chiên
+blasen|blies|hat geblasen|thổi
+raten|riet|hat geraten|khuyên
+verlassen|verließ|hat verlassen|rời bỏ
+gefallen|gefiel|hat gefallen|làm hài lòng
+anfangen|fing an|hat angefangen|bắt đầu
+laufen|lief|ist gelaufen|chạy
+essen|aß|hat gegessen|ăn
+geben|gab|hat gegeben|đưa, cho
+lesen|las|hat gelesen|đọc
+sehen|sah|hat gesehen|nhìn
+vergessen|vergaß|hat vergessen|quên
+geschehen|geschah|ist geschehen|xảy ra
+messen|maß|hat gemessen|đo
+treten|trat|hat/ist getreten|đá; bước
+fernsehen|sah fern|hat ferngesehen|xem TV
+aussehen|sah aus|hat ausgesehen|trông
+fahren|fuhr|hat/ist gefahren|lái xe; đi
+tragen|trug|hat getragen|mang, mặc
+waschen|wusch|hat gewaschen|rửa, giặt
+wachsen|wuchs|ist gewachsen|mọc
+schlagen|schlug|hat geschlagen|đánh
+einladen|lud ein|hat eingeladen|mời
+abfahren|fuhr ab|ist abgefahren|khởi hành
+erfahren|erfuhr|hat erfahren|biết được
+graben|grub|hat gegraben|đào
+lügen|log|hat gelogen|nói dối
+heben|hob|hat gehoben|nâng
+schwören|schwor|hat geschworen|thề
+erlöschen|erlosch|ist erloschen|tắt
+beginnen|begann|hat begonnen|bắt đầu
+schwimmen|schwamm|ist geschwommen|bơi
+gewinnen|gewann|hat gewonnen|thắng
+spinnen|spann|hat gesponnen|se sợi
+gehen|ging|ist gegangen|đi bộ
+kommen|kam|ist gekommen|đến
+heißen|hieß|hat geheißen|tên là
+stehen|stand|hat gestanden|đứng
+rufen|rief|hat gerufen|gọi
+tun|tat|hat getan|làm
+sitzen|saß|hat gesessen|ngồi
+liegen|lag|hat gelegen|nằm
+bitten|bat|hat gebeten|nhờ, xin
+backen|backte|hat gebacken|nướng
+stoßen|stieß|hat/ist gestoßen|đẩy
+entstehen|entstand|ist entstanden|hình thành
+weggehen|ging weg|ist weggegangen|rời đi
+anbieten|bot an|hat angeboten|đề nghị
+ankommen|kam an|ist angekommen|đến nơi
+anrufen|rief an|hat angerufen|gọi điện
+ansehen|sah an|hat angesehen|nhìn
+anziehen|zog an|hat angezogen|mặc vào
+aufstehen|stand auf|ist aufgestanden|thức dậy
+befehlen|befahl|hat befohlen|ra lệnh
+behalten|behielt|hat behalten|giữ lại
+beißen|biss|hat gebissen|cắn
+bekommen|bekam|hat bekommen|nhận được
+bergen|barg|hat geborgen|cứu
+bestehen|bestand|hat bestanden|thi đỗ
+betrügen|betrog|hat betrogen|lừa dối
+biegen|bog|hat/ist gebogen|uốn; rẽ
+dringen|drang|ist gedrungen|xuyên qua
+einfallen|fiel ein|ist eingefallen|nghĩ ra
+empfehlen|empfahl|hat empfohlen|giới thiệu
+enthalten|enthielt|hat enthalten|chứa
+erkennen|erkannte|hat erkannt|nhận ra
+erschrecken|erschrak|ist erschrocken|giật mình
+erwägen|erwog|hat erwogen|cân nhắc
+fressen|fraß|hat gefressen|ăn (động vật)
+gebären|gebar|hat geboren|sinh
+gedeihen|gedieh|ist gediehen|phát triển
+gleiten|glitt|ist geglitten|trượt
+hängen|hing|hat gehangen|treo
+hauen|haute|hat gehauen|đánh
+kneifen|kniff|hat gekniffen|véo
+kriechen|kroch|ist gekrochen|bò
+laden|lud|hat geladen|chất
+leiden|litt|hat gelitten|chịu đựng
+mahlen|mahlte|hat gemahlen|xay
+meiden|mied|hat gemieden|tránh
+mitbringen|brachte mit|hat mitgebracht|mang theo
+mitkommen|kam mit|ist mitgekommen|đi cùng
+ringen|rang|hat gerungen|vật lộn
+saufen|soff|hat gesoffen|uống (đv)
+schaffen|schuf|hat geschaffen|tạo ra
+scheiden|schied|hat/ist geschieden|chia tay
+schieben|schob|hat geschoben|đẩy
+schießen|schoss|hat geschossen|bắn
+schleichen|schlich|ist geschlichen|rón rén
+schmelzen|schmolz|hat/ist geschmolzen|tan chảy
+schwellen|schwoll|ist geschwollen|sưng lên
+schwinden|schwand|ist geschwunden|biến mất
+schwingen|schwang|hat geschwungen|vung
+stechen|stach|hat gestochen|đâm, chích
+sterben|starb|ist gestorben|chết
+streichen|strich|hat gestrichen|sơn, xóa
+umziehen|zog um|ist umgezogen|chuyển nhà
+verbieten|verbot|hat verboten|cấm
+verbrennen|verbrannte|hat/ist verbrannt|đốt cháy
+verzeihen|verzieh|hat verziehen|tha thứ
+vorschlagen|schlug vor|hat vorgeschlagen|đề xuất
+wenden|wandte|hat gewandt|quay, lật
+werben|warb|hat geworben|quảng cáo
+werfen|warf|hat geworfen|ném
+wiegen|wog|hat gewogen|cân
+winden|wand|hat gewunden|quấn
+`;
+
+const VERBS = V_RAW.trim().split('\n').map((line,i)=>{
+  const [inf,praet,perf,mean] = line.split('|');
+  return {id:'v-'+i, inf, praet, perf, mean};
+});
+
+const ALPHABET = [
+  {l:'A',p:'ah',ex:'Apfel',mean:'quả táo'},{l:'B',p:'beh',ex:'Buch',mean:'sách'},
+  {l:'C',p:'tseh',ex:'Computer',mean:'máy tính'},{l:'D',p:'deh',ex:'Danke',mean:'cảm ơn'},
+  {l:'E',p:'eh',ex:'Elefant',mean:'con voi'},{l:'F',p:'ef',ex:'Fisch',mean:'con cá'},
+  {l:'G',p:'geh',ex:'Garten',mean:'vườn'},{l:'H',p:'hah',ex:'Haus',mean:'nhà'},
+  {l:'I',p:'ih',ex:'Insel',mean:'đảo'},{l:'J',p:'yot',ex:'Jahr',mean:'năm'},
+  {l:'K',p:'kah',ex:'Katze',mean:'mèo'},{l:'L',p:'el',ex:'Lampe',mean:'đèn'},
+  {l:'M',p:'em',ex:'Mutter',mean:'mẹ'},{l:'N',p:'en',ex:'Nacht',mean:'đêm'},
+  {l:'O',p:'oh',ex:'Obst',mean:'trái cây'},{l:'P',p:'peh',ex:'Papa',mean:'bố'},
+  {l:'Q',p:'kuh',ex:'Quelle',mean:'nguồn'},{l:'R',p:'err',ex:'Rot',mean:'đỏ'},
+  {l:'S',p:'ess',ex:'Sonne',mean:'mặt trời'},{l:'T',p:'teh',ex:'Tisch',mean:'bàn'},
+  {l:'U',p:'uh',ex:'Uhr',mean:'đồng hồ'},{l:'V',p:'fau',ex:'Vater',mean:'bố'},
+  {l:'W',p:'weh',ex:'Wasser',mean:'nước'},{l:'X',p:'iks',ex:'Xylophon',mean:'đàn'},
+  {l:'Y',p:'üpsilon',ex:'Yoga',mean:'yoga'},{l:'Z',p:'tsett',ex:'Zug',mean:'tàu'},
+  {l:'Ä',p:'a-umlaut',ex:'Äpfel',mean:'táo'},{l:'Ö',p:'o-umlaut',ex:'Öl',mean:'dầu'},
+  {l:'Ü',p:'u-umlaut',ex:'Übung',mean:'bài tập'},{l:'ß',p:'eszett',ex:'Straße',mean:'đường'},
+];
+
+const GRAMMAR = [
+  {q:'___ Mann ist groß.',opts:['Der','Die','Das','Den'],a:0,lv:'A1',hint:'Mạo từ xác định Nominativ. Mann giống đực → der.',ex:'Mann giống đực → der.'},
+  {q:'___ Frau ist nett.',opts:['Der','Die','Das','Dem'],a:1,lv:'A1',hint:'Frau giống cái → die.',ex:'Frau giống cái → die.'},
+  {q:'___ Kind spielt.',opts:['Der','Die','Das','Den'],a:2,lv:'A1',hint:'Kind giống trung → das.',ex:'Kind giống trung → das.'},
+  {q:'Ich ___ Student.',opts:['bin','bist','ist','sind'],a:0,lv:'A1',hint:'sein + ich → bin.',ex:'bin.'},
+  {q:'Du ___ Lehrer.',opts:['bin','bist','ist','sind'],a:1,lv:'A1',hint:'sein + du → bist.',ex:'bist.'},
+  {q:'Er ___ aus Vietnam.',opts:['komme','kommst','kommt','kommen'],a:2,lv:'A1',hint:'kommen + er → kommt.',ex:'kommt.'},
+  {q:'Wir ___ Deutsch.',opts:['lerne','lernst','lernt','lernen'],a:3,lv:'A1',hint:'lernen + wir → lernen.',ex:'lernen.'},
+  {q:'Ich ___ einen Apfel.',opts:['habe','hast','hat','haben'],a:0,lv:'A1',hint:'haben + ich → habe.',ex:'habe.'},
+  {q:'Wie ___ du?',opts:['heiße','heißt','heißen','heißest'],a:1,lv:'A1',hint:'heißen + du → heißt.',ex:'heißt.'},
+  {q:'Sie ___ eine Katze.',opts:['habe','hast','hat','haben'],a:2,lv:'A1',hint:'haben + sie → hat.',ex:'hat.'},
+  {q:'Das ist ___ Bruder.',opts:['mein','meine','meinen','meinem'],a:0,lv:'A1',hint:'Bruder mask. Nom → mein.',ex:'mein.'},
+  {q:'Das ist ___ Schwester.',opts:['mein','meine','meinen','meinem'],a:1,lv:'A1',hint:'Schwester fem. → meine.',ex:'meine.'},
+  {q:'___ ist das? — Das ist Anna.',opts:['Wer','Was','Wo','Wann'],a:0,lv:'A1',hint:'Hỏi người → Wer.',ex:'Wer = ai.'},
+  {q:'Ich trinke ___ Wasser.',opts:['ein','eine','einen','einem'],a:0,lv:'A1',hint:'Wasser neut. Akk → ein.',ex:'ein.'},
+  {q:'Ich ___ gestern ins Kino gegangen.',opts:['bin','habe','werde','hatte'],a:0,lv:'A2',hint:'Perfekt: gehen → sein.',ex:'bin gegangen.'},
+  {q:'Er ___ das Buch gelesen.',opts:['bin','bist','hat','sind'],a:2,lv:'A2',hint:'Perfekt: lesen → haben.',ex:'hat gelesen.'},
+  {q:'Wir ___ nach Hause gehen.',opts:['muss','musst','müssen','müsst'],a:2,lv:'A2',hint:'müssen + wir → müssen.',ex:'müssen.'},
+  {q:'Du ___ besser lernen.',opts:['soll','sollst','sollen','sollt'],a:1,lv:'A2',hint:'sollen + du → sollst.',ex:'sollst.'},
+  {q:'Das Auto ist ___ als das Fahrrad.',opts:['schnell','schneller','am schnellsten','schnellste'],a:1,lv:'A2',hint:'So sánh 2 vật → Komparativ.',ex:'schneller als.'},
+  {q:'Ich wohne ___ Berlin.',opts:['in','im','am','an'],a:0,lv:'A2',hint:'Thành phố dùng "in".',ex:'in Berlin.'},
+  {q:'Wir fahren ___ die Schweiz.',opts:['nach','in','zu','an'],a:1,lv:'A2',hint:'Quốc gia có mạo từ → in + Akk.',ex:'in die Schweiz.'},
+  {q:'___ wohnst du? — In Hanoi.',opts:['Wo','Wohin','Woher','Was'],a:0,lv:'A2',hint:'Hỏi vị trí → wo.',ex:'wo = ở đâu.'},
+  {q:'Er ___ Lehrer werden.',opts:['will','willst','wollen','wollt'],a:0,lv:'A2',hint:'wollen + er → will.',ex:'will.'},
+  {q:'Ich habe ___ Buch gekauft.',opts:['ein','einen','eine','einem'],a:0,lv:'A2',hint:'Buch neut. Akk → ein.',ex:'ein Buch.'},
+  {q:'Ich sehe ___ Mann.',opts:['der','den','dem','des'],a:1,lv:'A2',hint:'Mann mask. Akk → den.',ex:'den Mann.'},
+  {q:'Ich helfe ___ Frau.',opts:['die','der','das','den'],a:1,lv:'A2',hint:'helfen + Dativ, Frau fem. → der.',ex:'der Frau.'},
+  {q:'Ich gebe ___ Kind ein Buch.',opts:['das','dem','den','der'],a:1,lv:'A2',hint:'geben + Dativ, Kind neut. → dem.',ex:'dem Kind.'},
+  {q:'___ Sommer fahren wir ans Meer.',opts:['Im','In','Am','An'],a:0,lv:'A2',hint:'Mùa dùng "im".',ex:'im Sommer.'},
+  {q:'Ich freue mich ___ den Urlaub.',opts:['auf','für','über','an'],a:0,lv:'A2',hint:'sich freuen auf + Akk.',ex:'freuen auf.'},
+  {q:'Ich interessiere mich ___ Musik.',opts:['für','auf','über','an'],a:0,lv:'A2',hint:'sich interessieren für.',ex:'für Musik.'},
+  {q:'Das Buch ___ von Goethe geschrieben.',opts:['wurde','wurden','ward','werden'],a:0,lv:'B1',hint:'Passiv Prät. số ít → wurde.',ex:'wurde.'},
+  {q:'Der Mann, ___ dort steht, ist mein Vater.',opts:['der','die','das','den'],a:0,lv:'B1',hint:'Mann mask. Nom → der.',ex:'der.'},
+  {q:'Die Frau, ___ ich sehe, ist nett.',opts:['die','der','das','dem'],a:0,lv:'B1',hint:'Frau fem. Akk → die.',ex:'die.'},
+  {q:'Ich bleibe zu Hause, ___ ich krank bin.',opts:['weil','dass','ob','wenn'],a:0,lv:'B1',hint:'Nguyên nhân → weil.',ex:'weil.'},
+  {q:'___ es regnet, gehe ich spazieren.',opts:['Obwohl','Weil','Dass','Wenn'],a:0,lv:'B1',hint:'Nhượng bộ → obwohl.',ex:'obwohl.'},
+  {q:'Ich lerne Deutsch, ___ in Deutschland zu studieren.',opts:['um','damit','weil','dass'],a:0,lv:'B1',hint:'um ... zu + Inf.',ex:'um ... zu.'},
+  {q:'Ich weiß nicht, ___ er kommt.',opts:['ob','dass','weil','wenn'],a:0,lv:'B1',hint:'Câu hỏi gián tiếp → ob.',ex:'ob.'},
+  {q:'Er sagt, ___ er krank ist.',opts:['dass','ob','weil','wenn'],a:0,lv:'B1',hint:'Tường thuật → dass.',ex:'dass.'},
+  {q:'___ ich Zeit habe, lese ich Bücher.',opts:['Wenn','Dass','Ob','Weil'],a:0,lv:'B1',hint:'Điều kiện → wenn.',ex:'wenn.'},
+  {q:'Das ist der Mann, ___ ich gestern getroffen habe.',opts:['den','der','dem','die'],a:0,lv:'B1',hint:'Mann mask. Akk → den.',ex:'den.'},
+  {q:'Wenn ich reich ___, würde ich reisen.',opts:['wäre','bin','sein würde','werde'],a:0,lv:'B2',hint:'Konj. II sein → wäre.',ex:'wäre.'},
+  {q:'Ich ___ das gemacht haben.',opts:['hätte','habe','würde','werde'],a:0,lv:'B2',hint:'Konj. II Perf.: hätte + PII.',ex:'hätte gemacht.'},
+  {q:'Wenn er Zeit ___, würde er mitkommen.',opts:['hätte','hat','haben würde','hatte'],a:0,lv:'B2',hint:'Konj. II haben → hätte.',ex:'hätte.'},
+  {q:'Es ___ besser, wenn du früher kommst.',opts:['wäre','ist','würde','werde'],a:0,lv:'B2',hint:'Konj. II → wäre.',ex:'wäre besser.'},
+];
+
+const EXAMS = {
+  A1:{name:'Goethe-Zertifikat A1',subtitle:'Start Deutsch 1 · Lesen',duration:'25 Min',
+    instructions:'Lesen Sie die Texte und Aufgaben. Wählen Sie die richtige Antwort (a, b oder c).',
+    questions:[
+      {passage:'SUPERMARKT SONNE\nÖffnungszeiten:\nMo–Fr: 8–20 Uhr\nSa: 8–16 Uhr\nSo: geschlossen',q:'Wann ist der Supermarkt geschlossen?',opts:['Am Sonntag','Am Samstag','Am Freitag'],a:0,explain:'Sonntag: geschlossen.'},
+      {passage:'Hallo Peter,\nich fahre morgen nach Hamburg. Ich besuche meine Schwester.',q:'Wohin fährt Anna?',opts:['Zu Peter','Nach Hamburg','Zur Arbeit'],a:1,explain:'nach Hamburg.'},
+      {passage:'Deutschkurs A1\nBeginn: 15. Oktober\nDauer: 6 Wochen',q:'Wann beginnt der Kurs?',opts:['15. September','15. Oktober','15. November'],a:1,explain:'Beginn: 15. Oktober.'},
+      {passage:'Liebe Frau Meier,\nich kann am Montag nicht kommen. Ich bin krank.',q:'Warum kann Tom nicht kommen?',opts:['Er ist krank','Er hat Urlaub','Er ist im Ausland'],a:0,explain:'Ich bin krank.'},
+      {passage:'Praxis Dr. Klein\nMo, Di, Do: 8–12 Uhr\nMi, Fr: 15–18 Uhr',q:'Wann kann man am Mittwoch kommen?',opts:['16 Uhr','9 Uhr','11 Uhr'],a:0,explain:'Mi: 15–18 Uhr.'},
+      {passage:'Familie Schmidt wohnt in Berlin.\nFrau Schmidt arbeitet in einem Krankenhaus.',q:'Wo arbeitet Frau Schmidt?',opts:['Zu Hause','Im Krankenhaus','In der Schule'],a:1,explain:'im Krankenhaus.'},
+      {passage:'Bäckerei Krause\nFrisches Brot\nJeden Tag ab 6 Uhr geöffnet',q:'Wann kann man Brot kaufen?',opts:['Nur montags','Nur Wochenende','Jeden Tag'],a:2,explain:'Jeden Tag ab 6 Uhr.'},
+      {passage:'Einladung!\nAm Samstag feiern wir meinen Geburtstag. Party beginnt um 19 Uhr.',q:'Wann beginnt die Party?',opts:['12 Uhr','19 Uhr','7 Uhr'],a:1,explain:'um 19 Uhr.'},
+      {passage:'Person: Maria Lopez\nAlter: 25 Jahre\nLand: Spanien\nBeruf: Studentin',q:'Was macht Maria?',opts:['Sie studiert','Sie arbeitet','Sie ist Lehrerin'],a:0,explain:'Studentin.'},
+      {passage:'Mein Tag:\n7 Uhr: aufstehen\n8 Uhr: frühstücken\n9 Uhr: zur Arbeit',q:'Wann steht die Person auf?',opts:['8 Uhr','6 Uhr','7 Uhr'],a:2,explain:'7 Uhr: aufstehen.'},
+    ]},
+  A2:{name:'Goethe-Zertifikat A2',subtitle:'Fit in Deutsch 2 · Lesen',duration:'30 Min',
+    instructions:'Lesen Sie die Texte und Aufgaben. Wählen Sie die richtige Antwort (a, b oder c).',
+    questions:[
+      {passage:'Wohnung zu vermieten!\n2 Zimmer, Küche, Bad\n55 m², 3. Stock',q:'Was wird hier angeboten?',opts:['Eine Wohnung','Ein Haus','Ein Zimmer'],a:0,explain:'Wohnung zu vermieten.'},
+      {passage:'Liebe Frau Weber,\nleider muss ich unseren Termin absagen. Ich muss verreisen.',q:'Warum sagt Herr Müller ab?',opts:['Keine Zeit','Muss verreisen','Krank'],a:1,explain:'muss verreisen.'},
+      {passage:'Stadtbibliothek\nMo–Fr 10–19 Uhr\nAm 3. Oktober geschlossen',q:'Wann ist die Bibliothek am 3. Okt geöffnet?',opts:['Geschlossen','10–14 Uhr','10–19 Uhr'],a:0,explain:'geschlossen.'},
+      {passage:'Restaurant Zur Post\nAbendessen: 18–22 Uhr\nSa & So geschlossen',q:'Wann kann man abends essen?',opts:['Nur mittags','Täglich','Mo–Fr'],a:2,explain:'Cuối tuần đóng.'},
+      {passage:'Fitnessstudio\nProbetraining kostenlos!\nMo–So 6–23 Uhr',q:'Was ist kostenlos?',opts:['Yogakurs','Mitgliedschaft','Probetraining'],a:2,explain:'Probetraining kostenlos.'},
+      {passage:'Museum für Geschichte\nFührungen: jeden Samstag um 14 Uhr',q:'Wann gibt es Führungen?',opts:['Jeden Tag','Nur sonntags','Jeden Samstag'],a:2,explain:'jeden Samstag.'},
+      {passage:'Bestellung Nr. 12345\nleider habe ich die Ware noch nicht erhalten.',q:'Warum schreibt Frau Schmidt?',opts:['Ware nicht bekommen','Möchte bestellen','Möchte stornieren'],a:0,explain:'noch nicht erhalten.'},
+      {passage:'Deutsche Bahn\nDer Zug nach München um 10:15 hat 20 Min Verspätung. Fährt jetzt um 10:35.',q:'Wann fährt der Zug?',opts:['10:15','7:00','10:35'],a:2,explain:'um 10:35.'},
+      {passage:'Apotheke am Markt\nMo–Fr: 8:30–18:30\nSa: 9–13',q:'Wann ist die Apotheke am Samstag offen?',opts:['9–13','8:30–18:30','Geschlossen'],a:0,explain:'Sa: 9–13.'},
+      {passage:'Einladung zum Sommerfest\nBringt gerne Kuchen mit!',q:'Was soll man mitbringen?',opts:['Getränke','Nichts','Kuchen'],a:2,explain:'Kuchen mitbringen.'},
+    ]},
+};
+
+const CATS = {
+  v1000:{name:'Từ vựng',sub:`${WORDS.length} từ · A1–B2`,icon:I.book,
+    grad:'linear-gradient(135deg,#fbbf24,#d97706)',glow:'rgba(251,191,36,.5)',
+    filters:[{key:'A1',label:'A1'},{key:'A2',label:'A2'}],
+    hasDirection:true,hasTopics:false,items:WORDS},
+  numbers:{name:'Số đếm',sub:'0–1000 · Zahlen',icon:I.numbers,
+    grad:'linear-gradient(135deg,#f97316,#ea580c)',glow:'rgba(249,115,22,.5)',
+    filters:[{key:'0-20',label:'0–20'},{key:'21-100',label:'21–100'},{key:'101-1000',label:'101–1000'}],
+    hasDirection:true,items:(()=>{
+      const a=[];
+      for(let n=0;n<=20;n++)a.push({id:'n-'+n,type:'number',num:n,front:'Số '+n,back:numToGerman(n),speak:numToGerman(n),extra:numToVN(n),band:'0-20'});
+      [21,22,25,30,40,50,60,70,80,90,100].forEach(n=>a.push({id:'n-'+n,type:'number',num:n,front:'Số '+n,back:numToGerman(n),speak:numToGerman(n),extra:numToVN(n),band:'21-100'}));
+      [101,110,111,123,150,200,300,400,500,600,700,800,900,999,1000].forEach(n=>a.push({id:'n-'+n,type:'number',num:n,front:'Số '+n,back:numToGerman(n),speak:numToGerman(n),extra:numToVN(n),band:'101-1000'}));
+      return a;
+    })()},
+  alphabet:{name:'Chữ cái',sub:'Alphabet · 30 ký tự',icon:I.letter,
+    grad:'linear-gradient(135deg,#f43f5e,#be123c)',glow:'rgba(244,63,94,.5)',
+    filters:null,hasDirection:true,
+    items:ALPHABET.map(x=>({id:'a-'+x.l,type:'alphabet',letter:x.l,front:x.l,back:x.p,speak:x.l,extra:`${x.ex} — ${x.mean}`}))},
+  grammar:{name:'Ngữ pháp',sub:'Grammatik · A1–B2',icon:I.pencil,
+    grad:'linear-gradient(135deg,#10b981,#047857)',glow:'rgba(16,185,129,.5)',
+    filters:[{key:'A1',label:'A1'},{key:'A2',label:'A2'},{key:'B1',label:'B1'},{key:'B2',label:'B2'}],
+    hasDirection:false,
+    items:GRAMMAR.map((g,i)=>({
+      id:'g-'+i,type:'grammar',sentence:g.q,opts:g.opts,correct:g.a,
+      hint:g.hint,explain:g.ex,level:g.lv,
+      front:g.q.replace('___','______'),back:g.opts[g.a],
+      speakText:g.q.replace(/___/g,'...').replace(/[.,!?]/g,'').replace(/\s+/g,' ').trim(),
+    }))},
+};
+
+const state = {
+  tab:'home', prevTab:'home',
+  view:'home',
+  theme:localStorage.getItem('theme')||'light',
+  voiceGender:localStorage.getItem('voiceGender')||'female',
+  setup:{cat:null,filter:null,mode:'quiz',direction:'de-vi',topic:0},
+  session:{cat:null,filter:null,mode:null,direction:'de-vi',topic:0,items:[],index:0,correct:0,
+    answered:false,currentOpts:null,currentCorrect:null,typeMode:null,
+    isExam:false,examData:null,examLevel:null},
+};
+
+const app = $('#app');
+
+function applyTheme(){
+  document.body.dataset.theme = state.theme;
+  const b = $('#themeBtn');
+  if(b) b.innerHTML = state.theme==='light' ? I.moon : I.sun;
+}
+function toggleTheme(){
+  state.theme = state.theme==='light'?'dark':'light';
+  localStorage.setItem('theme',state.theme);
+  applyTheme();
+}
+function toggleVoice(){
+  state.voiceGender = state.voiceGender === 'female' ? 'male' : 'female';
+  localStorage.setItem('voiceGender', state.voiceGender);
+  showToast(state.voiceGender === 'female' ? '👩 Đã chọn giọng Nữ' : '👨 Đã chọn giọng Nam');
+  const b = $('#voiceBtn');
+  if(b) b.style.color = state.voiceGender === 'female' ? '#ec4899' : '#3b82f6';
+}
+$('#themeBtn').addEventListener('click', toggleTheme);
+$('#voiceBtn').addEventListener('click', toggleVoice);
+
+const PronBanner = {
+  init(){this.el=$('#pronBanner');this.txt=$('#pronText')},
+  show(text){
+    if(!this.el) this.init();
+    this.txt.textContent = text;
+    this.el.classList.remove('show');
+    void this.el.offsetWidth;
+    this.el.classList.add('show');
+    clearTimeout(this.timer);
+    this.timer = setTimeout(()=>this.hide(), 5000);
+  },
+  hide(){if(!this.el) return;this.el.classList.remove('show');clearTimeout(this.timer)}
+};
+
+const TTS = {
+  audio:null, timer:null,
+  stop(){
+    if(this.timer){clearTimeout(this.timer);this.timer=null}
+    if(this.audio){try{this.audio.pause();this.audio.currentTime=0}catch(e){}this.audio=null}
+    if('speechSynthesis' in window){try{speechSynthesis.cancel()}catch(e){}}
+    $$('.speaking').forEach(b=>b.classList.remove('speaking'));
+    PronBanner.hide();
+  },
+  speak(text,btn){
+    if(!text) return;
+    this.stop();
+    if(btn) btn.classList.add('speaking');
+    PronBanner.show(text);
+    const clean = String(text).replace(/[""]/g,'').replace(/[''`]/g,'').replace(/\s+/g,' ').trim();
+    
+    if (state.voiceGender === 'male') {
+      this.speakWeb(text,btn);
+    } else {
+      const fallback = ()=>this.speakWeb(text,btn);
+      try{
+        const url = 'https://translate.google.com/translate_tts?ie=UTF-8&q='+encodeURIComponent(clean)+'&tl=de&client=tw-ob';
+        const audio = new Audio();
+        audio.src = url; audio.playbackRate = .9;
+        this.audio = audio;
+        let started = false;
+        this.timer = setTimeout(()=>{ if(!started) fallback(); }, 1200);
+        audio.addEventListener('playing',()=>{ started=true; if(this.timer){clearTimeout(this.timer);this.timer=null} },{once:true});
+        audio.onended = ()=>{ if(this.audio===audio)this.audio=null; if(btn)btn.classList.remove('speaking'); PronBanner.hide(); };
+        audio.onerror = ()=>{ if(this.audio===audio)this.audio=null; fallback(); };
+        const p = audio.play();
+        if(p && p.catch) p.catch(fallback);
+      }catch(e){ fallback(); }
+    }
+  },
+  speakWeb(text,btn){
+    if(!('speechSynthesis' in window)){showToast('⚠️ Không hỗ trợ phát âm');if(btn)btn.classList.remove('speaking');PronBanner.hide();return}
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'de-DE'; u.rate = .85;
+    const vs = speechSynthesis.getVoices().filter(v => v.lang.startsWith('de'));
+    
+    let voice = null;
+    if(state.voiceGender === 'female') {
+      voice = vs.find(v => v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('woman') || v.name.toLowerCase().includes('marlene') || v.name.toLowerCase().includes('vicki'));
+    } else {
+      voice = vs.find(v => v.name.toLowerCase().includes('male') || v.name.toLowerCase().includes('man') || v.name.toLowerCase().includes('stefan') || v.name.toLowerCase().includes('hans'));
+    }
+    if(!voice && vs.length > 0) voice = vs[0];
+    if(voice) u.voice = voice;
+
+    u.onend = ()=>{if(btn)btn.classList.remove('speaking');PronBanner.hide()};
+    u.onerror = ()=>{if(btn)btn.classList.remove('speaking');PronBanner.hide()};
+    try{speechSynthesis.speak(u)}catch(e){if(btn)btn.classList.remove('speaking');PronBanner.hide()}
+  }
+};
+
+const Sound = {
+  ctx:null,
+  init(){ if(!this.ctx){ try{ this.ctx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } if(this.ctx && this.ctx.state==='suspended') this.ctx.resume(); },
+  play(type){
+    this.init(); if(!this.ctx) return;
+    if(type==='correct'){this.tone(880,.1);setTimeout(()=>this.tone(1320,.15),70)}
+    else if(type==='wrong'){this.tone(220,.15,'sawtooth');setTimeout(()=>this.tone(160,.25,'sawtooth'),90)}
+    else if(type==='victory'){[523,659,784,1047,1319].forEach((f,i)=>setTimeout(()=>this.tone(f,.25),i*100))}
+  },
+  tone(freq,dur,type='sine',vol=.12){
+    if(!this.ctx) return;
+    const osc = this.ctx.createOscillator(), g = this.ctx.createGain();
+    osc.type = type; osc.frequency.value = freq;
+    g.gain.setValueAtTime(vol,this.ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(.001,this.ctx.currentTime+dur);
+    osc.connect(g); g.connect(this.ctx.destination);
+    osc.start(); osc.stop(this.ctx.currentTime+dur);
+  }
+};
+
+const Confetti = {
+  canvas:null, ctx:null, particles:[], raf:null,
+  init(){if(this.canvas)return;this.canvas=$('#confetti');this.ctx=this.canvas.getContext('2d');this.resize();window.addEventListener('resize',()=>this.resize())},
+  resize(){if(!this.canvas)return;this.canvas.width=innerWidth;this.canvas.height=innerHeight},
+  burst(x,y,n=25){
+    this.init();
+    const colors = ['#ef4444','#fbbf24','#0f0f1a','#fff','#ec4899','#10b981','#8b5cf6'];
+    for(let i=0;i<n;i++)this.particles.push({x,y,vx:(Math.random()-.5)*10,vy:Math.random()*-9-3,
+      g:.35,life:1,decay:.012+Math.random()*.008,size:4+Math.random()*5,
+      color:colors[Math.floor(Math.random()*colors.length)],rot:Math.random()*360,rs:(Math.random()-.5)*22});
+    if(!this.raf) this.animate();
+  },
+  animate(){
+    if(!this.ctx) return;
+    this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
+    for(let i=this.particles.length-1;i>=0;i--){
+      const p = this.particles[i];
+      p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;p.rot+=p.rs;
+      if(p.life<=0){this.particles.splice(i,1);continue}
+      this.ctx.save();this.ctx.translate(p.x,p.y);this.ctx.rotate(p.rot*Math.PI/180);
+      this.ctx.globalAlpha=p.life;this.ctx.fillStyle=p.color;
+      this.ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size);
+      this.ctx.restore();
+    }
+    if(this.particles.length>0) this.raf=requestAnimationFrame(()=>this.animate());
+    else this.raf=null;
+  },
+  big(){const cx=innerWidth/2,cy=innerHeight/3;this.burst(cx,cy,60);setTimeout(()=>this.burst(cx-150,cy+50,40),150);setTimeout(()=>this.burst(cx+150,cy+50,40),300)}
+};
+let toastTimer;
+function showToast(txt,dur=2500){const t=$('#toast');t.textContent=txt;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),dur)}
+
+function switchTab(tab){
+  state.prevTab = state.tab;
+  state.tab = tab;
+  $$('.nav-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
+  switch(tab){
+    case 'home': renderHome(); break;
+    case 'dictionary': renderDictionary(); break;
+    case 'verbs': renderVerbs(); break;
+    case 'practice': renderPractice(); break;
+    case 'exam': renderExamMenu(); break;
+  }
+}
+$$('.nav-btn').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+
+function renderHome(){
+  state.view='home';
+  document.title = 'Học Tiếng Đức · VAN BAC';
+  window.scrollTo(0,0);
+  
+  app.innerHTML = `
+    <div class="hero-new">
+      <div class="german-flag" id="easterEggFlag">
+        <div style="background:#0a0a14"></div>
+        <div style="background:#dd0000"></div>
+        <div style="background:#ffce00"></div>
+      </div>
+      <h1 class="hero-title-new">HỌC TIẾNG ĐỨC</h1>
+      <div class="hero-sub-new glass">NHÀ PHÁT TRIỂN <strong>VANBAC</strong></div>
+    </div>
+
+    <div class="feat-grid">
+      <button class="feature-card glass" data-goto="verbs">
+        <div class="feature-icon" style="--fc-grad:linear-gradient(135deg,#8b5cf6,#6d28d9);--fc-glow:rgba(139,92,246,.5)">
+          ${I.search}
+        </div>
+        <div class="feature-body">
+          <div class="feature-name">Động từ bất quy tắc</div>
+          <div class="feature-meta">Tra cứu ${VERBS.length} động từ · 3 dạng</div>
+        </div>
+      </button>
+      
+      <button class="feature-card glass" data-goto="dictionary">
+        <div class="feature-icon" style="--fc-grad:linear-gradient(135deg,#3b82f6,#2563eb);--fc-glow:rgba(59,130,246,.5)">
+          ${I.book}
+        </div>
+        <div class="feature-body">
+          <div class="feature-name">Từ điển Đức-Việt</div>
+          <div class="feature-meta">${WORDS.length} từ vựng · Có phiên âm</div>
+        </div>
+      </button>
+
+      <button class="feature-card glass" data-goto="practice">
+        <div class="feature-icon" style="--fc-grad:linear-gradient(135deg,#ef4444,#b91c1c);--fc-glow:rgba(239,68,68,.5)">
+          ${I.pencil}
+        </div>
+        <div class="feature-body">
+          <div class="feature-name">Luyện tập</div>
+          <div class="feature-meta">4 bộ đề · Trắc nghiệm & Gõ đáp án</div>
+        </div>
+      </button>
+    </div>
+  `;
+  
+  $('#easterEggFlag').addEventListener('click', () => {
+    showToast('MÌNH TIN BẠN SẼ LÀM ĐƯỢC', 4000);
+  });
+
+  $$('.feature-card').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.goto)));
+}
+
+let dictState = {letter:null, search:''};
+function renderDictionary(){
+  state.view='dict';
+  document.title = 'Từ điển Đức-Việt · VAN BAC';
+  window.scrollTo(0,0);
+
+  const letters = ['Tất cả','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+  
+  app.innerHTML = `
+    <div class="page-header">
+      <h1 class="page-title">Từ điển Đức–Việt</h1>
+      <p class="page-sub">Tra cứu ${WORDS.length} từ vựng từ A1 đến B2</p>
+    </div>
+
+    <div class="search-wrap glass">
+      ${I.search}
+      <input type="text" class="search-input" id="dictSearch" placeholder="Tìm từ tiếng Đức hoặc nghĩa tiếng Việt..." value="${esc(dictState.search)}" style="background:transparent;border:none;">
+    </div>
+
+    <div class="alphabet-filter" id="alphaFilter">
+      ${letters.map(l=>`<button class="af-letter glass ${(l==='Tất cả'&&!dictState.letter)||dictState.letter===l?'active':''}" data-letter="${l==='Tất cả'?'':l}">${l}</button>`).join('')}
+    </div>
+
+    <div class="dict-count" id="dictCount"></div>
+    <div class="dict-list" id="dictList"></div>
+  `;
+
+  const searchEl = $('#dictSearch');
+  searchEl.addEventListener('input',()=>{
+    dictState.search = searchEl.value;
+    renderDictList();
+  });
+
+  $$('#alphaFilter .af-letter').forEach(b=>{
+    b.addEventListener('click',()=>{
+      dictState.letter = b.dataset.letter || null;
+      $$('#alphaFilter .af-letter').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      renderDictList();
+    });
+  });
+
+  renderDictList();
+}
+
+function renderDictList(){
+  let items = WORDS.slice();
+  if(dictState.letter) items = items.filter(w=>w.front.replace(/^(der|die|das)\s+/,'').toUpperCase().startsWith(dictState.letter));
+  if(dictState.search.trim()){
+    const q = dictState.search.toLowerCase().trim();
+    items = items.filter(w=>w.front.toLowerCase().includes(q) || w.back.toLowerCase().includes(q));
+  }
+  
+  const countEl = $('#dictCount');
+  if(countEl) countEl.innerHTML = `Tìm thấy <b>${items.length}</b> từ`;
+
+  const listEl = $('#dictList');
+  if(!listEl) return;
+  
+  if(items.length===0){
+    listEl.innerHTML = `<div class="empty"><div class="empty-icon">🔍</div>Không tìm thấy từ phù hợp</div>`;
+    return;
+  }
+
+  listEl.innerHTML = items.slice(0,200).map(w=>{
+    const m = w.front.match(/^(der|die|das)\s+(.+)$/);
+    const art = m ? m[1] : null;
+    const word = m ? m[2] : w.front;
+    const ipaDisplay = w.ipa ? `<span class="dict-ipa">${w.ipa}</span>` : '';
+    
+    return `
+      <div class="dict-item glass">
+        <div class="dict-word-wrap">
+          <div class="dict-word-with-art">
+            ${art ? `<span class="dict-art ${art}">${art}</span>` : ''}
+            <span class="dict-word">${esc(word)}</span>
+          </div>
+          ${ipaDisplay}
+        </div>
+        <div class="dict-meaning">${esc(w.back)}</div>
+        <button class="dict-speak glass" data-speak="${esc(w.speak)}">${I.speaker}</button>
+      </div>
+    `;
+  }).join('');
+  
+  if(items.length > 200){
+    listEl.innerHTML += `<div style="text-align:center;padding:20px;color:var(--muted);font-size:12px;font-weight:700">Còn ${items.length-200} từ khác, hãy thu hẹp tìm kiếm</div>`;
+  }
+}
+
+let verbState = {search:''};
+function renderVerbs(){
+  state.view='verbs';
+  document.title = 'Động từ bất quy tắc · VAN BAC';
+  window.scrollTo(0,0);
+
+  app.innerHTML = `
+    <div class="page-header">
+      <h1 class="page-title">Động từ bất quy tắc</h1>
+      <p class="page-sub">${VERBS.length} động từ · 3 dạng · phát âm từng dạng</p>
+    </div>
+
+    <div class="search-wrap glass">
+      ${I.search}
+      <input type="text" class="search-input" id="verbSearch" placeholder="Tìm theo động từ, dạng chia hoặc nghĩa..." value="${esc(verbState.search)}" style="background:transparent;border:none;">
+    </div>
+
+    <div class="dict-count" id="verbCount"></div>
+    <div id="verbList"></div>
+  `;
+
+  const s = $('#verbSearch');
+  s.addEventListener('input',()=>{ verbState.search = s.value; renderVerbList(); });
+  renderVerbList();
+}
+
+function renderVerbList(){
+  let items = VERBS.slice();
+  if(verbState.search.trim()){
+    const q = verbState.search.toLowerCase().trim();
+    items = items.filter(v=>v.inf.toLowerCase().includes(q)||v.praet.toLowerCase().includes(q)||v.perf.toLowerCase().includes(q)||v.mean.toLowerCase().includes(q));
+  }
+  
+  const cnt = $('#verbCount');
+  if(cnt) cnt.innerHTML = `Tìm thấy <b>${items.length}</b> động từ`;
+  
+  const list = $('#verbList');
+  if(!list) return;
+  if(items.length===0){ list.innerHTML = `<div class="empty"><div class="empty-icon">🔍</div>Không tìm thấy động từ</div>`; return; }
+  
+  list.innerHTML = items.map(v=>`
+    <div class="verb-item glass">
+      <div class="verb-top">
+        <span class="verb-inf">${esc(v.inf)}</span>
+        <button class="verb-speak-main" data-speak="${esc(v.inf)}" title="Infinitiv">${I.speaker}</button>
+        <span class="verb-mean">${esc(v.mean)}</span>
+      </div>
+      <div class="verb-forms">
+        <div class="form-badge glass">
+          <span class="form-tag">Prät</span>
+          <span class="form-value">${esc(v.praet)}</span>
+          <button class="form-speak" data-speak="${esc(v.praet)}" title="Präteritum">${I.speaker}</button>
+        </div>
+        <div class="form-badge glass">
+          <span class="form-tag">Perf</span>
+          <span class="form-value">${esc(v.perf)}</span>
+          <button class="form-speak" data-speak="${esc(v.perf)}" title="Perfekt">${I.speaker}</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderPractice(){
+  state.view='practice';
+  document.title = 'Luyện tập · VAN BAC';
+  window.scrollTo(0,0);
+
+  // ✅ THÊM 'v1000' ĐỂ HIỂN THỊ BỘ TỪ VỰNG
+  const keys = ['v1000','numbers','alphabet','grammar'];
+  app.innerHTML = `
+    <div class="page-header">
+      <h1 class="page-title">Luyện tập</h1>
+      <p class="page-sub">Chọn bộ đề để bắt đầu học</p>
+    </div>
+    <div class="practice-list">
+      ${keys.map(k=>{
+        const c = CATS[k];
+        return `
+          <button class="practice-item glass" data-cat="${k}">
+            <div class="practice-icon" style="--pi-grad:${c.grad};--pi-glow:${c.glow}">${c.icon}</div>
+            <div class="practice-body">
+              <div class="practice-name">${c.name}</div>
+              <div class="practice-meta">${c.sub}</div>
+            </div>
+          </button>
+        `;
+      }).join('')}
+    </div>
+  `;
+  
+  $$('.practice-item').forEach(b=>b.addEventListener('click',()=>openSetup(b.dataset.cat)));
+}
+
+function renderExamMenu(){
+  state.view='exam';
+  document.title = 'Thi thử · VAN BAC';
+  window.scrollTo(0,0);
+
+  app.innerHTML = `
+    <div class="page-header">
+      <h1 class="page-title">Thi thử</h1>
+      <p class="page-sub">Luyện đề chuẩn Goethe-Zertifikat</p>
+    </div>
+    <div class="exam-list" style="display:flex;flex-direction:column;gap:10px">
+      <button class="feature-card glass" data-exam="A1">
+        <div class="feature-icon" style="--fc-grad:linear-gradient(135deg,#10b981,#047857);--fc-glow:rgba(16,185,129,.5);width:48px;height:48px;border-radius:14px;font-size:18px;font-weight:900">
+          A1
+        </div>
+        <div class="feature-body">
+          <div class="feature-name">Goethe A1 · Start Deutsch</div>
+          <div class="feature-meta">${EXAMS.A1.questions.length} câu hỏi · Lesen · 25 Min</div>
+        </div>
+      </button>
+      <button class="feature-card glass" data-exam="A2">
+        <div class="feature-icon" style="--fc-grad:linear-gradient(135deg,#3b82f6,#1d4ed8);--fc-glow:rgba(59,130,246,.5);width:48px;height:48px;border-radius:14px;font-size:18px;font-weight:900">
+          A2
+        </div>
+        <div class="feature-body">
+          <div class="feature-name">Goethe A2 · Fit in Deutsch</div>
+          <div class="feature-meta">${EXAMS.A2.questions.length} câu hỏi · Lesen · 30 Min</div>
+        </div>
+      </button>
+    </div>
+  `;
+  $$('[data-exam]').forEach(b=>b.addEventListener('click',()=>startExam(b.dataset.exam)));
+}
+
+function openSetup(cat){
+  state.prevTab = state.tab;
+  state.view='setup';
+  state.setup = {cat,filter:null,mode:'quiz',direction:cat==='numbers'?'vi-de':'de-vi',topic:0};
+  renderSetup();
+}
+function renderSetup(){
+  const c = CATS[state.setup.cat];
+  document.title = c.name + ' · VAN BAC';
+  window.scrollTo(0,0);
+
+  const filterHtml = c.filters?`
+    <div class="setup-section">
+      <div class="setup-label">Trình độ <span id="fCount" style="background:var(--glass-bg);padding:2px 8px;border-radius:10px"></span></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap" id="chips">
+        ${c.filters.map(f=>`<button class="chip glass" data-key="${f.key}">${f.label}</button>`).join('')}
+        <button class="chip glass active" data-key="__all">Tất cả</button>
+      </div>
+    </div>
+  `:'';
+
+  const dirHtml = c.hasDirection?`
+    <div class="setup-section">
+      <div class="setup-label">Chiều học</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap" id="dirChips">
+        <button class="chip glass ${state.setup.direction==='de-vi'?'active':''}" data-dir="de-vi">🇩🇪 Đức → Việt</button>
+        <button class="chip glass ${state.setup.direction==='vi-de'?'active':''}" data-dir="vi-de">🇻🇳 Việt → Đức</button>
+      </div>
+    </div>
+  `:'';
+
+  app.innerHTML = `
+    <div class="session-head">
+      <button class="btn-back-sm glass" id="backBtn">${I.arrowLeft} Quay lại</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;padding:6px 4px 22px">
+      <div class="practice-icon" style="--pi-grad:${c.grad};--pi-glow:${c.glow};width:56px;height:56px;border-radius:16px">${c.icon}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:20px;font-weight:900;letter-spacing:-.025em;margin-bottom:3px">${c.name}</div>
+        <div style="font-size:12px;font-weight:700;color:var(--muted)">${c.items.length} mục trong bộ này</div>
+      </div>
+    </div>
+
+    <div class="setup-section">
+      <div class="setup-label">Chế độ học</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <button class="mode-btn glass active" data-mode="quiz">
+          <div class="mode-ico">✅</div>
+          <div class="mode-name">Trắc nghiệm</div>
+          <div class="mode-desc">Chọn 1 trong 4 đáp án</div>
+        </button>
+        <button class="mode-btn glass" data-mode="type">
+          <div class="mode-ico">⌨️</div>
+          <div class="mode-name">Gõ đáp án</div>
+          <div class="mode-desc">Tự gõ câu trả lời</div>
+        </button>
+      </div>
+    </div>
+
+    ${dirHtml}
+    ${filterHtml}
+
+    <button class="btn-primary" id="startBtn" style="margin-top:22px">▶ Bắt đầu học</button>
+  `;
+
+  $('#backBtn').addEventListener('click',()=>switchTab(state.prevTab));
+  $$('.mode-btn').forEach(b=>b.addEventListener('click',()=>{
+    state.setup.mode = b.dataset.mode;
+    $$('.mode-btn').forEach(x=>x.classList.toggle('active',x.dataset.mode===b.dataset.mode));
+  }));
+  if(c.hasDirection){
+    $$('#dirChips .chip').forEach(ch=>ch.addEventListener('click',()=>{
+      $$('#dirChips .chip').forEach(x=>x.classList.remove('active'));
+      ch.classList.add('active');
+      state.setup.direction = ch.dataset.dir;
+    }));
+  }
+  if(c.filters){
+    $$('[data-key]').forEach(ch=>ch.addEventListener('click',()=>{
+      $$('[data-key]').forEach(x=>x.classList.remove('active'));
+      ch.classList.add('active');
+      state.setup.filter = ch.dataset.key==='__all'?null:ch.dataset.key;
+      updateFCount();
+    }));
+    updateFCount();
+  }
+  $('#startBtn').addEventListener('click',startSession);
+}
+function updateFCount(){
+  const items = getFiltered(state.setup.cat, state.setup.filter, state.setup.topic);
+  const el = $('#fCount');
+  if(el) el.textContent = items.length + ' mục';
+}
+function getFiltered(catKey, filter, topic){
+  let items = CATS[catKey].items;
+  if(topic && topic>0) items = items.filter(it=>it.topic===topic);
+  if(!filter) return items;
+  if(catKey==='grammar'||catKey==='v1000') return items.filter(it=>it.level===filter);
+  if(catKey==='numbers') return items.filter(it=>it.band===filter);
+  return items;
+}
+
+const SESSION_SIZE = 20;
+
+function startSession(){
+  const {cat,filter,mode,direction,topic} = state.setup;
+  const pool = getFiltered(cat,filter,topic);
+  if(!pool.length){ showToast('Không có mục nào phù hợp'); return; }
+  const items = shuffle([...pool]).slice(0,Math.min(SESSION_SIZE,pool.length));
+  state.session = {cat,filter,mode,direction,topic,items,index:0,correct:0,
+    answered:false,currentOpts:null,currentCorrect:null,typeMode:null,
+    isExam:false,examData:null,examLevel:null};
+  state.view='session';
+  renderQuestion();
+}
+
+function startExam(level){
+  const exam = EXAMS[level];
+  const qs = shuffle([...exam.questions]);
+  state.session = {cat:'__exam',filter:level,mode:'exam',direction:'de-vi',topic:0,items:qs,index:0,correct:0,
+    answered:false,currentOpts:null,currentCorrect:null,typeMode:null,
+    isExam:true,examData:exam,examLevel:level};
+  state.view='session';
+  renderExamQuestion();
+}
+
+function renderQuestion(){
+  const s = state.session;
+  if(s.index>=s.items.length) return renderSummary();
+  s.answered=false; s.currentOpts=null; s.currentCorrect=null;
+  const item = s.items[s.index];
+  const modeLabel = s.mode==='quiz'?'Trắc nghiệm':'Gõ đáp án';
+  const catName = CATS[s.cat].name;
+  document.title = `${modeLabel} · ${s.index+1}/${s.items.length}`;
+  window.scrollTo(0,0);
+
+  let bodyHtml = '';
+  if(s.mode==='quiz'){
+    const q = buildQuiz(item, s.direction);
+    s.currentOpts = q.options;
+    s.currentCorrect = q.correctIndex;
+    bodyHtml = renderQuizBody(item, q);
+  } else bodyHtml = renderTypeBody(item, s.direction);
+
+  let mainSpeak;
+  if(item.type==='grammar') mainSpeak = item.speakText || item.sentence.replace(/___/g,'...');
+  else if(item.type==='vocab') mainSpeak = item.speak;
+  else if(item.type==='number') mainSpeak = item.back;
+  else if(item.type==='alphabet') mainSpeak = item.letter;
+  else mainSpeak = item.speak;
+
+  const topicBadge = item.topic?`<span class="meta-tag topic">${TOPICS[item.topic]||''}</span>`:'';
+
+  app.innerHTML = `
+    <div class="session">
+      <div class="session-head">
+        <button class="btn-back-sm glass" id="backBtn">${I.arrowLeft} Thoát</button>
+        <span class="session-tag glass">${catName} · ${modeLabel}</span>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-info">
+          <span class="q-num">Câu ${s.index+1} / ${s.items.length}</span>
+          <span class="score">✓ ${s.correct}</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:${(s.index/s.items.length)*100}%"></div></div>
+      </div>
+      <div class="quiz-card glass">
+        <div class="quiz-meta">
+          ${item.level?`<span class="meta-tag ${item.level}">${item.level}</span>`:''}
+          ${topicBadge}
+          <button class="hint-toggle" id="hintBtn" ${item.hint?'':'style="display:none"'}>?</button>
+          <button class="quiz-spk glass" data-speak="${esc(mainSpeak)}">${I.speakerFull}</button>
+        </div>
+        <div id="hintArea"></div>
+        ${bodyHtml}
+        <div id="fbArea"></div>
+      </div>
+    </div>
+  `;
+
+  $('#backBtn').addEventListener('click',confirmExit);
+  const hb = $('#hintBtn');
+  if(hb && item.hint){
+    hb.addEventListener('click',e=>{
+      e.stopPropagation();
+      const a = $('#hintArea');
+      if(a.innerHTML.trim()){ a.innerHTML=''; hb.classList.remove('active'); }
+      else{ a.innerHTML = `<div class="hint-box"><span class="lbl">💡 Cách làm</span>${esc(item.hint)}</div>`; hb.classList.add('active'); }
+    });
+  }
+  if(s.mode==='quiz') wireQuiz(item);
+  else wireType(item);
+  if(s.mode==='type') setTimeout(()=>$('#typeInput')?.focus(),80);
+}
+
+function buildQuiz(item, direction){
+  let qText, correct, pool, optsAreDE;
+  
+  if(item.type==='grammar'){
+    qText = item.sentence.replace('___','<span class="blank"></span>');
+    correct = item.opts[item.correct];
+    pool = item.opts.filter((_,i)=>i!==item.correct);
+    optsAreDE = true;
+  } 
+  else if(item.type==='vocab'){
+    if(direction==='vi-de'){
+      qText = `Từ <b>"${esc(item.back)}"</b> trong tiếng Đức là?`;
+      correct = item.front; 
+      pool = WORDS.filter(x => x.id !== item.id && x.back !== item.back).map(x => x.front);
+      optsAreDE = true;
+    } else {
+      qText = `Từ <b>"${esc(item.front)}"</b> có nghĩa là gì?`;
+      correct = item.back; 
+      pool = WORDS.filter(x => x.id !== item.id && x.front !== item.front).map(x => x.back);
+      optsAreDE = false;
+    }
+  } 
+  else if(item.type==='number'){
+    if(direction==='vi-de'){
+      qText = `Số <b>${item.num}</b> trong tiếng Đức là?`;
+      correct = item.back; pool = similarNumStr(item.num); optsAreDE = true;
+    } else {
+      qText = `Từ <b>"${esc(item.back)}"</b> là số nào?`;
+      correct = String(item.num); pool = similarNum(item.num); optsAreDE = false;
+    }
+  } 
+  else {
+    if(direction==='vi-de'){
+      qText = `Cách đọc <b>"${esc(item.back)}"</b> là chữ cái nào?`;
+      correct = item.letter; pool = similarLetter(item.letter); optsAreDE = true;
+    } else {
+      qText = `Chữ <b style="font-size:1.2em">${esc(item.letter)}</b> đọc là gì?`;
+      correct = item.back;
+      pool = ALPHABET.filter(x=>x.l!==item.letter).map(x=>x.p);
+      optsAreDE = true;
+    }
+  }
+  
+  const opts = makeOpts(correct, pool, 4);
+  return {questionText:qText, options:opts, correctIndex:opts.indexOf(String(correct)), optionsAreGerman:optsAreDE};
+}
+
+function similarNum(n){
+  const set = new Set([String(n)]);
+  const offs = [-1,1,-2,2,-3,3,-4,4,-5,5,-6,6,-7,7,-8,8,-9,9,-10,10,-15,15,-20,20];
+  const cands = offs.map(o=>n+o).filter(v=>v>=0&&v<=1000).map(String);
+  shuffle(cands);
+  for(const c of cands){ if(set.size>=4) break; set.add(c); }
+  let s=50; while(set.size<4 && s-- > 0) set.add(String(rand(0,1000)));
+  return [...set];
+}
+function similarNumStr(n){
+  const nums = similarNum(n).map(s=>parseInt(s));
+  const set = new Set([numToGerman(n)]);
+  for(const v of nums){ if(set.size>=4) break; set.add(numToGerman(v)); }
+  let s=50; while(set.size<4 && s-- > 0) set.add(numToGerman(rand(0,1000)));
+  return [...set];
+}
+const ALPH_SIM = {'A':['E','I','O','U'],'B':['P','D','V','W'],'C':['Z','S','K','G'],'D':['T','B','P','G'],'E':['A','I','Ä','Ö'],'F':['V','W','S','H'],'G':['K','C','D','J'],'H':['F','K','R','S'],'I':['E','Y','Ü','J'],'J':['Y','I','G','H'],'K':['G','C','Q','H'],'L':['R','M','N','H'],'M':['N','L','W','B'],'N':['M','D','L','R'],'O':['U','Ö','A','E'],'P':['B','D','T','F'],'Q':['K','G','C','X'],'R':['L','H','N','E'],'S':['Z','F','H','X'],'T':['D','P','B','K'],'U':['O','Ü','A','I'],'V':['F','W','B','P'],'W':['V','F','M','B'],'X':['S','C','Q','K'],'Y':['J','I','U','Ü'],'Z':['S','C','X','T'],'Ä':['A','E','Ö','Ü'],'Ö':['O','U','Ä','Ü'],'Ü':['U','O','Ä','Ö'],'ß':['S','Z','F','V']};
+function similarLetter(l){
+  const set = new Set([l]);
+  const sims = ALPH_SIM[l]||[];
+  const all = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜß'.split('');
+  const cands = [...sims,...shuffle(all)];
+  for(const c of cands){ if(set.size>=4) break; set.add(c); }
+  return [...set];
+}
+function makeOpts(correct, pool, n=4){
+  const set = new Set([String(correct)]);
+  for(const p of shuffle([...pool])){ if(set.size>=n) break; set.add(String(p)); }
+  return shuffle([...set]);
+}
+
+function renderQuizBody(item, q){
+  const L = ['A','B','C','D'];
+  const isG = item.type==='grammar';
+  const opts = q.options.map((o,i)=>{
+    const showSpk = !isG && q.optionsAreGerman && !/^\d+$/.test(String(o).trim());
+    const speakText = o.replace(/^(der|die|das)\s+/,'');
+    return `
+      <button class="option glass" data-idx="${i}" style="animation-delay:${i*.05}s;border-width:1px;">
+        <span class="option-letter">${L[i]}</span>
+        <span class="option-text">${esc(o)}</span>
+        ${showSpk?`<span class="option-spk glass" data-speak="${esc(speakText)}">${I.speaker}</span>`:''}
+      </button>
+    `;
+  }).join('');
+  return `<div class="question-text">${q.questionText}</div><div class="options" id="opts">${opts}</div>`;
+}
+
+function wireQuiz(item){
+  const s = state.session;
+  $$('#opts .option').forEach((btn,i)=>{
+    btn.addEventListener('click',e=>{
+      if(e.target.closest('.option-spk')) return;
+      if(s.answered) return;
+      s.answered = true;
+      const ci = s.currentCorrect;
+      const ok = i===ci;
+      if(ok) s.correct++;
+      Sound.play(ok?'correct':'wrong');
+      if(ok){ const r = btn.getBoundingClientRect(); Confetti.burst(r.left+r.width/2,r.top+r.height/2,15); }
+      $$('#opts .option').forEach((b,j)=>{
+        b.disabled = true;
+        if(j===ci) b.classList.add('correct');
+        else if(j===i) b.classList.add('wrong');
+        else b.classList.add('dimmed');
+      });
+      const fb = $('#fbArea');
+      const L = ['A','B','C','D'];
+      const ca = s.currentOpts[ci];
+      const isG = item.type==='grammar';
+      const speakAns = item.type==='vocab'?item.speak
+                     : item.type==='number'?item.back
+                     : item.type==='alphabet'?item.letter
+                     : ca;
+      let extra = '';
+      if(item.type==='grammar' && item.explain) extra = `<small class="feedback-small">${esc(item.explain)}</small>`;
+      else if(item.type==='alphabet') extra = `<small class="feedback-small">${esc(item.extra||'')}</small>`;
+      else if(item.type==='number') extra = `<small class="feedback-small">${item.num} = ${esc(item.back)} · ${esc(item.extra||'')}</small>`;
+      else if(item.type==='vocab') extra = `<small class="feedback-small">${esc(item.front)} = ${esc(item.back)}</small>`;
+      const spkBtn = (!isG && !/^\d+$/.test(String(speakAns)))
+        ? `<button class="fb-spk" data-speak="${esc(speakAns)}">${I.speaker}</button>` : '';
+      fb.innerHTML = ok
+        ? `<div class="feedback correct glass" style="border-color:var(--success)"><div class="feedback-head">✅ Chính xác!</div>${spkBtn}${extra}</div>`
+        : `<div class="feedback wrong glass" style="border-color:var(--danger)"><div class="feedback-head">❌ Sai! Đáp án đúng: ${L[ci]} — ${esc(ca)}${spkBtn}</div>${extra}</div>`;
+      const nx = document.createElement('button');
+      nx.className = 'btn-next';
+      nx.textContent = s.index===s.items.length-1?'Xem kết quả →':'Tiếp tục →';
+      nx.addEventListener('click',()=>{s.index++;renderQuestion()});
+      fb.appendChild(nx);
+      $('.progress-info .score').textContent = `✓ ${s.correct}`;
+    });
+  });
+}
+
+function renderTypeBody(item, direction){
+  let qText, ph, mode;
+  if(item.type==='grammar'){
+    qText = item.sentence.replace('___','<span class="blank"></span>');
+    ph='Điền từ còn thiếu...'; mode='de';
+  } else if(item.type==='vocab'){
+    if(direction==='vi-de'){ qText = `Viết từ tiếng Đức cho: <b>"${esc(item.back)}"</b>`; ph='VD: der Apfel...'; mode='de'; }
+    else { qText = `Nghĩa tiếng Việt của: <b>"${esc(item.front)}"</b>`; ph='Nhập nghĩa...'; mode='vi'; }
+  } else if(item.type==='number'){
+    if(direction==='vi-de'){ qText = `Viết số <b>${item.num}</b> bằng tiếng Đức`; ph='VD: eins...'; mode='de'; }
+    else { qText = `Số <b>"${esc(item.back)}"</b> là số nào?`; ph='Nhập số...'; mode='num'; }
+  } else {
+    if(direction==='vi-de'){ qText = `Cách đọc <b>"${esc(item.back)}"</b> là chữ cái nào?`; ph='VD: A...'; mode='letter'; }
+    else { qText = `Chữ <b style="font-size:1.2em">${esc(item.letter)}</b> đọc là gì?`; ph='VD: ah...'; mode='de'; }
+  }
+  state.session.typeMode = mode;
+  return `
+    <div class="question-text">${qText}</div>
+    <input type="text" id="typeInput" class="type-field glass" placeholder="${ph}" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <button class="btn-check" id="checkBtn">✓ Kiểm tra đáp án</button>
+  `;
+}
+function norm(s){
+  return String(s).toLowerCase().trim()
+    .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss')
+    .replace(/[.,!?;]/g,'').replace(/\s+/g,' ');
+}
+function wireType(item){
+  const s = state.session;
+  const inp = $('#typeInput');
+  const check = ()=>{
+    if(s.answered) return;
+    const v = inp.value.trim();
+    if(!v){ inp.focus(); return; }
+    s.answered = true; inp.disabled = true;
+    let ca, ok;
+    const m = s.typeMode;
+    if(item.type==='grammar'){ ca = item.opts[item.correct]; ok = norm(v)===norm(ca); }
+    else if(item.type==='vocab'){
+      ca = m==='de'?item.front:item.back;
+      if(m==='de'){
+        const nv = norm(v), full = norm(ca), noArt = full.replace(/^(der|die|das)\s+/,'');
+        ok = nv===full || nv===noArt;
+      } else ok = norm(v)===norm(ca);
+    } else if(item.type==='number'){
+      if(m==='de'){ ca = item.back; ok = norm(v)===norm(ca); }
+      else { ca = String(item.num); ok = v.replace(/\D/g,'')===ca; }
+    } else {
+      const nv = norm(v), ln = norm(item.letter), pn = norm(item.back);
+      ok = nv===ln || nv===pn;
+      ca = s.direction==='vi-de'?item.letter:item.back;
+    }
+    if(ok) s.correct++;
+    Sound.play(ok?'correct':'wrong');
+    inp.classList.add(ok?'correct':'wrong');
+    const fb = $('#fbArea');
+    let extra = '';
+    if(item.type==='grammar' && item.explain) extra = `<small class="feedback-small">${esc(item.explain)}</small>`;
+    else if(item.type==='alphabet') extra = `<small class="feedback-small">${esc(item.extra||'')}</small>`;
+    else if(item.type==='number') extra = `<small class="feedback-small">${item.num} = ${esc(item.back)} · ${esc(item.extra||'')}</small>`;
+    else if(item.type==='vocab') extra = `<small class="feedback-small">${esc(item.front)} = ${esc(item.back)}</small>`;
+    const isG = item.type==='grammar';
+    const speakAns = item.type==='vocab'?item.speak
+                   : item.type==='number'?item.back
+                   : item.type==='alphabet'?item.letter
+                   : ca;
+    const spkBtn = (!isG && !/^\d+$/.test(String(speakAns)))
+      ? `<button class="fb-spk" data-speak="${esc(speakAns)}">${I.speaker}</button>` : '';
+    fb.innerHTML = ok
+      ? `<div class="feedback correct glass" style="border-color:var(--success)"><div class="feedback-head">✅ Chính xác!</div>${spkBtn}${extra}</div>`
+      : `<div class="feedback wrong glass" style="border-color:var(--danger)"><div class="feedback-head">❌ Chưa đúng! Đáp án: ${esc(ca)}${spkBtn}</div>${extra}</div>`;
+    $('#checkBtn').style.display = 'none';
+    const nx = document.createElement('button');
+    nx.className = 'btn-next';
+    nx.textContent = s.index===s.items.length-1?'Xem kết quả →':'Tiếp tục →';
+    nx.addEventListener('click',()=>{s.index++;renderQuestion()});
+    fb.appendChild(nx);
+    $('.progress-info .score').textContent = `✓ ${s.correct}`;
+  };
+  inp.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); check(); } });
+  $('#checkBtn').addEventListener('click',check);
+}
+
+function renderExamQuestion(){
+  const s = state.session;
+  if(s.index>=s.items.length) return renderSummary();
+  const q = s.items[s.index];
+  const ex = s.examData;
+  s.answered = false;
+  const L = ['a','b','c'];
+  const passage = q.passage?`<div class="exam-passage glass" style="padding:16px;border-radius:12px;font-size:14px;line-height:1.7;margin-bottom:16px;white-space:pre-wrap;font-family:serif">${esc(q.passage)}</div>`:'';
+  document.title = `${ex.name} · ${s.index+1}/${s.items.length}`;
+  window.scrollTo(0,0);
+  app.innerHTML = `
+    <div class="session">
+      <div class="session-head">
+        <button class="btn-back-sm glass" id="backBtn">${I.arrowLeft} Thoát</button>
+        <span class="session-tag glass" style="background:var(--warn-soft);color:var(--warn)">${ex.name}</span>
+      </div>
+      <div class="glass" style="padding:16px;border-radius:16px;margin-bottom:16px;position:relative;">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--warn)"></div>
+        <div style="font-size:15px;font-weight:900;margin-bottom:4px">${ex.subtitle}</div>
+        <div style="font-size:11px;font-weight:700;color:var(--muted)">📖 Lesen · ⏱ ${ex.duration} · ${s.items.length} Aufgaben</div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-info">
+          <span class="q-num">Aufgabe ${s.index+1} / ${s.items.length}</span>
+          <span class="score">✓ ${s.correct} richtig</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:${(s.index/s.items.length)*100}%"></div></div>
+      </div>
+      <div class="quiz-card glass">
+        <div class="glass" style="padding:13px 16px;border-radius:12px;border-left:3px solid var(--warn);font-size:12.5px;font-weight:600;line-height:1.6;margin-bottom:16px;font-style:italic">${esc(ex.instructions)}</div>
+        ${passage}
+        <div style="font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--warn);margin-bottom:8px">Aufgabe ${s.index+1}</div>
+        <div style="font-size:16px;font-weight:800;line-height:1.5;margin-bottom:18px">${esc(q.q)}</div>
+        <div class="options" id="opts"></div>
+        <div id="fbArea"></div>
+      </div>
+    </div>
+  `;
+  const el = $('#opts');
+  q.opts.forEach((opt,i)=>{
+    const b = document.createElement('button');
+    b.className = 'option glass';
+    b.innerHTML = `<span class="option-letter">${L[i]}</span><span class="option-text">${esc(opt)}</span>`;
+    b.addEventListener('click',()=>answerExam(i));
+    el.appendChild(b);
+  });
+  $('#backBtn').addEventListener('click',confirmExit);
+}
+function answerExam(idx){
+  const s = state.session;
+  if(s.answered) return;
+  s.answered = true;
+  const q = s.items[s.index];
+  const ok = idx===q.a;
+  if(ok) s.correct++;
+  Sound.play(ok?'correct':'wrong');
+  const L = ['a','b','c'];
+  $$('#opts .option').forEach((b,i)=>{
+    b.disabled = true;
+    if(i===q.a) b.classList.add('correct');
+    else if(i===idx) b.classList.add('wrong');
+    else b.classList.add('dimmed');
+  });
+  const fb = $('#fbArea');
+  const ca = q.opts[q.a];
+  const spk = `<button class="fb-spk" data-speak="${esc(ca)}">${I.speaker}</button>`;
+  if(ok) fb.innerHTML = `<div class="feedback correct glass" style="border-color:var(--success)"><div class="feedback-head">✅ Richtig!</div>${spk}<small class="feedback-small">${esc(q.explain||'')}</small></div>`;
+  else fb.innerHTML = `<div class="feedback wrong glass" style="border-color:var(--danger)"><div class="feedback-head">❌ Falsch! Antwort: ${L[q.a]}) ${esc(ca)}${spk}</div><small class="feedback-small">${esc(q.explain||'')}</small></div>`;
+  const nx = document.createElement('button');
+  nx.className = 'btn-next';
+  nx.textContent = s.index===s.items.length-1?'Ergebnis ansehen →':'Weiter →';
+  nx.addEventListener('click',()=>{
+    s.index++;
+    if(s.index>=s.items.length) renderSummary();
+    else renderExamQuestion();
+  });
+  fb.appendChild(nx);
+  $('.progress-info .score').textContent = `✓ ${s.correct} richtig`;
+}
+
+function renderSummary(){
+  const s = state.session;
+  const total = s.items.length;
+  const correct = s.correct;
+  const pct = total>0?Math.round(correct/total*100):0;
+  let emoji='🎉',title='Hoàn thành!',sub='Bạn đã hoàn thành phiên học';
+  if(pct===100){emoji='🏆';title='Tuyệt vời!';sub='Bạn trả lời đúng tất cả!'}
+  else if(pct>=80){emoji='🌟';title='Rất tốt!';sub='Bạn nắm bài rất chắc'}
+  else if(pct>=50){emoji='👍';title='Khá tốt!';sub='Tiếp tục luyện tập nhé'}
+  else {emoji='💪';title='Cố gắng lên!';sub='Ôn lại và thử lần nữa'}
+  if(pct>=80){Sound.play('victory');Confetti.big()}
+
+  const stats = `
+    <div class="glass" style="padding:14px 12px;border-radius:14px;">
+      <div style="font-size:9px;font-weight:900;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);margin-bottom:5px">Đúng</div>
+      <div style="font-size:20px;font-weight:900;color:var(--success)">${correct}/${total}</div>
+    </div>
+    <div class="glass" style="padding:14px 12px;border-radius:14px;">
+      <div style="font-size:9px;font-weight:900;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);margin-bottom:5px">Tỉ lệ</div>
+      <div style="font-size:20px;font-weight:900;color:var(--warn)">${pct}%</div>
+    </div>
+    <div class="glass" style="padding:14px 12px;border-radius:14px;">
+      <div style="font-size:9px;font-weight:900;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);margin-bottom:5px">Số câu</div>
+      <div style="font-size:20px;font-weight:900;color:var(--danger)">${total}</div>
+    </div>
+  `;
+
+  document.title = 'Kết quả · VAN BAC';
+  window.scrollTo(0,0);
+  app.innerHTML = `
+    <div class="session">
+      <div class="session-head"><button class="btn-back-sm glass" id="backBtn">${I.arrowLeft} Trang chủ</button></div>
+      <div class="glass" style="padding:36px 28px;border-radius:24px;text-align:center;">
+        <div style="font-size:60px;line-height:1;margin-bottom:14px;display:block">${emoji}</div>
+        <h2 style="font-size:26px;font-weight:900;letter-spacing:-.03em;margin-bottom:6px">${title}</h2>
+        <p style="font-size:13px;font-weight:700;color:var(--muted);margin-bottom:26px">${s.isExam?EXAMS[s.examLevel].name+' · ':''}${sub}</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px">${stats}</div>
+        <div style="display:flex;gap:10px">
+          <button style="flex:1;padding:15px;border-radius:14px;background:var(--glass-bg);border:1px solid var(--glass-border);font-size:12.5px;font-weight:900" id="homeBtn">🏠 Trang chủ</button>
+          <button style="flex:1;padding:15px;border-radius:14px;background:linear-gradient(135deg,var(--primary),#b91c1c);color:#fff;font-size:12.5px;font-weight:900;box-shadow:0 10px 24px -10px rgba(239,68,68,.5)" id="againBtn">🔄 ${s.isExam?'Làm lại':'Học tiếp'}</button>
+        </div>
+      </div>
+    </div>
+  `;
+  $('#backBtn').addEventListener('click',()=>switchTab('home'));
+  $('#homeBtn').addEventListener('click',()=>switchTab('home'));
+  $('#againBtn').addEventListener('click',()=>{
+    if(s.isExam) startExam(s.examLevel);
+    else { state.setup = {cat:s.cat,filter:s.filter,mode:s.mode,direction:s.direction,topic:s.topic}; startSession(); }
+  });
+}
+
+function confirmExit(){
+  if(state.session.index>0 && state.session.index<state.session.items.length){
+    if(!confirm('Thoát phiên học?')) return;
+  }
+  TTS.stop();
+  switchTab('practice');
+}
+
+document.addEventListener('click', e=>{
+  const b = e.target.closest('[data-speak]');
+  if(b){ e.stopPropagation(); TTS.speak(b.dataset.speak, b); }
+});
+
+document.addEventListener('keydown', e=>{
+  if(state.view!=='session') return;
+  const tag = (e.target.tagName||'').toLowerCase();
+  if(tag==='input'||tag==='textarea') return;
+  const s = state.session;
+  if(s.index>=s.items.length) return;
+  if(s.isExam){
+    if(!s.answered){
+      const i = {'Digit1':0,'Digit2':1,'Digit3':2}[e.code];
+      if(i!==undefined){ e.preventDefault(); $$('#opts .option')[i]?.click(); }
+    } else if(e.code==='Enter'||e.code==='Space'){ e.preventDefault(); $('#fbArea .btn-next')?.click(); }
+    return;
+  }
+  if(s.mode==='quiz'){
+    if(!s.answered){
+      const i = {'Digit1':0,'Digit2':1,'Digit3':2,'Digit4':3}[e.code];
+      if(i!==undefined){ e.preventDefault(); $$('#opts .option')[i]?.click(); }
+    } else if(e.code==='Enter'){ e.preventDefault(); $('#fbArea .btn-next')?.click(); }
+  } else if(s.mode==='type'){
+    if(s.answered && e.code==='Enter'){ e.preventDefault(); $('#fbArea .btn-next')?.click(); }
+  }
+});
+
+document.body.dataset.theme = state.theme;
+applyTheme();
+$('#voiceBtn').style.color = state.voiceGender === 'female' ? '#ec4899' : '#3b82f6';
+renderHome();
+</script>
 </body>
 </html>
