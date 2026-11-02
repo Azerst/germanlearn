@@ -35,7 +35,6 @@
   .cat-card:hover{border-color:var(--ink);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
   .cat-card:active{transform:translateY(0) scale(.99)}
   .cat-card.wide{grid-column:span 2}
-  .cat-card.wide .cat-head{align-items:center}
   .cat-head{display:flex;justify-content:space-between;align-items:flex-start}
   .cat-icon{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;transition:transform .25s}
   .cat-card:hover .cat-icon{transform:scale(1.08) rotate(-4deg)}
@@ -251,7 +250,7 @@ const rand=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
 const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-/* ═══ TTS ═══ */
+/* ═══ TTS ENGINE ═══ */
 const TTS={currentAudio:null,useGoogle:true,rate:.9,_timeoutId:null,
 cleanText(t){return String(t).replace(/[„""«»]/g,'').replace(/[''`]/g,'').replace(/\s+/g,' ').trim()},
 stop(){if(this._timeoutId){clearTimeout(this._timeoutId);this._timeoutId=null}if(this.currentAudio){try{this.currentAudio.onended=null;this.currentAudio.onerror=null;this.currentAudio.pause();this.currentAudio.currentTime=0}catch(e){}this.currentAudio=null}if('speechSynthesis'in window){try{speechSynthesis.cancel()}catch(e){}}$$('.speak-btn,.speak-mini,.speak-flash,.fb-speak').forEach(b=>b.classList.remove('speaking'))},
@@ -287,12 +286,9 @@ function numToGerman(n){if(n===0)return 'null';let r='';if(n>=1000){const th=Mat
 const VN_ONES=['không','một','hai','ba','bốn','năm','sáu','bảy','tám','chín'];
 function numToVietnamese(n){if(n===1000)return 'một nghìn';if(n===0)return 'không';if(n<10)return VN_ONES[n];if(n<20){if(n===10)return 'mười';if(n===15)return 'mười lăm';return 'mười '+VN_ONES[n-10]}if(n<100){const t=Math.floor(n/10),u=n%10;if(!u)return VN_ONES[t]+' mươi';if(u===1)return VN_ONES[t]+' mươi mốt';if(u===5)return VN_ONES[t]+' mươi lăm';return VN_ONES[t]+' mươi '+VN_ONES[u]}const h=Math.floor(n/100),rest=n%100;let out=VN_ONES[h]+' trăm';if(!rest)return out;if(rest<10)return out+' lẻ '+VN_ONES[rest];if(rest<20){if(rest===10)return out+' mười';if(rest===15)return out+' mười lăm';return out+' mười '+VN_ONES[rest-10]}const t=Math.floor(rest/10),u=rest%10;if(!u)return out+' '+VN_ONES[t]+' mươi';if(u===1)return out+' '+VN_ONES[t]+' mươi mốt';if(u===5)return out+' '+VN_ONES[t]+' mươi lăm';return out+' '+VN_ONES[t]+' mươi '+VN_ONES[u]}
 
-/* ═══ DATA ═══ */
-const ALPHABET_RAW=[{l:'A',p:'ah',ex:'Apfel',mean:'quả táo'},{l:'B',p:'beh',ex:'Buch',mean:'quyển sách'},{l:'C',p:'tseh',ex:'Computer',mean:'máy tính'},{l:'D',p:'deh',ex:'Danke',mean:'cảm ơn'},{l:'E',p:'eh',ex:'Elefant',mean:'con voi'},{l:'F',p:'ef',ex:'Fisch',mean:'con cá'},{l:'G',p:'geh',ex:'Garten',mean:'khu vườn'},{l:'H',p:'hah',ex:'Haus',mean:'ngôi nhà'},{l:'I',p:'ih',ex:'Insel',mean:'hòn đảo'},{l:'J',p:'yot',ex:'Jahr',mean:'năm'},{l:'K',p:'kah',ex:'Katze',mean:'con mèo'},{l:'L',p:'el',ex:'Lampe',mean:'cái đèn'},{l:'M',p:'em',ex:'Mutter',mean:'mẹ'},{l:'N',p:'en',ex:'Nacht',mean:'ban đêm'},{l:'O',p:'oh',ex:'Obst',mean:'trái cây'},{l:'P',p:'peh',ex:'Papa',mean:'bố'},{l:'Q',p:'kuh',ex:'Quelle',mean:'nguồn'},{l:'R',p:'err',ex:'Rot',mean:'màu đỏ'},{l:'S',p:'ess',ex:'Sonne',mean:'mặt trời'},{l:'T',p:'teh',ex:'Tisch',mean:'cái bàn'},{l:'U',p:'uh',ex:'Uhr',mean:'đồng hồ'},{l:'V',p:'fau',ex:'Vater',mean:'bố'},{l:'W',p:'weh',ex:'Wasser',mean:'nước'},{l:'X',p:'iks',ex:'Xylophon',mean:'đàn xylophone'},{l:'Y',p:'üpsilon',ex:'Yoga',mean:'yoga'},{l:'Z',p:'tsett',ex:'Zug',mean:'đoàn tàu'},{l:'Ä',p:'a-umlaut',ex:'Äpfel',mean:'những quả táo'},{l:'Ö',p:'o-umlaut',ex:'Öl',mean:'dầu'},{l:'Ü',p:'u-umlaut',ex:'Übung',mean:'bài tập'},{l:'ß',p:'eszett',ex:'Straße',mean:'con đường'}];
-
+/* ═══ TOPICS & 1000 WORDS ═══ */
 const TOPICS={1:"Chào hỏi & giao tiếp",2:"Con người & gia đình",3:"Nhà ở",4:"Ăn uống",5:"Mua sắm & tiền",6:"Cơ thể & sức khỏe",7:"Quần áo",8:"Thời gian & lịch",9:"Thành phố & giao thông",10:"Du lịch",11:"Công việc & nghề nghiệp",12:"Trường học & học tập",13:"Thời gian rảnh & sở thích",14:"Thiên nhiên & thời tiết",15:"Truyền thông & công nghệ",16:"Cảm xúc & tính cách",17:"Động từ thông dụng",18:"Tính từ thông dụng",19:"Trạng từ & tiểu từ",20:"Từ chức năng",21:"Số & lượng",22:"Chào hỏi & giao tiếp (A2)",23:"Con người & gia đình (A2)",24:"Nhà ở (A2)",25:"Ăn uống (A2)",26:"Mua sắm & tiền (A2)",27:"Cơ thể & sức khỏe (A2)",28:"Quần áo (A2)",29:"Thời gian & lịch (A2)",30:"Thành phố & giao thông (A2)",31:"Du lịch (A2)",32:"Công việc & nghề nghiệp (A2)",33:"Trường học & học tập (A2)",34:"Thời gian rảnh & sở thích (A2)",35:"Thiên nhiên & thời tiết (A2)",36:"Truyền thông & công nghệ (A2)",37:"Cảm xúc & tính cách (A2)",38:"Động từ thông dụng (A2)",39:"Tính từ thông dụng (A2)",40:"Trạng từ & tiểu từ (A2)",41:"Từ chức năng (A2)",42:"Số & lượng (A2)"};
 
-/* 1000 từ vựng (rút gọn trích từ sách deutsch.vn) — format: topic|level(0=A1,1=A2)|german|vietnamese */
 const W_RAW=`
 1|0|hallo|xin chào (thân mật)
 1|0|tschüss|tạm biệt (thân mật)
@@ -999,4 +995,278 @@ const W_RAW=`
 30|1|das Zentrum|trung tâm
 30|1|die Nähe|vùng lân cận
 30|1|die Richtung|hướng
-30|1|der
+30|1|der Verkehr|giao thông
+30|1|der Stau|tắc đường
+30|1|die Autobahn|đường cao tốc
+30|1|der Parkplatz|chỗ đỗ xe
+30|1|die Polizei|cảnh sát
+30|1|die Kirche|nhà thờ
+30|1|das Gebäude|tòa nhà
+30|1|der Eingang|lối vào
+30|1|der Ausgang|lối ra
+30|1|der Führerschein|bằng lái xe
+30|1|die Verspätung|sự chậm trễ
+30|1|die Abfahrt|giờ khởi hành
+30|1|die Ankunft|giờ đến
+30|1|umsteigen|đổi tàu
+30|1|parken|đỗ xe
+30|1|abbiegen|rẽ
+30|1|verpassen|lỡ
+30|1|nah|gần
+31|1|der Ausweis|chứng minh thư
+31|1|der Pass|hộ chiếu
+31|1|die Information|thông tin
+31|1|das Gepäck|hành lý
+31|1|der Strand|bãi biển
+31|1|der Tourist|khách du lịch
+31|1|der Gast|khách
+31|1|die Rezeption|quầy lễ tân
+31|1|die Übernachtung|sự nghỉ qua đêm
+31|1|der Ausflug|chuyến tham quan
+31|1|das Schiff|tàu thủy
+31|1|das Ausland|nước ngoài
+31|1|die Sehenswürdigkeit|điểm tham quan
+31|1|das Reisebüro|văn phòng du lịch
+31|1|der Stadtplan|bản đồ thành phố
+31|1|buchen|đặt vé
+31|1|reservieren|đặt trước
+31|1|übernachten|ngủ lại
+31|1|packen|đóng gói
+31|1|besichtigen|tham quan
+31|1|mitnehmen|mang theo
+31|1|sich erholen|nghỉ dưỡng
+32|1|der Mitarbeiter|nhân viên
+32|1|der Angestellte|nhân viên
+32|1|die Ausbildung|đào tạo nghề
+32|1|das Praktikum|thực tập
+32|1|die Erfahrung|kinh nghiệm
+32|1|das Gehalt|lương
+32|1|die Bewerbung|đơn xin việc
+32|1|der Lebenslauf|sơ yếu lý lịch
+32|1|die Besprechung|cuộc họp
+32|1|der Vertrag|hợp đồng
+32|1|das Unternehmen|doanh nghiệp
+32|1|das Projekt|dự án
+32|1|der Feierabend|giờ tan làm
+32|1|der Ingenieur|kỹ sư
+32|1|der Polizist|cảnh sát
+32|1|verdienen|kiếm tiền
+32|1|sich bewerben|ứng tuyển
+32|1|kündigen|nghỉ việc
+32|1|erledigen|giải quyết xong
+32|1|organisieren|tổ chức
+32|1|arbeitslos|thất nghiệp
+32|1|selbstständig|tự kinh doanh
+33|1|das Heft|vở
+33|1|das Beispiel|ví dụ
+33|1|das Wörterbuch|từ điển
+33|1|der Unterricht|giờ học
+33|1|die Note|điểm số
+33|1|die Lösung|lời giải
+33|1|das Ergebnis|kết quả
+33|1|die Grammatik|ngữ pháp
+33|1|das Thema|chủ đề
+33|1|die Bibliothek|thư viện
+33|1|das Zeugnis|chứng chỉ
+33|1|das Studium|việc học đại học
+33|1|der Kindergarten|trường mẫu giáo
+33|1|der Teilnehmer|người tham gia
+33|1|üben|luyện tập
+33|1|erklären|giải thích
+33|1|beschreiben|miêu tả
+33|1|übersetzen|dịch
+33|1|korrigieren|sửa lỗi
+33|1|ankreuzen|đánh dấu
+33|1|teilnehmen|tham gia
+33|1|sich anmelden|đăng ký
+33|1|bestehen|thi đỗ
+33|1|schwierig|khó
+34|1|das Theater|nhà hát
+34|1|das Konzert|buổi hòa nhạc
+34|1|die Einladung|lời mời
+34|1|das Lied|bài hát
+34|1|der Ball|quả bóng
+34|1|die Gitarre|đàn ghi-ta
+34|1|der Verein|câu lạc bộ
+34|1|die Mannschaft|đội
+34|1|das Programm|chương trình
+34|1|die Serie|phim bộ
+34|1|die Geschichte|câu chuyện
+34|1|die Kunst|nghệ thuật
+34|1|die Ausstellung|triển lãm
+34|1|die Veranstaltung|sự kiện
+34|1|die Eintrittskarte|vé vào cửa
+34|1|der Spaziergang|cuộc đi dạo
+34|1|fotografieren|chụp ảnh
+34|1|wandern|đi bộ đường dài
+34|1|spazieren gehen|đi dạo
+34|1|malen|vẽ
+34|1|sich interessieren|quan tâm
+34|1|trainieren|tập luyện
+34|1|gewinnen|thắng
+35|1|der See|hồ
+35|1|der Fluss|sông
+35|1|der Wald|rừng
+35|1|die Natur|thiên nhiên
+35|1|die Luft|không khí
+35|1|der Himmel|bầu trời
+35|1|die Wolke|đám mây
+35|1|das Gewitter|giông bão
+35|1|die Temperatur|nhiệt độ
+35|1|der Grad|độ
+35|1|die Insel|hòn đảo
+35|1|die Landschaft|phong cảnh
+35|1|die Umwelt|môi trường
+35|1|die Pflanze|cây
+35|1|das Haustier|thú cưng
+35|1|der Vogel|con chim
+35|1|das Pferd|con ngựa
+35|1|wachsen|lớn lên
+35|1|kühl|mát
+35|1|windig|có gió
+35|1|bewölkt|nhiều mây
+35|1|nass|ướt
+35|1|trocken|khô
+36|1|der Laptop|máy tính xách tay
+36|1|das Smartphone|điện thoại thông minh
+36|1|die App|ứng dụng
+36|1|die Website|trang web
+36|1|das Passwort|mật khẩu
+36|1|die Datei|tệp
+36|1|der Bildschirm|màn hình
+36|1|das Gerät|thiết bị
+36|1|die Kamera|máy ảnh
+36|1|das Fernsehen|truyền hình
+36|1|die Sendung|chương trình
+36|1|die Zeitschrift|tạp chí
+36|1|die Werbung|quảng cáo
+36|1|die Postkarte|bưu thiếp
+36|1|funktionieren|hoạt động
+36|1|einschalten|bật
+36|1|ausschalten|tắt
+36|1|herunterladen|tải xuống
+36|1|speichern|lưu
+36|1|löschen|xóa
+36|1|drucken|in
+36|1|online|trực tuyến
+37|1|das Gefühl|cảm giác
+37|1|die Freude|niềm vui
+37|1|das Glück|may mắn
+37|1|die Hoffnung|hy vọng
+37|1|der Wunsch|mong muốn
+37|1|die Sorge|nỗi lo
+37|1|der Ärger|sự bực tức
+37|1|hoffen|hy vọng
+37|1|sich fühlen|cảm thấy
+37|1|lachen|cười
+37|1|weinen|khóc
+37|1|sich ärgern|tức giận
+37|1|vermissen|nhớ
+37|1|sich beschweren|phàn nàn
+37|1|zufrieden|hài lòng
+37|1|sympathisch|dễ mến
+37|1|ehrlich|trung thực
+37|1|höflich|lịch sự
+37|1|fleissig|chăm chỉ
+37|1|faul|lười biếng
+37|1|nervös|hồi hộp
+37|1|böse|giận
+37|1|enttäuscht|thất vọng
+38|1|lassen|để lại
+38|1|stellen|đặt
+38|1|legen|để nằm
+38|1|sich setzen|ngồi xuống
+38|1|holen|đi lấy
+38|1|gehören|thuộc về
+38|1|vergessen|quên
+38|1|mitkommen|đi cùng
+38|1|mitbringen|mang theo
+38|1|aufhören|dừng
+38|1|schließen|đóng
+38|1|benutzen|sử dụng
+38|1|fehlen|thiếu
+38|1|passieren|xảy ra
+38|1|ändern|thay đổi
+38|1|wählen|chọn
+38|1|versuchen|thử
+38|1|ziehen|kéo
+38|1|fallen|rơi
+38|1|entscheiden|quyết định
+38|1|erlauben|cho phép
+38|1|bitten|nhờ
+38|1|danken|cảm ơn
+38|1|schenken|tặng
+38|1|vorbereiten|chuẩn bị
+38|1|aussehen|trông
+38|1|sich erinnern|nhớ lại
+38|1|sich beeilen|nhanh lên
+38|1|reparieren|sửa chữa
+38|1|schaffen|làm được
+38|1|bedeuten|có nghĩa là
+38|1|aufpassen|chú ý
+39|1|möglich|có thể
+39|1|klar|rõ ràng
+39|1|allein|một mình
+39|1|besetzt|có người
+39|1|leer|trống
+39|1|hoch|cao
+39|1|sauber|sạch
+39|1|schmutzig|bẩn
+39|1|dick|dày
+39|1|dünn|mỏng
+39|1|bekannt|nổi tiếng
+39|1|egal|sao cũng được
+39|1|sicher|chắc chắn
+39|1|gefährlich|nguy hiểm
+39|1|normal|bình thường
+39|1|beliebt|được ưa chuộng
+39|1|praktisch|tiện lợi
+39|1|anstrengend|vất vả
+39|1|stark|mạnh
+39|1|modern|hiện đại
+39|1|spannend|hấp dẫn
+39|1|schlimm|tệ
+39|1|reich|giàu
+39|1|arm|nghèo
+40|1|wirklich|thật sự
+40|1|zurück|trở lại
+40|1|erst|mới
+40|1|oben|ở trên
+40|1|unten|ở dưới
+40|1|draußen|bên ngoài
+40|1|weg|đi mất
+40|1|fast|gần như
+40|1|ziemlich|khá
+40|1|besonders|đặc biệt
+40|1|ungefähr|khoảng
+40|1|eigentlich|thật ra
+40|1|zuerst|trước tiên
+40|1|danach|sau đó
+40|1|plötzlich|đột nhiên
+40|1|bestimmt|chắc chắn
+40|1|wahrscheinlich|có lẽ
+40|1|hoffentlich|hy vọng
+40|1|meistens|thường
+40|1|normalerweise|bình thường
+40|1|selten|hiếm khi
+40|1|sogar|thậm chí
+40|1|sonst|nếu không
+41|1|weil|vì
+41|1|dass|rằng
+41|1|wenn|nếu
+41|1|als|khi
+41|1|ob|liệu
+41|1|sondern|mà
+41|1|obwohl|mặc dù
+41|1|deshalb|vì thế
+41|1|trotzdem|dù vậy
+41|1|außerdem|ngoài ra
+41|1|seit|từ
+41|1|gegen|chống lại
+41|1|durch|qua
+41|1|während|trong khi
+41|1|wegen|vì
+41|1|außer|ngoài
+41|1|gegenüber|đối diện
+41|1|andere|khác
+41|1|
