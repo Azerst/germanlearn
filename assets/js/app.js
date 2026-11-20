@@ -1,7 +1,7 @@
 /* =========================================================
    App Controller — Giao diện + logic (không chứa DB)
    ========================================================= */
-const App = {
+window.App = {
   state: {
     user: null,
     view: 'home',
@@ -1069,7 +1069,7 @@ const App = {
 };
 
 /* ========== Boot ========== */
-App.init().catch(err => {
+window.App.init().catch(err => {
   console.error('[DeutschLern] Init error:', err);
   document.getElementById('app').innerHTML =
     `<div style="padding:40px;text-align:center;color:#d93828">
@@ -1077,4 +1077,4 @@ App.init().catch(err => {
       <p>${Sanitizer.esc(err.message || 'Unknown')}</p>
       <p style="font-size:13px;color:#64748b;margin-top:12px">Mở F12 → Console để xem chi tiết</p>
     </div>`;
-}); 
+});
