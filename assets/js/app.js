@@ -319,8 +319,8 @@ window.App = {
     </footer>`;
   },
 
-  /* ========== Render ========== */
-  render() {
+  /* ========== Render — SỬA LỖI: async + await ========== */
+  async render() {
     const app = document.getElementById('app');
     const v = this.state.view;
     const publicViews = ['home', 'login', 'register'];
@@ -330,26 +330,30 @@ window.App = {
     }
 
     let html = '';
-    if (v === 'home') html = this.nav() + this.viewHome() + this.footer();
-    else if (v === 'login' || v === 'register') {
+    if (v === 'home') {
+      html = this.nav() + this.viewHome() + this.footer();
+    } else if (v === 'login' || v === 'register') {
       html = this.nav() + (v === 'login' ? this.viewLogin() : this.viewRegister());
     } else {
-      html = this.nav() + `<main>${this.viewContent()}</main>`;
+      /* Await content (vì viewDashboard, viewAdmin, viewProfile là async) */
+      const content = await this.viewContent();
+      html = this.nav() + `<main>${content}</main>`;
     }
     app.innerHTML = html;
   },
 
-  viewContent() {
+  /* ========== SỬA LỖI: async + await ========== */
+  async viewContent() {
     switch (this.state.view) {
-      case 'dashboard': return this.viewDashboard();
+      case 'dashboard': return await this.viewDashboard();
       case 'vocabulary': return this.viewVocabulary();
       case 'flashcards': return this.viewFlashcards();
       case 'quiz': return this.viewQuiz();
       case 'grammar': return this.viewGrammar();
       case 'exam': return this.viewExam();
-      case 'profile': return this.viewProfile();
-      case 'admin': return this.viewAdmin();
-      default: return this.viewDashboard();
+      case 'profile': return await this.viewProfile();
+      case 'admin': return await this.viewAdmin();
+      default: return await this.viewDashboard();
     }
   },
 
