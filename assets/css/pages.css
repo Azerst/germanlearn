@@ -2,51 +2,42 @@
    Page-specific Styles
    ============================================ */
 
-/* ========== Auth (Đã thu nhỏ) ========== */
-.auth-page { min-height: calc(100vh - 72px); display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
-.auth-card { width: 100%; max-width: 380px; padding: 32px 24px; } /* Nhỏ lại */
-.auth-card h1 { font-size: 22px; text-align: center; margin-bottom: 6px; }
-.auth-card .sub { text-align: center; color: var(--muted); font-size: 13px; margin-bottom: 20px; }
-.auth-foot { text-align: center; font-size: 13px; color: var(--muted); margin-top: 16px; }
-.auth-foot a { color: var(--red); font-weight: 600; cursor: pointer; }
+/* Auth */
+.auth-page { min-height: calc(100vh - 100px); display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
+.auth-card { width: 100%; max-width: 400px; padding: 36px 30px; }
+.auth-card h1 { font-size: 24px; text-align: center; margin-bottom: 8px; }
+.auth-card .sub { text-align: center; color: var(--muted); font-size: 14px; margin-bottom: 24px; }
 
-/* ========== Hero Mới (Redesign) ========== */
-.hero-new {
-  padding: 80px 24px;
+/* Hero Section (Siêu gọn) */
+.hero-clean {
+  padding: 100px 24px 80px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  z-index: 1;
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
 }
-.hero-new h1 { font-size: clamp(36px, 6vw, 64px); line-height: 1.1; font-weight: 900; margin-bottom: 20px; letter-spacing: -1.5px; }
-.hero-new h1 .accent { background: linear-gradient(135deg, var(--red), #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.hero-new p { font-size: 16px; color: var(--muted); max-width: 600px; margin-bottom: 36px; line-height: 1.6; }
-.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
-
-.hero-stats-new { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; width: 100%; }
-.stat-box { padding: 20px; text-align: center; }
-.stat-box .num { font-size: 28px; font-weight: 900; color: var(--red); font-family: var(--font-head); }
-.stat-box .lbl { font-size: 13px; color: var(--muted); font-weight: 600; margin-top: 4px; }
-
-/* Feature / CTA Cards */
-.section { padding: 60px 24px; max-width: 1280px; margin: 0 auto; }
-.section-head { text-align: center; margin-bottom: 40px; }
-.section-tag { display: inline-block; background: var(--red-soft); color: var(--red); padding: 5px 14px; font-size: 11.5px; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px); }
-.feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-.feature-card { padding: 28px 24px; cursor: pointer; transition: var(--transition); }
-.feature-card:hover { transform: translateY(-4px); }
-.feature-icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--red), var(--red-dark)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); }
-
-/* ========== Profile Mới ========== */
-.profile-header { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; position: relative; padding: 36px 32px; }
-.profile-bio { width: 100%; font-size: 14.5px; margin-top: 12px; font-style: italic; color: var(--muted); background: rgba(255,255,255,0.4); padding: 10px 14px; border-left: 3px solid var(--red); }
-.btn-edit-profile { position: absolute; top: 20px; right: 20px; }
-
-@media (max-width: 768px) {
-  .hero-stats-new { grid-template-columns: repeat(2, 1fr); }
-  .hero-new { padding: 40px 20px; }
+.hero-clean h1 {
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.1;
+  font-weight: 900;
+  margin-bottom: 30px;
+  color: var(--text);
 }
+.hero-clean h1 .accent {
+  background: linear-gradient(135deg, var(--red), #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-cta { display: flex; gap: 16px; justify-content: center; }
+
+/* Features */
+.section { padding: 60px 24px; max-width: 1200px; margin: 0 auto; }
+.section-head { text-align: center; margin-bottom: 40px; }
+.section-head h2 { font-size: 32px; margin-bottom: 10px; }
+.feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+.feature-card { padding: 30px; text-align: center; transition: transform 0.3s; cursor: pointer; }
+.feature-card:hover { transform: translateY(-5px); }
+.feature-card h3 { font-size: 20px; margin-bottom: 10px; }
+.feature-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
