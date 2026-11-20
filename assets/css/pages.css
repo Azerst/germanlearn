@@ -173,24 +173,6 @@
 .auth-foot { text-align: center; font-size: 13.5px; color: var(--muted); margin-top: 20px; }
 .auth-foot a { color: var(--red); font-weight: 600; cursor: pointer; }
 .auth-foot a:hover { text-decoration: underline; }
-.demo-box {
-  background: linear-gradient(135deg, rgba(217, 56, 40, .08), rgba(217, 56, 40, .03));
-  border: 1px dashed rgba(217, 56, 40, .3);
-  padding: 12px 16px;
-  border-radius: var(--radius);
-  font-size: 12.5px;
-  margin-bottom: 18px;
-  color: var(--red-dark);
-  line-height: 1.7;
-}
-.demo-box code {
-  background: #fff;
-  padding: 2px 8px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 11.5px;
-  color: var(--red);
-}
 
 /* ========== App Hero Card ========== */
 .hero-card { padding: 36px 32px; margin-bottom: 22px; position: relative; overflow: hidden; }
@@ -392,3 +374,76 @@
   margin-right: 8px;
 }
 .q-block .qbody { font-weight: 600; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+
+/* ============================================
+   Dictionary & Verbs & Study Mode Styles (MỚI)
+   ============================================ */
+
+/* --- List / Table Common --- */
+.dict-list { display: flex; flex-direction: column; gap: 10px; }
+.dict-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 18px; background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius); border: 1px solid var(--glass-border);
+  transition: var(--transition);
+}
+.dict-item:hover { background: rgba(255, 255, 255, 0.9); transform: translateX(4px); }
+.dict-item .de { font-weight: 800; color: var(--red); font-size: 16px; }
+.dict-item .ipa { font-size: 12px; color: var(--muted); font-style: italic; display: block; margin-top: 2px; }
+.dict-item .vi { font-weight: 600; font-size: 14px; text-align: right; }
+
+.verb-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px; background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius); border: 1px solid var(--glass-border); gap: 16px; flex-wrap: wrap;
+}
+.verb-item .main-info { flex: 1; min-width: 150px; }
+.verb-item .inf { font-size: 18px; font-weight: 800; color: var(--red); }
+.verb-item .mean { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.verb-item .forms { display: flex; gap: 10px; flex-wrap: wrap; }
+.verb-item .form-badge {
+  background: var(--bg); padding: 6px 12px; border-radius: 8px; font-size: 12.5px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+}
+.verb-item .form-badge b { color: var(--text); }
+
+/* --- Study Setup --- */
+.study-setup { max-width: 600px; margin: 0 auto; padding: 30px; }
+.study-setup .form-group { margin-bottom: 20px; }
+.study-setup select.input { padding: 14px; font-size: 15px; }
+
+/* --- Quiz Options --- */
+.quiz-options { display: grid; gap: 10px; margin-top: 20px; }
+.quiz-opt {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 20px; border: 2px solid rgba(15, 23, 42, 0.08);
+  border-radius: var(--radius); background: #fff; cursor: pointer;
+  font-size: 15px; text-align: left; transition: var(--transition);
+}
+.quiz-opt:hover { border-color: var(--red); background: var(--red-soft); }
+.quiz-opt b {
+  width: 30px; height: 30px; border-radius: 50%; background: rgba(15, 23, 42, 0.06);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: var(--muted); flex-shrink: 0;
+}
+.quiz-opt.correct { border-color: var(--success); background: rgba(16, 185, 129, 0.1); }
+.quiz-opt.correct b { background: var(--success); color: #fff; }
+.quiz-opt.wrong { border-color: var(--danger); background: rgba(239, 68, 68, 0.1); }
+.quiz-opt.wrong b { background: var(--danger); color: #fff; }
+.quiz-opt:disabled { pointer-events: none; opacity: 0.8; }
+
+/* --- Study Input --- */
+.study-input-wrapper { text-align: center; padding: 20px 0; }
+.study-input-wrapper input {
+  font-size: 22px; text-align: center; padding: 16px;
+  max-width: 400px; margin: 0 auto 16px; display: block;
+}
+
+/* --- Feedback --- */
+.study-feedback { margin-top: 20px; font-weight: 700; font-size: 16px; text-align: center; min-height: 30px; }
+.study-feedback.ok { color: var(--success); }
+.study-feedback.fail { color: var(--danger); }
+
+/* --- Profile Swatches --- */
+.theme-swatch { transition: all 0.2s; }
+.theme-swatch:hover { transform: scale(1.1); }
